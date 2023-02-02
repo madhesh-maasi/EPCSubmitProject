@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "version": "1.14.0",
+    "libraryName": "submit-pepi-project",
+    "libraryId": "cf340a73-b05d-4c4d-b741-7e05e8483eb1",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "SubmitPEPIProject",
+    "solutionShortDescription": "SubmitPEPIProject description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

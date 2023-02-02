@@ -1,0 +1,64 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "submit-pepi-project-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/submitPepiProject/SubmitPepiProjectWebPart.js",
+          "manifest": "./src/webparts/submitPepiProject/SubmitPepiProjectWebPart.manifest.json"
+        }
+      ]
+    },
+    "submit-combine-reviews-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/submitCombineReviews/SubmitCombineReviewsWebPart.js",
+          "manifest": "./src/webparts/submitCombineReviews/SubmitCombineReviewsWebPart.manifest.json"
+        }
+      ]
+    },
+    "submit-special-reviews-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/submitSpecialReviews/SubmitSpecialReviewsWebPart.js",
+          "manifest": "./src/webparts/submitSpecialReviews/SubmitSpecialReviewsWebPart.manifest.json"
+        }
+      ]
+    },
+    "submit-split-reviews-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/submitSplitReviews/SubmitSplitReviewsWebPart.js",
+          "manifest": "./src/webparts/submitSplitReviews/SubmitSplitReviewsWebPart.manifest.json"
+        }
+      ]
+    },
+    "submit-combine-admin-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/submitCombineAdmin/SubmitCombineAdminWebPart.js",
+          "manifest": "./src/webparts/submitCombineAdmin/SubmitCombineAdminWebPart.manifest.json"
+        }
+      ]
+    },
+    "submit-split-admin-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/submitSplitAdmin/SubmitSplitAdminWebPart.js",
+          "manifest": "./src/webparts/submitSplitAdmin/SubmitSplitAdminWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SubmitPepiProjectWebPartStrings": "lib/webparts/submitPepiProject/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "SubmitCombineReviewsWebPartStrings": "lib/webparts/submitCombineReviews/loc/{locale}.js",
+    "SubmitSpecialReviewsWebPartStrings": "lib/webparts/submitSpecialReviews/loc/{locale}.js",
+    "SubmitSplitReviewsWebPartStrings": "lib/webparts/submitSplitReviews/loc/{locale}.js",
+    "SubmitCombineAdminWebPartStrings": "lib/webparts/submitCombineAdmin/loc/{locale}.js",
+    "SubmitSplitAdminWebPartStrings": "lib/webparts/submitSplitAdmin/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,453 @@
+
+
+
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+
+:global {
+
+  #workbenchPageContent,
+  .CanvasComponent.LCS .CanvasZone {
+    max-width: 100% !important;
+  }
+}
+
+.submitSplitAdmin {
+  .container {
+    width: 100%;
+    // margin: 0px auto;
+    // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .Multilinetextarea {
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    box-shadow: none;
+    margin: 0px;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    //border: none;
+    background: none transparent;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    min-width: 0px;
+    text-overflow: ellipsis;
+    outline: 0px;
+    resize: none;
+    min-height: inherit;
+    line-height: 17px;
+    flex-grow: 1;
+    overflow: auto;
+    height: 25%
+  }
+
+  .DivDatePicker {
+    width: 50%;
+  }
+
+  .lablePadding {
+    padding: 50%;
+  }
+
+  .tdWith {
+    width: 25%;
+  }
+
+  .finalsctionTD {
+    font-weight: 600;
+    background: rgb(175, 174, 174);
+    padding: 10px;
+  }
+
+  .doppadding {
+    padding: 10px;
+  }
+
+  .doppadding {
+    padding: 10px;
+  }
+
+  .divbox {
+    width: auto;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    margin: 10px;
+  }
+
+  .divboxWithoutboder {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .boxlablewithundrline {
+    padding: 30%;
+    font-weight: bold;
+    text-align: 'center';
+    text-decoration: 'underline';
+
+  }
+
+  .boxlable {
+    padding: 32%;
+    font-weight: bold;
+    text-align: 'center',
+  }
+
+  .tablelable {
+    font-weight: bold;
+    text-align: 'center',
+  }
+
+  .boldlabel {
+    font-weight: 600;
+    background: rgb(175, 174, 174);
+  }
+
+  .boldlabelSr {
+    font-weight: 600;
+    background: rgb(175, 174, 174);
+    text-align: center !important;
+    width: 5% !important;
+  }
+
+  .boldlabelSrNew {
+    font-weight: 600;
+    background: rgb(255, 242, 204);
+    text-align: center !important;
+    width: 5% !important;
+  }
+
+  .boldlabelSrNewHeader {
+    font-weight: 600;
+    background: rgb(255, 242, 204);
+    text-align: left !important;
+    width: 5% !important;
+  }
+
+  .boldlabelTxtNew {
+    font-weight: 600;
+    background: rgb(255, 242, 204);
+    vertical-align: top;
+    width: 28% !important;
+
+  }
+
+  .boldlabelTxttd {
+    // font-weight: 600;
+    // background:rgb(255, 242, 204);
+    vertical-align: top;
+    width: 70% !important;
+
+  }
+
+  .boldlabelTxt {
+    font-weight: 600;
+    background: rgb(175, 174, 174);
+    vertical-align: top;
+    width: 20% !important;
+  }
+
+  .sectionContent {
+    padding: 0px;
+  }
+
+  .divTablesectionContent {
+    padding: 0px;
+    width: 75%;
+    margin-left: 10%;
+  }
+
+  .tabletdColspan {
+
+    table,
+    td {
+      column-span: 2;
+    }
+  }
+
+  .tableWithoutboder {
+    width: 100%;
+    padding: 3px;
+    align-items: center;
+    border-collapse: collapse;
+  }
+
+  .tablewraper {
+    margin-top: 30px;
+    width: 100%;
+    padding: 3px;
+    align-items: center;
+    border-collapse: collapse;
+
+    table,
+    td,
+    th {
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+  }
+
+  .logoImg {
+    background-image: url("../../../assets/performancemgmtgraphic.png");
+    height: 85px;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+  }
+
+  .col25Right {
+    width: 25%;
+    padding: 3px;
+    text-align: right;
+
+    @include ms-Grid-col;
+  }
+
+  .Newcol25Right {
+    padding: 3px;
+    text-align: left;
+    width: 10%;
+    @include ms-Grid-col;
+  }
+
+  .Newcol25left {
+    width: 25%;
+    padding: 3px;
+    text-align: left;
+    width: 40%;
+    @include ms-Grid-col;
+  }
+
+  .col25leftServiceLine {
+    width: 10%;
+    padding: 3px;
+    // margin-left: 30%;
+    @include ms-Grid-col;
+  }
+
+  .dropServiceLine {
+    width: 100%;
+  }
+
+
+  .col25left {
+    width: 25%;
+    padding: 3px;
+    @include ms-Grid-col;
+  }
+
+  .row {
+    @include ms-Grid-row;
+    // background-color: $ms-color-themeDark;
+    // padding: 5px;
+    align-items: center;
+  }
+
+  .divCompetency {
+    @include ms-Grid-row;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .ReplaceMerow {
+    @include ms-Grid-row;
+    // background-color: $ms-color-themeDark;
+    // padding: 5px;
+    align-items: center;
+    background-color: rgb(190, 229, 255)
+  }
+
+  .col25leftReplaseMe {
+    width: 25%;
+    padding: 3px;
+    background-color: rgb(190, 229, 255);
+    @include ms-Grid-col;
+
+  }
+
+  .rowOptionalReversion {
+    @include ms-Grid-row;
+    background-color: #30262614;
+    height: 60px;
+    align-items: center;
+    width: 100%;
+    margin-left: 10%;
+    margin-top: 2%;
+  }
+
+  .btnFORAcknowledgment {
+    width: 100%;
+    padding: 3px;
+    @include ms-Grid-col;
+  }
+
+  .btnApproved {
+    background-color: #90ee90;
+    color: black;
+  }
+
+  .btnApprovedForReviewer {
+    background-color: #90ee90;
+    color: black;
+    margin-top: 20px;
+  }
+
+  .btncol25leftForReviewer {
+    width: 50%;
+    padding: 3px;
+    @include ms-Grid-col;
+  }
+
+  .btnSAVEDRAFT {
+    background-color: #FFFF99;
+    color: black;
+  }
+
+  .btnSAVEDRAFTForReviewer {
+    background-color: #FFFF99;
+    color: black;
+    margin-top: 20px;
+  }
+
+ 
+  .divbtnREVIEWEEFORAcknowledgment {
+    width: 100%;
+    @include ms-Grid-row;
+    align-items: center;
+    margin-top: 2%;
+  }
+
+  .btnREVERT {
+    background-color: white;
+    color: black;
+
+  }
+
+  .divLEADMDApproved {
+    width: 30%;
+    @include ms-Grid-row;
+    align-items: center;
+    padding: 3px;
+    @include ms-Grid-col;
+  }
+
+  .btnSTARTREVIEW {
+    background-color: #FFFF99;
+    color: black;
+    margin-top: 100px;
+    margin-left: 200px;
+  }
+
+  .btnCancel {
+    margin: 10px;
+    background: white;
+    color: black;
+    margin-top: 20px;
+  }
+
+  .btnReplaceMe {
+    background-color: #FFFF99;
+    color: black;
+    width: 50%;
+  }
+
+
+  /////////////////////////////////////
+  .hr{
+    border: 1px solid black;
+   }
+   .lblText{
+    text-align: right;
+  }
+   .divFullWidth{
+    width: 100%;
+    @include ms-Grid-row;
+    align-items: center;
+    margin-left: 50%;
+  }
+  .lblReviewIDs {
+    width: 30%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+  .lblTitle{
+    width: 20%;
+    padding: 3px;
+    text-align: right;
+    @include ms-Grid-col;
+  }
+
+  .txtReviewIDs {
+    width: 15%;
+    height: 25%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+  .txtTitle {
+    width: 25%;
+    height: 25%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+  .lblHourstoReview {
+    width: 15%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+
+  .txtHourstoReview {
+    width: 15%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+
+  .lblTitleOfSplitReview {
+    width: 35%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+  .btnSave{
+    background-color: #49e90ad0;
+    color: black;
+    margin-left: 200px;
+  }
+  .btnGETREVIEW{
+    margin-left: 10px;
+    background: white;
+     color: black;
+     width: 100%
+  }
+  
+  .lblTopText{
+    @include ms-Grid-row;
+  align-items: center;
+  margin-left: 0.5%;
+  }
+  .lblSourceReviewID{
+    // width: 20%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+  .txtSourceReviewID{
+    width: 15%;
+    padding: 3px;
+    text-align: left;
+    @include ms-Grid-col;
+  }
+
+}
