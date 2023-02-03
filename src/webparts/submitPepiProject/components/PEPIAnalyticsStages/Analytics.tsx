@@ -1150,7 +1150,10 @@ export default class Analytics extends React.Component<
     this.setState({
       SctionTotalDR: Number(
         parseFloat(
-          (Number(DSectionReviewer) / updateDetails.length).toString()
+          (
+            Number(DSectionReviewer) /
+            updateDetails.filter((e) => e.Reviewer != 0).length
+          ).toString()
         ).toFixed(2)
       ),
     });

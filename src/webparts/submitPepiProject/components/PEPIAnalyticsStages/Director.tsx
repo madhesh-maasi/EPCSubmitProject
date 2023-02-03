@@ -1104,14 +1104,20 @@ export default class Director extends React.Component<
     this.setState({
       SctionTotalDE: Number(
         parseFloat(
-          (Number(DSectionReviewee) / updateDetails.length).toString()
+          (
+            Number(DSectionReviewee) /
+            updateDetails.filter((e) => e.Reviewee != 0).length
+          ).toString()
         ).toFixed(2)
       ),
     });
     this.setState({
       SctionTotalDR: Number(
         parseFloat(
-          (Number(DSectionReviewer) / updateDetails.length).toString()
+          (
+            Number(DSectionReviewer) /
+            updateDetails.filter((e) => e.Reviewer != 0).length
+          ).toString()
         ).toFixed(2)
       ),
     });
@@ -1707,7 +1713,8 @@ export default class Director extends React.Component<
     } else if (TRValue == "A14E") {
       this.setState({ A14E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA14D =
-        Number(this.state.A14R) - Number(newValue == "NA" ? 0 : newValue);
+        Number(this.resetNAValue(this.state.A14R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A14D: vallblA14D });
       AverageA1E = Number(
         this.getAverageCalculation(
@@ -5992,7 +5999,7 @@ export default class Director extends React.Component<
             SECTION D: SERVICE LINE
           </label>{" "}
         </div>
-        {this.state.ApepiQuestionText != null && (
+        {this.state.ApepiQuestionText != null ? (
           <AllQuestionText
             AppContext={this.props.AppContext}
             hasEditItemPermission={this.props.hasEditItemPermission}
@@ -6010,6 +6017,8 @@ export default class Director extends React.Component<
             //  SERVICELINEDifference = {0}
             onFormFieldValueChange={this.onFormFieldValueChange}
           ></AllQuestionText>
+        ) : (
+          "Not Applicable for selected Service line"
         )}
 
         {/* SECTION E: STRENGTHS */}
