@@ -1092,39 +1092,51 @@ export default class Director extends React.Component<
     let DSectionDifference = 0;
     updateDetails.map((element, index) => {
       DSectionReviewee =
-        DSectionReviewee + Number(updateDetails[index].Reviewee);
+        DSectionReviewee +
+        Number(
+          updateDetails[index].Reviewee == "0.5"
+            ? 0
+            : updateDetails[index].Reviewee
+        );
       DSectionReviewer =
-        DSectionReviewer + Number(updateDetails[index].Reviewer);
+        DSectionReviewer +
+        Number(
+          updateDetails[index].Reviewer == "0.5"
+            ? 0
+            : updateDetails[index].Reviewer
+        );
       DSectionDifference =
         DSectionDifference + Number(updateDetails[index].Difference);
     });
     // this.setState({SctionTotalDE : DSectionReviewee /updateDetails.length });
     // this.setState({SctionTotalDR : DSectionReviewer /updateDetails.length });
-
+    let avgDSectionReviewee =
+      Number(DSectionReviewee) /
+      updateDetails.filter((e) => e.Reviewee != 0 && e.Reviewee != 0.5).length;
     this.setState({
       SctionTotalDE: Number(
         parseFloat(
-          (
-            Number(DSectionReviewee) /
-            updateDetails.filter((e) => e.Reviewee != 0).length
-          ).toString()
+          (isNaN(avgDSectionReviewee) ? 0 : avgDSectionReviewee).toString()
         ).toFixed(2)
       ),
     });
+    let avgDSectionReviewer =
+      Number(DSectionReviewer) /
+      updateDetails.filter((e) => e.Reviewer != 0 && e.Reviewer != 0.5).length;
     this.setState({
       SctionTotalDR: Number(
         parseFloat(
-          (
-            Number(DSectionReviewer) /
-            updateDetails.filter((e) => e.Reviewer != 0).length
-          ).toString()
+          (isNaN(avgDSectionReviewer) ? 0 : avgDSectionReviewer).toString()
         ).toFixed(2)
       ),
     });
+    let avgDDifference =
+      Number(DSectionDifference) /
+      updateDetails.filter((e) => e.Difference != 0).length;
     this.setState({
       SctionTotalDD: Number(
         parseFloat(
-          (Number(DSectionDifference) / updateDetails.length).toString()
+          (isNaN(avgDDifference) ? 0 : avgDDifference).toString()
         ).toFixed(2)
       ),
     });
