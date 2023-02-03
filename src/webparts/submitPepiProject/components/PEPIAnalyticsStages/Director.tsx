@@ -101,61 +101,22 @@ export default class Director extends React.Component<
         this.props.APEPIDetail.A15R == undefined
           ? 0
           : this.props.APEPIDetail.A15R,
+      // ! Technorucs
       A11D:
-        Number(
-          this.props.APEPIDetail.A11R == undefined
-            ? 0
-            : this.props.APEPIDetail.A11R
-        ) -
-        Number(
-          this.props.APEPIDetail.A11E == undefined
-            ? 0
-            : this.props.APEPIDetail.A11E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A11R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A11E)),
       A12D:
-        Number(
-          this.props.APEPIDetail.A12R == undefined
-            ? 0
-            : this.props.APEPIDetail.A12R
-        ) -
-        Number(
-          this.props.APEPIDetail.A12E == undefined
-            ? 0
-            : this.props.APEPIDetail.A12E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A12R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A12E)),
       A13D:
-        Number(
-          this.props.APEPIDetail.A13R == undefined
-            ? 0
-            : this.props.APEPIDetail.A13R
-        ) -
-        Number(
-          this.props.APEPIDetail.A13E == undefined
-            ? 0
-            : this.props.APEPIDetail.A13E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A13R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A13E)),
       A14D:
-        Number(
-          this.props.APEPIDetail.A14R == undefined
-            ? 0
-            : this.props.APEPIDetail.A14R
-        ) -
-        Number(
-          this.props.APEPIDetail.A14E == undefined
-            ? 0
-            : this.props.APEPIDetail.A14E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A14R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A14E)),
       A15D:
-        Number(
-          this.props.APEPIDetail.A15R == undefined
-            ? 0
-            : this.props.APEPIDetail.A15R
-        ) -
-        Number(
-          this.props.APEPIDetail.A15E == undefined
-            ? 0
-            : this.props.APEPIDetail.A15E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A15R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A15E)),
       A1EE:
         this.props.APEPIDetail.A1EE == undefined
           ? 0
@@ -1641,21 +1602,21 @@ export default class Director extends React.Component<
     let cCount = c > 0 ? 1 : 0;
     let dCount = d > 0 ? 1 : 0;
     let eCount = e > 0 ? 1 : 0;
-    return (a + b + c + d + e) / (aCount + bCount + cCount + dCount + eCount);
+    let AverageOutput =
+      (a + b + c + d + e) / (aCount + bCount + cCount + dCount + eCount);
+    AverageOutput = isNaN(AverageOutput) ? 0 : AverageOutput;
+    return AverageOutput;
   }
-  private resetNAValue(val): Promise<void> {
-    return val == 0.5 ? 0 : val;
+  private resetNAValue(val) {
+    return val == 0.5 || val == undefined ? 0 : val;
   }
   private onChangeA1(newValue: string, TRValue: string): void {
     console.log(newValue);
     console.log(TRValue);
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
-    console.log(this.props.Options);
-    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     let AverageA1E = 0;
     let AverageA1R = 0;
-
     if (TRValue == "A11E") {
       this.setState({ A11E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA11D =
@@ -1663,7 +1624,7 @@ export default class Director extends React.Component<
       this.setState({ A11D: vallblA11D });
       AverageA1E = Number(
         this.getAverageCalculation(
-          Number(newValue),
+          Number(newValue === "NA" ? "0.5" : newValue),
           Number(this.resetNAValue(this.state.A12E)),
           Number(this.resetNAValue(this.state.A13E)),
           Number(this.resetNAValue(this.state.A14E)),
@@ -1687,13 +1648,14 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A12E") {
-      this.setState({ A12E: Number(ctdNewValue) });
-      let vallblA12D = Number(this.state.A12R) - Number(newValue);
+      this.setState({ A12E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA12D =
+        Number(this.state.A12R) - Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A12D: vallblA12D });
       AverageA1E = Number(
         this.getAverageCalculation(
           Number(this.resetNAValue(this.state.A11E)),
-          Number(newValue),
+          Number(newValue === "NA" ? "0.5" : newValue),
           Number(this.resetNAValue(this.state.A13E)),
           Number(this.resetNAValue(this.state.A14E)),
           Number(this.resetNAValue(this.state.A15E))
@@ -1714,14 +1676,15 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A13E") {
-      this.setState({ A13E: Number(ctdNewValue) });
-      let vallblA13D = Number(this.state.A13R) - Number(newValue);
+      this.setState({ A13E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA13D =
+        Number(this.state.A13R) - Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A13D: vallblA13D });
       AverageA1E = Number(
         this.getAverageCalculation(
           Number(this.resetNAValue(this.state.A11E)),
           Number(this.resetNAValue(this.state.A12E)),
-          Number(newValue),
+          Number(newValue === "NA" ? "0.5" : newValue),
           Number(this.resetNAValue(this.state.A14E)),
           Number(this.resetNAValue(this.state.A15E))
         )
@@ -1742,15 +1705,16 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A14E") {
-      this.setState({ A14E: Number(ctdNewValue) });
-      let vallblA14D = Number(this.state.A14R) - Number(newValue);
+      this.setState({ A14E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA14D =
+        Number(this.state.A14R) - Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A14D: vallblA14D });
       AverageA1E = Number(
         this.getAverageCalculation(
           Number(this.resetNAValue(this.state.A11E)),
           Number(this.resetNAValue(this.state.A12E)),
           Number(this.resetNAValue(this.state.A13E)),
-          Number(newValue),
+          Number(newValue === "NA" ? "0.5" : newValue),
           Number(this.resetNAValue(this.state.A15E))
         )
       );
@@ -1769,8 +1733,9 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A15E") {
-      this.setState({ A15E: Number(ctdNewValue) });
-      let vallblA15D = Number(this.state.A15R) - Number(newValue);
+      this.setState({ A15E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA15D =
+        Number(this.state.A15R) - Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A15D: vallblA15D });
       AverageA1E = Number(
         this.getAverageCalculation(
@@ -1778,7 +1743,7 @@ export default class Director extends React.Component<
           Number(this.resetNAValue(this.state.A12E)),
           Number(this.resetNAValue(this.state.A13E)),
           Number(this.resetNAValue(this.state.A14E)),
-          Number(newValue)
+          Number(newValue === "NA" ? "0.5" : newValue)
         )
       );
       //! (Number(this.resetNAValue(this.state.A11E)) +
@@ -1796,16 +1761,26 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A11R") {
-      this.setState({ A11R: Number(ctdNewValue) });
-      let vallblA11ED = Number(newValue) - Number(this.state.A11E);
+      this.setState({ A11R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA11ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A11E));
       this.setState({ A11D: vallblA11ED });
-      AverageA1R =
-        (Number(newValue) +
-          Number(this.state.A12R) +
-          Number(this.state.A13R) +
-          Number(this.state.A14R) +
-          Number(this.state.A15R)) /
-        5;
+      AverageA1R = Number(
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A12R)),
+          Number(this.resetNAValue(this.state.A13R)),
+          Number(this.resetNAValue(this.state.A14R)),
+          Number(this.resetNAValue(this.state.A15R))
+        )
+      );
+      //! (Number(newValue === "NA" ? "0.5" : newValue) +
+      //   Number(this.state.A12R) +
+      //   Number(this.state.A13R) +
+      //   Number(this.state.A14R) +
+      //   Number(this.state.A15R)) /
+      // 5;
       this.setState({ A1RR: AverageA1R });
       // let valA11RD = (Number(vallblA11ED) + Number(this.state.A12D) + Number(this.state.A13D) + Number(this.state.A14D) + Number(this.state.A15D)) / 5;
       // this.setState({ A1DD: valA11RD });
@@ -1816,17 +1791,27 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A12R") {
-      this.setState({ A12R: Number(newValue) });
-      let vallblA12ED = Number(newValue) - Number(this.state.A12E);
+      this.setState({ A12R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA12ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A12E));
 
       this.setState({ A12D: vallblA12ED });
-      AverageA1R =
-        (Number(this.state.A11R) +
-          Number(newValue) +
-          Number(this.state.A13R) +
-          Number(this.state.A14R) +
-          Number(this.state.A15R)) /
-        5;
+      AverageA1R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A11R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A13R)),
+          Number(this.resetNAValue(this.state.A14R)),
+          Number(this.resetNAValue(this.state.A15R))
+        )
+      );
+      //! (Number(this.state.A11R) +
+      //   Number(newValue) +
+      //   Number(this.state.A13R) +
+      //   Number(this.state.A14R) +
+      //   Number(this.state.A15R)) /
+      //   5;
       this.setState({ A1RR: AverageA1R });
 
       // let valA12RD = (Number(this.state.A11D) + Number(vallblA12ED) + Number(this.state.A13D) + Number(this.state.A14D) + Number(this.state.A15D)) / 5;
@@ -1837,16 +1822,26 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A13R") {
-      this.setState({ A13R: Number(newValue) });
-      let vallblA13ED = Number(newValue) - Number(this.state.A13E);
+      this.setState({ A13R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA13ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A13E));
       this.setState({ A13D: vallblA13ED });
-      AverageA1R =
-        (Number(this.state.A11R) +
-          Number(this.state.A12R) +
-          Number(newValue) +
-          Number(this.state.A14R) +
-          Number(this.state.A15R)) /
-        5;
+      AverageA1R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A11R)),
+          Number(this.resetNAValue(this.state.A12R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A14R)),
+          Number(this.resetNAValue(this.state.A15R))
+        )
+      );
+      //! (Number(this.state.A11R) +
+      //   Number(this.state.A12R) +
+      //   Number(newValue) +
+      //   Number(this.state.A14R) +
+      //   Number(this.state.A15R)) /
+      // 5;
       this.setState({ A1RR: AverageA1R });
 
       // let valA11RD = (Number(this.state.A11D) + Number(this.state.A12D) + Number(vallblA13ED) + Number(this.state.A14D) + Number(this.state.A15D)) / 5;
@@ -1857,16 +1852,26 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A14R") {
-      this.setState({ A14R: Number(newValue) });
-      let vallblA14ED = Number(newValue) - Number(this.state.A14E);
+      this.setState({ A14R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA14ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A14E));
       this.setState({ A14D: vallblA14ED });
-      AverageA1R =
-        (Number(this.state.A11R) +
-          Number(this.state.A12R) +
-          Number(this.state.A13R) +
-          Number(newValue) +
-          Number(this.state.A15R)) /
-        5;
+      AverageA1R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A11R)),
+          Number(this.resetNAValue(this.state.A12R)),
+          Number(this.resetNAValue(this.state.A13R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A15R))
+        )
+      );
+      // !(Number(this.state.A11R) +
+      //   Number(this.state.A12R) +
+      //   Number(this.state.A13R) +
+      //   Number(newValue) +
+      //   Number(this.state.A15R)) /
+      // 5;
       this.setState({ A1RR: AverageA1R });
 
       // let valA11RD = (Number(this.state.A11D) + Number(this.state.A12D) + Number(this.state.A13D) + Number(vallblA14ED) + Number(this.state.A15D)) / 5;
@@ -1877,16 +1882,26 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A15R") {
-      this.setState({ A15R: Number(newValue) });
-      let vallblA15ED = Number(newValue) - Number(this.state.A15E);
+      this.setState({ A15R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA15ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A15E));
       this.setState({ A15D: vallblA15ED });
-      AverageA1R =
-        (Number(this.state.A11R) +
-          Number(this.state.A12R) +
-          Number(this.state.A13R) +
-          Number(this.state.A14R) +
-          Number(newValue)) /
-        5;
+      AverageA1R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A11R)),
+          Number(this.resetNAValue(this.state.A12R)),
+          Number(this.resetNAValue(this.state.A13R)),
+          Number(this.resetNAValue(this.state.A14R)),
+          Number(newValue === "NA" ? "0.5" : newValue)
+        )
+      );
+      // ! (Number(this.state.A11R) +
+      //   Number(this.state.A12R) +
+      //   Number(this.state.A13R) +
+      //   Number(this.state.A14R) +
+      //   Number(newValue)) /
+      // 5;
       this.setState({ A1RR: AverageA1R });
 
       // let valA11RD = (Number(this.state.A11D) + Number(this.state.A12D) + Number(this.state.A13D) + Number(this.state.A14D) + Number(vallblA15ED)) / 5;
@@ -1918,7 +1933,9 @@ export default class Director extends React.Component<
           (Number(AverageA1R) +
             Number(this.state.A2RR) +
             Number(this.state.A3RR)) /
-          3
+          ((AverageA1R != 0 ? 1 : 0) +
+            (this.state.A2RR != 0 ? 1 : 0) +
+            (this.state.A3RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -1939,117 +1956,197 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "A21E") {
-      this.setState({ A21E: Number(ctdNewValue) });
-      let vallblA21D = Number(this.state.A21R) - Number(newValue);
+      this.setState({ A21E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA21D =
+        Number(this.resetNAValue(this.state.A21R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A21D: vallblA21D });
-      AverageA2E =
-        (Number(newValue) +
-          Number(this.resetNAValue(this.state.A22E)) +
-          Number(this.resetNAValue(this.state.A23E)) +
-          Number(this.resetNAValue(this.state.A24E))) /
-        4;
+      AverageA2E = Number(
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A22E)),
+          Number(this.resetNAValue(this.state.A23E)),
+          Number(this.resetNAValue(this.state.A24E)),
+          0
+        )
+      );
+      //! (Number(newValue) +
+      //   Number(this.resetNAValue(this.state.A22E)) +
+      //   Number(this.resetNAValue(this.state.A23E)) +
+      //   Number(this.resetNAValue(this.state.A24E))) /
+      // 4;
       this.setState({ A2EE: AverageA2E });
       // let valA21ED = (Number(vallblA21D) + Number(this.state.A22D) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA21ED });
       this.setState({ A2DD: this.state.A2RR - AverageA2E });
     } else if (TRValue == "A22E") {
-      this.setState({ A22E: Number(ctdNewValue) });
-      let vallblA22D = Number(this.state.A22R) - Number(newValue);
+      this.setState({ A22E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA22D =
+        Number(this.resetNAValue(this.state.A22R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A22D: vallblA22D });
-      AverageA2E =
-        (Number(this.resetNAValue(this.state.A21E)) +
-          Number(newValue) +
-          Number(this.resetNAValue(this.state.A23E)) +
-          Number(this.resetNAValue(this.state.A24E))) /
-        4;
+      AverageA2E = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A21E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A23E)),
+          Number(this.resetNAValue(this.state.A24E)),
+          0
+        )
+      );
+      // !(Number(this.resetNAValue(this.state.A21E)) +
+      //   Number(newValue) +
+      //   Number(this.resetNAValue(this.state.A23E)) +
+      //   Number(this.resetNAValue(this.state.A24E))) /
+      // 4;
       this.setState({ A2EE: AverageA2E });
       // let valA22ED = (Number(this.state.A22D) + Number(vallblA22D) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA22ED });
       this.setState({ A2DD: this.state.A2RR - AverageA2E });
     } else if (TRValue == "A23E") {
-      this.setState({ A23E: Number(ctdNewValue) });
-      let vallblA23D = Number(this.state.A23R) - Number(newValue);
+      this.setState({ A23E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA23D =
+        Number(this.resetNAValue(this.state.A23R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A23D: vallblA23D });
-      AverageA2E =
-        (Number(this.resetNAValue(this.state.A21E)) +
-          Number(this.resetNAValue(this.state.A22E)) +
-          Number(newValue) +
-          Number(this.resetNAValue(this.state.A24E))) /
-        4;
+      AverageA2E = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A21E)),
+          Number(this.resetNAValue(this.state.A22E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A24E)),
+          0
+        )
+      );
+      // (Number(this.resetNAValue(this.state.A21E)) +
+      //   Number(this.resetNAValue(this.state.A22E)) +
+      //   Number(newValue) +
+      //   Number(this.resetNAValue(this.state.A24E))) /
+      // 4;
       this.setState({ A2EE: AverageA2E });
       // let valA23ED = (Number(this.state.A21D) + Number(this.state.A22D) + Number(vallblA23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA23ED });
       this.setState({ A2DD: this.state.A2RR - AverageA2E });
     } else if (TRValue == "A24E") {
-      this.setState({ A24E: Number(ctdNewValue) });
-      let vallblA24D = Number(this.state.A24R) - Number(newValue);
+      this.setState({ A24E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA24D =
+        Number(this.resetNAValue(this.state.A24R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A24D: vallblA24D });
-      AverageA2E =
-        (Number(this.resetNAValue(this.state.A21E)) +
-          Number(this.resetNAValue(this.state.A22E)) +
-          Number(this.resetNAValue(this.state.A23E)) +
-          Number(newValue)) /
-        4;
+      AverageA2E = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A21E)),
+          Number(this.resetNAValue(this.state.A22E)),
+          Number(this.resetNAValue(this.state.A23E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0
+        )
+      );
+      //! (Number(this.resetNAValue(this.state.A21E)) +
+      //   Number(this.resetNAValue(this.state.A22E)) +
+      //   Number(this.resetNAValue(this.state.A23E)) +
+      //   Number(newValue)) /
+      //   4;
       this.setState({ A2EE: AverageA2E });
       // let valA24ED = (Number(this.state.A21D) + Number(this.state.A22D) + Number(this.state.A23D) + Number(vallblA24D)) / 4;
       // this.setState({ A2DD: valA24ED });
       this.setState({ A2DD: this.state.A2RR - AverageA2E });
     } else if (TRValue == "A21R") {
-      this.setState({ A21R: Number(newValue) });
-      let vallblA21ED = Number(newValue) - Number(this.state.A21E);
+      this.setState({ A21R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA21ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A21E));
       this.setState({ A21D: vallblA21ED });
-      AverageA2R =
-        (Number(newValue) +
-          Number(this.state.A22R) +
-          Number(this.state.A23R) +
-          Number(this.state.A24R)) /
-        4;
+      AverageA2R = Number(
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A22R)),
+          Number(this.resetNAValue(this.state.A23R)),
+          Number(this.resetNAValue(this.state.A24R)),
+          0
+        )
+      );
+      // !(Number(newValue) +
+      //   Number(this.state.A22R) +
+      //   Number(this.state.A23R) +
+      //   Number(this.state.A24R)) /
+      // 4;
       this.setState({ A2RR: AverageA2R });
       // let valA21RD = (Number(vallblA21ED) + Number(this.state.A22D) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA21RD });
       this.setState({ A2DD: AverageA2R - this.state.A2EE });
     } else if (TRValue == "A22R") {
-      this.setState({ A22R: Number(newValue) });
-      let vallblA22ED = Number(newValue) - Number(this.state.A22E);
+      this.setState({ A22R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA22ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A22E));
 
       this.setState({ A22D: vallblA22ED });
-      AverageA2R =
-        (Number(this.state.A21R) +
-          Number(newValue) +
-          Number(this.state.A23R) +
-          Number(this.state.A24R)) /
-        4;
+      AverageA2R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A21R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A23R)),
+          Number(this.resetNAValue(this.state.A24R)),
+          0
+        )
+      );
+      //! (Number(this.state.A21R) +
+      //   Number(newValue) +
+      //   Number(this.state.A23R) +
+      //   Number(this.state.A24R)) /
+      // 4;
       this.setState({ A2RR: AverageA2R });
 
       // let valA22RD = (Number(this.state.A21D) + Number(vallblA22ED) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA22RD });
       this.setState({ A2DD: AverageA2R - this.state.A2EE });
     } else if (TRValue == "A23R") {
-      this.setState({ A23R: Number(newValue) });
-      let vallblA23ED = Number(newValue) - Number(this.state.A23E);
+      this.setState({ A23R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA23ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A23E));
       this.setState({ A23D: vallblA23ED });
-      AverageA2R =
-        (Number(this.state.A21R) +
-          Number(this.state.A22R) +
-          Number(newValue) +
-          Number(this.state.A24R)) /
-        4;
+      AverageA2R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A21R)),
+          Number(this.resetNAValue(this.state.A22R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A24R)),
+          0
+        )
+      );
+      // !(Number(this.state.A21R) +
+      //   Number(this.state.A22R) +
+      //   Number(newValue) +
+      //   Number(this.state.A24R)) /
+      // 4;
       this.setState({ A2RR: AverageA2R });
       // let valA21RD = (Number(this.state.A21D) + Number(this.state.A22D) + Number(vallblA23ED) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA21RD });
       this.setState({ A2DD: AverageA2R - this.state.A2EE });
     } else if (TRValue == "A24R") {
-      this.setState({ A24R: Number(newValue) });
-      let vallblA24ED = Number(newValue) - Number(this.state.A24E);
+      this.setState({ A24R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA24ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A24E));
       this.setState({ A24D: vallblA24ED });
-      AverageA2R =
-        (Number(this.state.A21R) +
-          Number(this.state.A22R) +
-          Number(this.state.A23R) +
-          Number(newValue)) /
-        4;
+      AverageA2R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A21R)),
+          Number(this.resetNAValue(this.state.A22R)),
+          Number(this.resetNAValue(this.state.A23R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0
+        )
+      );
+      //! (Number(this.state.A21R) +
+      //   Number(this.state.A22R) +
+      //   Number(this.state.A23R) +
+      //   Number(newValue)) /
+      // 4;
       this.setState({ A2RR: AverageA2R });
       // let valA21RD = (Number(this.state.A21D) + Number(this.state.A22D) + Number(this.state.A23D) + Number(vallblA24ED)) / 4;
       // this.setState({ A2DD: valA21RD });
@@ -2081,7 +2178,9 @@ export default class Director extends React.Component<
           (Number(this.state.A1RR) +
             Number(AverageA2R) +
             Number(this.state.A3RR)) /
-          3
+          ((this.state.A1RR != 0 ? 1 : 0) +
+            (AverageA2R != 0 ? 1 : 0) +
+            (this.state.A3RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -2101,21 +2200,33 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "A31E") {
-      this.setState({ A31E: Number(ctdNewValue) });
-      let vallblA31D = Number(this.state.A31R) - Number(newValue);
+      this.setState({ A31E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA31D =
+        Number(this.resetNAValue(this.state.A31R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A31D: vallblA31D });
       AverageA3E = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.resetNAValue(this.state.A32E)) +
-              Number(this.resetNAValue(this.state.A33E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A32E)),
+          Number(this.resetNAValue(this.state.A33E)),
+          0,
+          0
+        )
       );
+
+      //! AverageA3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.resetNAValue(this.state.A32E)) +
+      //         Number(this.resetNAValue(this.state.A33E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ A3EE: AverageA3E });
       // let valA31ED = (Number(vallblA31D) + Number(this.state.A32D) + Number(this.state.A33D)) / 3;
       // valA31ED = Number(parseFloat(valA31ED.toString()).toFixed(2));
@@ -2128,19 +2239,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A32E") {
-      this.setState({ A32E: Number(ctdNewValue) });
-      let vallblA32D = Number(this.state.A32R) - Number(newValue);
+      this.setState({ A32E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA32D =
+        Number(this.resetNAValue(this.state.A32R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A32D: vallblA32D });
       AverageA3E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.A31E)) +
-              Number(newValue) +
-              Number(this.resetNAValue(this.state.A33E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A31E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A33E)),
+          0,
+          0
+        )
       );
+      //! AverageA3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.A31E)) +
+      //         Number(newValue) +
+      //         Number(this.resetNAValue(this.state.A33E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ A3EE: AverageA3E });
       // let valA32ED = (Number(this.state.A31D) + Number(vallblA32D) + Number(this.state.A33D)) / 3;
       // valA32ED = Number(parseFloat(valA32ED.toString()).toFixed(2));
@@ -2151,20 +2273,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A33E") {
-      this.setState({ A33E: Number(ctdNewValue) });
-      let vallblA33D = Number(this.state.A33R) - Number(newValue);
+      this.setState({ A33E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA33D =
+        Number(this.resetNAValue(this.state.A33R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A33D: vallblA33D });
-
       AverageA3E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.A31E)) +
-              Number(this.resetNAValue(this.state.A32E)) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A31E)),
+          Number(this.resetNAValue(this.state.A32E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageA3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.A31E)) +
+      //         Number(this.resetNAValue(this.state.A32E)) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ A3EE: AverageA3E });
 
       // let valA33ED = (Number(this.state.A31D) + Number(this.state.A32D) + Number(vallblA33D)) / 3;
@@ -2176,19 +2308,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A31R") {
-      this.setState({ A31R: Number(newValue) });
-      let vallblA31ED = Number(newValue) - Number(this.state.A31E);
+      this.setState({ A31R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA31ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A31E));
       this.setState({ A31D: vallblA31ED });
       AverageA3R = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.state.A32R) +
-              Number(this.state.A33R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A32R)),
+          Number(this.resetNAValue(this.state.A33R)),
+          0,
+          0
+        )
       );
+      //! AverageA3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.state.A32R) +
+      //         Number(this.state.A33R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ A3RR: Number(AverageA3R) });
       // let valA31RD = (Number(vallblA31ED) + Number(this.state.A32D) + Number(this.state.A33D)) / 3;
       // valA31RD = Number(parseFloat(valA31RD.toString()).toFixed(2));
@@ -2200,19 +2343,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A32R") {
-      this.setState({ A32R: Number(newValue) });
-      let vallblA32ED = Number(newValue) - Number(this.state.A32E);
+      this.setState({ A32R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA32ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A32E));
       this.setState({ A32D: vallblA32ED });
       AverageA3R = Number(
-        parseFloat(
-          (
-            (Number(this.state.A31R) +
-              Number(newValue) +
-              Number(this.state.A33R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A31R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.A33R)),
+          0,
+          0
+        )
       );
+      // !AverageA3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.A31R) +
+      //         Number(newValue) +
+      //         Number(this.state.A33R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ A3RR: AverageA3R });
       // let valA32RD = (Number(this.state.A31D) + Number(vallblA32ED) + Number(this.state.A33D)) / 3;
       // valA32RD = Number(parseFloat(valA32RD.toString()).toFixed(2));
@@ -2223,19 +2377,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "A33R") {
-      this.setState({ A33R: Number(newValue) });
-      let vallblA33ED = Number(newValue) - Number(this.state.A33E);
+      this.setState({ A33R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblA33ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.A33E));
       this.setState({ A33D: vallblA33ED });
       AverageA3R = Number(
-        parseFloat(
-          (
-            (Number(this.state.A31R) +
-              Number(this.state.A32R) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.A31R)),
+          Number(this.resetNAValue(this.state.A32R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageA3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.A31R) +
+      //         Number(this.state.A32R) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ A3RR: AverageA3R });
       // let valA33RD = (Number(this.state.A31D) + Number(this.state.A32D) + Number(vallblA33ED)) / 3;
       // valA33RD = Number(parseFloat(valA33RD.toString()).toFixed(2));
@@ -2268,7 +2433,9 @@ export default class Director extends React.Component<
           (Number(AverageA3R) +
             Number(this.state.A1RR) +
             Number(this.state.A2RR)) /
-          3
+          ((AverageA3R != 0 ? 1 : 0) +
+            (this.state.A1RR != 0 ? 1 : 0) +
+            (this.state.A2RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -2288,20 +2455,31 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "B11E") {
-      this.setState({ B11E: Number(ctdNewValue) });
-      let vallblB11D = Number(this.state.B11R) - Number(newValue);
+      this.setState({ B11E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB11D =
+        Number(this.resetNAValue(this.state.B11R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B11D: vallblB11D });
       AverageB1E = Number(
-        parseFloat(
-          (
-            (Number(newValue) + Number(this.resetNAValue(this.state.B12E))) /
-            2
-          ).toString()
-        ).toFixed(2)
-        // !Technorucs
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B12E)),
+          0,
+          0,
+          0
+        )
       );
+      //! AverageB1E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) + Number(this.resetNAValue(this.state.B12E))) /
+      //       2
+      //     ).toString()
+      //   ).toFixed(2)
+      //   // !Technorucs
+      // );
       this.setState({ B1EE: AverageB1E });
       // let valB11ED = (Number(vallblB11D) + Number(this.state.B12D)) / 2;
       // valB11ED = Number(parseFloat(valB11ED.toString()).toFixed(2));
@@ -2309,17 +2487,28 @@ export default class Director extends React.Component<
 
       this.setState({ B1DD: this.state.B1RR - AverageB1E });
     } else if (TRValue == "B12E") {
-      this.setState({ B12E: Number(ctdNewValue) });
-      let vallblB12D = Number(this.state.B12R) - Number(newValue);
+      this.setState({ B12E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB12D =
+        Number(this.resetNAValue(this.state.B12R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B12D: vallblB12D });
-      AverageB1E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.B11E)) + Number(newValue)) /
-            2
-          ).toString()
-        ).toFixed(2)
+      AverageB1E = AverageB1E = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B11E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0,
+          0
+        )
       );
+      // AverageB1E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.B11E)) + Number(newValue)) /
+      //       2
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B1EE: AverageB1E });
       // let valB12ED = (Number(this.state.B11D) + Number(vallblB12D)) / 2;
       // valB12ED = Number(parseFloat(valB12ED.toString()).toFixed(2));
@@ -2327,28 +2516,50 @@ export default class Director extends React.Component<
 
       this.setState({ B1DD: this.state.B1RR - AverageB1E });
     } else if (TRValue == "B11R") {
-      this.setState({ B11R: Number(newValue) });
-      let vallblB11ED = Number(newValue) - Number(this.state.B11E);
+      this.setState({ B11R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB11ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B11E));
       this.setState({ B11D: vallblB11ED });
       AverageB1R = Number(
-        parseFloat(
-          ((Number(newValue) + Number(this.state.B12R)) / 2).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B12R)),
+          0,
+          0,
+          0
+        )
       );
+      //! AverageB1R = Number(
+      //   parseFloat(
+      //     ((Number(newValue) + Number(this.state.B12R)) / 2).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B1RR: Number(AverageB1R) });
       // let valB11RD = (Number(vallblB11ED) + Number(this.state.B12D)) / 2;
       // valB11RD = Number(parseFloat(valB11RD.toString()).toFixed(2));
       // this.setState({ B1DD: valB11RD });
       this.setState({ B1DD: AverageB1R - this.state.B1EE });
     } else if (TRValue == "B12R") {
-      this.setState({ B12R: Number(newValue) });
-      let vallblB12ED = Number(newValue) - Number(this.state.B12E);
+      this.setState({ B12R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB12ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B12E));
       this.setState({ B12D: vallblB12ED });
       AverageB1R = Number(
-        parseFloat(
-          ((Number(this.state.B11R) + Number(newValue)) / 2).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B11R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0,
+          0
+        )
       );
+      //! AverageB1R = Number(
+      //   parseFloat(
+      //     ((Number(this.state.B11R) + Number(newValue)) / 2).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B1RR: AverageB1R });
       // let valB12RD = (Number(this.state.B11D) + Number(vallblB12ED)) / 2;
       // valB12RD = Number(parseFloat(valB12RD.toString()).toFixed(2));
@@ -2378,7 +2589,10 @@ export default class Director extends React.Component<
             Number(this.state.B2RR) +
             Number(this.state.B3RR) +
             Number(this.state.B4RR)) /
-          4
+          ((AverageB1R != 0 ? 1 : 0) +
+            (this.state.B2RR != 0 ? 1 : 0) +
+            (this.state.B3RR != 0 ? 1 : 0) +
+            (this.state.B4RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -2463,21 +2677,32 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "B21E") {
-      this.setState({ B21E: Number(ctdNewValue) });
-      let vallblB21D = Number(this.state.B21R) - Number(newValue);
+      this.setState({ B21E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB21D =
+        Number(this.resetNAValue(this.state.B21R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B21D: vallblB21D });
       AverageB2E = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.resetNAValue(this.state.B22E)) +
-              Number(this.resetNAValue(this.state.B23E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B22E)),
+          Number(this.resetNAValue(this.state.B23E)),
+          0,
+          0
+        )
       );
+      //! AverageB2E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.resetNAValue(this.state.B22E)) +
+      //         Number(this.resetNAValue(this.state.B23E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B2EE: AverageB2E });
       //this.setState({ B2DD: this.state.B2RR - AverageB2E });
       this.setState({
@@ -2486,19 +2711,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B22E") {
-      this.setState({ B22E: Number(ctdNewValue) });
-      let vallblB22D = Number(this.state.B22R) - Number(newValue);
+      this.setState({ B22E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB22D =
+        Number(this.resetNAValue(this.state.B22R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B22D: vallblB22D });
       AverageB2E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.B21E)) +
-              Number(this.resetNAValue(this.state.B21E)) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B21E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B23E)),
+          0,
+          0
+        )
       );
+      //! AverageB2E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.B21E)) +
+      //         Number(this.resetNAValue(this.state.B23E)) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B2EE: AverageB2E });
       //this.setState({ B2DD: this.state.B2RR - AverageB2E });
       this.setState({
@@ -2507,19 +2743,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B23E") {
-      this.setState({ B23E: Number(ctdNewValue) });
-      let vallblB23D = Number(this.state.B23R) - Number(newValue);
+      this.setState({ B23E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB23D =
+        Number(this.resetNAValue(this.state.B23R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B23D: vallblB23D });
       AverageB2E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.B21E)) +
-              Number(this.resetNAValue(this.state.B22E)) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B21E)),
+          Number(this.resetNAValue(this.state.B22E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      // ! AverageB2E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.B21E)) +
+      //         Number(this.resetNAValue(this.state.B22E)) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B2EE: AverageB2E });
       //this.setState({ B2DD: this.state.B2RR - AverageB2E });
       this.setState({
@@ -2528,19 +2775,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B21R") {
-      this.setState({ B21R: Number(newValue) });
-      let vallblB21ED = Number(newValue) - Number(this.state.B21E);
+      this.setState({ B21R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB21ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B21E));
       this.setState({ B21D: vallblB21ED });
       AverageB2R = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.state.B22R) +
-              Number(this.state.B23R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B22R)),
+          Number(this.resetNAValue(this.state.B23R)),
+          0,
+          0
+        )
       );
+      //! AverageB2R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.state.B22R) +
+      //         Number(this.state.B23R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B2RR: Number(AverageB2R) });
       //this.setState({ B2DD: AverageB2R - this.state.B2EE });
       this.setState({
@@ -2549,19 +2807,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B22R") {
-      this.setState({ B22R: Number(newValue) });
-      let vallblB22ED = Number(newValue) - Number(this.state.B22E);
+      this.setState({ B22R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB22ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B22E));
       this.setState({ B22D: vallblB22ED });
       AverageB2R = Number(
-        parseFloat(
-          (
-            (Number(this.state.B21R) +
-              Number(newValue) +
-              Number(this.state.B23R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B21R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B23R)),
+          0,
+          0
+        )
       );
+      //! AverageB2R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.B21R) +
+      //         Number(newValue) +
+      //         Number(this.state.B23R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B2RR: AverageB2R });
       //this.setState({ B2DD: AverageB2R - this.state.B2EE });
       this.setState({
@@ -2570,19 +2839,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B23R") {
-      this.setState({ B23R: Number(newValue) });
-      let vallblB23ED = Number(newValue) - Number(this.state.B23E);
+      this.setState({ B23R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB23ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B23E));
       this.setState({ B23D: vallblB23ED });
       AverageB2R = Number(
-        parseFloat(
-          (
-            (Number(this.state.B21R) +
-              Number(newValue) +
-              Number(this.state.B22R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B21R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B23R)),
+          0,
+          0
+        )
       );
+      //! AverageB2R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.B21R) +
+      //         Number(newValue) +
+      //         Number(this.state.B22R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B2RR: AverageB2R });
       //this.setState({ B2DD: AverageB2R - this.state.B2EE });
       this.setState({
@@ -2613,7 +2893,10 @@ export default class Director extends React.Component<
             Number(this.state.B1RR) +
             Number(this.state.B3RR) +
             Number(this.state.B4RR)) /
-          4
+          ((AverageB2R != 0 ? 1 : 0) +
+            (this.state.B1RR != 0 ? 1 : 0) +
+            (this.state.B3RR != 0 ? 1 : 0) +
+            (this.state.B4RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -2633,21 +2916,32 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "B31E") {
-      this.setState({ B31E: Number(ctdNewValue) });
-      let vallblB31D = Number(this.state.B31R) - Number(newValue);
+      this.setState({ B31E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB31D =
+        Number(this.resetNAValue(this.state.B31R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B31D: vallblB31D });
       AverageB3E = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.resetNAValue(this.state.B32E)) +
-              Number(this.resetNAValue(this.state.B33E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B32E)),
+          Number(this.resetNAValue(this.state.B33E)),
+          0,
+          0
+        )
       );
+      //! AverageB3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.resetNAValue(this.state.B32E)) +
+      //         Number(this.resetNAValue(this.state.B33E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B3EE: AverageB3E });
       // let valB31ED = (Number(vallblB31D) + Number(this.state.B32D) + Number(this.state.B33D)) / 3;
       // valB31ED = Number(parseFloat(valB31ED.toString()).toFixed(2));
@@ -2659,19 +2953,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B32E") {
-      this.setState({ B32E: Number(ctdNewValue) });
-      let vallblB32D = Number(this.state.B32R) - Number(newValue);
+      this.setState({ B32E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB32D =
+        Number(this.resetNAValue(this.state.B32R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B32D: vallblB32D });
       AverageB3E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.B31E)) +
-              Number(newValue) +
-              Number(this.resetNAValue(this.state.B33E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B31E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B33E)),
+          0,
+          0
+        )
       );
+      //! AverageB3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.B31E)) +
+      //         Number(newValue) +
+      //         Number(this.resetNAValue(this.state.B33E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B3EE: AverageB3E });
       // let valB32ED = (Number(this.state.B31D) + Number(vallblB32D) + Number(this.state.B33D)) / 3;
       // valB32ED = Number(parseFloat(valB32ED.toString()).toFixed(2));
@@ -2682,19 +2987,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B33E") {
-      this.setState({ B33E: Number(ctdNewValue) });
-      let vallblB33D = Number(this.state.B33R) - Number(newValue);
+      this.setState({ B33E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB33D =
+        Number(this.resetNAValue(this.state.B33R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B33D: vallblB33D });
       AverageB3E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.B31E)) +
-              Number(this.resetNAValue(this.state.B32E)) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B31E)),
+          Number(this.resetNAValue(this.state.B32E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageB3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.B31E)) +
+      //         Number(this.resetNAValue(this.state.B32E)) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B3EE: AverageB3E });
       // let valB33ED = (Number(this.state.B31D) + Number(vallblB33D) + Number(this.state.B32D)) / 3;
       // valB33ED = Number(parseFloat(valB33ED.toString()).toFixed(2));
@@ -2705,19 +3021,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B31R") {
-      this.setState({ B31R: Number(newValue) });
-      let vallblB31ED = Number(newValue) - Number(this.state.B31E);
+      this.setState({ B31R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB31ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B31E));
       this.setState({ B31D: vallblB31ED });
       AverageB3R = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.state.B32R) +
-              Number(this.state.B33R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B32R)),
+          Number(this.resetNAValue(this.state.B33R)),
+          0,
+          0
+        )
       );
+      //! AverageB3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.state.B32R) +
+      //         Number(this.state.B33R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B3RR: Number(AverageB3R) });
       //   let valB31RD = (Number(vallblB31ED) + Number(this.state.B32D) + Number(this.state.B33D)) / 3;
       //   valB31RD = Number(parseFloat(valB31RD.toString()).toFixed(2));
@@ -2729,19 +3056,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B32R") {
-      this.setState({ B32R: Number(newValue) });
-      let vallblB32ED = Number(newValue) - Number(this.state.B32E);
+      this.setState({ B32R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB32ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B32E));
       this.setState({ B32D: vallblB32ED });
       AverageB3R = Number(
-        parseFloat(
-          (
-            (Number(this.state.B31R) +
-              Number(newValue) +
-              Number(this.state.B33R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B31R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B33R)),
+          0,
+          0
+        )
       );
+      //! AverageB3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.B31R) +
+      //         Number(newValue) +
+      //         Number(this.state.B33R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B3RR: AverageB3R });
       //   let valB32RD = (Number(this.state.B31D) + Number(vallblB32ED) + Number(this.state.B33D)) / 2;
       //   valB32RD = Number(parseFloat(valB32RD.toString()).toFixed(2));
@@ -2753,19 +3091,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B33R") {
-      this.setState({ B33R: Number(newValue) });
-      let vallblB33ED = Number(newValue) - Number(this.state.B33E);
+      this.setState({ B33R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB33ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B33E));
       this.setState({ B33D: vallblB33ED });
       AverageB3R = Number(
-        parseFloat(
-          (
-            (Number(this.state.B31R) +
-              Number(this.state.B32R) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B31R)),
+          Number(this.resetNAValue(this.state.B32R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageB3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.B31R) +
+      //         Number(this.state.B32R) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B3RR: AverageB3R });
       //   let valB33RD = (Number(this.state.B31D) + Number(this.state.B33D) + Number(vallblB33ED)) / 3;
       //   valB33RD = Number(parseFloat(valB33RD.toString()).toFixed(2));
@@ -2800,7 +3149,10 @@ export default class Director extends React.Component<
             Number(this.state.B1RR) +
             Number(this.state.B2RR) +
             Number(this.state.B4RR)) /
-          4
+          ((AverageB3R != 0 ? 1 : 0) +
+            (this.state.B1RR != 0 ? 1 : 0) +
+            (this.state.B2RR != 0 ? 1 : 0) +
+            (this.state.B4RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -2821,21 +3173,32 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "B41E") {
-      this.setState({ B41E: Number(ctdNewValue) });
-      let vallblB41D = Number(this.state.B41R) - Number(newValue);
+      this.setState({ B41E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB41D =
+        Number(this.resetNAValue(this.state.B41R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B41D: vallblB41D });
       AverageB4E = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.resetNAValue(this.state.B42E)) +
-              Number(this.resetNAValue(this.state.B43E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B42E)),
+          Number(this.resetNAValue(this.state.B43E)),
+          0,
+          0
+        )
       );
+      //! AverageB4E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.resetNAValue(this.state.B42E)) +
+      //         Number(this.resetNAValue(this.state.B43E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B4EE: AverageB4E });
       // let valB41ED = (Number(vallblB41D) + Number(this.state.B42D) + Number(this.state.B43D)) / 3;
       // valB41ED = Number(parseFloat(valB41ED.toString()).toFixed(2));
@@ -2847,19 +3210,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B42E") {
-      this.setState({ B42E: Number(ctdNewValue) });
-      let vallblB42D = Number(this.state.B42R) - Number(newValue);
+      this.setState({ B42E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB42D =
+        Number(this.resetNAValue(this.state.B42R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B42D: vallblB42D });
       AverageB4E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.B41E)) +
-              Number(newValue) +
-              Number(this.resetNAValue(this.state.B43E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B41E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B43E)),
+          0,
+          0
+        )
       );
+      //! AverageB4E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.B41E)) +
+      //         Number(newValue) +
+      //         Number(this.resetNAValue(this.state.B43E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B4EE: AverageB4E });
       // let valB42ED = (Number(this.state.B41D) + Number(vallblB42D) + Number(this.state.B43D)) / 3;
       // valB42ED = Number(parseFloat(valB42ED.toString()).toFixed(2));
@@ -2871,19 +3245,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B43E") {
-      this.setState({ B43E: Number(ctdNewValue) });
-      let vallblB43D = Number(this.state.B43R) - Number(newValue);
+      this.setState({ B43E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB43D =
+        Number(this.resetNAValue(this.state.B43R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ B43D: vallblB43D });
       AverageB4E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.B41E)) +
-              Number(this.resetNAValue(this.state.B42E)) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B41E)),
+          Number(this.resetNAValue(this.state.B42E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageB4E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.B41E)) +
+      //         Number(this.resetNAValue(this.state.B42E)) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B4EE: AverageB4E });
       // let valB43ED = (Number(this.state.B41D) + Number(vallblB43D) + Number(this.state.B42D)) / 3;
       // valB43ED = Number(parseFloat(valB43ED.toString()).toFixed(2));
@@ -2895,19 +3280,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B41R") {
-      this.setState({ B41R: Number(newValue) });
-      let vallblB41ED = Number(newValue) - Number(this.state.B41E);
+      this.setState({ B41R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB41ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B41E));
       this.setState({ B41D: vallblB41ED });
       AverageB4R = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.state.B42R) +
-              Number(this.state.B43R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B42R)),
+          Number(this.resetNAValue(this.state.B43R)),
+          0,
+          0
+        )
       );
+      //! AverageB4R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.state.B42R) +
+      //         Number(this.state.B43R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B4RR: Number(AverageB4R) });
       // let valB41RD = (Number(vallblB41ED) + Number(this.state.B42D) + Number(this.state.B43D)) / 3;
       // valB41RD = Number(parseFloat(valB41RD.toString()).toFixed(2));
@@ -2919,19 +3315,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B42R") {
-      this.setState({ B42R: Number(newValue) });
-      let vallblB42ED = Number(newValue) - Number(this.state.B42E);
+      this.setState({ B42R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB42ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B42E));
       this.setState({ B42D: vallblB42ED });
       AverageB4R = Number(
-        parseFloat(
-          (
-            (Number(this.state.B41R) +
-              Number(newValue) +
-              Number(this.state.B43R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B41R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.B43R)),
+          0,
+          0
+        )
       );
+      //! AverageB4R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.B41R) +
+      //         Number(newValue) +
+      //         Number(this.state.B43R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B4RR: AverageB4R });
       // let valB42RD = (Number(this.state.B41D) + Number(vallblB42ED) + Number(this.state.B43D)) / 2;
       // valB42RD = Number(parseFloat(valB42RD.toString()).toFixed(2));
@@ -2943,19 +3350,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "B43R") {
-      this.setState({ B43R: Number(newValue) });
-      let vallblB43ED = Number(newValue) - Number(this.state.B43E);
+      this.setState({ B43R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblB43ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.B43E));
       this.setState({ B43D: vallblB43ED });
       AverageB4R = Number(
-        parseFloat(
-          (
-            (Number(this.state.B41R) +
-              Number(this.state.B42R) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.B41R)),
+          Number(this.resetNAValue(this.state.B42R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageB4R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.B41R) +
+      //         Number(this.state.B42R) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ B4RR: AverageB4R });
       // let valB43RD = (Number(this.state.B41D) + Number(this.state.B43D) + Number(vallblB43ED)) / 3;
       // valB43RD = Number(parseFloat(valB43RD.toString()).toFixed(2));
@@ -2991,7 +3409,10 @@ export default class Director extends React.Component<
             Number(this.state.B1RR) +
             Number(this.state.B3RR) +
             Number(this.state.B2RR)) /
-          4
+          ((AverageB4R != 0 ? 1 : 0) +
+            (this.state.B1RR != 0 ? 1 : 0) +
+            (this.state.B3RR != 0 ? 1 : 0) +
+            (this.state.B2RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -3013,21 +3434,32 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "C11E") {
-      this.setState({ C11E: Number(ctdNewValue) });
-      let vallblC11D = Number(this.state.C11R) - Number(newValue);
+      this.setState({ C11E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC11D =
+        Number(this.resetNAValue(this.state.C11R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C11D: vallblC11D });
       AverageC1E = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.resetNAValue(this.state.C12E)) +
-              Number(this.resetNAValue(this.state.C13E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C12E)),
+          Number(this.resetNAValue(this.state.C13E)),
+          0,
+          0
+        )
       );
+      //! AverageC1E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.resetNAValue(this.state.C12E)) +
+      //         Number(this.resetNAValue(this.state.C13E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C1EE: AverageC1E });
       // let valC11ED = (Number(vallblC11D) + Number(this.state.C12D) + Number(this.state.C13D)) / 3;
       // valC11ED = Number(parseFloat(valC11ED.toString()).toFixed(2));
@@ -3039,19 +3471,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C12E") {
-      this.setState({ C12E: Number(ctdNewValue) });
-      let vallblC12D = Number(this.state.C12R) - Number(newValue);
+      this.setState({ C12E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC12D =
+        Number(this.resetNAValue(this.state.C12R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C12D: vallblC12D });
       AverageC1E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.C11E)) +
-              Number(newValue) +
-              Number(this.resetNAValue(this.state.C13E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C11E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C13E)),
+          0,
+          0
+        )
       );
+      //! AverageC1E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.C11E)) +
+      //         Number(newValue) +
+      //         Number(this.resetNAValue(this.state.C13E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C1EE: AverageC1E });
       // let valC12ED = (Number(this.state.C11D) + Number(vallblC12D) + Number(this.state.C13D)) / 3;
       // valC12ED = Number(parseFloat(valC12ED.toString()).toFixed(2));
@@ -3062,19 +3505,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C13E") {
-      this.setState({ C13E: Number(ctdNewValue) });
-      let vallblC13D = Number(this.state.C13R) - Number(newValue);
+      this.setState({ C13E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC13D =
+        Number(this.resetNAValue(this.state.C13R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C13D: vallblC13D });
       AverageC1E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.C11E)) +
-              Number(this.resetNAValue(this.state.C12E)) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C11E)),
+          Number(this.resetNAValue(this.state.C12E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      // AverageC1E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.C11E)) +
+      //         Number(this.resetNAValue(this.state.C12E)) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C1EE: AverageC1E });
       // let valC13ED = (Number(this.state.C11D) + Number(vallblC13D) + Number(this.state.C12D)) / 3;
       // valC13ED = Number(parseFloat(valC13ED.toString()).toFixed(2));
@@ -3085,19 +3539,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C11R") {
-      this.setState({ C11R: Number(newValue) });
-      let vallblC11ED = Number(newValue) - Number(this.state.C11E);
+      this.setState({ C11R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC11ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C11E));
       this.setState({ C11D: vallblC11ED });
       AverageC1R = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.state.C12R) +
-              Number(this.state.C13R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C12R)),
+          Number(this.resetNAValue(this.state.C13R)),
+          0,
+          0
+        )
       );
+      //! AverageC1R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.state.C12R) +
+      //         Number(this.state.C13R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C1RR: Number(AverageC1R) });
       // let valC11RD = (Number(vallblC11ED) + Number(this.state.C12D) + Number(this.state.C13D)) / 3;
       // valC11RD = Number(parseFloat(valC11RD.toString()).toFixed(2));
@@ -3110,19 +3575,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C12R") {
-      this.setState({ C12R: Number(newValue) });
-      let vallblC12ED = Number(newValue) - Number(this.state.C12E);
+      this.setState({ C12R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC12ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C12E));
       this.setState({ C12D: vallblC12ED });
       AverageC1R = Number(
-        parseFloat(
-          (
-            (Number(this.state.C11R) +
-              Number(newValue) +
-              Number(this.state.C13R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C11R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C13R)),
+          0,
+          0
+        )
       );
+      //! AverageC1R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.C11R) +
+      //         Number(newValue) +
+      //         Number(this.state.C13R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C1RR: AverageC1R });
       // let valC12RD = (Number(this.state.C11D) + Number(vallblC12ED) + Number(this.state.C13D)) / 2;
       // valC12RD = Number(parseFloat(valC12RD.toString()).toFixed(2));
@@ -3133,19 +3609,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C13R") {
-      this.setState({ C13R: Number(newValue) });
-      let vallblC13ED = Number(newValue) - Number(this.state.C13E);
+      this.setState({ C13R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC13ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C13E));
       this.setState({ C13D: vallblC13ED });
       AverageC1R = Number(
-        parseFloat(
-          (
-            (Number(this.state.C11R) +
-              Number(this.state.C12R) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C11R)),
+          Number(this.resetNAValue(this.state.C12R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageC1R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.C11R) +
+      //         Number(this.state.C12R) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C1RR: AverageC1R });
       // let valC13RD = (Number(this.state.C11D) + Number(this.state.C13D) + Number(vallblC13ED)) / 3;
       // valC13RD = Number(parseFloat(valC13RD.toString()).toFixed(2));
@@ -3177,7 +3664,9 @@ export default class Director extends React.Component<
           (Number(AverageC1R) +
             Number(this.state.C2RR) +
             Number(this.state.C3RR)) /
-          3
+          ((AverageC1R != 0 ? 1 : 0) +
+            (this.state.C2RR != 0 ? 1 : 0) +
+            (this.state.C3RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -3198,118 +3687,206 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "C21E") {
-      this.setState({ C21E: Number(ctdNewValue) });
-      let vallblC21D = Number(this.state.C21R) - Number(newValue);
+      this.setState({ C21E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC21D =
+        Number(this.resetNAValue(this.state.C21R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C21D: vallblC21D });
-      AverageC2E =
-        (Number(newValue) +
-          Number(this.resetNAValue(this.state.C22E)) +
-          Number(this.resetNAValue(this.state.C23E)) +
-          Number(this.resetNAValue(this.state.C24E))) /
-        4;
+      AverageC2E = Number(
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C22E)),
+          Number(this.resetNAValue(this.state.C23E)),
+          Number(this.resetNAValue(this.state.C24E)),
+          0
+        )
+      );
+      //! AverageC2E =
+      //   (Number(newValue) +
+      //     Number(this.resetNAValue(this.state.C22E)) +
+      //     Number(this.resetNAValue(this.state.C23E)) +
+      //     Number(this.resetNAValue(this.state.C24E))) /
+      //   4;
       this.setState({ C2EE: AverageC2E });
       // let valC21ED = (Number(vallblC21D) + Number(this.state.C22D) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC21ED });
       this.setState({ C2DD: this.state.C2RR - AverageC2E });
     } else if (TRValue == "C22E") {
-      this.setState({ C22E: Number(ctdNewValue) });
-      let vallblC22D = Number(this.state.C22R) - Number(newValue);
+      this.setState({ C22E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC22D =
+        Number(this.resetNAValue(this.state.C22R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C22D: vallblC22D });
-      AverageC2E =
-        (Number(this.resetNAValue(this.state.C21E)) +
-          Number(newValue) +
-          Number(this.resetNAValue(this.state.C23E)) +
-          Number(this.resetNAValue(this.state.C24E))) /
-        4;
+      AverageC2E = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C21E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C23E)),
+          Number(this.resetNAValue(this.state.C24E)),
+          0
+        )
+      );
+      //! AverageC2E =
+      //   (Number(this.resetNAValue(this.state.C21E)) +
+      //     Number(newValue) +
+      //     Number(this.resetNAValue(this.state.C23E)) +
+      //     Number(this.resetNAValue(this.state.C24E))) /
+      //   4;
       this.setState({ C2EE: AverageC2E });
       // let valC22ED = (Number(this.state.C22D) + Number(vallblC22D) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC22ED });
       this.setState({ C2DD: this.state.C2RR - AverageC2E });
     } else if (TRValue == "C23E") {
-      this.setState({ C23E: Number(ctdNewValue) });
-      let vallblC23D = Number(this.state.C23R) - Number(newValue);
+      this.setState({ C23E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC23D =
+        Number(this.resetNAValue(this.state.C23R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C23D: vallblC23D });
-      AverageC2E =
-        (Number(this.resetNAValue(this.state.C21E)) +
-          Number(this.resetNAValue(this.state.C22E)) +
-          Number(newValue) +
-          Number(this.resetNAValue(this.state.C24E))) /
-        4;
+      AverageC2E = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C21E)),
+          Number(this.resetNAValue(this.state.C22E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C24E)),
+          0
+        )
+      );
+      //! AverageC2E =
+      //   (Number(this.resetNAValue(this.state.C21E)) +
+      //     Number(this.resetNAValue(this.state.C22E)) +
+      //     Number(newValue) +
+      //     Number(this.resetNAValue(this.state.C24E))) /
+      //   4;
       this.setState({ C2EE: AverageC2E });
       // let valC23ED = (Number(this.state.C21D) + Number(this.state.C22D) + Number(vallblC23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC23ED });
       this.setState({ C2DD: this.state.C2RR - AverageC2E });
     } else if (TRValue == "C24E") {
-      this.setState({ C24E: Number(ctdNewValue) });
-      let vallblC24D = Number(this.state.C24R) - Number(newValue);
+      this.setState({ C24E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC24D =
+        Number(this.resetNAValue(this.state.C24R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C24D: vallblC24D });
-      AverageC2E =
-        (Number(this.resetNAValue(this.state.C21E)) +
-          Number(this.resetNAValue(this.state.C22E)) +
-          Number(this.resetNAValue(this.state.C23E)) +
-          Number(newValue)) /
-        4;
+      AverageC2E = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C21E)),
+          Number(this.resetNAValue(this.state.C22E)),
+          Number(this.resetNAValue(this.state.C23E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0
+        )
+      );
+      //! AverageC2E =
+      //   (Number(this.resetNAValue(this.state.C21E)) +
+      //     Number(this.resetNAValue(this.state.C22E)) +
+      //     Number(this.resetNAValue(this.state.C23E)) +
+      //     Number(newValue)) /
+      //   4;
       this.setState({ C2EE: AverageC2E });
       // let valC24ED = (Number(this.state.C21D) + Number(this.state.C22D) + Number(this.state.C23D) + Number(vallblC24D)) / 4;
       // this.setState({ C2DD: valC24ED });
       this.setState({ C2DD: this.state.C2RR - AverageC2E });
     } else if (TRValue == "C21R") {
-      this.setState({ C21R: Number(newValue) });
-      let vallblC21ED = Number(newValue) - Number(this.state.C21E);
+      this.setState({ C21R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC21ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C21E));
       this.setState({ C21D: vallblC21ED });
-      AverageC2R =
-        (Number(newValue) +
-          Number(this.state.C22R) +
-          Number(this.state.C23R) +
-          Number(this.state.C24R)) /
-        4;
+      AverageC2R = Number(
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C22R)),
+          Number(this.resetNAValue(this.state.C23R)),
+          Number(this.resetNAValue(this.state.C24R)),
+          0
+        )
+      );
+      //! AverageC2R =
+      //   (Number(newValue) +
+      //     Number(this.state.C22R) +
+      //     Number(this.state.C23R) +
+      //     Number(this.state.C24R)) /
+      //   4;
       this.setState({ C2RR: AverageC2R });
       // let valC21RD = (Number(vallblC21ED) + Number(this.state.C22D) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC21RD });
 
       this.setState({ C2DD: AverageC2R - this.state.C2EE });
     } else if (TRValue == "C22R") {
-      this.setState({ C22R: Number(newValue) });
-      let vallblC22ED = Number(newValue) - Number(this.state.C22E);
+      this.setState({ C22R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC22ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C22E));
 
       this.setState({ C22D: vallblC22ED });
-      AverageC2R =
-        (Number(this.state.C21R) +
-          Number(newValue) +
-          Number(this.state.C23R) +
-          Number(this.state.C24R)) /
-        4;
+      AverageC2R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C21R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C23R)),
+          Number(this.resetNAValue(this.state.C24R)),
+          0
+        )
+      );
+      //! AverageC2R =
+      //   (Number(this.state.C21R) +
+      //     Number(newValue) +
+      //     Number(this.state.C23R) +
+      //     Number(this.state.C24R)) /
+      //   4;
       this.setState({ C2RR: AverageC2R });
 
       // let valC22RD = (Number(this.state.C21D) + Number(vallblC22ED) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC22RD });
       this.setState({ C2DD: AverageC2R - this.state.C2EE });
     } else if (TRValue == "C23R") {
-      this.setState({ C23R: Number(newValue) });
-      let vallblC23ED = Number(newValue) - Number(this.state.C23E);
+      this.setState({ C23R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC23ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C23E));
       this.setState({ C23D: vallblC23ED });
-      AverageC2R =
-        (Number(this.state.C21R) +
-          Number(this.state.C22R) +
-          Number(newValue) +
-          Number(this.state.C24R)) /
-        4;
+      AverageC2R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C21R)),
+          Number(this.resetNAValue(this.state.C22R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C24R)),
+          0
+        )
+      );
+      //! AverageC2R =
+      //   (Number(this.state.C21R) +
+      //     Number(this.state.C22R) +
+      //     Number(newValue) +
+      //     Number(this.state.C24R)) /
+      //   4;
       this.setState({ C2RR: AverageC2R });
       // let valC21RD = (Number(this.state.C21D) + Number(this.state.C22D) + Number(vallblC23ED) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC21RD });
       this.setState({ C2DD: AverageC2R - this.state.C2EE });
     } else if (TRValue == "C24R") {
-      this.setState({ C24R: Number(newValue) });
-      let vallblC24ED = Number(newValue) - Number(this.state.C24E);
+      this.setState({ C24R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC24ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C24E));
       this.setState({ C24D: vallblC24ED });
-      AverageC2R =
-        (Number(this.state.C21R) +
-          Number(this.state.C22R) +
-          Number(this.state.C23R) +
-          Number(newValue)) /
-        4;
+      AverageC2R = Number(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C21R)),
+          Number(this.resetNAValue(this.state.C22R)),
+          Number(this.resetNAValue(this.state.C23R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0
+        )
+      );
+      //! AverageC2R =
+      //   (Number(this.state.C21R) +
+      //     Number(this.state.C22R) +
+      //     Number(this.state.C23R) +
+      //     Number(newValue)) /
+      //   4;
       this.setState({ C2RR: AverageC2R });
       // let valC21RD = (Number(this.state.C21D) + Number(this.state.C22D) + Number(this.state.C23D) + Number(vallblC24ED)) / 4;
       // this.setState({ C2DD: valC21RD });
@@ -3336,7 +3913,9 @@ export default class Director extends React.Component<
           (Number(AverageC2R) +
             Number(this.state.C1RR) +
             Number(this.state.C3RR)) /
-          3
+          ((AverageC2R != 0 ? 1 : 0) +
+            (this.state.C1RR != 0 ? 1 : 0) +
+            (this.state.C3RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -3357,21 +3936,32 @@ export default class Director extends React.Component<
     let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
       .key;
     console.log(this.props.Options);
-    newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
+    // newValue = newValue === "NA" || newValue === "" ? "0" : newValue;
     if (TRValue == "C31E") {
-      this.setState({ C31E: Number(ctdNewValue) });
-      let vallblC31D = Number(this.state.C31R) - Number(newValue);
+      this.setState({ C31E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC31D =
+        Number(this.resetNAValue(this.state.C31R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C31D: vallblC31D });
       AverageC3E = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.resetNAValue(this.state.C32E)) +
-              Number(this.resetNAValue(this.state.C33E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C32E)),
+          Number(this.resetNAValue(this.state.C33E)),
+          0,
+          0
+        )
       );
+      //! AverageC3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.resetNAValue(this.state.C32E)) +
+      //         Number(this.resetNAValue(this.state.C33E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C3EE: AverageC3E });
       // let valC31ED = (Number(vallblC31D) + Number(this.state.C32D) + Number(this.state.C33D)) / 3;
       // valC31ED = Number(parseFloat(valC31ED.toString()).toFixed(2));
@@ -3383,19 +3973,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C32E") {
-      this.setState({ C32E: Number(ctdNewValue) });
-      let vallblC32D = Number(this.state.C32R) - Number(newValue);
+      this.setState({ C32E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC32D =
+        Number(this.resetNAValue(this.state.C32R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C32D: vallblC32D });
       AverageC3E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.C31E)) +
-              Number(newValue) +
-              Number(this.resetNAValue(this.state.C33E))) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C31E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C33E)),
+          0,
+          0
+        )
       );
+      //! AverageC3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.C31E)) +
+      //         Number(newValue) +
+      //         Number(this.resetNAValue(this.state.C33E))) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C3EE: AverageC3E });
       // let valC32ED = (Number(this.state.C31D) + Number(vallblC32D) + Number(this.state.C33D)) / 3;
       // valC32ED = Number(parseFloat(valC32ED.toString()).toFixed(2));
@@ -3406,19 +4007,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C33E") {
-      this.setState({ C33E: Number(ctdNewValue) });
-      let vallblC33D = Number(this.state.C33R) - Number(newValue);
+      this.setState({ C33E: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC33D =
+        Number(this.resetNAValue(this.state.C33R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ C33D: vallblC33D });
       AverageC3E = Number(
-        parseFloat(
-          (
-            (Number(this.resetNAValue(this.state.C31E)) +
-              Number(this.resetNAValue(this.state.C32E)) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C31E)),
+          Number(this.resetNAValue(this.state.C32E)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageC3E = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.resetNAValue(this.state.C31E)) +
+      //         Number(this.resetNAValue(this.state.C32E)) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C3EE: AverageC3E });
       // let valC33ED = (Number(this.state.C31D) + Number(vallblC33D) + Number(this.state.C32D)) / 3;
       // valC33ED = Number(parseFloat(valC33ED.toString()).toFixed(2));
@@ -3429,19 +4041,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C31R") {
-      this.setState({ C31R: Number(newValue) });
-      let vallblC31ED = Number(newValue) - Number(this.state.C31E);
+      this.setState({ C31R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC31ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C31E));
       this.setState({ C31D: vallblC31ED });
       AverageC3R = Number(
-        parseFloat(
-          (
-            (Number(newValue) +
-              Number(this.state.C32R) +
-              Number(this.state.C33R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C32R)),
+          Number(this.resetNAValue(this.state.C33R)),
+          0,
+          0
+        )
       );
+      //! AverageC3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(newValue) +
+      //         Number(this.state.C32R) +
+      //         Number(this.state.C33R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C3RR: Number(AverageC3R) });
       // let valC31RD = (Number(vallblC31ED) + Number(this.state.C32D) + Number(this.state.C33D)) / 3;
       // valC31RD = Number(parseFloat(valC31RD.toString()).toFixed(2));
@@ -3453,19 +4076,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C32R") {
-      this.setState({ C32R: Number(newValue) });
-      let vallblC32ED = Number(newValue) - Number(this.state.C32E);
+      this.setState({ C32R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC32ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C32E));
       this.setState({ C32D: vallblC32ED });
       AverageC3R = Number(
-        parseFloat(
-          (
-            (Number(this.state.C31R) +
-              Number(newValue) +
-              Number(this.state.C33R)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C31R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          Number(this.resetNAValue(this.state.C33R)),
+          0,
+          0
+        )
       );
+      //! AverageC3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.C31R) +
+      //         Number(newValue) +
+      //         Number(this.state.C33R)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C3RR: AverageC3R });
       // let valC32RD = (Number(this.state.C31D) + Number(vallblC32ED) + Number(this.state.C33D)) / 2;
       // valC32RD = Number(parseFloat(valC32RD.toString()).toFixed(2));
@@ -3476,19 +4110,30 @@ export default class Director extends React.Component<
         ),
       });
     } else if (TRValue == "C33R") {
-      this.setState({ C33R: Number(newValue) });
-      let vallblC33ED = Number(newValue) - Number(this.state.C33E);
+      this.setState({ C33R: Number(newValue === "NA" ? "0.5" : newValue) });
+      let vallblC33ED =
+        Number(newValue == "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.state.C33E));
       this.setState({ C33D: vallblC33ED });
       AverageC3R = Number(
-        parseFloat(
-          (
-            (Number(this.state.C31R) +
-              Number(this.state.C32R) +
-              Number(newValue)) /
-            3
-          ).toString()
-        ).toFixed(2)
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.C31R)),
+          Number(this.resetNAValue(this.state.C32R)),
+          Number(newValue === "NA" ? "0.5" : newValue),
+          0,
+          0
+        )
       );
+      //! AverageC3R = Number(
+      //   parseFloat(
+      //     (
+      //       (Number(this.state.C31R) +
+      //         Number(this.state.C32R) +
+      //         Number(newValue)) /
+      //       3
+      //     ).toString()
+      //   ).toFixed(2)
+      // );
       this.setState({ C3RR: AverageC3R });
       // let valC33RD = (Number(this.state.C31D) + Number(this.state.C33D) + Number(vallblC33ED)) / 3;
       // valC33RD = Number(parseFloat(valC33RD.toString()).toFixed(2));
@@ -3518,7 +4163,9 @@ export default class Director extends React.Component<
           (Number(AverageC3R) +
             Number(this.state.C2RR) +
             Number(this.state.C2RR)) /
-          3
+          ((AverageC3R != 0 ? 1 : 0) +
+            (this.state.C2RR != 0 ? 1 : 0) +
+            (this.state.C2RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -3820,7 +4467,7 @@ export default class Director extends React.Component<
                 <Dropdown
                   disabled={this.state.IsReviewee}
                   options={this.props.Options}
-                  selectedKey={this.state.A11E}
+                  selectedKey={Number(this.state.A11E)}
                   onChange={(e, selectedOption) => {
                     this.onChangeA1(selectedOption.text, "A11E");
                   }}
