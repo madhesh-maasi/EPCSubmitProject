@@ -1619,14 +1619,13 @@ export default class Director extends React.Component<
   private onChangeA1(newValue: string, TRValue: string): void {
     console.log(newValue);
     console.log(TRValue);
-    let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
-      .key;
     let AverageA1E = 0;
     let AverageA1R = 0;
     if (TRValue == "A11E") {
       this.setState({ A11E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA11D =
-        Number(this.state.A11R) - Number(newValue == "NA" ? 0 : newValue);
+        Number(this.resetNAValue(this.state.A11R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A11D: vallblA11D });
       AverageA1E = Number(
         this.getAverageCalculation(
