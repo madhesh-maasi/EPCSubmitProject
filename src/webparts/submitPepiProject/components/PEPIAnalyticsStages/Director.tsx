@@ -1623,7 +1623,8 @@ export default class Director extends React.Component<
     let AverageOutput =
       (a + b + c + d + e) / (aCount + bCount + cCount + dCount + eCount);
     AverageOutput = isNaN(AverageOutput) ? 0 : AverageOutput;
-    return AverageOutput;
+    // return AverageOutput;
+    return AverageOutput % 1 == 0 ? AverageOutput : AverageOutput.toFixed(2);
   }
   private resetNAValue(val) {
     return val == 0.5 || val == undefined ? 0 : val;
@@ -1631,8 +1632,10 @@ export default class Director extends React.Component<
   private onChangeA1(newValue: string, TRValue: string): void {
     console.log(newValue);
     console.log(TRValue);
-    let AverageA1E = 0;
-    let AverageA1R = 0;
+    //! let AverageA1E = 0;
+    // let AverageA1R = 0;
+    let AverageA1E = this.state.A1EE;
+    let AverageA1R = this.state.A1RR;
     if (TRValue == "A11E") {
       this.setState({ A11E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA11D =
@@ -1957,7 +1960,7 @@ export default class Director extends React.Component<
         ).toString()
       ).toFixed(2)
     );
-
+    A1R = isNaN(A1R) ? 0 : A1R;
     this.setState({ AAvgEE: A1E });
     this.setState({ AAvgER: A1R });
     // this.setState({ SctionTotalAD: A1R - A1E });
@@ -2202,6 +2205,7 @@ export default class Director extends React.Component<
         ).toString()
       ).toFixed(2)
     );
+    A2R = isNaN(A2R) ? 0 : A2R;
     this.setState({ AAvgEE: A2E });
     this.setState({ AAvgER: A2R });
     //this.setState({ SctionTotalAD: A2R - A2E });
@@ -2457,6 +2461,7 @@ export default class Director extends React.Component<
         ).toString()
       ).toFixed(2)
     );
+    A3R = isNaN(A3R) ? 0 : A3R;
     this.setState({ AAvgEE: A3E });
     this.setState({ AAvgER: A3R });
     this.setState({
