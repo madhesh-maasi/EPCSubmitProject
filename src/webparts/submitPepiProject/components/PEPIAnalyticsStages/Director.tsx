@@ -1092,33 +1092,51 @@ export default class Director extends React.Component<
     let DSectionDifference = 0;
     updateDetails.map((element, index) => {
       DSectionReviewee =
-        DSectionReviewee + Number(updateDetails[index].Reviewee);
+        DSectionReviewee +
+        Number(
+          updateDetails[index].Reviewee == "0.5"
+            ? 0
+            : updateDetails[index].Reviewee
+        );
       DSectionReviewer =
-        DSectionReviewer + Number(updateDetails[index].Reviewer);
+        DSectionReviewer +
+        Number(
+          updateDetails[index].Reviewer == "0.5"
+            ? 0
+            : updateDetails[index].Reviewer
+        );
       DSectionDifference =
         DSectionDifference + Number(updateDetails[index].Difference);
     });
     // this.setState({SctionTotalDE : DSectionReviewee /updateDetails.length });
     // this.setState({SctionTotalDR : DSectionReviewer /updateDetails.length });
-
+    let avgDSectionReviewee =
+      Number(DSectionReviewee) /
+      updateDetails.filter((e) => e.Reviewee != 0 && e.Reviewee != 0.5).length;
     this.setState({
       SctionTotalDE: Number(
         parseFloat(
-          (Number(DSectionReviewee) / updateDetails.length).toString()
+          (isNaN(avgDSectionReviewee) ? 0 : avgDSectionReviewee).toString()
         ).toFixed(2)
       ),
     });
+    let avgDSectionReviewer =
+      Number(DSectionReviewer) /
+      updateDetails.filter((e) => e.Reviewer != 0 && e.Reviewer != 0.5).length;
     this.setState({
       SctionTotalDR: Number(
         parseFloat(
-          (Number(DSectionReviewer) / updateDetails.length).toString()
+          (isNaN(avgDSectionReviewer) ? 0 : avgDSectionReviewer).toString()
         ).toFixed(2)
       ),
     });
+    let avgDDifference =
+      Number(DSectionDifference) /
+      updateDetails.filter((e) => e.Difference != 0).length;
     this.setState({
       SctionTotalDD: Number(
         parseFloat(
-          (Number(DSectionDifference) / updateDetails.length).toString()
+          (isNaN(avgDDifference) ? 0 : avgDDifference).toString()
         ).toFixed(2)
       ),
     });
@@ -1605,7 +1623,8 @@ export default class Director extends React.Component<
     let AverageOutput =
       (a + b + c + d + e) / (aCount + bCount + cCount + dCount + eCount);
     AverageOutput = isNaN(AverageOutput) ? 0 : AverageOutput;
-    return AverageOutput;
+    // return AverageOutput;
+    return AverageOutput % 1 == 0 ? AverageOutput : AverageOutput.toFixed(2);
   }
   private resetNAValue(val) {
     return val == 0.5 || val == undefined ? 0 : val;
@@ -1613,14 +1632,15 @@ export default class Director extends React.Component<
   private onChangeA1(newValue: string, TRValue: string): void {
     console.log(newValue);
     console.log(TRValue);
-    let ctdNewValue = this.props.Options.filter((e) => e.text === newValue)[0]
-      .key;
-    let AverageA1E = 0;
-    let AverageA1R = 0;
+    //! let AverageA1E = 0;
+    // let AverageA1R = 0;
+    let AverageA1E = this.state.A1EE;
+    let AverageA1R = this.state.A1RR;
     if (TRValue == "A11E") {
       this.setState({ A11E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA11D =
-        Number(this.state.A11R) - Number(newValue == "NA" ? 0 : newValue);
+        Number(this.resetNAValue(this.state.A11R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A11D: vallblA11D });
       AverageA1E = Number(
         this.getAverageCalculation(
@@ -1707,7 +1727,8 @@ export default class Director extends React.Component<
     } else if (TRValue == "A14E") {
       this.setState({ A14E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA14D =
-        Number(this.state.A14R) - Number(newValue == "NA" ? 0 : newValue);
+        Number(this.resetNAValue(this.state.A14R)) -
+        Number(newValue == "NA" ? 0 : newValue);
       this.setState({ A14D: vallblA14D });
       AverageA1E = Number(
         this.getAverageCalculation(
@@ -1939,7 +1960,7 @@ export default class Director extends React.Component<
         ).toString()
       ).toFixed(2)
     );
-
+    A1R = isNaN(A1R) ? 0 : A1R;
     this.setState({ AAvgEE: A1E });
     this.setState({ AAvgER: A1R });
     // this.setState({ SctionTotalAD: A1R - A1E });
@@ -2184,6 +2205,7 @@ export default class Director extends React.Component<
         ).toString()
       ).toFixed(2)
     );
+    A2R = isNaN(A2R) ? 0 : A2R;
     this.setState({ AAvgEE: A2E });
     this.setState({ AAvgER: A2R });
     //this.setState({ SctionTotalAD: A2R - A2E });
@@ -2439,6 +2461,7 @@ export default class Director extends React.Component<
         ).toString()
       ).toFixed(2)
     );
+    A3R = isNaN(A3R) ? 0 : A3R;
     this.setState({ AAvgEE: A3E });
     this.setState({ AAvgER: A3R });
     this.setState({
@@ -5992,7 +6015,7 @@ export default class Director extends React.Component<
             SECTION D: SERVICE LINE
           </label>{" "}
         </div>
-        {this.state.ApepiQuestionText != null && (
+        {this.state.ApepiQuestionText != null ? (
           <AllQuestionText
             AppContext={this.props.AppContext}
             hasEditItemPermission={this.props.hasEditItemPermission}
@@ -6010,6 +6033,8 @@ export default class Director extends React.Component<
             //  SERVICELINEDifference = {0}
             onFormFieldValueChange={this.onFormFieldValueChange}
           ></AllQuestionText>
+        ) : (
+          "Not Applicable for selected Service line"
         )}
 
         {/* SECTION E: STRENGTHS */}

@@ -65,18 +65,38 @@ export default class QuestionText extends React.Component<
       }
     }
   }
-
+  private getAverageCalculation(a, b, c, d, e) {
+    a = a == 0.5 ? 0 : a;
+    b = b == 0.5 ? 0 : b;
+    c = c == 0.5 ? 0 : c;
+    d = d == 0.5 ? 0 : d;
+    e = e == 0.5 ? 0 : e;
+    let aCount = a > 0 ? 1 : 0;
+    let bCount = b > 0 ? 1 : 0;
+    let cCount = c > 0 ? 1 : 0;
+    let dCount = d > 0 ? 1 : 0;
+    let eCount = e > 0 ? 1 : 0;
+    let AverageOutput =
+      (a + b + c + d + e) / (aCount + bCount + cCount + dCount + eCount);
+    AverageOutput = isNaN(AverageOutput) ? 0 : AverageOutput;
+    return AverageOutput;
+  }
+  private resetNAValue(val) {
+    return val == 0.5 || val == undefined ? 0 : val;
+  }
   private onChangeD1(newValue: string, TRValue: string, index: number): void {
     if (TRValue == "D11E") {
       let vallblA11D =
-        Number(this.modifiedRows[index].Reviewer) - Number(newValue);
+        Number(this.resetNAValue(this.modifiedRows[index].Reviewer)) -
+        Number(newValue === "NA" ? 0 : newValue);
       this.modifiedRows[index].Difference = vallblA11D.toString();
-      this.modifiedRows[index].Reviewee = newValue;
+      this.modifiedRows[index].Reviewee = newValue === "NA" ? "0.5" : newValue;
     } else if (TRValue == "D11R") {
       let vallblA11D =
-        Number(newValue) - Number(this.modifiedRows[index].Reviewee);
+        Number(newValue === "NA" ? 0 : newValue) -
+        Number(this.resetNAValue(this.modifiedRows[index].Reviewee));
       this.modifiedRows[index].Difference = vallblA11D.toString();
-      this.modifiedRows[index].Reviewer = newValue;
+      this.modifiedRows[index].Reviewer = newValue === "NA" ? "0.5" : newValue;
     }
     this.props.onFormFieldValueChange(this.modifiedRows);
   }
@@ -123,7 +143,9 @@ export default class QuestionText extends React.Component<
                 </td>
                 <td className={styles.doppadding}>
                   <Dropdown
-                    disabled={this.props.IsReviewee}
+                    disabled={
+                      this.props.IsReviewee || FirstQuestionText == "N/A"
+                    }
                     options={this.props.Options}
                     selectedKey={Number(element.Reviewee)}
                     onChange={(e, selectedOption) => {
@@ -133,7 +155,9 @@ export default class QuestionText extends React.Component<
                 </td>
                 <td className={styles.doppadding}>
                   <Dropdown
-                    disabled={this.props.IsReviewer}
+                    disabled={
+                      this.props.IsReviewer || FirstQuestionText == "N/A"
+                    }
                     options={this.props.Options}
                     selectedKey={Number(element.Reviewer)}
                     onChange={(e, selectedOption) => {
