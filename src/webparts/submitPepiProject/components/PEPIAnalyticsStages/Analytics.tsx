@@ -102,60 +102,75 @@ export default class Analytics extends React.Component<
           ? 0
           : this.props.APEPIDetail.A15R,
       A11D:
-        Number(
-          this.props.APEPIDetail.A11R == undefined
-            ? 0
-            : this.props.APEPIDetail.A11R
-        ) -
-        Number(
-          this.props.APEPIDetail.A11E == undefined
-            ? 0
-            : this.props.APEPIDetail.A11E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A11R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A11E)),
       A12D:
-        Number(
-          this.props.APEPIDetail.A12R == undefined
-            ? 0
-            : this.props.APEPIDetail.A12R
-        ) -
-        Number(
-          this.props.APEPIDetail.A12E == undefined
-            ? 0
-            : this.props.APEPIDetail.A12E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A12R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A12E)),
       A13D:
-        Number(
-          this.props.APEPIDetail.A13R == undefined
-            ? 0
-            : this.props.APEPIDetail.A13R
-        ) -
-        Number(
-          this.props.APEPIDetail.A13E == undefined
-            ? 0
-            : this.props.APEPIDetail.A13E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A13R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A13E)),
       A14D:
-        Number(
-          this.props.APEPIDetail.A14R == undefined
-            ? 0
-            : this.props.APEPIDetail.A14R
-        ) -
-        Number(
-          this.props.APEPIDetail.A14E == undefined
-            ? 0
-            : this.props.APEPIDetail.A14E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A14R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A14E)),
       A15D:
-        Number(
-          this.props.APEPIDetail.A15R == undefined
-            ? 0
-            : this.props.APEPIDetail.A15R
-        ) -
-        Number(
-          this.props.APEPIDetail.A15E == undefined
-            ? 0
-            : this.props.APEPIDetail.A15E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A15R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A15E)),
+      //! A11D:
+      //   Number(
+      //     this.props.APEPIDetail.A11R == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A11R
+      //   ) -
+      //   Number(
+      //     this.props.APEPIDetail.A11E == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A11E
+      //   ),
+      // A12D:
+      //   Number(
+      //     this.props.APEPIDetail.A12R == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A12R
+      //   ) -
+      //   Number(
+      //     this.props.APEPIDetail.A12E == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A12E
+      //   ),
+      // A13D:
+      //   Number(
+      //     this.props.APEPIDetail.A13R == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A13R
+      //   ) -
+      //   Number(
+      //     this.props.APEPIDetail.A13E == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A13E
+      //   ),
+      // A14D:
+      //   Number(
+      //     this.props.APEPIDetail.A14R == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A14R
+      //   ) -
+      //   Number(
+      //     this.props.APEPIDetail.A14E == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A14E
+      //   ),
+      // A15D:
+      //   Number(
+      //     this.props.APEPIDetail.A15R == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A15R
+      //   ) -
+      //   Number(
+      //     this.props.APEPIDetail.A15E == undefined
+      //       ? 0
+      //       : this.props.APEPIDetail.A15E
+      //   ),
       A1EE:
         this.props.APEPIDetail.A1EE == undefined
           ? 0
