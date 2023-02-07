@@ -15,6 +15,10 @@
     // margin: 0px auto;
     // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
+  .submitSpecialReviews > div{
+    height: 32px;
+    width: 91% !important;
+  }
   .Multilinetextarea {
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -196,9 +200,9 @@
     // margin-left: 30%;
     @include ms-Grid-col;
   }
-  .dropServiceLine {
-    width: 60%;
-  }
+  // .dropServiceLine {
+  //   width: 100%;
+  // }
 
 
   .col25left {
@@ -316,44 +320,115 @@
   .hr{
     border: 1px solid black;
    }
-  .lblReviewIDs {
-    width: 15%;
-    padding: 3px;
-    text-align: right;
-    @include ms-Grid-col;
+  // .lblReviewIDs {
+  //   width: 15%;
+  //   padding: 3px;
+  //   text-align: right;
+  //   @include ms-Grid-col;
+  // }
+
+  // .txtReviewIDs {
+  //   width: 18%;
+  //   padding: 3px;
+  //   text-align: left;
+  //   @include ms-Grid-col;
+  // }
+
+  // .lblHourstoReview {
+  //   width: 15%;
+  //   padding: 3px;
+  //   text-align: left;
+  //   @include ms-Grid-col;
+  // }
+
+  // .txtHourstoReview {
+  //   width: 15%;
+  //   padding: 3px;
+  //   text-align: left;
+  //   @include ms-Grid-col;
+  // }
+
+  // .lblTitleOfSplitReview {
+  //   width: 35%;
+  //   padding: 3px;
+  //   text-align: left;
+  //   @include ms-Grid-col;
+  // }
+
+  .SRrow
+  {
+    display: flex;
+    // justify-content: center;
+    padding-top: 15px;
   }
 
+  .lblReviewIDs {
+    width: 32%;
+    text-align: right;
+    margin-right: 10px;
+    label{
+    padding: 0;
+    }
+  }
+
+
   .txtReviewIDs {
-    width: 15%;
-    padding: 3px;
-    text-align: left;
-    @include ms-Grid-col;
+    width: 265px;
   }
 
   .lblHourstoReview {
-    width: 15%;
-    padding: 3px;
-    text-align: left;
-    @include ms-Grid-col;
+    background-color: none;
   }
 
   .txtHourstoReview {
-    width: 15%;
-    padding: 3px;
-    text-align: left;
-    @include ms-Grid-col;
+    background-color: none;
   }
 
   .lblTitleOfSplitReview {
-    width: 35%;
-    padding: 3px;
-    text-align: left;
-    @include ms-Grid-col;
-  }
-  .btnSave{
-    background-color: #49e90ad0;
-    color: black;
-    margin-left: 200px;
+    background-color: none;
   }
 
+  .btnSave{
+    background-color: #ff9;
+    color: black;
+    margin-left: 255px;
+  }
+
+  .btnSaveEnable{
+    background-color: #49e90ad0;
+    color: black;
+    margin-left: 255px;
+  }
+}
+
+
+
+.clsDatepicker{
+  margin-left: 8px;
+  width: 19%;
+  input{
+    height: 32px !important;
+  }
+}
+
+.clsDropdown
+{
+  margin-left: 8px;
+  width: 19%;
+  input{
+    height: 32px !important;
+  }
+}
+
+.dropServiceLine{
+  background-color: none;
+}
+
+.clsPeoplepicker{
+  width: 19%;
+  text-align: right;
+  margin: 0px 8px;
+  input{
+    height: 32px !important;
+  }
 }

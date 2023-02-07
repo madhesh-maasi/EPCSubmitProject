@@ -80,6 +80,8 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
       }
     }
     this.ProjectStatusOptions = GetServiceLineOption;
+    this.setState({
+      IsLoading: false})
   }
   private async FillServiceLineOptions() {
     this.ListItemService = new ListItemService(this.props.AppContext, Config.ListNames.SpecialReviews);
@@ -95,6 +97,8 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
       }
     }
     this.ServiceLineOptions = GetServiceLineOption;
+    this.setState({
+      IsLoading: false})
   }
   private async onChangeRevieweeName(items: any[]) {
     let curretState = this.state.SpecialReviews;
@@ -121,7 +125,6 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
   }
 
   private async onChangeProjectCode(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) {
-    debugger;
     let curretState = this.state.SpecialReviews;
     curretState.ProjectCode = newValue;
     this.onFormTextFieldValueChange(curretState);
@@ -132,7 +135,6 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
     this.onFormTextFieldValueChange(curretState);
   }
   private async onChangeHoursWorked(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) {
-    debugger;
     // const re = /^[0-9\b]+$/;
     // if (newValue === '' || re.test(newValue)) {
     let curretState = this.state.SpecialReviews;
@@ -168,7 +170,6 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
   }
 
   private async onSave(): Promise<void> {
-    debugger;
     const SpecialReviews = this.state.SpecialReviews;
     let data = {};
     const columns = Config.SpecialReviewsListColumns;
@@ -231,7 +232,6 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
     });
   }
   private _onFormatDate = (date: Date): string => {
-    debugger;
     return  (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
   };
   public render(): React.ReactElement<ISubmitSpecialReviewsProps> {
@@ -263,14 +263,16 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
               <hr className={styles.hr}></hr>
 
 
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr> <Label><b>Project Name</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
-                <div className={styles.txtReviewIDs}><hr></hr><TextField resizable={false} multiline={false} value={this.state.SpecialReviews.Title} onChange={this.onChangeProjectName} className={styles.Multilinetextarea}></TextField>   </div>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}><Label><b>Project Name</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
+               <div className={styles.txtReviewIDs}>
+                  <TextField resizable={false} multiline={false} value={this.state.SpecialReviews.Title} onChange={this.onChangeProjectName} className={styles.Multilinetextarea}></TextField> 
+                   </div>
               </div>
 
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr> <Label><b>Reviewee Name</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
-                <div className={styles.txtReviewIDs}><hr></hr>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}><Label><b>Reviewee Name</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
+                <div className={styles.clsPeoplepicker}>
                   <PeoplePicker
                     context={this.props.AppContext}
                     personSelectionLimit={1}
@@ -281,12 +283,14 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
                     principalTypes={[PrincipalType.User]}
                     selectedItems={this.onChangeRevieweeName}
                     defaultSelectedUsers={[this.state.SpecialReviews.RevieweeNameEmail]}
-                    resolveDelay={1000} />
+                    resolveDelay={1000}
+                  />
+
                 </div>
               </div>
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr> <Label><b>Lead MD Name</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
-                <div className={styles.txtReviewIDs}><hr></hr>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}><Label><b>Lead MD Name</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
+                <div className={styles.clsPeoplepicker}>
                   <PeoplePicker
                     context={this.props.AppContext}
                     personSelectionLimit={1}
@@ -301,35 +305,35 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
                 </div>
               </div>
 
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr> <Label><b>Project Code</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
-                <div className={styles.txtReviewIDs}><hr></hr><TextField resizable={false} multiline={false} value={this.state.SpecialReviews.ProjectCode} onChange={this.onChangeProjectCode} className={styles.Multilinetextarea}></TextField>   </div>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}><Label><b>Project Code</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
+                <div className={styles.txtReviewIDs}><TextField resizable={false} multiline={false} value={this.state.SpecialReviews.ProjectCode} onChange={this.onChangeProjectCode} className={styles.Multilinetextarea}></TextField>   </div>
               </div>
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr> <Label><b>Hours Worked</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
-                <div className={styles.txtReviewIDs}><hr></hr><TextField onKeyPress={(e) => handleKeyPress(e)} resizable={false} multiline={false} value={this.state.SpecialReviews.HoursWorked} onChange={this.onChangeHoursWorked} className={styles.Multilinetextarea}></TextField>   </div>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}><Label><b>Hours Worked</b><span style={{ color: '#ff0000' }}>*</span></Label></div>
+                <div className={styles.txtReviewIDs}><TextField onKeyPress={(e) => handleKeyPress(e)} resizable={false} multiline={false} value={this.state.SpecialReviews.HoursWorked} onChange={this.onChangeHoursWorked} className={styles.Multilinetextarea}></TextField>   </div>
               </div>
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}>
                   <Label><b>Job Title</b></Label>
                   <Label><b>(Determines review template)</b></Label>
                 </div>
-                <div className={styles.txtReviewIDs}><hr></hr>
+                <div className={styles.clsDropdown}>
                   <Dropdown className={styles.dropServiceLine} options={this.ServiceLineOptions} selectedKey={this.state.SpecialReviews.JobTitle} onChange={(e, selectedOption) => { this.onChangeJobTitle(selectedOption.text); }} />
                 </div>
               </div>
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr> <Label><b>Project Status</b></Label></div>
-                <div className={styles.txtReviewIDs}><hr></hr>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}><Label><b>Project Status</b></Label></div>
+                <div className={styles.clsDropdown}>
                   <Dropdown className={styles.dropServiceLine} options={this.ProjectStatusOptions} selectedKey={this.state.SpecialReviews.ProjectStatus} onChange={(e, selectedOption) => { this.onChangeProjectStatus(selectedOption.text); }} />
                 </div>
               </div>
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr>
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}>
                   <Label><b>Last Hours Billed</b></Label>
                   <Label><b>(if known)</b></Label>
                 </div>
-                <div className={styles.txtReviewIDs}><hr></hr>
+                <div className={styles.clsDatepicker}>
                   {/* <DateTimePicker
                     dateConvention={DateConvention.Date}
                     timeConvention={TimeConvention.Hours12}
@@ -345,12 +349,12 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
                   />
                 </div>
               </div>
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr>
+              {/* <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}>
                   <Label><b>Reviewer Name</b></Label>
                   <Label><b>(if known)</b></Label>
                 </div>
-                <div className={styles.txtReviewIDs}><hr></hr>
+                <div className={styles.clsPeoplepicker}>
                   <PeoplePicker
                     context={this.props.AppContext}
                     personSelectionLimit={1}
@@ -363,16 +367,16 @@ export default class SubmitSpecialReviews extends React.Component<ISubmitSpecial
                     defaultSelectedUsers={[this.state.SpecialReviews.ReviewerNameEmail]}
                     resolveDelay={1000} />
                 </div>
-              </div>
-              <div className={styles.row}>
-                <div className={styles.lblReviewIDs}><hr></hr>
+              </div> */}
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}>
                   <Label><b>Employee Number</b></Label>
                   <Label><b>(if known)</b></Label>
                 </div>
-                <div className={styles.txtReviewIDs}><hr></hr><TextField resizable={false} multiline={false} value={this.state.SpecialReviews.EmployeeNumber} onKeyPress={this.isNumber} onChange={this.onChangeEmployeeNumber} className={styles.Multilinetextarea}></TextField>   </div>
+                <div className={styles.txtReviewIDs}><TextField resizable={false} multiline={false} value={this.state.SpecialReviews.EmployeeNumber} onKeyPress={this.isNumber} onChange={this.onChangeEmployeeNumber} className={styles.Multilinetextarea}></TextField>   </div>
               </div>
               <div className={styles.divFullWidth}>
-                <PrimaryButton className={styles.btnSave} disabled={this.state.DisableSaveButton} text="CREATE NEW REVIEW" onClick={this.onSave} ></PrimaryButton>
+                <PrimaryButton className={this.state.DisableSaveButton?styles.btnSave:styles.btnSaveEnable} disabled={this.state.DisableSaveButton} text="CREATE NEW REVIEW" onClick={this.onSave} ></PrimaryButton>
                 <PrimaryButton className={styles.btnCancel} text="Cancel" onClick={this.onCancel} ></PrimaryButton>
               </div>
 
