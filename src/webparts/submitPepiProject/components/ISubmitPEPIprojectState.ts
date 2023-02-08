@@ -7,6 +7,7 @@ import { Enums } from "../../../globals/Enums";
 
 export interface ISubmitPEPIprojectState extends IBaseInterface {
  //LableText:String,
+ 
  DisableSubmitButton : boolean;
  IsCreateMode: boolean;
  PEPIDetails: PEPI_PEPIDetails;

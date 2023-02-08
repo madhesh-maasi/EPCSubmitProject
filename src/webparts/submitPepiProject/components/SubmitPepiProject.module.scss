@@ -73,7 +73,7 @@
         text-align: 'center';
     }
     .boxlablewithundrline {
-        // padding: 30%;
+            // padding: 30%;
         font-weight: bold;
         // text-align: 'center';
         text-decoration: 'underline';
@@ -285,7 +285,9 @@
     }
     .divFullWidth {
         width: 100%;
-        @include ms-Grid-row;
+        // @include ms-Grid-row;
+        display: flex;
+        justify-content: flex-end;
         align-items: center;
     }
     .divbtnREVIEWEEFORAcknowledgment {
@@ -308,15 +310,16 @@
     .btnSTARTREVIEW {
         background-color: #FFFF99;
         color: black;
-        margin-top: 100px;
-        margin-left: 200px;
+        // margin-top: 100px;
+        // margin-left: 200px;
     }
     .btnCancel {
         margin: 10px;
         background: white;
         color: black;
-        margin-top: 20px;
-        margin-left: 70%;
+        width: 200px;
+        // margin-top: 20px;
+        // margin-left: 70%;
     }
     .btnReplaceMe {
         background-color: #FFFF99;
@@ -325,5 +328,17 @@
     }
     .Noteunderline {
         text-decoration: underline;
+    }
+    .dFlex {
+        display: flex;
+    }
+    .SubmitDeclineBtnSection {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        button {
+            width: 200px;
+            margin: 10px;
+        }
     }
 }

@@ -85,6 +85,7 @@ export default class SubmitPepiProject extends React.Component<
       ComplexityOptions: "",
     };
     this.onSTARTREVIEWSave = this.onSTARTREVIEWSave.bind(this);
+    this.onDecline = this.onDecline.bind(this);
     this.onChangeReviewerName = this.onChangeReviewerName.bind(this);
     this.onChangeLeadMDName = this.onChangeLeadMDName.bind(this);
     this.onChangeServiceLineValue = this.onChangeServiceLineValue.bind(this);
@@ -130,8 +131,18 @@ export default class SubmitPepiProject extends React.Component<
       curretState.ServiceLine = "Please select a value";
       this.setState({ PEPIDetails: curretState });
     } else {
+      let curretState = this.state.PEPIDetails;
+      curretState.ServiceLine =
+        !curretState.ServiceLine ||
+        curretState.ServiceLine == "" ||
+        curretState.ServiceLine == null
+          ? "Please select a value"
+          : curretState.ServiceLine;
+
       this.setState({ IsAnalyticsDisable: false });
-      this.setState({ DisableNewFormOprtion: true });
+      this.setState({
+        DisableNewFormOprtion: this.state.PEPIDetails.StatusOfReview == "",
+      });
 
       this.listPEPIProjectsItemService = new ListItemService(
         this.props.AppContext,
@@ -202,6 +213,10 @@ export default class SubmitPepiProject extends React.Component<
       if (commaD11R.length > 0) {
         AvgDR = DRSum / commaD11R.length;
       }
+      pepiDetails.ServiceLine =
+        pepiDetails.ServiceLine == "" || !pepiDetails.ServiceLine
+          ? "Please select a value"
+          : pepiDetails.ServiceLine;
       this.setState({
         IsLoading: false,
         CurrentUserRoles: userRoles,
@@ -217,6 +232,17 @@ export default class SubmitPepiProject extends React.Component<
         hasEditItemPermission: this.hasEditItemPermission,
       });
       console.log(QuestionText);
+    }
+    if (
+      this.state.PEPIDetails.ServiceLine != "Please select a value" &&
+      this.state.PEPIDetails.ServiceLine != "" &&
+      this.state.PEPIDetails.ServiceLine != undefined &&
+      this.state.LeadMDEmail != "" &&
+      this.state.ReviewerEmail != ""
+    ) {
+      this.setState({ DisableSubmitButton: false });
+    } else {
+      this.setState({ DisableSubmitButton: true });
     }
   }
   private async FillServiceLineOptions() {
@@ -279,12 +305,13 @@ export default class SubmitPepiProject extends React.Component<
       );
     } else {
       PEPIDetails.Reviewer = new User();
+      this.setState({ IsSelectedEmployeeInvalid: true });
     }
     this.setState({ ReviewerEmail: PEPIDetails.Reviewer.Email });
-    this.setState({ IsSelectedEmployeeInvalid: true });
-    //this.onFormFieldValueChange(PEPIDetails);
+    this.onFormFieldValueChange(PEPIDetails);
     if (
       this.state.PEPIDetails.ServiceLine != "Please select a value" &&
+      this.state.PEPIDetails.ServiceLine != "" &&
       this.state.PEPIDetails.ServiceLine != undefined &&
       this.state.LeadMDEmail != "" &&
       PEPIDetails.Reviewer.Email != ""
@@ -305,12 +332,13 @@ export default class SubmitPepiProject extends React.Component<
       );
     } else {
       PEPIDetails.LeadMD = new User();
+      this.setState({ IsSelectedEmployeeInvalid: true });
     }
     this.setState({ LeadMDEmail: PEPIDetails.LeadMD.Email });
-    this.setState({ IsSelectedEmployeeInvalid: true });
     //this.onFormFieldValueChange(PEPIDetails);
     if (
       this.state.PEPIDetails.ServiceLine != "Please select a value" &&
+      this.state.PEPIDetails.ServiceLine != "" &&
       this.state.PEPIDetails.ServiceLine != undefined &&
       PEPIDetails.LeadMD.Email != "" &&
       this.state.ReviewerEmail != ""
@@ -354,12 +382,44 @@ export default class SubmitPepiProject extends React.Component<
       PEPIDetails: curretState,
     });
   }
+  private async onDecline(): Promise<void> {
+    let data = {};
+    const columns = Config.PEPIProjectsListColumns;
+    data[columns.StatusOfReview] = Config.StatusOfReview.Declined;
+    this.listPEPIProjectsItemService = new ListItemService(
+      this.props.AppContext,
+      Config.ListNames.PEPIProjects
+    );
+    await this.listPEPIProjectsItemService.updateItem(this.props.ItemID, data);
+    this.gotoListPage();
+  }
+  // private async onSTARTREVIEWSave(): Promise<void> {
+  //   const pepiDetails = this.state.PEPIDetails;
+  //   let data = {};
+  //   const columns = Config.PEPIProjectsListColumns;
+  //   data[Config.BaseColumns.Title] = ".";
+  //   data[columns.RevieweeNameId] = pepiDetails.Reviewer.Id;
+  //   data[columns.LeadMDNameId] = pepiDetails.LeadMD.Id;
+  //   data[columns.ReviewerNameId] = pepiDetails.Reviewer.Id;
+  //   data[columns.ServiceLines] = pepiDetails.ServiceLine;
+  //   data[columns.StatusOfReview] = Config.StatusOfReview.AwaitingReviewee;
+  //   data[columns.Submitted] = Config.SubmittedNumber[99];
 
+  //   this.listPEPIProjectsItemService = new ListItemService(
+  //     this.props.AppContext,
+  //     Config.ListNames.PEPIProjects
+  //   );
+  //   if (this.state.IsCreateMode || !this.state.PEPIDetails.StatusOfReview) {
+  //     // Creating item
+  //     await this.listPEPIProjectsItemService.createItem(data);
+  //     this.gotoListPage();
+  //   }
+  // }
   private async onSTARTREVIEWSave(): Promise<void> {
     const pepiDetails = this.state.PEPIDetails;
     let data = {};
     const columns = Config.PEPIProjectsListColumns;
-    data[Config.BaseColumns.Title] = ".";
+    // data[Config.BaseColumns.Title] = ".";
     data[columns.RevieweeNameId] = pepiDetails.Reviewer.Id;
     data[columns.LeadMDNameId] = pepiDetails.LeadMD.Id;
     data[columns.ReviewerNameId] = pepiDetails.Reviewer.Id;
@@ -371,13 +431,15 @@ export default class SubmitPepiProject extends React.Component<
       this.props.AppContext,
       Config.ListNames.PEPIProjects
     );
-    if (this.state.IsCreateMode) {
+    if (this.state.IsCreateMode || !this.state.PEPIDetails.StatusOfReview) {
       // Creating item
-      await this.listPEPIProjectsItemService.createItem(data);
+      await this.listPEPIProjectsItemService.updateItem(
+        this.props.ItemID,
+        data
+      );
       this.gotoListPage();
     }
   }
-
   private async onCancel(): Promise<void> {
     this.gotoListPage();
   }
@@ -564,7 +626,7 @@ export default class SubmitPepiProject extends React.Component<
                     {" "}
                     <Label>{this.state.PEPIDetails.Title}</Label>
                   </div>
-                  <div className={styles.Newcol25Right}>
+                  {/* <div className={styles.Newcol25Right}>
                     {" "}
                     <Label>
                       <b>Fiscal Year: </b>
@@ -573,7 +635,7 @@ export default class SubmitPepiProject extends React.Component<
                   <div className={styles.Newcol25left}>
                     {" "}
                     <Label>{this.state.PEPIDetails.FiscalYear}</Label>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className={styles.row}>
@@ -631,11 +693,12 @@ export default class SubmitPepiProject extends React.Component<
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
-                      <input
+                      <Label>{this.state.PEPIDetails.HoursWorked}</Label>
+                      {/* <input
                         type="Number"
                         value={this.state.PEPIDetails.HoursWorked}
                         onChange={this.onChangeHoursWorked}
-                      />
+                      /> */}
                     </div>
                     <div className={styles.Newcol25Right}>
                       <Label></Label>
@@ -690,7 +753,7 @@ export default class SubmitPepiProject extends React.Component<
                     Config.StatusOfReview.Combined &&
                   this.state.PEPIDetails.StatusOfReview !=
                     Config.StatusOfReview.Declined && (
-                    <div className={styles.row}>
+                    <div className={`${styles.row} ${styles.dFlex}`}>
                       <div
                         className={
                           this.state.PEPIDetails.StatusOfReview ==
@@ -703,6 +766,21 @@ export default class SubmitPepiProject extends React.Component<
                           <b>Reviewer Name:</b>
                           <span style={{ color: "#ff0000" }}>*</span>
                         </Label>
+                        <div>
+                          <PeoplePicker
+                            context={this.props.AppContext}
+                            personSelectionLimit={1}
+                            groupName={""} // Leave this blank in case you want to filter from all users
+                            showtooltip={true}
+                            ensureUser={true}
+                            showHiddenInUI={false}
+                            principalTypes={[PrincipalType.User]}
+                            selectedItems={this.onChangeReviewerName}
+                            defaultSelectedUsers={[this.state.ReviewerEmail]}
+                            disabled={this.state.DisableNewFormOprtion}
+                            resolveDelay={1000}
+                          />
+                        </div>
                       </div>
                       <div
                         className={
@@ -716,18 +794,103 @@ export default class SubmitPepiProject extends React.Component<
                           <b>Lead MD:</b>
                           <span style={{ color: "#ff0000" }}>*</span>
                         </Label>
-                      </div>
-                      {!this.state.IsCreateMode && (
                         <div>
-                          <div className={styles.col25left}>
-                            <Label>
-                              <b>Complexity:</b>
-                            </Label>
+                          <PeoplePicker
+                            context={this.props.AppContext}
+                            personSelectionLimit={1}
+                            groupName={""} // Leave this blank in case you want to filter from all users
+                            showtooltip={true}
+                            ensureUser={true}
+                            showHiddenInUI={false}
+                            principalTypes={[PrincipalType.User]}
+                            resolveDelay={1000}
+                            selectedItems={this.onChangeLeadMDName}
+                            disabled={this.state.DisableNewFormOprtion}
+                            defaultSelectedUsers={[this.state.LeadMDEmail]}
+                          />
+                        </div>
+                      </div>
+                      {!this.state.IsCreateMode &&
+                        this.state.PEPIDetails.StatusOfReview != "" &&
+                        this.state.PEPIDetails.StatusOfReview && (
+                          <div>
+                            <div className={styles.col25left}>
+                              <Label>
+                                <b>Complexity:</b>
+                              </Label>
+                              <div>
+                                <Dropdown
+                                  options={this.ComplexityOptions}
+                                  selectedKey={
+                                    this.state.PEPIDetails.Complexity
+                                  }
+                                  onChange={(e, selectedOption) => {
+                                    this.onChangeComplexity(
+                                      selectedOption.text
+                                    );
+                                  }}
+                                />{" "}
+                              </div>
+                            </div>
+                            <div className={styles.col25left}>
+                              <Label>
+                                <b>Review Status:</b>
+                              </Label>
+                              <div>
+                                <Label>
+                                  {this.state.PEPIDetails.StatusOfReview}
+                                </Label>
+                              </div>
+                            </div>
                           </div>
+                        )}
+
+                      {!this.state.PEPIDetails.StatusOfReview &&
+                        Number(this.state.PEPIDetails.HoursWorked) < 80 && (
+                          // this.state.PEPIDetails.StatusOfReview == "" &&
+                          // <div className={styles.col25left}>\
+                          // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
+                          // </div>
                           <div className={styles.col25left}>
-                            <Label>
-                              <b>Review Status:</b>
-                            </Label>
+                            You may choose to Decline the entire review
+                          </div>
+                        )}
+
+                      {!this.state.PEPIDetails.StatusOfReview && (
+                        // this.state.PEPIDetails.StatusOfReview == "" &&
+                        // <div className={styles.col25left}>\
+                        // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
+                        // </div>
+                        <div
+                          className={`${styles.col25left} ${styles.SubmitDeclineBtnSection}`}
+                        >
+                          {!this.state.PEPIDetails.StatusOfReview &&
+                            Number(this.state.PEPIDetails.HoursWorked) < 80 && (
+                              // this.state.PEPIDetails.StatusOfReview == "" &&
+                              // <div className={styles.col25left}>\
+                              // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
+                              // </div>
+                              <div>
+                                <PrimaryButton
+                                  className={styles.btnSTARTREVIEW}
+                                  // disabled={this.state.DisableSubmitButton}
+                                  text="DECLINE"
+                                  onClick={this.onDecline}
+                                />
+                              </div>
+                            )}
+                          <div>
+                            <PrimaryButton
+                              style={{
+                                background: this.state.DisableSubmitButton
+                                  ? "#ff9"
+                                  : "rgba(73,233,10,.8156862745098039)",
+                              }}
+                              className={styles.btnSTARTREVIEW}
+                              disabled={this.state.DisableSubmitButton}
+                              text="START REVIEW"
+                              onClick={this.onSTARTREVIEWSave}
+                            />
                           </div>
                         </div>
                       )}
@@ -736,7 +899,7 @@ export default class SubmitPepiProject extends React.Component<
               </div>
             )}
 
-            {this.state.PEPIDetails.StatusOfReview !=
+            {/* {this.state.PEPIDetails.StatusOfReview !=
               Config.StatusOfReview.Split &&
               this.state.PEPIDetails.StatusOfReview !=
                 Config.StatusOfReview.Combined &&
@@ -828,7 +991,7 @@ export default class SubmitPepiProject extends React.Component<
                     </div>
                   )}
                 </div>
-              )}
+              )} */}
           </div>
           <div className={styles.row}></div>
 
@@ -838,7 +1001,8 @@ export default class SubmitPepiProject extends React.Component<
             this.state.PEPIDetails.StatusOfReview !=
               Config.StatusOfReview.Combined &&
             this.state.PEPIDetails.StatusOfReview !=
-              Config.StatusOfReview.Declined && (
+              Config.StatusOfReview.Declined &&
+            this.state.PEPIDetails.StatusOfReview && (
               <div>
                 {this.state.PEPIDetails.JobTitle == Config.JobRole.Analyst && (
                   <Analytics
