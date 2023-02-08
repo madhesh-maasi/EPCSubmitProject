@@ -1,13 +1,33 @@
-import * as React from 'react';
-import styles from './SubmitCombineAdmin.module.scss';
-import { ISubmitCombineAdminProps } from './ISubmitCombineAdminProps';
-import { ISubmitCombineAdminState } from './ISubmitCombineAdminState';
-import { escape } from '@microsoft/sp-lodash-subset';
+import * as React from "react";
+import styles from "./SubmitCombineAdmin.module.scss";
+import { ISubmitCombineAdminProps } from "./ISubmitCombineAdminProps";
+import { ISubmitCombineAdminState } from "./ISubmitCombineAdminState";
+import { escape } from "@microsoft/sp-lodash-subset";
 
-
-import { Dropdown, DatePicker, TextField, IDropdownOption, IStackTokens, Label, PrimaryButton, Stack, MessageBar, MessageBarType, Spinner, SpinnerSize } from '@fluentui/react';
-import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
-import { DateTimePicker, DateConvention, TimeConvention, TimeDisplayControlType } from '@pnp/spfx-controls-react/lib/DateTimePicker';
+import {
+  Dropdown,
+  DatePicker,
+  TextField,
+  IDropdownOption,
+  IStackTokens,
+  Label,
+  PrimaryButton,
+  Stack,
+  MessageBar,
+  MessageBarType,
+  Spinner,
+  SpinnerSize,
+} from "@fluentui/react";
+import {
+  PeoplePicker,
+  PrincipalType,
+} from "@pnp/spfx-controls-react/lib/PeoplePicker";
+import {
+  DateTimePicker,
+  DateConvention,
+  TimeConvention,
+  TimeDisplayControlType,
+} from "@pnp/spfx-controls-react/lib/DateTimePicker";
 import MapResult from "../../../domain/mappers/MapResult";
 import { User } from "../../../domain/models/types/User";
 import { Config } from "../../../globals/Config";
@@ -18,14 +38,22 @@ import WebService from "../../../services/WebService";
 
 import { PEPI_CombineAdmin } from "../../../domain/models/PEPI_CombineAdmin";
 
-export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAdminProps, ISubmitCombineAdminState> {
+export default class SubmitCombineAdmin extends React.Component<
+  ISubmitCombineAdminProps,
+  ISubmitCombineAdminState
+> {
   private ServiceLineOptions: IDropdownOption[] = [];
   private ListItemService: ListItemService;
   private hasEditItemPermission: boolean = true;
   constructor(props: any) {
     super(props);
     this.state = {
-      IsCreateMode: (this.props.ItemID == undefined || this.props.ItemID == null || this.props.ItemID == 0) ? true : false,
+      IsCreateMode:
+        this.props.ItemID == undefined ||
+        this.props.ItemID == null ||
+        this.props.ItemID == 0
+          ? true
+          : false,
       hasEditItemPermission: false,
       IsLoading: true,
       AppContext: this.props.AppContext,
@@ -40,19 +68,32 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
     this.onSave = this.onSave.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onChangeReviewIDs = this.onChangeReviewIDs.bind(this);
-    this.onchangedLastDateHoursBilled = this.onchangedLastDateHoursBilled.bind(this);
-    this.onChangeTitleofCombinedReview = this.onChangeTitleofCombinedReview.bind(this);
+    this.onchangedLastDateHoursBilled =
+      this.onchangedLastDateHoursBilled.bind(this);
+    this.onChangeTitleofCombinedReview =
+      this.onChangeTitleofCombinedReview.bind(this);
     this.onChangeJobTitle = this.onChangeJobTitle.bind(this);
-
   }
   public async componentDidMount() {
     debugger;
     this.FillServiceLineOptions();
-    if (this.state.IsCreateMode) { }
-    else {
-      this.ListItemService = new ListItemService(this.props.AppContext, Config.ListNames.CombineAdmin);
-      this.hasEditItemPermission = await this.ListItemService.CheckCurrentUserCanEditItem(this.props.ItemID);
-      const CombineAdminDetails: PEPI_CombineAdmin = await this.ListItemService.getItemUsingCAML(this.props.ItemID, [], undefined, Enums.ItemResultType.PEPI_CombineAdmin);
+    if (this.state.IsCreateMode) {
+    } else {
+      this.ListItemService = new ListItemService(
+        this.props.AppContext,
+        Config.ListNames.CombineAdmin
+      );
+      this.hasEditItemPermission =
+        await this.ListItemService.CheckCurrentUserCanEditItem(
+          this.props.ItemID
+        );
+      const CombineAdminDetails: PEPI_CombineAdmin =
+        await this.ListItemService.getItemUsingCAML(
+          this.props.ItemID,
+          [],
+          undefined,
+          Enums.ItemResultType.PEPI_CombineAdmin
+        );
       this.setState({
         IsLoading: false,
         hasEditItemPermission: this.hasEditItemPermission,
@@ -63,8 +104,13 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
   }
 
   private async FillServiceLineOptions() {
-    this.ListItemService = new ListItemService(this.props.AppContext, Config.ListNames.CombineAdmin);
-    let GetServiceLine = await this.ListItemService.getFieldChoices(Config.CombineAdminListColumns.JobTitle);
+    this.ListItemService = new ListItemService(
+      this.props.AppContext,
+      Config.ListNames.CombineAdmin
+    );
+    let GetServiceLine = await this.ListItemService.getFieldChoices(
+      Config.CombineAdminListColumns.JobTitle
+    );
     let GetServiceLineOption: any[] = [];
     if (GetServiceLine != undefined) {
       var j = 0;
@@ -76,6 +122,9 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
       }
     }
     this.ServiceLineOptions = GetServiceLineOption;
+    this.setState({
+      IsLoading: false,
+    });
   }
 
   private async onGETREVIEWS(): Promise<void> {
@@ -85,9 +134,12 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
     data[columns.RevieweeNameId] = CombineAdmin.ReviewerName.Id;
 
     if (this.state.IsCreateMode) {
-      this.ListItemService = new ListItemService(this.props.AppContext, Config.ListNames.CombineAdmin);
+      this.ListItemService = new ListItemService(
+        this.props.AppContext,
+        Config.ListNames.CombineAdmin
+      );
       debugger;
-      await this.ListItemService.createItem(data).then(r => {
+      await this.ListItemService.createItem(data).then((r) => {
         console.log(r);
         //r.data.ID
         this.setState({ NewItemID: r.data.ID });
@@ -98,7 +150,11 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
   private async onChangeReviewerName(items: any[]) {
     let curretState = this.state.CombineAdmin;
     if (items != null && items.length > 0) {
-      curretState.ReviewerName = await MapResult.map(items[0], Enums.MapperType.PnPControlResult, Enums.ItemResultType.User);
+      curretState.ReviewerName = await MapResult.map(
+        items[0],
+        Enums.MapperType.PnPControlResult,
+        Enums.ItemResultType.User
+      );
       curretState.ReviewerNameEmail = curretState.ReviewerName.Email;
       this.onFormTextFieldValueChange(curretState);
     }
@@ -113,14 +169,19 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
     data[columns.LastHoursBilled] = CombineAdmin.LastHoursBilled;
     data[columns.RevieweeNameId] = CombineAdmin.ReviewerName.Id;
     if (this.state.IsCreateMode) {
-      this.ListItemService = new ListItemService(this.props.AppContext, Config.ListNames.CombineAdmin);
+      this.ListItemService = new ListItemService(
+        this.props.AppContext,
+        Config.ListNames.CombineAdmin
+      );
       //await this.ListItemService.updateItem(this.props.ItemID, data);
       await this.ListItemService.updateItem(this.state.NewItemID, data);
       //await this.ListItemService.createItem(data);
       this.gotoListPage();
-    }
-    else {
-      this.ListItemService = new ListItemService(this.props.AppContext, Config.ListNames.CombineAdmin);
+    } else {
+      this.ListItemService = new ListItemService(
+        this.props.AppContext,
+        Config.ListNames.CombineAdmin
+      );
       await this.ListItemService.updateItem(this.props.ItemID, data);
 
       //await this.ListItemService.createItem(data);
@@ -128,19 +189,27 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
     }
   }
   private gotoListPage() {
-    let returnURL = this.props.AppContext.pageContext.web.absoluteUrl + Config.Links.HomePageLink;
+    let returnURL =
+      this.props.AppContext.pageContext.web.absoluteUrl +
+      Config.Links.HomePageLink;
     window.location.href = returnURL;
     return false;
   }
   private async onCancel(): Promise<void> {
     this.gotoListPage();
   }
-  private onChangeReviewIDs(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void {
+  private onChangeReviewIDs(
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue: string
+  ): void {
     let curretState = this.state.CombineAdmin;
     curretState.ReviewIDs = newValue;
     this.onFormTextFieldValueChange(curretState);
   }
-  private onChangeTitleofCombinedReview(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void {
+  private onChangeTitleofCombinedReview(
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue: string
+  ): void {
     let curretState = this.state.CombineAdmin;
     curretState.Title = newValue;
     this.onFormTextFieldValueChange(curretState);
@@ -170,27 +239,32 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
     if (!this.hasEditItemPermission) {
       valid = true;
     }
-    if (updateDetails.Title != "" && updateDetails.Title != undefined && updateDetails.ReviewIDs != "" && updateDetails.ReviewIDs != undefined && updateDetails.JobTitle != "" && updateDetails.JobTitle != undefined) {
+    if (
+      updateDetails.Title != "" &&
+      updateDetails.Title != undefined &&
+      updateDetails.ReviewIDs != "" &&
+      updateDetails.ReviewIDs != undefined &&
+      updateDetails.JobTitle != "" &&
+      updateDetails.JobTitle != undefined
+    ) {
       valid = true;
     }
     return valid;
   }
   private _onFormatDate = (date: Date): string => {
     debugger;
-    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+    return (
+      date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+    );
   };
-
-
 
   public render(): React.ReactElement<ISubmitCombineAdminProps> {
     function handleKeyPress(e) {
       var key = e.key;
       var regex = /[0-9]|\,/;
-      if (!regex.test(key)
-      ) {
+      if (!regex.test(key)) {
         e.preventDefault();
-      }
-      else {
+      } else {
         console.log("You pressed a key: " + key);
       }
     }
@@ -198,67 +272,139 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
       <React.Fragment>
         <div className={styles.submitCombineAdmin}>
           <div className={styles.container}>
-
             <div className={styles.logoImg} title="logo"></div>
             <hr className={styles.hr}></hr>
             <div className={styles.row}>
               <div className={styles.lblTopText}>
                 <div className={styles.divCompetency}>
-                  <Label><b>Combined Review:</b> If you would like to combine multiple projects into one review.</Label>
+                  <Label>
+                    <b>Combined Review:</b> If you would like to combine
+                    multiple projects into one review.
+                  </Label>
                 </div>
                 <div className={styles.divCompetency}>
-                  <Label><b style={{ color: '#ff0000' }}>INSTRUCTIONS: </b>Enter the Reviewee’s name in the box below, then click <b>Get Reviews</b> to retrieve all associated reviews. Locate the ID numbers of the reviews you want to combine and enter them in the box labeled <b>Review IDs to combine</b>, separated by commas without spaces. Complete the <b>Title of Combined Review, Project Start & End Dates, Last Date Hours Billed</b>, and <b>Job Title</b>, then click <b>Create Combined Review</b>.</Label>
+                  <Label>
+                    <b style={{ color: "#ff0000" }}>INSTRUCTIONS: </b>Enter the
+                    Reviewee’s name in the box below, then click{" "}
+                    <b>Get Reviews</b> to retrieve all associated reviews.
+                    Locate the ID numbers of the reviews you want to combine and
+                    enter them in the box labeled <b>Review IDs to combine</b>,
+                    separated by commas without spaces. Complete the{" "}
+                    <b>
+                      Title of Combined Review, Project Start & End Dates, Last
+                      Date Hours Billed
+                    </b>
+                    , and <b>Job Title</b>, then click{" "}
+                    <b>Create Combined Review</b>.
+                  </Label>
                 </div>
                 <hr className={styles.hr}></hr>
               </div>
 
               <div className={styles.row}>
                 <div className={styles.lblReviewIDs}>
-                  <Label className={styles.lblText}><b>Reviewee Name</b><span style={{ color: '#ff0000' }}>*</span></Label>
+                  <Label className={styles.lblText}>
+                    <b>Reviewee Name</b>
+                    <span style={{ color: "#ff0000" }}> * </span>
+                  </Label>
                 </div>
-                <div className={styles.txtReviewIDs}>
+                <div
+                  className={
+                    this.state.CombineAdmin.CombinedAdminStatus == "Completed"
+                      ? styles.clsPeoplepicker
+                      : styles.clsPeoplepickerEnable
+                  }
+                >
                   <PeoplePicker
                     context={this.props.AppContext}
                     personSelectionLimit={1}
-                    groupName={""} // Leave this blank in case you want to filter from all users    
+                    groupName={""} // Leave this blank in case you want to filter from all users
                     showtooltip={true}
                     ensureUser={true}
                     showHiddenInUI={false}
                     principalTypes={[PrincipalType.User]}
                     selectedItems={this.onChangeReviewerName}
-                    defaultSelectedUsers={[this.state.CombineAdmin.ReviewerNameEmail]}
-                    resolveDelay={1000} />
+                    defaultSelectedUsers={[
+                      this.state.CombineAdmin.ReviewerNameEmail,
+                    ]}
+                    resolveDelay={1000}
+                  />
                 </div>
-                {(this.state.IsCreateMode) &&
-                  <div className={styles.txtReviewIDs}>
-                    <PrimaryButton className={styles.btnGETREVIEW} text="GET REVIEWS" onClick={this.onGETREVIEWS} ></PrimaryButton>
+                {this.state.IsCreateMode && (
+                  <div
+                    // className={styles.txtReviewIDs}
+                    className={styles.btnReviewIDs}
+                  >
+                    <PrimaryButton
+                      className={styles.btnGETREVIEW}
+                      text="GET REVIEWS"
+                      onClick={this.onGETREVIEWS}
+                    ></PrimaryButton>
                   </div>
-                }
+                )}
               </div>
 
-              {(this.state.IsShowForm) &&
+              {this.state.IsShowForm && (
                 <div>
                   <div className={styles.row}>
                     <div className={styles.lblReviewIDs}>
-                      <hr></hr>
-                      <Label className={styles.lblText}><b>Review IDs to combine</b><span style={{ color: '#ff0000' }}>*</span></Label>
-                      <Label className={styles.lblText}><b>Separate with commas - no spaces. Example: 12,15,20</b></Label>
+                      {/* <hr></hr> */}
+                      <Label className={styles.lblText}>
+                        <b>Review IDs to combine</b>
+                        <span style={{ color: "#ff0000" }}> * </span>
+                      </Label>
+                      <Label className={styles.lblText}>
+                        <b>
+                          Separate with commas - no spaces. Example: 12,15,20
+                        </b>
+                      </Label>
                     </div>
-                    <div className={styles.txtReviewIDs}><TextField onKeyPress={(e) => handleKeyPress(e)} resizable={false} multiline={false} value={this.state.CombineAdmin.ReviewIDs} onChange={this.onChangeReviewIDs} className={styles.Multilinetextarea}></TextField>   </div>
+                    <div className={styles.txtReviewIDs}>
+                      <TextField
+                        disabled={
+                          this.state.CombineAdmin.CombinedAdminStatus ==
+                          "Completed"
+                        }
+                        onKeyPress={(e) => handleKeyPress(e)}
+                        resizable={false}
+                        multiline={false}
+                        value={this.state.CombineAdmin.ReviewIDs}
+                        onChange={this.onChangeReviewIDs}
+                        className={styles.Multilinetextarea}
+                      ></TextField>{" "}
+                    </div>
                   </div>
 
                   <div className={styles.row}>
-                    <div className={styles.lblTitle}>
-                      <hr></hr>
-                      <Label><b>Title of Combined Review</b><span style={{ color: '#ff0000' }}>*</span></Label>
+                    {/* <div className={styles.lblTitle}> */}
+                    <div className={styles.lblReviewIDs}>
+                      {/* <hr></hr> */}
+                      <Label className={styles.lblText}>
+                        <b>Title of Combined Review</b>
+                        <span style={{ color: "#ff0000" }}> * </span>
+                      </Label>
                     </div>
-                    <div className={styles.txtTitle}><TextField resizable={false} multiline={false} value={this.state.CombineAdmin.Title} onChange={this.onChangeTitleofCombinedReview} className={styles.Multilinetextarea}></TextField>   </div>
+                    <div className={styles.txtReviewIDs}>
+                      <TextField
+                        disabled={
+                          this.state.CombineAdmin.CombinedAdminStatus ==
+                          "Completed"
+                        }
+                        resizable={false}
+                        multiline={false}
+                        value={this.state.CombineAdmin.Title}
+                        onChange={this.onChangeTitleofCombinedReview}
+                        className={styles.Multilinetextarea}
+                      ></TextField>{" "}
+                    </div>
                   </div>
-
                   <div className={styles.row}>
-                    <div className={styles.lblTitle}>
-                      <hr></hr>
-                      <Label><b>Last Date Hours Billed</b></Label>
+                    {/* <div className={styles.lblTitle}> */}
+                    <div className={styles.lblReviewIDs}>
+                      {/* <hr></hr> */}
+                      <Label className={styles.lblText}>
+                        <b>Last Date Hours Billed</b>
+                      </Label>
                     </div>
                     <div className={styles.txtReviewIDs}>
                       {/* <DateTimePicker
@@ -270,6 +416,10 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
                         onChange={this.onchangedLastDateHoursBilled}
                       /> */}
                       <DatePicker
+                        disabled={
+                          this.state.CombineAdmin.CombinedAdminStatus ==
+                          "Completed"
+                        }
                         onSelectDate={this.onchangedLastDateHoursBilled}
                         value={this.state.CombineAdmin.LastHoursBilled}
                         formatDate={this._onFormatDate}
@@ -278,34 +428,75 @@ export default class SubmitCombineAdmin extends React.Component<ISubmitCombineAd
                   </div>
 
                   <div className={styles.row}>
-                    <div className={styles.lblTitle}>
-                      <hr></hr>
-                      <Label><b>Job Title</b><span style={{ color: '#ff0000' }}>*</span></Label>
-                    </div> <div className={styles.txtReviewIDs}>
-                      <Dropdown className={styles.dropServiceLine} options={this.ServiceLineOptions} selectedKey={this.state.CombineAdmin.JobTitle} onChange={(e, selectedOption) => { this.onChangeJobTitle(selectedOption.text); }} />
+                    {/* <div className={styles.lblTitle}> */}
+                    <div className={styles.lblReviewIDs}>
+                      {/* <hr></hr> */}
+                      <Label className={styles.lblText}>
+                        <b>Job Title</b>
+                        <span style={{ color: "#ff0000" }}> * </span>
+                      </Label>
+                    </div>{" "}
+                    <div className={styles.txtReviewIDs}>
+                      <Dropdown
+                        disabled={
+                          this.state.CombineAdmin.CombinedAdminStatus ==
+                          "Completed"
+                        }
+                        className={styles.dropServiceLine}
+                        options={this.ServiceLineOptions}
+                        selectedKey={this.state.CombineAdmin.JobTitle}
+                        onChange={(e, selectedOption) => {
+                          this.onChangeJobTitle(selectedOption.text);
+                        }}
+                      />
                     </div>
                   </div>
 
                   <div className={styles.divFullWidth}>
-                    {(this.state.hasEditItemPermission || this.state.IsCreateMode) &&
-                    <div>
-                      <PrimaryButton className={styles.btnSave} disabled={this.state.DisableSaveButton} text="CREATE COMBINED REVIEW" onClick={this.onSave} ></PrimaryButton>
-                      <PrimaryButton className={styles.btnCancel} text="Cancel" onClick={this.onCancel} ></PrimaryButton>
+                    {(this.state.hasEditItemPermission ||
+                      this.state.IsCreateMode) && (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-end",
+                          alignItems: "center",
+                        }}
+                      >
+                        {this.state.CombineAdmin.CombinedAdminStatus !=
+                        "Completed" ? (
+                          <PrimaryButton
+                            className={
+                              this.state.DisableSaveButton
+                                ? styles.btnSave
+                                : styles.btnSaveEnable
+                            }
+                            disabled={this.state.DisableSaveButton}
+                            text="CREATE COMBINED REVIEW"
+                            onClick={this.onSave}
+                          ></PrimaryButton>
+                        ) : null}
+                        <PrimaryButton
+                          className={styles.btnCancel}
+                          // text="Cancel"
+                          text="Close"
+                          onClick={this.onCancel}
+                        ></PrimaryButton>
                       </div>
-                    }
-                    {(!this.state.IsCreateMode) &&
-                      <PrimaryButton className={styles.btnCancel} text="Close" onClick={this.onCancel} ></PrimaryButton>
-                    }
-                    
+                    )}
+                    {/* {!this.state.IsCreateMode && (
+                      <PrimaryButton
+                        className={styles.btnCancel}
+                        text="Close"
+                        onClick={this.onCancel}
+                      ></PrimaryButton>
+                    )} */}
                   </div>
                 </div>
-              }
-
+              )}
             </div>
           </div>
         </div>
       </React.Fragment>
-
     );
   }
 }

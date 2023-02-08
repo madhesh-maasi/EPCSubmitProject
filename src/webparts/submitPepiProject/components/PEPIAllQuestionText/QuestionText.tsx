@@ -119,10 +119,24 @@ export default class QuestionText extends React.Component<
           {this.props.QuestionText.map((element, index) => {
             let Question = element.QuestionText.split("-");
             let FirstQuestionText = element.QuestionText.split("-")[0];
+            // let allQuestionText = element.QuestionText.replace(
+            //   FirstQuestionText + "-",
+            //   ""
+            // );
             let allQuestionText = "";
             for (var i = 1; i < Object.keys(Question).length; i++) {
-              allQuestionText += Question[Object.keys(Question)[i]];
+              if (i == Object.keys(Question).length - 1) {
+                allQuestionText += Question[Object.keys(Question)[i]];
+              } else {
+                allQuestionText += Question[Object.keys(Question)[i]] + "-";
+              }
             }
+            //! let allQuestionText = "";
+            // for (var i = 1; i < Object.keys(Question).length; i++) {
+            //   allQuestionText += Question[Object.keys(Question)[i]];
+            // }
+
+            //!Old code
             // return <tr>
             //     {/* <td> <label className={styles.tablelable}> {element.QuestionText.split('-')[0]} - </label> {element.QuestionText.split('-')[1]}</td> */}
             //     <td> <label className={styles.tablelable}> {FirstQuestionText} - </label> {allQuestionText}</td>
@@ -133,7 +147,12 @@ export default class QuestionText extends React.Component<
 
             return (
               <tr>
-                <td>
+                <td
+                  style={{
+                    paddingTop: "2%",
+                    width: "80%",
+                  }}
+                >
                   {" "}
                   <label className={styles.tablelable}>
                     {" "}
