@@ -267,10 +267,7 @@ export default class SubmitCombineReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <TextField
-                    disabled={
-                      this.state.CombineReviews.CombinedReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     onKeyPress={(e) => handleKeyPress(e)}
                     resizable={false}
                     multiline={false}
@@ -290,10 +287,7 @@ export default class SubmitCombineReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <TextField
-                    disabled={
-                      this.state.CombineReviews.CombinedReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     resizable={false}
                     multiline={false}
                     value={this.state.CombineReviews.Title}
@@ -320,10 +314,7 @@ export default class SubmitCombineReviews extends React.Component<
                     onChange={this.onchangedLastDateHoursBilled}
                   /> */}
                   <DatePicker
-                    disabled={
-                      this.state.CombineReviews.CombinedReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     onSelectDate={this.onchangedLastDateHoursBilled}
                     value={this.state.CombineReviews.LastHoursBilled}
                     formatDate={this._onFormatDate}
@@ -340,10 +331,7 @@ export default class SubmitCombineReviews extends React.Component<
                 </div>{" "}
                 <div className={styles.txtReviewIDs}>
                   <Dropdown
-                    disabled={
-                      this.state.CombineReviews.CombinedReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     className={styles.dropServiceLine}
                     options={this.ServiceLineOptions}
                     selectedKey={this.state.CombineReviews.JobTitle}
@@ -364,8 +352,7 @@ export default class SubmitCombineReviews extends React.Component<
                       alignItems: "center",
                     }}
                   >
-                    {this.state.CombineReviews.CombinedReviewStatus !=
-                    "Completed" ? (
+                    {this.state.IsCreateMode ? (
                       <PrimaryButton
                         className={
                           this.state.DisableSaveButton

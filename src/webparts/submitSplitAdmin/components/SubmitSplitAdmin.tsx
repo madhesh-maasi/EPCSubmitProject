@@ -324,9 +324,7 @@ export default class SubmitSplitAdmin extends React.Component<
                     </div>
                     <div className={styles.txtReviewIDs}>
                       <TextField
-                        disabled={
-                          this.state.SplitAdmin.SplitAdminStatus == "Completed"
-                        }
+                        disabled={!this.state.IsCreateMode}
                         onKeyPress={(e) => handleKeyPress(e)}
                         resizable={false}
                         multiline={false}
@@ -345,9 +343,7 @@ export default class SubmitSplitAdmin extends React.Component<
                     </div>
                     <div className={styles.txtReviewIDs}>
                       <TextField
-                        disabled={
-                          this.state.SplitAdmin.SplitAdminStatus == "Completed"
-                        }
+                        disabled={!this.state.IsCreateMode}
                         onKeyPress={(e) => handleKeyPress(e)}
                         resizable={false}
                         multiline={false}
@@ -373,9 +369,7 @@ export default class SubmitSplitAdmin extends React.Component<
                     </div>
                     <div className={styles.txtReviewIDs}>
                       <TextField
-                        disabled={
-                          this.state.SplitAdmin.SplitAdminStatus == "Completed"
-                        }
+                        disabled={!this.state.IsCreateMode}
                         resizable={false}
                         multiline={false}
                         value={this.state.SplitAdmin.Title}
@@ -401,8 +395,7 @@ export default class SubmitSplitAdmin extends React.Component<
                           alignItems: "center",
                         }}
                       >
-                        {this.state.SplitAdmin.SplitAdminStatus !=
-                        "Completed" ? (
+                        {this.state.IsCreateMode ? (
                           <PrimaryButton
                             // className={styles.btnSave}
                             className={

@@ -227,9 +227,7 @@ export default class SubmitSplitReviews extends React.Component<
             <div className={styles.txtReviewIDs}>
               {" "}
               <TextField
-                disabled={
-                  this.state.SplitReviews.SplitReviewStatus == "Completed"
-                }
+                disabled={!this.state.IsCreateMode}
                 onKeyPress={(e) => handleKeyPress(e)}
                 resizable={false}
                 multiline={false}
@@ -249,9 +247,7 @@ export default class SubmitSplitReviews extends React.Component<
             </div>
             <div className={styles.txtReviewIDs}>
               <TextField
-                disabled={
-                  this.state.SplitReviews.SplitReviewStatus == "Completed"
-                }
+                disabled={!this.state.IsCreateMode}
                 onKeyPress={(e) => handleKeyPress(e)}
                 resizable={false}
                 multiline={false}
@@ -274,9 +270,7 @@ export default class SubmitSplitReviews extends React.Component<
             </div>
             <div className={styles.txtReviewIDs}>
               <TextField
-                disabled={
-                  this.state.SplitReviews.SplitReviewStatus == "Completed"
-                }
+                disabled={!this.state.IsCreateMode}
                 resizable={false}
                 multiline={false}
                 value={this.state.SplitReviews.Title}
@@ -295,7 +289,7 @@ export default class SubmitSplitReviews extends React.Component<
                   alignItems: "center",
                 }}
               >
-                {this.state.SplitReviews.SplitReviewStatus != "Completed" ? (
+                {this.state.IsCreateMode ? (
                   <PrimaryButton
                     className={
                       this.state.DisableSaveButton
