@@ -310,7 +310,7 @@ export default class SubmitCombineAdmin extends React.Component<
                 </div>
                 <div
                   className={
-                    this.state.CombineAdmin.CombinedAdminStatus == "Completed"
+                    !this.state.IsCreateMode
                       ? styles.clsPeoplepicker
                       : styles.clsPeoplepickerEnable
                   }
@@ -361,10 +361,7 @@ export default class SubmitCombineAdmin extends React.Component<
                     </div>
                     <div className={styles.txtReviewIDs}>
                       <TextField
-                        disabled={
-                          this.state.CombineAdmin.CombinedAdminStatus ==
-                          "Completed"
-                        }
+                        disabled={!this.state.IsCreateMode}
                         onKeyPress={(e) => handleKeyPress(e)}
                         resizable={false}
                         multiline={false}
@@ -386,10 +383,7 @@ export default class SubmitCombineAdmin extends React.Component<
                     </div>
                     <div className={styles.txtReviewIDs}>
                       <TextField
-                        disabled={
-                          this.state.CombineAdmin.CombinedAdminStatus ==
-                          "Completed"
-                        }
+                        disabled={!this.state.IsCreateMode}
                         resizable={false}
                         multiline={false}
                         value={this.state.CombineAdmin.Title}
@@ -416,10 +410,7 @@ export default class SubmitCombineAdmin extends React.Component<
                         onChange={this.onchangedLastDateHoursBilled}
                       /> */}
                       <DatePicker
-                        disabled={
-                          this.state.CombineAdmin.CombinedAdminStatus ==
-                          "Completed"
-                        }
+                        disabled={!this.state.IsCreateMode}
                         onSelectDate={this.onchangedLastDateHoursBilled}
                         value={this.state.CombineAdmin.LastHoursBilled}
                         formatDate={this._onFormatDate}
@@ -438,10 +429,7 @@ export default class SubmitCombineAdmin extends React.Component<
                     </div>{" "}
                     <div className={styles.txtReviewIDs}>
                       <Dropdown
-                        disabled={
-                          this.state.CombineAdmin.CombinedAdminStatus ==
-                          "Completed"
-                        }
+                        disabled={!this.state.IsCreateMode}
                         className={styles.dropServiceLine}
                         options={this.ServiceLineOptions}
                         selectedKey={this.state.CombineAdmin.JobTitle}
@@ -462,8 +450,7 @@ export default class SubmitCombineAdmin extends React.Component<
                           alignItems: "center",
                         }}
                       >
-                        {this.state.CombineAdmin.CombinedAdminStatus !=
-                        "Completed" ? (
+                        {this.state.IsCreateMode ? (
                           <PrimaryButton
                             className={
                               this.state.DisableSaveButton

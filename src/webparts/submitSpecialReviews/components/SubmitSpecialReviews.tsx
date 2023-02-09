@@ -364,10 +364,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <TextField
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     resizable={false}
                     multiline={false}
                     value={this.state.SpecialReviews.Title}
@@ -416,10 +413,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div className={styles.clsPeoplepicker}>
                   <PeoplePicker
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     context={this.props.AppContext}
                     personSelectionLimit={1}
                     groupName={""} // Leave this blank in case you want to filter from all users
@@ -445,10 +439,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <TextField
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     resizable={false}
                     multiline={false}
                     value={this.state.SpecialReviews.ProjectCode}
@@ -466,10 +457,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <TextField
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     onKeyPress={(e) => handleKeyPress(e)}
                     resizable={false}
                     multiline={false}
@@ -490,10 +478,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <Dropdown
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     className={styles.dropServiceLine}
                     options={this.ServiceLineOptions}
                     selectedKey={this.state.SpecialReviews.JobTitle}
@@ -511,10 +496,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <Dropdown
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     className={styles.dropServiceLine}
                     options={this.ProjectStatusOptions}
                     selectedKey={this.state.SpecialReviews.ProjectStatus}
@@ -543,10 +525,7 @@ export default class SubmitSpecialReviews extends React.Component<
                     onChange={this.onchangedLastDateHoursBilled}
                   /> */}
                   <DatePicker
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     onSelectDate={this.onchangedLastDateHoursBilled}
                     value={this.state.SpecialReviews.LastHoursBilled}
                     formatDate={this._onFormatDate}
@@ -583,10 +562,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <TextField
-                    disabled={
-                      this.state.SpecialReviews.SpecialReviewStatus ==
-                      "Completed"
-                    }
+                    disabled={!this.state.IsCreateMode}
                     resizable={false}
                     multiline={false}
                     value={this.state.SpecialReviews.EmployeeNumber}
@@ -604,8 +580,7 @@ export default class SubmitSpecialReviews extends React.Component<
                   alignItems: "center",
                 }}
               >
-                {this.state.SpecialReviews.SpecialReviewStatus !=
-                "Completed" ? (
+                {this.state.IsCreateMode ? (
                   <PrimaryButton
                     className={
                       this.state.DisableSaveButton
