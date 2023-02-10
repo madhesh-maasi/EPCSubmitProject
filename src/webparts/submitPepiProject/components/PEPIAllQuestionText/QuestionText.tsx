@@ -178,14 +178,23 @@ export default class QuestionText extends React.Component<
                       this.props.IsReviewer || FirstQuestionText == "N/A"
                     }
                     options={this.props.Options}
-                    selectedKey={Number(element.Reviewer)}
+                    // selectedKey={Number(element.Reviewer)}
+                    selectedKey={
+                      this.props.IsAwaitingReviewee
+                        ? ""
+                        : Number(element.Reviewer)
+                    }
                     onChange={(e, selectedOption) => {
                       this.onChangeD1(selectedOption.text, "D11R", index);
                     }}
                   />
                 </td>
                 <td className={styles.doppadding}>
-                  <label>{element.Difference} </label>
+                  <label>
+                    {this.props.IsAwaitingReviewee
+                      ? 0 - Number(this.resetNAValue(element.Reviewee))
+                      : element.Difference}{" "}
+                  </label>
                 </td>
               </tr>
             );

@@ -57,6 +57,13 @@ export default class MapCAMLResult extends ContextService {
   private static mapPEPIDetails(item: any) {
     //debugger;
     let result = new PEPI_PEPIDetails();
+
+    result.ProjectStartDate =
+      item[Config.PEPIProjectsListColumns.ProjectStartDate];
+    result.ProjectEndDate = item[Config.PEPIProjectsListColumns.ProjectEndDate];
+    result.LastHoursBilled =
+      item[Config.PEPIProjectsListColumns.LastHoursBilled];
+
     result.Title = item[Config.BaseColumns.Title];
     result.ID = item.ID;
     result.Reviewee = this.mapUser(
@@ -83,8 +90,9 @@ export default class MapCAMLResult extends ContextService {
     result.HomeOffice = item[Config.PEPIProjectsListColumns.HomeOffice];
 
     //let SignoffHistory = item[Config.PEPIProjectsListColumns.SignoffHistory].split(";");
-    let SignoffHistory =
-      item[Config.PEPIProjectsListColumns.SignoffHistory].split(";");
+    let SignoffHistory = item[Config.PEPIProjectsListColumns.SignoffHistory]
+      ? item[Config.PEPIProjectsListColumns.SignoffHistory].split(";")
+      : "";
     let html = "";
     for (var i = 0; i < Object.keys(SignoffHistory).length; i++) {
       if (SignoffHistory[Object.keys(SignoffHistory)[i]] != " ") {

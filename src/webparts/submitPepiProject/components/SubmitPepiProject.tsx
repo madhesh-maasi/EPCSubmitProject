@@ -813,7 +813,8 @@ export default class SubmitPepiProject extends React.Component<
                       {!this.state.IsCreateMode &&
                         this.state.PEPIDetails.StatusOfReview != "" &&
                         this.state.PEPIDetails.StatusOfReview && (
-                          <div>
+                          // <div>
+                          <>
                             <div className={styles.col25left}>
                               <Label>
                                 <b>Complexity:</b>
@@ -842,7 +843,8 @@ export default class SubmitPepiProject extends React.Component<
                                 </Label>
                               </div>
                             </div>
-                          </div>
+                          </>
+                          // </div>
                         )}
 
                       {!this.state.PEPIDetails.StatusOfReview &&

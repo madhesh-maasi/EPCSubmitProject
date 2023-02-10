@@ -4,6 +4,8 @@ import { ISubmitCombineAdminProps } from "./ISubmitCombineAdminProps";
 import { ISubmitCombineAdminState } from "./ISubmitCombineAdminState";
 import { escape } from "@microsoft/sp-lodash-subset";
 
+import { MapDetailsList } from "../../../domain/mappers/MapDetailsList";
+
 import {
   Dropdown,
   DatePicker,
@@ -483,6 +485,7 @@ export default class SubmitCombineAdmin extends React.Component<
             </div>
           </div>
         </div>
+        {/* <MapDetailsList AppContext={this.props.AppContext} /> */}
       </React.Fragment>
     );
   }
