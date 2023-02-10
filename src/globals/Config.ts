@@ -30,6 +30,9 @@ export namespace Config {
   // Key Value pair of PEPI Projects list column title and internal names
 
   export const PEPIProjectsListColumns = {
+    ProjectStartDate: "Project_x0020_Start_x0020_Date",
+    ProjectEndDate: "Project_x0020_End_x0020_Date",
+    LastHoursBilled: "Last_x0020_Hours_x0020_Billed",
     SignoffHistory: "Signoff_x0020_History",
     StatusOfReview: "Status_x0020_of_x0020_Review",
     RevieweeName: "Reviewee_x0020_Name",
