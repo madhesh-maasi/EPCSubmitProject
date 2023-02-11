@@ -116,11 +116,6 @@ export default class SeniorDirector extends React.Component<
       A15D:
         Number(this.resetNAValue(this.props.APEPIDetail.A15R)) -
         Number(this.resetNAValue(this.props.APEPIDetail.A15E)),
-      //! A11D: Number(this.props.APEPIDetail.A11R == undefined ? 0 : this.props.APEPIDetail.A11R) - Number(this.props.APEPIDetail.A11E == undefined ? 0 : this.props.APEPIDetail.A11E),
-      // A12D: Number(this.props.APEPIDetail.A12R == undefined ? 0 : this.props.APEPIDetail.A12R) - Number(this.props.APEPIDetail.A12E == undefined ? 0 : this.props.APEPIDetail.A12E),
-      // A13D: Number(this.props.APEPIDetail.A13R == undefined ? 0 : this.props.APEPIDetail.A13R) - Number(this.props.APEPIDetail.A13E == undefined ? 0 : this.props.APEPIDetail.A13E),
-      // A14D: Number(this.props.APEPIDetail.A14R == undefined ? 0 : this.props.APEPIDetail.A14R) - Number(this.props.APEPIDetail.A14E == undefined ? 0 : this.props.APEPIDetail.A14E),
-      // A15D: Number(this.props.APEPIDetail.A15R == undefined ? 0 : this.props.APEPIDetail.A15R) - Number(this.props.APEPIDetail.A15E == undefined ? 0 : this.props.APEPIDetail.A15E),
       A1EE:
         this.props.APEPIDetail.A1EE == undefined
           ? 0
@@ -180,49 +175,18 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.A24R,
       A21D:
-        Number(
-          this.props.APEPIDetail.A21R == undefined
-            ? 0
-            : this.props.APEPIDetail.A21R
-        ) -
-        Number(
-          this.props.APEPIDetail.A21E == undefined
-            ? 0
-            : this.props.APEPIDetail.A21E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A21R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A21E)),
       A22D:
-        Number(
-          this.props.APEPIDetail.A22R == undefined
-            ? 0
-            : this.props.APEPIDetail.A22R
-        ) -
-        Number(
-          this.props.APEPIDetail.A22E == undefined
-            ? 0
-            : this.props.APEPIDetail.A22E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A22R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A22E)),
       A23D:
-        Number(
-          this.props.APEPIDetail.A23R == undefined
-            ? 0
-            : this.props.APEPIDetail.A23R
-        ) -
-        Number(
-          this.props.APEPIDetail.A23E == undefined
-            ? 0
-            : this.props.APEPIDetail.A23E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A23R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A23E)),
       A24D:
-        Number(
-          this.props.APEPIDetail.A24R == undefined
-            ? 0
-            : this.props.APEPIDetail.A24R
-        ) -
-        Number(
-          this.props.APEPIDetail.A24E == undefined
-            ? 0
-            : this.props.APEPIDetail.A24E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A24R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A24E)),
+
       A2EE:
         this.props.APEPIDetail.A2EE == undefined
           ? 0
@@ -274,38 +238,15 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.A33R,
       A31D:
-        Number(
-          this.props.APEPIDetail.A31R == undefined
-            ? 0
-            : this.props.APEPIDetail.A31R
-        ) -
-        Number(
-          this.props.APEPIDetail.A31E == undefined
-            ? 0
-            : this.props.APEPIDetail.A31E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A31R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A31E)),
       A32D:
-        Number(
-          this.props.APEPIDetail.A32R == undefined
-            ? 0
-            : this.props.APEPIDetail.A32R
-        ) -
-        Number(
-          this.props.APEPIDetail.A32E == undefined
-            ? 0
-            : this.props.APEPIDetail.A32E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A32R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A32E)),
       A33D:
-        Number(
-          this.props.APEPIDetail.A33R == undefined
-            ? 0
-            : this.props.APEPIDetail.A33R
-        ) -
-        Number(
-          this.props.APEPIDetail.A33E == undefined
-            ? 0
-            : this.props.APEPIDetail.A33E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A33R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A33E)),
+
       A3EE:
         this.props.APEPIDetail.A3EE == undefined
           ? 0
@@ -367,6 +308,7 @@ export default class SeniorDirector extends React.Component<
         this.props.APEPIDetail.B1RR == undefined
           ? 0
           : this.props.APEPIDetail.B1RR,
+
       B1DD:
         Number(
           this.props.APEPIDetail.B1RR == undefined
@@ -472,27 +414,12 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.B12R,
       B11D:
-        Number(
-          this.props.APEPIDetail.B11R == undefined
-            ? 0
-            : this.props.APEPIDetail.B11R
-        ) -
-        Number(
-          this.props.APEPIDetail.B11E == undefined
-            ? 0
-            : this.props.APEPIDetail.B11E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B11R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B11E)),
       B12D:
-        Number(
-          this.props.APEPIDetail.B12R == undefined
-            ? 0
-            : this.props.APEPIDetail.B12R
-        ) -
-        Number(
-          this.props.APEPIDetail.B12E == undefined
-            ? 0
-            : this.props.APEPIDetail.B12E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B12R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B12E)),
+
       //  // Section B2 State
       B21E:
         this.props.APEPIDetail.B21E == undefined
@@ -519,38 +446,14 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.B23R,
       B21D:
-        Number(
-          this.props.APEPIDetail.B21R == undefined
-            ? 0
-            : this.props.APEPIDetail.B21R
-        ) -
-        Number(
-          this.props.APEPIDetail.B21E == undefined
-            ? 0
-            : this.props.APEPIDetail.B21E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B21R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B21E)),
       B22D:
-        Number(
-          this.props.APEPIDetail.B22R == undefined
-            ? 0
-            : this.props.APEPIDetail.B22R
-        ) -
-        Number(
-          this.props.APEPIDetail.B22E == undefined
-            ? 0
-            : this.props.APEPIDetail.B22E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B22R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B22E)),
       B23D:
-        Number(
-          this.props.APEPIDetail.B23R == undefined
-            ? 0
-            : this.props.APEPIDetail.B23R
-        ) -
-        Number(
-          this.props.APEPIDetail.B23E == undefined
-            ? 0
-            : this.props.APEPIDetail.B23E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B23R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B23E)),
 
       //  // Section B3 State
 
@@ -579,44 +482,14 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.B33R,
       B31D:
-        Number(
-          this.props.APEPIDetail.B31R == undefined
-            ? 0
-            : this.props.APEPIDetail.B31R
-        ) -
-        Number(
-          this.props.APEPIDetail.B31E == undefined
-            ? 0
-            : this.props.APEPIDetail.B31E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B31R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B31E)),
       B32D:
-        Number(
-          this.props.APEPIDetail.B32R == undefined
-            ? 0
-            : this.props.APEPIDetail.B32R
-        ) -
-        Number(
-          this.props.APEPIDetail.B32E == undefined
-            ? 0
-            : this.props.APEPIDetail.B32E
-        ),
-      //B33D:  Number(this.props.APEPIDetail.B33R == undefined ? 0:this.props.APEPIDetail.B33R) - Number(this.props.APEPIDetail.B33E == undefined ? 0:this.props.APEPIDetail.B33E),
-      B33D: Number(
-        parseFloat(
-          (
-            Number(
-              this.props.APEPIDetail.B33R == undefined
-                ? 0
-                : this.props.APEPIDetail.B33R
-            ) -
-            Number(
-              this.props.APEPIDetail.B33E == undefined
-                ? 0
-                : this.props.APEPIDetail.B33E
-            )
-          ).toString()
-        ).toFixed(2)
-      ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B32R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B32E)),
+      B33D:
+        Number(this.resetNAValue(this.props.APEPIDetail.B33R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B33E)),
 
       //  // Section B4 State
 
@@ -645,44 +518,15 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.B43R,
       B41D:
-        Number(
-          this.props.APEPIDetail.B41R == undefined
-            ? 0
-            : this.props.APEPIDetail.B41R
-        ) -
-        Number(
-          this.props.APEPIDetail.B41E == undefined
-            ? 0
-            : this.props.APEPIDetail.B41E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B41R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B41E)),
       B42D:
-        Number(
-          this.props.APEPIDetail.B42R == undefined
-            ? 0
-            : this.props.APEPIDetail.B42R
-        ) -
-        Number(
-          this.props.APEPIDetail.B42E == undefined
-            ? 0
-            : this.props.APEPIDetail.B42E
-        ),
-      //B43D:  Number(this.props.APEPIDetail.B43R == undefined ? 0:this.props.APEPIDetail.B43R) - Number(this.props.APEPIDetail.B43E == undefined ? 0:this.props.APEPIDetail.B43E),
-      B43D: Number(
-        parseFloat(
-          (
-            Number(
-              this.props.APEPIDetail.B43R == undefined
-                ? 0
-                : this.props.APEPIDetail.B43R
-            ) -
-            Number(
-              this.props.APEPIDetail.B43E == undefined
-                ? 0
-                : this.props.APEPIDetail.B43E
-            )
-          ).toString()
-        ).toFixed(2)
-      ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B42R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B42E)),
+      B43D:
+        Number(this.resetNAValue(this.props.APEPIDetail.B43R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B43E)),
+
       //B43D : Number(parseFloat((Number(this.props.APEPIDetail.B43R == undefined ? 0:this.props.APEPIDetail.B43R) - Number(this.props.APEPIDetail.B43E == undefined ? 0:this.props.APEPIDetail.B43E))).toString()).toFixed(2))
 
       BAvgEE:
@@ -837,38 +681,14 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.C13R,
       C11D:
-        Number(
-          this.props.APEPIDetail.C11R == undefined
-            ? 0
-            : this.props.APEPIDetail.C11R
-        ) -
-        Number(
-          this.props.APEPIDetail.C11E == undefined
-            ? 0
-            : this.props.APEPIDetail.C11E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C11R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C11E)),
       C12D:
-        Number(
-          this.props.APEPIDetail.C12R == undefined
-            ? 0
-            : this.props.APEPIDetail.C12R
-        ) -
-        Number(
-          this.props.APEPIDetail.C12E == undefined
-            ? 0
-            : this.props.APEPIDetail.C12E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C12R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C12E)),
       C13D:
-        Number(
-          this.props.APEPIDetail.C13R == undefined
-            ? 0
-            : this.props.APEPIDetail.C13R
-        ) -
-        Number(
-          this.props.APEPIDetail.C13E == undefined
-            ? 0
-            : this.props.APEPIDetail.C13E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C13R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C13E)),
 
       //  // Section C2 State
 
@@ -905,49 +725,17 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.C24R,
       C21D:
-        Number(
-          this.props.APEPIDetail.C21R == undefined
-            ? 0
-            : this.props.APEPIDetail.C21R
-        ) -
-        Number(
-          this.props.APEPIDetail.C21E == undefined
-            ? 0
-            : this.props.APEPIDetail.C21E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C21R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C21E)),
       C22D:
-        Number(
-          this.props.APEPIDetail.C22R == undefined
-            ? 0
-            : this.props.APEPIDetail.C22R
-        ) -
-        Number(
-          this.props.APEPIDetail.C22E == undefined
-            ? 0
-            : this.props.APEPIDetail.C22E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C22R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C22E)),
       C23D:
-        Number(
-          this.props.APEPIDetail.C23R == undefined
-            ? 0
-            : this.props.APEPIDetail.C23R
-        ) -
-        Number(
-          this.props.APEPIDetail.C23E == undefined
-            ? 0
-            : this.props.APEPIDetail.C23E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C23R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C23E)),
       C24D:
-        Number(
-          this.props.APEPIDetail.C24R == undefined
-            ? 0
-            : this.props.APEPIDetail.C24R
-        ) -
-        Number(
-          this.props.APEPIDetail.C24E == undefined
-            ? 0
-            : this.props.APEPIDetail.C24E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C24R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C24E)),
 
       //  // Section C3 State
 
@@ -976,38 +764,14 @@ export default class SeniorDirector extends React.Component<
           ? 0
           : this.props.APEPIDetail.C33R,
       C31D:
-        Number(
-          this.props.APEPIDetail.C31R == undefined
-            ? 0
-            : this.props.APEPIDetail.C31R
-        ) -
-        Number(
-          this.props.APEPIDetail.C31E == undefined
-            ? 0
-            : this.props.APEPIDetail.C31E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C31R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C31E)),
       C32D:
-        Number(
-          this.props.APEPIDetail.C32R == undefined
-            ? 0
-            : this.props.APEPIDetail.C32R
-        ) -
-        Number(
-          this.props.APEPIDetail.C32E == undefined
-            ? 0
-            : this.props.APEPIDetail.C32E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C32R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C32E)),
       C33D:
-        Number(
-          this.props.APEPIDetail.C33R == undefined
-            ? 0
-            : this.props.APEPIDetail.C33R
-        ) -
-        Number(
-          this.props.APEPIDetail.C33E == undefined
-            ? 0
-            : this.props.APEPIDetail.C33E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C33R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C33E)),
 
       //
       SctionTotalDE: this.props.SctionTotalDE,
@@ -1165,6 +929,7 @@ export default class SeniorDirector extends React.Component<
     ) {
       this.setState({ IsReviewee: false });
 
+      //! Technorucs
       this.setState({
         // Section A1 State
 
@@ -1198,34 +963,10 @@ export default class SeniorDirector extends React.Component<
         A22R: 0,
         A23R: 0,
         A24R: 0,
-        A21D:
-          0 -
-          Number(
-            this.props.APEPIDetail.A21E == undefined
-              ? 0
-              : this.props.APEPIDetail.A21E
-          ),
-        A22D:
-          0 -
-          Number(
-            this.props.APEPIDetail.A22E == undefined
-              ? 0
-              : this.props.APEPIDetail.A22E
-          ),
-        A23D:
-          0 -
-          Number(
-            this.props.APEPIDetail.A23E == undefined
-              ? 0
-              : this.props.APEPIDetail.A23E
-          ),
-        A24D:
-          0 -
-          Number(
-            this.props.APEPIDetail.A24E == undefined
-              ? 0
-              : this.props.APEPIDetail.A24E
-          ),
+        A21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A21E)),
+        A22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A22E)),
+        A23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A23E)),
+        A24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A24E)),
         A2RR: 0,
         A2DD: Number(
           parseFloat(
@@ -1244,27 +985,9 @@ export default class SeniorDirector extends React.Component<
         A31R: 0,
         A32R: 0,
         A33R: 0,
-        A31D:
-          0 -
-          Number(
-            this.props.APEPIDetail.A31E == undefined
-              ? 0
-              : this.props.APEPIDetail.A31E
-          ),
-        A32D:
-          0 -
-          Number(
-            this.props.APEPIDetail.A32E == undefined
-              ? 0
-              : this.props.APEPIDetail.A32E
-          ),
-        A33D:
-          0 -
-          Number(
-            this.props.APEPIDetail.A33E == undefined
-              ? 0
-              : this.props.APEPIDetail.A33E
-          ),
+        A31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A31E)),
+        A32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A32E)),
+        A33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A33E)),
         A3RR: 0,
 
         A3DD: Number(
@@ -1350,111 +1073,34 @@ export default class SeniorDirector extends React.Component<
         // Section B1 State
         B11R: 0,
         B12R: 0,
-        B11D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B11E == undefined
-              ? 0
-              : this.props.APEPIDetail.B11E
-          ),
-        B12D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B12E == undefined
-              ? 0
-              : this.props.APEPIDetail.B12E
-          ),
+        B11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B11E)),
+        B12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B12E)),
 
         // Section B2 State
         B21R: 0,
         B22R: 0,
         B23R: 0,
-        B21D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B21E == undefined
-              ? 0
-              : this.props.APEPIDetail.B21E
-          ),
-        B22D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B22E == undefined
-              ? 0
-              : this.props.APEPIDetail.B22E
-          ),
-        B23D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B23E == undefined
-              ? 0
-              : this.props.APEPIDetail.B23E
-          ),
+        B21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B21E)),
+        B22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B22E)),
+        B23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B23E)),
 
         // Section B3 State
 
         B31R: 0,
         B32R: 0,
         B33R: 0,
-        B31D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B31E == undefined
-              ? 0
-              : this.props.APEPIDetail.B31E
-          ),
-        B32D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B32E == undefined
-              ? 0
-              : this.props.APEPIDetail.B32E
-          ),
-        B33D: Number(
-          parseFloat(
-            (
-              0 -
-              Number(
-                this.props.APEPIDetail.B33E == undefined
-                  ? 0
-                  : this.props.APEPIDetail.B33E
-              )
-            ).toString()
-          ).toFixed(2)
-        ),
+        B31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B31E)),
+        B32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B32E)),
+        B33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B33E)),
 
         //Section B4 State
 
         B41R: 0,
         B42R: 0,
         B43R: 0,
-        B41D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B41E == undefined
-              ? 0
-              : this.props.APEPIDetail.B41E
-          ),
-        B42D:
-          0 -
-          Number(
-            this.props.APEPIDetail.B42E == undefined
-              ? 0
-              : this.props.APEPIDetail.B42E
-          ),
-
-        B43D: Number(
-          parseFloat(
-            (
-              0 -
-              Number(
-                this.props.APEPIDetail.B43E == undefined
-                  ? 0
-                  : this.props.APEPIDetail.B43E
-              )
-            ).toString()
-          ).toFixed(2)
-        ),
+        B41D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B41E)),
+        B42D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B42E)),
+        B43D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B43E)),
         BAvgER: 0,
         SctionTotalBD: Number(
           parseFloat(
@@ -1529,27 +1175,9 @@ export default class SeniorDirector extends React.Component<
         C11R: 0,
         C12R: 0,
         C13R: 0,
-        C11D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C11E == undefined
-              ? 0
-              : this.props.APEPIDetail.C11E
-          ),
-        C12D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C12E == undefined
-              ? 0
-              : this.props.APEPIDetail.C12E
-          ),
-        C13D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C13E == undefined
-              ? 0
-              : this.props.APEPIDetail.C13E
-          ),
+        C11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C11E)),
+        C12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C12E)),
+        C13D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C13E)),
 
         //Section C2 State
 
@@ -1569,61 +1197,19 @@ export default class SeniorDirector extends React.Component<
           this.props.APEPIDetail.C24R == undefined
             ? 0
             : this.props.APEPIDetail.C24R,
-        C21D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C21E == undefined
-              ? 0
-              : this.props.APEPIDetail.C21E
-          ),
-        C22D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C22E == undefined
-              ? 0
-              : this.props.APEPIDetail.C22E
-          ),
-        C23D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C23E == undefined
-              ? 0
-              : this.props.APEPIDetail.C23E
-          ),
-        C24D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C24E == undefined
-              ? 0
-              : this.props.APEPIDetail.C24E
-          ),
+        C21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C21E)),
+        C22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C22E)),
+        C23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C23E)),
+        C24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C24E)),
 
         // Section C3 State
 
         C31R: 0,
         C32R: 0,
         C33R: 0,
-        C31D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C31E == undefined
-              ? 0
-              : this.props.APEPIDetail.C31E
-          ),
-        C32D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C32E == undefined
-              ? 0
-              : this.props.APEPIDetail.C32E
-          ),
-        C33D:
-          0 -
-          Number(
-            this.props.APEPIDetail.C33E == undefined
-              ? 0
-              : this.props.APEPIDetail.C33E
-          ),
+        C31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C31E)),
+        C32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C32E)),
+        C33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C33E)),
 
         SctionTotalDR: 0,
         SctionTotalDD: Number(
@@ -2018,7 +1604,7 @@ export default class SeniorDirector extends React.Component<
 
     data[columns.RevertToReviewee] = this.state.ApepiDetails.RevertToReviewee;
 
-    //!Technorucs start
+    //! Technorucs
 
     let ApepiQuestionText = this.state.ApepiQuestionText;
     // section A
@@ -2082,8 +1668,6 @@ export default class SeniorDirector extends React.Component<
       this.state.ApepiDetails.PerformanceDiscussion;
     const D11R = ApepiQuestionText.map((item) => item.Reviewer).join(";");
     data[columns.D11R] = D11R;
-
-    //!Technorucs end
 
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
@@ -3142,7 +2726,6 @@ export default class SeniorDirector extends React.Component<
   private resetNAValue(val) {
     return val == 0.5 || val == undefined ? 0 : val;
   }
-
   private onChangeA1(newValue: string, TRValue: string): void {
     console.log(newValue);
     console.log(TRValue);
@@ -5747,6 +5330,138 @@ export default class SeniorDirector extends React.Component<
     });
   }
 
+  //! Technorucs
+  private isValidREVIEWEEApproved(): boolean {
+    let ApepiQuestionText = this.state.ApepiQuestionText;
+    let sectionD = ApepiQuestionText.filter(
+      (item) =>
+        (item.Reviewee == "" || Number(item.Reviewee) == 0) &&
+        item.QuestionText != "N/A"
+    );
+
+    let valid: boolean = false;
+    if (
+      sectionD.length == 0 &&
+      this.props.APEPIDetail.Complexity &&
+      // this.state.A1EE != 0 &&
+      // this.state.A2EE != 0 &&
+      // this.state.A3EE != 0 &&
+      this.state.A11E != 0 &&
+      this.state.A12E != 0 &&
+      this.state.A13E != 0 &&
+      this.state.A14E != 0 &&
+      this.state.A15E != 0 &&
+      this.state.A21E != 0 &&
+      this.state.A22E != 0 &&
+      this.state.A23E != 0 &&
+      this.state.A24E != 0 &&
+      this.state.A31E != 0 &&
+      this.state.A32E != 0 &&
+      this.state.A33E != 0 &&
+      // this.state.B1EE != 0 &&
+      // this.state.B2EE != 0 &&
+      // this.state.B3EE != 0 &&
+      // this.state.B4EE != 0 &&
+      this.state.B11E != 0 &&
+      this.state.B12E != 0 &&
+      this.state.B21E != 0 &&
+      this.state.B22E != 0 &&
+      this.state.B23E != 0 &&
+      this.state.B31E != 0 &&
+      this.state.B32E != 0 &&
+      this.state.B33E != 0 &&
+      this.state.B41E != 0 &&
+      this.state.B42E != 0 &&
+      this.state.B43E != 0 &&
+      // this.state.C1EE != 0 &&
+      // this.state.C2EE != 0 &&
+      // this.state.C3EE != 0 &&
+      this.state.C11E != 0 &&
+      this.state.C12E != 0 &&
+      this.state.C13E != 0 &&
+      this.state.C21E != 0 &&
+      this.state.C22E != 0 &&
+      this.state.C23E != 0 &&
+      this.state.C24E != 0 &&
+      this.state.C31E != 0 &&
+      this.state.C32E != 0 &&
+      this.state.C33E != 0 &&
+      this.state.ApepiDetails.E1EE &&
+      this.state.ApepiDetails.F1EE &&
+      this.state.ApepiDetails.G1EE &&
+      this.state.ApepiDetails.H1EE
+    ) {
+      valid = true;
+    }
+    return valid;
+  }
+
+  //! Technorucs
+  private isValidREVIEWERApproved(): boolean {
+    let ApepiQuestionText = this.state.ApepiQuestionText;
+    let sectionD = ApepiQuestionText.filter(
+      (item) =>
+        (item.Reviewer == "" || Number(item.Reviewer) == 0) &&
+        item.QuestionText != "N/A"
+    );
+
+    let valid: boolean = false;
+    if (
+      sectionD.length == 0 &&
+      this.props.APEPIDetail.Complexity &&
+      // this.state.A1RR != 0 &&
+      // this.state.A2RR != 0 &&
+      // this.state.A3RR != 0 &&
+      this.state.A11R != 0 &&
+      this.state.A12R != 0 &&
+      this.state.A13R != 0 &&
+      this.state.A14R != 0 &&
+      this.state.A15R != 0 &&
+      this.state.A21R != 0 &&
+      this.state.A22R != 0 &&
+      this.state.A23R != 0 &&
+      this.state.A24R != 0 &&
+      this.state.A31R != 0 &&
+      this.state.A32R != 0 &&
+      this.state.A33R != 0 &&
+      // this.state.B1RR != 0 &&
+      // this.state.B2RR != 0 &&
+      // this.state.B3RR != 0 &&
+      // this.state.B4RR != 0 &&
+      this.state.B11R != 0 &&
+      this.state.B12R != 0 &&
+      this.state.B21R != 0 &&
+      this.state.B22R != 0 &&
+      this.state.B23R != 0 &&
+      this.state.B31R != 0 &&
+      this.state.B32R != 0 &&
+      this.state.B33R != 0 &&
+      this.state.B41R != 0 &&
+      this.state.B42R != 0 &&
+      this.state.B43R != 0 &&
+      // this.state.C1RR != 0 &&
+      // this.state.C2RR != 0 &&
+      // this.state.C3RR != 0 &&
+      this.state.C11R != 0 &&
+      this.state.C12R != 0 &&
+      this.state.C13R != 0 &&
+      this.state.C21R != 0 &&
+      this.state.C22R != 0 &&
+      this.state.C23R != 0 &&
+      this.state.C24R != 0 &&
+      this.state.C31R != 0 &&
+      this.state.C32R != 0 &&
+      this.state.C33R != 0 &&
+      this.state.ApepiDetails.E1ER &&
+      this.state.ApepiDetails.F1ER &&
+      this.state.ApepiDetails.G1ER &&
+      this.state.ApepiDetails.H1ER
+    ) {
+      valid = true;
+    }
+    return valid;
+  }
+
   private async onChangeReplaceme(items: any[]) {
     let curretState = this.state.ApepiDetails;
     curretState.SubstituteUser = await MapResult.map(
@@ -5921,7 +5636,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6130,7 +5846,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6301,7 +6018,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6462,7 +6180,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6561,7 +6280,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6632,7 +6352,7 @@ export default class SeniorDirector extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B23D}</label>
+                <label> {this.state.B22D}</label>
               </td>
             </tr>
             <tr>
@@ -6664,7 +6384,7 @@ export default class SeniorDirector extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B22D}</label>
+                <label> {this.state.B23D}</label>
               </td>
             </tr>
 
@@ -6701,7 +6421,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6834,7 +6555,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6999,7 +6721,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -7138,7 +6861,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -7316,7 +7040,8 @@ export default class SeniorDirector extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -7711,7 +7436,7 @@ export default class SeniorDirector extends React.Component<
           <div className={styles.sectionContent}>
             <table className={styles.tableWithoutboder}>
               <tr>
-                <td></td>
+                <td className={styles.tablewidth}></td>
                 <td className={styles.tablelable}> Delivery Excellence </td>
                 <td className={styles.tablelable}>Value Creation</td>
                 <td className={styles.tablelable}> Personal Impact</td>
@@ -7915,7 +7640,12 @@ export default class SeniorDirector extends React.Component<
                 </div>
                 <div className={styles.divFullWidth}>
                   <PrimaryButton
-                    className={styles.btnApproved}
+                    disabled={!this.isValidREVIEWEEApproved()}
+                    className={
+                      this.isValidREVIEWEEApproved()
+                        ? styles.btnApproved
+                        : styles.btnDisable
+                    }
                     text="SUBMIT TO REVIEWER FOR APPROVAL "
                     onClick={this.onREVIEWEEApproved}
                   ></PrimaryButton>
@@ -7986,7 +7716,12 @@ export default class SeniorDirector extends React.Component<
                     onClick={this.onREVIEWERSaveDRAFT}
                   ></PrimaryButton>
                   <PrimaryButton
-                    className={styles.btnApprovedForReviewer}
+                    disabled={!this.isValidREVIEWERApproved()}
+                    className={
+                      this.isValidREVIEWERApproved()
+                        ? styles.btnApprovedForReviewer
+                        : styles.btnDisable
+                    }
                     text="SUBMIT TO LEAD MD FOR APPROVAL "
                     onClick={this.onREVIEWERApproved}
                   ></PrimaryButton>
@@ -8065,7 +7800,13 @@ export default class SeniorDirector extends React.Component<
 
             <div className={styles.divbtnREVIEWEEFORAcknowledgment}>
               {this.props.hasEditItemPermission && (
-                <div className={styles.divFullWidth}>
+                <div
+                  //! Technorucs
+                  style={{
+                    justifyContent: "flex-start",
+                  }}
+                  className={styles.divFullWidth}
+                >
                   <PrimaryButton
                     className={styles.btnApproved}
                     text="SUBMIT TO REVIEWEE FOR ACKNOWLEDGEMENT "
