@@ -230,49 +230,17 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.A24R,
       A21D:
-        Number(
-          this.props.APEPIDetail.A21R == undefined
-            ? 0
-            : this.props.APEPIDetail.A21R
-        ) -
-        Number(
-          this.props.APEPIDetail.A21E == undefined
-            ? 0
-            : this.props.APEPIDetail.A21E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A21R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A21E)),
       A22D:
-        Number(
-          this.props.APEPIDetail.A22R == undefined
-            ? 0
-            : this.props.APEPIDetail.A22R
-        ) -
-        Number(
-          this.props.APEPIDetail.A22E == undefined
-            ? 0
-            : this.props.APEPIDetail.A22E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A22R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A22E)),
       A23D:
-        Number(
-          this.props.APEPIDetail.A23R == undefined
-            ? 0
-            : this.props.APEPIDetail.A23R
-        ) -
-        Number(
-          this.props.APEPIDetail.A23E == undefined
-            ? 0
-            : this.props.APEPIDetail.A23E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A23R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A23E)),
       A24D:
-        Number(
-          this.props.APEPIDetail.A24R == undefined
-            ? 0
-            : this.props.APEPIDetail.A24R
-        ) -
-        Number(
-          this.props.APEPIDetail.A24E == undefined
-            ? 0
-            : this.props.APEPIDetail.A24E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A24R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A24E)),
       A2EE:
         this.props.APEPIDetail.A2EE == undefined
           ? 0
@@ -324,38 +292,14 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.A33R,
       A31D:
-        Number(
-          this.props.APEPIDetail.A31R == undefined
-            ? 0
-            : this.props.APEPIDetail.A31R
-        ) -
-        Number(
-          this.props.APEPIDetail.A31E == undefined
-            ? 0
-            : this.props.APEPIDetail.A31E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A31R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A31E)),
       A32D:
-        Number(
-          this.props.APEPIDetail.A32R == undefined
-            ? 0
-            : this.props.APEPIDetail.A32R
-        ) -
-        Number(
-          this.props.APEPIDetail.A32E == undefined
-            ? 0
-            : this.props.APEPIDetail.A32E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A32R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A32E)),
       A33D:
-        Number(
-          this.props.APEPIDetail.A33R == undefined
-            ? 0
-            : this.props.APEPIDetail.A33R
-        ) -
-        Number(
-          this.props.APEPIDetail.A33E == undefined
-            ? 0
-            : this.props.APEPIDetail.A33E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.A33R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.A33E)),
       A3EE:
         this.props.APEPIDetail.A3EE == undefined
           ? 0
@@ -522,27 +466,11 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.B12R,
       B11D:
-        Number(
-          this.props.APEPIDetail.B11R == undefined
-            ? 0
-            : this.props.APEPIDetail.B11R
-        ) -
-        Number(
-          this.props.APEPIDetail.B11E == undefined
-            ? 0
-            : this.props.APEPIDetail.B11E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B11R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B11E)),
       B12D:
-        Number(
-          this.props.APEPIDetail.B12R == undefined
-            ? 0
-            : this.props.APEPIDetail.B12R
-        ) -
-        Number(
-          this.props.APEPIDetail.B12E == undefined
-            ? 0
-            : this.props.APEPIDetail.B12E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B12R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B12E)),
       //  // Section B2 State
       B21E:
         this.props.APEPIDetail.B21E == undefined
@@ -569,39 +497,14 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.B23R,
       B21D:
-        Number(
-          this.props.APEPIDetail.B21R == undefined
-            ? 0
-            : this.props.APEPIDetail.B21R
-        ) -
-        Number(
-          this.props.APEPIDetail.B21E == undefined
-            ? 0
-            : this.props.APEPIDetail.B21E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B21R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B21E)),
       B22D:
-        Number(
-          this.props.APEPIDetail.B22R == undefined
-            ? 0
-            : this.props.APEPIDetail.B22R
-        ) -
-        Number(
-          this.props.APEPIDetail.B22E == undefined
-            ? 0
-            : this.props.APEPIDetail.B22E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B22R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B22E)),
       B23D:
-        Number(
-          this.props.APEPIDetail.B23R == undefined
-            ? 0
-            : this.props.APEPIDetail.B23R
-        ) -
-        Number(
-          this.props.APEPIDetail.B23E == undefined
-            ? 0
-            : this.props.APEPIDetail.B23E
-        ),
-
+        Number(this.resetNAValue(this.props.APEPIDetail.B23R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B23E)),
       //  // Section B3 State
 
       B31E:
@@ -629,44 +532,14 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.B33R,
       B31D:
-        Number(
-          this.props.APEPIDetail.B31R == undefined
-            ? 0
-            : this.props.APEPIDetail.B31R
-        ) -
-        Number(
-          this.props.APEPIDetail.B31E == undefined
-            ? 0
-            : this.props.APEPIDetail.B31E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B31R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B31E)),
       B32D:
-        Number(
-          this.props.APEPIDetail.B32R == undefined
-            ? 0
-            : this.props.APEPIDetail.B32R
-        ) -
-        Number(
-          this.props.APEPIDetail.B32E == undefined
-            ? 0
-            : this.props.APEPIDetail.B32E
-        ),
-      //B33D:  Number(this.props.APEPIDetail.B33R == undefined ? 0:this.props.APEPIDetail.B33R) - Number(this.props.APEPIDetail.B33E == undefined ? 0:this.props.APEPIDetail.B33E),
-      B33D: Number(
-        parseFloat(
-          (
-            Number(
-              this.props.APEPIDetail.B33R == undefined
-                ? 0
-                : this.props.APEPIDetail.B33R
-            ) -
-            Number(
-              this.props.APEPIDetail.B33E == undefined
-                ? 0
-                : this.props.APEPIDetail.B33E
-            )
-          ).toString()
-        ).toFixed(2)
-      ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B32R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B32E)),
+      B33D:
+        Number(this.resetNAValue(this.props.APEPIDetail.B33R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B33E)),
 
       //  // Section B4 State
 
@@ -695,44 +568,14 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.B43R,
       B41D:
-        Number(
-          this.props.APEPIDetail.B41R == undefined
-            ? 0
-            : this.props.APEPIDetail.B41R
-        ) -
-        Number(
-          this.props.APEPIDetail.B41E == undefined
-            ? 0
-            : this.props.APEPIDetail.B41E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B41R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B41E)),
       B42D:
-        Number(
-          this.props.APEPIDetail.B42R == undefined
-            ? 0
-            : this.props.APEPIDetail.B42R
-        ) -
-        Number(
-          this.props.APEPIDetail.B42E == undefined
-            ? 0
-            : this.props.APEPIDetail.B42E
-        ),
-      //B43D:  Number(this.props.APEPIDetail.B43R == undefined ? 0:this.props.APEPIDetail.B43R) - Number(this.props.APEPIDetail.B43E == undefined ? 0:this.props.APEPIDetail.B43E),
-      B43D: Number(
-        parseFloat(
-          (
-            Number(
-              this.props.APEPIDetail.B43R == undefined
-                ? 0
-                : this.props.APEPIDetail.B43R
-            ) -
-            Number(
-              this.props.APEPIDetail.B43E == undefined
-                ? 0
-                : this.props.APEPIDetail.B43E
-            )
-          ).toString()
-        ).toFixed(2)
-      ),
+        Number(this.resetNAValue(this.props.APEPIDetail.B42R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B42E)),
+      B43D:
+        Number(this.resetNAValue(this.props.APEPIDetail.B43R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.B43E)),
       //B43D : Number(parseFloat((Number(this.props.APEPIDetail.B43R == undefined ? 0:this.props.APEPIDetail.B43R) - Number(this.props.APEPIDetail.B43E == undefined ? 0:this.props.APEPIDetail.B43E))).toString()).toFixed(2))
 
       BAvgEE:
@@ -887,38 +730,14 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.C13R,
       C11D:
-        Number(
-          this.props.APEPIDetail.C11R == undefined
-            ? 0
-            : this.props.APEPIDetail.C11R
-        ) -
-        Number(
-          this.props.APEPIDetail.C11E == undefined
-            ? 0
-            : this.props.APEPIDetail.C11E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C11R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C11E)),
       C12D:
-        Number(
-          this.props.APEPIDetail.C12R == undefined
-            ? 0
-            : this.props.APEPIDetail.C12R
-        ) -
-        Number(
-          this.props.APEPIDetail.C12E == undefined
-            ? 0
-            : this.props.APEPIDetail.C12E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C12R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C12E)),
       C13D:
-        Number(
-          this.props.APEPIDetail.C13R == undefined
-            ? 0
-            : this.props.APEPIDetail.C13R
-        ) -
-        Number(
-          this.props.APEPIDetail.C13E == undefined
-            ? 0
-            : this.props.APEPIDetail.C13E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C13R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C13E)),
 
       //  // Section C2 State
 
@@ -955,49 +774,17 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.C24R,
       C21D:
-        Number(
-          this.props.APEPIDetail.C21R == undefined
-            ? 0
-            : this.props.APEPIDetail.C21R
-        ) -
-        Number(
-          this.props.APEPIDetail.C21E == undefined
-            ? 0
-            : this.props.APEPIDetail.C21E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C21R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C21E)),
       C22D:
-        Number(
-          this.props.APEPIDetail.C22R == undefined
-            ? 0
-            : this.props.APEPIDetail.C22R
-        ) -
-        Number(
-          this.props.APEPIDetail.C22E == undefined
-            ? 0
-            : this.props.APEPIDetail.C22E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C22R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C22E)),
       C23D:
-        Number(
-          this.props.APEPIDetail.C23R == undefined
-            ? 0
-            : this.props.APEPIDetail.C23R
-        ) -
-        Number(
-          this.props.APEPIDetail.C23E == undefined
-            ? 0
-            : this.props.APEPIDetail.C23E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C23R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C23E)),
       C24D:
-        Number(
-          this.props.APEPIDetail.C24R == undefined
-            ? 0
-            : this.props.APEPIDetail.C24R
-        ) -
-        Number(
-          this.props.APEPIDetail.C24E == undefined
-            ? 0
-            : this.props.APEPIDetail.C24E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C24R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C24E)),
 
       //  // Section C3 State
 
@@ -1026,38 +813,14 @@ export default class Associate extends React.Component<
           ? 0
           : this.props.APEPIDetail.C33R,
       C31D:
-        Number(
-          this.props.APEPIDetail.C31R == undefined
-            ? 0
-            : this.props.APEPIDetail.C31R
-        ) -
-        Number(
-          this.props.APEPIDetail.C31E == undefined
-            ? 0
-            : this.props.APEPIDetail.C31E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C31R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C31E)),
       C32D:
-        Number(
-          this.props.APEPIDetail.C32R == undefined
-            ? 0
-            : this.props.APEPIDetail.C32R
-        ) -
-        Number(
-          this.props.APEPIDetail.C32E == undefined
-            ? 0
-            : this.props.APEPIDetail.C32E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C32R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C32E)),
       C33D:
-        Number(
-          this.props.APEPIDetail.C33R == undefined
-            ? 0
-            : this.props.APEPIDetail.C33R
-        ) -
-        Number(
-          this.props.APEPIDetail.C33E == undefined
-            ? 0
-            : this.props.APEPIDetail.C33E
-        ),
+        Number(this.resetNAValue(this.props.APEPIDetail.C33R)) -
+        Number(this.resetNAValue(this.props.APEPIDetail.C33E)),
 
       //
       SctionTotalDE: this.props.SctionTotalDE,
@@ -1235,6 +998,305 @@ export default class Associate extends React.Component<
       Config.StatusOfReview.AwaitingReviewee
     ) {
       this.setState({ IsReviewee: false });
+      //! Technorucs
+      this.setState({
+        // Section A1 State
+
+        A11R: 0,
+        A12R: 0,
+        A13R: 0,
+        A14R: 0,
+        A15R: 0,
+        A11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A11E)),
+        A12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A12E)),
+        A13D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A13E)),
+        A14D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A14E)),
+        A15D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A15E)),
+
+        A1RR: 0,
+        A1DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.A1EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.A1EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+
+        // Section A2 State
+        A21R: 0,
+        A22R: 0,
+        A23R: 0,
+        A24R: 0,
+        A21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A21E)),
+        A22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A22E)),
+        A23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A23E)),
+        A24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A24E)),
+        A2RR: 0,
+        A2DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.A2EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.A2EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+
+        // Section A3 State
+        A31R: 0,
+        A32R: 0,
+        A33R: 0,
+        A31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A31E)),
+        A32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A32E)),
+        A33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A33E)),
+        A3RR: 0,
+
+        A3DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.A3EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.A3EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+        AAvgER: 0,
+        SctionTotalAD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.AAvgEE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.AAvgEE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+
+        B1RR: 0,
+        B1DD:
+          0 -
+          Number(
+            this.props.APEPIDetail.B1EE == undefined
+              ? 0
+              : this.props.APEPIDetail.B1EE
+          ),
+
+        B2RR: 0,
+        B2DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.B2EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.B2EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+
+        B3RR:
+          this.props.APEPIDetail.B3RR == undefined
+            ? 0
+            : this.props.APEPIDetail.B3RR,
+        B3DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.B3EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.B3EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+
+        B4RR: 0,
+
+        B4DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.B4EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.B4EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+        // Section B1 State
+        B11R: 0,
+        B12R: 0,
+        B11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B11E)),
+        B12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B12E)),
+
+        // Section B2 State
+        B21R: 0,
+        B22R: 0,
+        B23R: 0,
+        B21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B21E)),
+        B22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B22E)),
+        B23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B23E)),
+
+        // Section B3 State
+
+        B31R: 0,
+        B32R: 0,
+        B33R: 0,
+        B31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B31E)),
+        B32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B32E)),
+        B33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B33E)),
+
+        //Section B4 State
+
+        B41R: 0,
+        B42R: 0,
+        B43R: 0,
+        B41D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B41E)),
+        B42D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B42E)),
+        B43D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B43E)),
+        BAvgER: 0,
+        SctionTotalBD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.BAvgEE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.BAvgEE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+        // Section C1 State
+
+        CAvgER: 0,
+
+        SctionTotalCD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.CAvgEE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.CAvgEE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+
+        C1RR: 0,
+
+        C2RR: 0,
+
+        C3RR: 0,
+        C1DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.C1EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.C1EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+        C2DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.C2EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.C2EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+        C3DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.C3EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.C3EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
+        C11R: 0,
+        C12R: 0,
+        C13R: 0,
+        C11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C11E)),
+        C12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C12E)),
+        C13D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C13E)),
+
+        //Section C2 State
+
+        C21R:
+          this.props.APEPIDetail.C21R == undefined
+            ? 0
+            : this.props.APEPIDetail.C21R,
+        C22R:
+          this.props.APEPIDetail.C22R == undefined
+            ? 0
+            : this.props.APEPIDetail.C22R,
+        C23R:
+          this.props.APEPIDetail.C23R == undefined
+            ? 0
+            : this.props.APEPIDetail.C23R,
+        C24R:
+          this.props.APEPIDetail.C24R == undefined
+            ? 0
+            : this.props.APEPIDetail.C24R,
+        C21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C21E)),
+        C22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C22E)),
+        C23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C23E)),
+        C24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C24E)),
+
+        // Section C3 State
+
+        C31R: 0,
+        C32R: 0,
+        C33R: 0,
+        C31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C31E)),
+        C32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C32E)),
+        C33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C33E)),
+
+        SctionTotalDR: 0,
+        SctionTotalDD: Number(
+          parseFloat(Number(0 - this.props.SctionTotalDE).toString()).toFixed(2)
+        ),
+        OverallCoreR: 0,
+        OverallPerformance:
+          this.props.APEPIDetail.OverallPerformance == undefined
+            ? 0
+            : this.props.APEPIDetail.OverallPerformance,
+        E1ER: "",
+
+        F1ER: "",
+
+        G1ER: "",
+
+        H1ER: "",
+      });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
       Config.StatusOfReview.AwaitingReviewer
@@ -1601,9 +1663,77 @@ export default class Associate extends React.Component<
     const columns = Config.PEPIProjectsListColumns;
     data[columns.StatusOfReview] = Config.StatusOfReview.AwaitingReviewee;
     data[columns.Submitted] = Config.SubmittedNumber[3];
-    data[columns.RevertToReviewee] = Number(
-      this.state.ApepiDetails.RevertToReviewee
-    );
+    // data[columns.RevertToReviewee] = Number(
+    //   this.state.ApepiDetails.RevertToReviewee
+    // );
+
+    data[columns.RevertToReviewee] = this.state.ApepiDetails.RevertToReviewee;
+
+    //! Technorucs
+
+    let ApepiQuestionText = this.state.ApepiQuestionText;
+    // section A
+    data[columns.A1RR] = Number(this.state.A1RR);
+    data[columns.A2RR] = Number(this.state.A2RR);
+    data[columns.A3RR] = Number(this.state.A3RR);
+    data[columns.A11R] = Number(this.state.A11R);
+    data[columns.A12R] = Number(this.state.A12R);
+    data[columns.A13R] = Number(this.state.A13R);
+    data[columns.A14R] = Number(this.state.A14R);
+    data[columns.A15R] = Number(this.state.A15R);
+    data[columns.A21R] = Number(this.state.A21R);
+    data[columns.A22R] = Number(this.state.A22R);
+    data[columns.A23R] = Number(this.state.A23R);
+    data[columns.A24R] = Number(this.state.A24R);
+    data[columns.A31R] = Number(this.state.A31R);
+    data[columns.A32R] = Number(this.state.A32R);
+    data[columns.A33R] = Number(this.state.A33R);
+    // Section B
+    data[columns.B1RR] = Number(this.state.B1RR);
+    data[columns.B2RR] = Number(this.state.B2RR);
+    data[columns.B3RR] = Number(this.state.B3RR);
+    data[columns.B4RR] = Number(this.state.B4RR);
+    data[columns.B11R] = Number(this.state.B11R);
+    data[columns.B12R] = Number(this.state.B12R);
+    data[columns.B21R] = Number(this.state.B21R);
+    data[columns.B22R] = Number(this.state.B22R);
+    data[columns.B23R] = Number(this.state.B23R);
+    data[columns.B31R] = Number(this.state.B31R);
+    data[columns.B32R] = Number(this.state.B32R);
+    data[columns.B33R] = Number(this.state.B33R);
+    data[columns.B41R] = Number(this.state.B41R);
+    data[columns.B42R] = Number(this.state.B42R);
+    data[columns.B43R] = Number(this.state.B43R);
+
+    //Section C
+    data[columns.C1RR] = Number(this.state.C1RR);
+    data[columns.C2RR] = Number(this.state.C2RR);
+    data[columns.C3RR] = Number(this.state.C3RR);
+    data[columns.C11R] = Number(this.state.C11R);
+    data[columns.C12R] = Number(this.state.C12R);
+    data[columns.C13R] = Number(this.state.C13R);
+    data[columns.C21R] = Number(this.state.C21R);
+    data[columns.C22R] = Number(this.state.C22R);
+    data[columns.C23R] = Number(this.state.C23R);
+    data[columns.C24R] = Number(this.state.C24R);
+    data[columns.C31R] = Number(this.state.C31R);
+    data[columns.C32R] = Number(this.state.C32R);
+    data[columns.C33R] = Number(this.state.C33R);
+    data[columns.AAvgER] = Number(this.state.AAvgER);
+    data[columns.BAvgER] = Number(this.state.BAvgER);
+    data[columns.CAvgER] = Number(this.state.CAvgER);
+
+    data[columns.OverallPerformance] = String(this.state.OverallPerformance);
+
+    data[columns.E1ER] = this.state.ApepiDetails.E1ER;
+    data[columns.F1ER] = this.state.ApepiDetails.F1ER;
+    data[columns.G1ER] = this.state.ApepiDetails.G1ER;
+    data[columns.H1ER] = this.state.ApepiDetails.H1ER;
+    data[columns.PerformanceDiscussion] =
+      this.state.ApepiDetails.PerformanceDiscussion;
+    const D11R = ApepiQuestionText.map((item) => item.Reviewer).join(";");
+    data[columns.D11R] = D11R;
+
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -5932,6 +6062,138 @@ export default class Associate extends React.Component<
     });
   }
 
+  //! Technorucs
+  private isValidREVIEWEEApproved(): boolean {
+    let ApepiQuestionText = this.state.ApepiQuestionText;
+    let sectionD = ApepiQuestionText.filter(
+      (item) =>
+        (item.Reviewee == "" || Number(item.Reviewee) == 0) &&
+        item.QuestionText != "N/A"
+    );
+
+    let valid: boolean = false;
+    if (
+      sectionD.length == 0 &&
+      this.props.APEPIDetail.Complexity &&
+      // this.state.A1EE != 0 &&
+      // this.state.A2EE != 0 &&
+      // this.state.A3EE != 0 &&
+      this.state.A11E != 0 &&
+      this.state.A12E != 0 &&
+      this.state.A13E != 0 &&
+      this.state.A14E != 0 &&
+      this.state.A15E != 0 &&
+      this.state.A21E != 0 &&
+      this.state.A22E != 0 &&
+      this.state.A23E != 0 &&
+      this.state.A24E != 0 &&
+      this.state.A31E != 0 &&
+      this.state.A32E != 0 &&
+      this.state.A33E != 0 &&
+      // this.state.B1EE != 0 &&
+      // this.state.B2EE != 0 &&
+      // this.state.B3EE != 0 &&
+      // this.state.B4EE != 0 &&
+      this.state.B11E != 0 &&
+      this.state.B12E != 0 &&
+      this.state.B21E != 0 &&
+      this.state.B22E != 0 &&
+      // this.state.B23E != 0 &&
+      this.state.B31E != 0 &&
+      this.state.B32E != 0 &&
+      this.state.B33E != 0 &&
+      this.state.B41E != 0 &&
+      this.state.B42E != 0 &&
+      this.state.B43E != 0 &&
+      // this.state.C1EE != 0 &&
+      // this.state.C2EE != 0 &&
+      // this.state.C3EE != 0 &&
+      this.state.C11E != 0 &&
+      this.state.C12E != 0 &&
+      this.state.C13E != 0 &&
+      this.state.C21E != 0 &&
+      this.state.C22E != 0 &&
+      this.state.C23E != 0 &&
+      this.state.C24E != 0 &&
+      this.state.C31E != 0 &&
+      this.state.C32E != 0 &&
+      this.state.C33E != 0 &&
+      this.state.ApepiDetails.E1EE &&
+      this.state.ApepiDetails.F1EE &&
+      this.state.ApepiDetails.G1EE &&
+      this.state.ApepiDetails.H1EE
+    ) {
+      valid = true;
+    }
+    return valid;
+  }
+
+  //! Technorucs
+  private isValidREVIEWERApproved(): boolean {
+    let ApepiQuestionText = this.state.ApepiQuestionText;
+    let sectionD = ApepiQuestionText.filter(
+      (item) =>
+        (item.Reviewer == "" || Number(item.Reviewer) == 0) &&
+        item.QuestionText != "N/A"
+    );
+
+    let valid: boolean = false;
+    if (
+      sectionD.length == 0 &&
+      this.props.APEPIDetail.Complexity &&
+      // this.state.A1RR != 0 &&
+      // this.state.A2RR != 0 &&
+      // this.state.A3RR != 0 &&
+      this.state.A11R != 0 &&
+      this.state.A12R != 0 &&
+      this.state.A13R != 0 &&
+      this.state.A14R != 0 &&
+      this.state.A15R != 0 &&
+      this.state.A21R != 0 &&
+      this.state.A22R != 0 &&
+      this.state.A23R != 0 &&
+      this.state.A24R != 0 &&
+      this.state.A31R != 0 &&
+      this.state.A32R != 0 &&
+      this.state.A33R != 0 &&
+      // this.state.B1RR != 0 &&
+      // this.state.B2RR != 0 &&
+      // this.state.B3RR != 0 &&
+      // this.state.B4RR != 0 &&
+      this.state.B11R != 0 &&
+      this.state.B12R != 0 &&
+      this.state.B21R != 0 &&
+      this.state.B22R != 0 &&
+      // this.state.B23R != 0 &&
+      this.state.B31R != 0 &&
+      this.state.B32R != 0 &&
+      this.state.B33R != 0 &&
+      this.state.B41R != 0 &&
+      this.state.B42R != 0 &&
+      this.state.B43R != 0 &&
+      // this.state.C1RR != 0 &&
+      // this.state.C2RR != 0 &&
+      // this.state.C3RR != 0 &&
+      this.state.C11R != 0 &&
+      this.state.C12R != 0 &&
+      this.state.C13R != 0 &&
+      this.state.C21R != 0 &&
+      this.state.C22R != 0 &&
+      this.state.C23R != 0 &&
+      this.state.C24R != 0 &&
+      this.state.C31R != 0 &&
+      this.state.C32R != 0 &&
+      this.state.C33R != 0 &&
+      this.state.ApepiDetails.E1ER &&
+      this.state.ApepiDetails.F1ER &&
+      this.state.ApepiDetails.G1ER &&
+      this.state.ApepiDetails.H1ER
+    ) {
+      valid = true;
+    }
+    return valid;
+  }
+
   // private async onChangeReplaceme(items: any[]) {
 
   //   let curretState = this.state.ApepiDetails;
@@ -6117,7 +6379,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6316,7 +6579,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6482,7 +6746,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6638,7 +6903,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6737,7 +7003,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6841,7 +7108,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -6972,7 +7240,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -7135,7 +7404,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -7271,7 +7541,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -7443,7 +7714,8 @@ export default class Associate extends React.Component<
         <div className={styles.sectionContent}>
           <table className={styles.tableWithoutboder}>
             <tr>
-              <td></td> <td className={styles.tablelable}> Reviewee </td>{" "}
+              <td className={styles.tablewidth}></td>{" "}
+              <td className={styles.tablelable}> Reviewee </td>{" "}
               <td className={styles.tablelable}>Reviewer</td>{" "}
               <td className={styles.tablelable}> Difference</td>
             </tr>
@@ -7831,7 +8103,7 @@ export default class Associate extends React.Component<
           <div className={styles.sectionContent}>
             <table className={styles.tableWithoutboder}>
               <tr>
-                <td></td>
+                <td className={styles.tablewidth}></td>
                 <td className={styles.tablelable}> Delivery Excellence </td>
                 <td className={styles.tablelable}>Value Creation</td>
                 <td className={styles.tablelable}> Personal Impact</td>
@@ -8035,7 +8307,12 @@ export default class Associate extends React.Component<
                 </div>
                 <div className={styles.divFullWidth}>
                   <PrimaryButton
-                    className={styles.btnApproved}
+                    disabled={!this.isValidREVIEWEEApproved()}
+                    className={
+                      this.isValidREVIEWEEApproved()
+                        ? styles.btnApproved
+                        : styles.btnDisable
+                    }
                     text="SUBMIT TO REVIEWER FOR APPROVAL "
                     onClick={this.onREVIEWEEApproved}
                   ></PrimaryButton>
@@ -8106,7 +8383,12 @@ export default class Associate extends React.Component<
                     onClick={this.onREVIEWERSaveDRAFT}
                   ></PrimaryButton>
                   <PrimaryButton
-                    className={styles.btnApprovedForReviewer}
+                    disabled={!this.isValidREVIEWERApproved()}
+                    className={
+                      this.isValidREVIEWERApproved()
+                        ? styles.btnApprovedForReviewer
+                        : styles.btnDisable
+                    }
                     text="SUBMIT TO LEAD MD FOR APPROVAL "
                     onClick={this.onREVIEWERApproved}
                   ></PrimaryButton>
@@ -8182,7 +8464,12 @@ export default class Associate extends React.Component<
 
             <div className={styles.divbtnREVIEWEEFORAcknowledgment}>
               {this.props.hasEditItemPermission && (
-                <div className={styles.divFullWidth}>
+                <div
+                  style={{
+                    justifyContent: "flex-start",
+                  }}
+                  className={styles.divFullWidth}
+                >
                   <PrimaryButton
                     className={styles.btnApproved}
                     text="SUBMIT TO REVIEWEE FOR ACKNOWLEDGEMENT "

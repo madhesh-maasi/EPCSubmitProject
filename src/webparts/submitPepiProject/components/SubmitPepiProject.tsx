@@ -529,7 +529,12 @@ export default class SubmitPepiProject extends React.Component<
                       onChange={(e, selectedOption) => {
                         this.onChangeServiceLineValue(selectedOption.text);
                       }}
-                      disabled={this.state.DisableNewFormOprtion}
+                      disabled={
+                        this.state.PEPIDetails.StatusOfReview != ""
+                          ? true
+                          : false
+                      }
+                      // disabled={this.state.DisableNewFormOprtion}
                     />
                   </div>
                 </div>
@@ -626,7 +631,7 @@ export default class SubmitPepiProject extends React.Component<
                     {" "}
                     <Label>{this.state.PEPIDetails.Title}</Label>
                   </div>
-                  {/* <div className={styles.Newcol25Right}>
+                  <div className={styles.Newcol25Right}>
                     {" "}
                     <Label>
                       <b>Fiscal Year: </b>
@@ -635,7 +640,7 @@ export default class SubmitPepiProject extends React.Component<
                   <div className={styles.Newcol25left}>
                     {" "}
                     <Label>{this.state.PEPIDetails.FiscalYear}</Label>
-                  </div> */}
+                  </div>
                 </div>
 
                 <div className={styles.row}>
@@ -661,11 +666,21 @@ export default class SubmitPepiProject extends React.Component<
                   </div>
                 </div>
                 <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
+                  {/* <div className={styles.Newcol25Right}>
                     <Label></Label>
                   </div>
                   <div className={styles.Newcol25left}>
                     <Label></Label>
+                  </div> */}
+                  <div className={styles.Newcol25Right}>
+                    {" "}
+                    <Label>
+                      <b>Hours Worked: </b>
+                    </Label>
+                  </div>
+                  <div className={styles.Newcol25left}>
+                    {" "}
+                    <Label>{this.state.PEPIDetails.HoursWorked}</Label>
                   </div>
                   <div className={styles.col25leftServiceLine}>
                     <Label>
@@ -675,39 +690,44 @@ export default class SubmitPepiProject extends React.Component<
                   </div>
                   <div className={styles.Newcol25left}>
                     <Dropdown
+                      disabled={
+                        this.state.PEPIDetails.StatusOfReview != ""
+                          ? true
+                          : false
+                      }
                       className={styles.dropServiceLine}
                       options={this.ServiceLineOptions}
                       selectedKey={this.state.PEPIDetails.ServiceLine}
                       onChange={(e, selectedOption) => {
                         this.onChangeServiceLineValue(selectedOption.text);
                       }}
-                      disabled={this.state.DisableNewFormOprtion}
+                      // disabled={this.state.DisableNewFormOprtion}
                     />
                   </div>
                 </div>
-                {!this.state.IsCreateMode && (
-                  <div className={styles.row}>
-                    <div className={styles.Newcol25Right}>
-                      <Label>
-                        <b>Hours Worked: </b>
-                      </Label>
-                    </div>
-                    <div className={styles.Newcol25left}>
-                      <Label>{this.state.PEPIDetails.HoursWorked}</Label>
-                      {/* <input
-                        type="Number"
-                        value={this.state.PEPIDetails.HoursWorked}
-                        onChange={this.onChangeHoursWorked}
-                      /> */}
-                    </div>
-                    <div className={styles.Newcol25Right}>
-                      <Label></Label>
-                    </div>
-                    <div className={styles.Newcol25Right}>
-                      <Label></Label>
-                    </div>
-                  </div>
-                )}
+                {!this.state.IsCreateMode &&
+                  // <div className={styles.row}>
+                  //   <div className={styles.Newcol25Right}>
+                  //     <Label>
+                  //       <b>Hours Worked: </b>
+                  //     </Label>
+                  //   </div>
+                  //   <div className={styles.Newcol25left}>
+                  //     <Label>{this.state.PEPIDetails.HoursWorked}</Label>
+                  //     {/* <input
+                  //       type="Number"
+                  //       value={this.state.PEPIDetails.HoursWorked}
+                  //       onChange={this.onChangeHoursWorked}
+                  //     /> */}
+                  //   </div>
+                  //   <div className={styles.Newcol25Right}>
+                  //     <Label></Label>
+                  //   </div>
+                  //   <div className={styles.Newcol25Right}>
+                  //     <Label></Label>
+                  //   </div>
+                  // </div>
+                  null}
                 <div className={styles.container}>
                   <div className={styles.divCompetency}>
                     <Label>
@@ -766,7 +786,13 @@ export default class SubmitPepiProject extends React.Component<
                           <b>Reviewer Name:</b>
                           <span style={{ color: "#ff0000" }}>*</span>
                         </Label>
-                        <div>
+                        <div
+                          className={
+                            this.state.PEPIDetails.StatusOfReview
+                              ? styles.clsPeoplepicker
+                              : styles.clsPeoplepickerEnable
+                          }
+                        >
                           <PeoplePicker
                             context={this.props.AppContext}
                             personSelectionLimit={1}
@@ -794,7 +820,13 @@ export default class SubmitPepiProject extends React.Component<
                           <b>Lead MD:</b>
                           <span style={{ color: "#ff0000" }}>*</span>
                         </Label>
-                        <div>
+                        <div
+                          className={
+                            this.state.PEPIDetails.StatusOfReview
+                              ? styles.clsPeoplepicker
+                              : styles.clsPeoplepickerEnable
+                          }
+                        >
                           <PeoplePicker
                             context={this.props.AppContext}
                             personSelectionLimit={1}

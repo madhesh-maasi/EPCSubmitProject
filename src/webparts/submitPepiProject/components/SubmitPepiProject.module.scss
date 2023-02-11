@@ -50,9 +50,11 @@
         padding: 10px;
     }
     .doppadding {
+        text-align: center;
         padding: 10px;
     }
     .doppadding {
+        text-align: center;
         padding: 10px;
     }
     .divbox {
@@ -86,6 +88,9 @@
     .tablelable {
         font-weight: bold;
         text-align: 'center',
+    }
+    .tablewidth {
+        width: 80%
     }
     .boldlabel {
         font-weight: 600;
@@ -264,6 +269,10 @@
         background-color: #90ee90;
         color: black;
     }
+    .btnDisable {
+        background-color: #FFFF99;
+        color: black;
+    }
     .btnApprovedForReviewer {
         background-color: #90ee90;
         color: black;
@@ -340,6 +349,16 @@
         button {
             width: 200px;
             margin: 10px;
+        }
+    }
+    .clsPeoplepicker {
+        button {
+            display: none;
+        }
+    }
+    .clsPeoplepickerEnable {
+        button {
+            display: block;
         }
     }
 }

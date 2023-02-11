@@ -41,6 +41,17 @@ export default class QuestionText extends React.Component<
     this.onChangeD1 = this.onChangeD1.bind(this);
   }
   public async componentDidMount() {
+    //     if (this.props.QuestionText.length == 0) {
+    //      let tempArr=[{
+    //       Difference: "N/A",
+    // QuestionText: "Not Applicable for Selected Service Line",
+    // Reviewee: "N/A",
+    // Reviewer: "N/A",
+    //      }]
+    //      this.setState({
+    //       ModifiedQuestions: tempArr
+    //     });
+    //     }
     // this.FillOptions();
     //   this.props.APEPIDetail.D11E.split(';').map((item,index) => {
     //     this.modifiedRows[index].Reviewee =  item
@@ -116,13 +127,10 @@ export default class QuestionText extends React.Component<
             <td className={styles.tablelable}>Reviewer</td>
             <td className={styles.tablelable}> Difference</td>
           </tr>
+
           {this.props.QuestionText.map((element, index) => {
             let Question = element.QuestionText.split("-");
             let FirstQuestionText = element.QuestionText.split("-")[0];
-            // let allQuestionText = element.QuestionText.replace(
-            //   FirstQuestionText + "-",
-            //   ""
-            // );
             let allQuestionText = "";
             for (var i = 1; i < Object.keys(Question).length; i++) {
               if (i == Object.keys(Question).length - 1) {
@@ -199,6 +207,26 @@ export default class QuestionText extends React.Component<
               </tr>
             );
           })}
+
+          {this.props.QuestionText.length == 0 ? (
+            <tr>
+              <td
+                style={{
+                  // paddingTop: "2%",
+                  width: "80%",
+                }}
+              >
+                <label className={styles.tablelable}>
+                  {"Not Applicable for Selected Service Line"}
+                </label>
+              </td>
+              <td className={styles.doppadding}>{"N/A"}</td>
+              <td className={styles.doppadding}>{"N/A"}</td>
+              <td className={styles.doppadding}>
+                <label>{"N/A"}</label>
+              </td>
+            </tr>
+          ) : null}
           <tr className={styles.divbox}>
             <td>
               <label className={styles.tablelable}>
