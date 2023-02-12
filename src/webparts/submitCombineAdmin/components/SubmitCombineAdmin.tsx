@@ -485,7 +485,23 @@ export default class SubmitCombineAdmin extends React.Component<
             </div>
           </div>
         </div>
-        {/* <MapDetailsList AppContext={this.props.AppContext} /> */}
+        {/* {this.state.CombineAdmin.ReviewerNameEmail && this.state.IsShowForm && (
+          <>
+            <Label
+              style={{
+                marginTop: 10,
+                fontWeight: "bold",
+                fontSize: 16,
+              }}
+            >
+              Unstarted, Uncombined reviews.
+            </Label>
+            <MapDetailsList
+              AppContext={this.props.AppContext}
+              ReviewerName={this.state.CombineAdmin.ReviewerName}
+            />
+          </>
+        )} */}
       </React.Fragment>
     );
   }
