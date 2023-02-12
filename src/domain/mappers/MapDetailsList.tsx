@@ -34,6 +34,7 @@ export interface IDetailsListBasicExampleState {
 
 export interface IDetailsListProps {
   AppContext: WebPartContext;
+  ReviewerName: any;
 }
 let loggeduseremail;
 export class MapDetailsList extends React.Component<
@@ -166,17 +167,19 @@ export class MapDetailsList extends React.Component<
       this.props.AppContext,
       Config.ListNames.PEPIProjects
     );
-    const camlFilterConditions =
-      "<Where><IsNull><FieldRef Name='Project_x0020_Status'/></IsNull> </Where>";
-    const pepiDetails =
-      await this.listPEPIProjectsItemService.getItemsUsingCAML(
-        [],
-        undefined,
-        camlFilterConditions,
-        5000,
-        Enums.ItemResultType.PEPI_PEPIDetails
-      );
+    const camlFilterConditions = `<Where><And><IsNull><FieldRef Name='Project_x0020_Status'/></IsNull><Eq><FieldRef Name='Reviewer_x0020_Name' LookupId='TRUE'/><Value Type='User'>${this.props.ReviewerName.Id}</Value></Eq></And></Where>`;
+    // const camlFilterConditions = `<Where><IsNull><FieldRef Name='Project_x0020_Status'/></IsNull></Where>`;
+    let pepiDetails = await this.listPEPIProjectsItemService.getItemsUsingCAML(
+      [],
+      undefined,
+      camlFilterConditions,
+      5000,
+      Enums.ItemResultType.PEPI_PEPIDetails
+    );
 
+    pepiDetails = pepiDetails.filter((item) => {
+      return item.Reviewee.Email == this.props.ReviewerName.Email;
+    });
     let tempArr = [];
     pepiDetails.forEach((arr) => {
       tempArr.push({
@@ -232,11 +235,7 @@ export class MapDetailsList extends React.Component<
     const { items, columns } = this.state;
 
     return (
-      <div
-        style={{
-          marginTop: 10,
-        }}
-      >
+      <div>
         <DetailsList
           items={items}
           columns={columns}
