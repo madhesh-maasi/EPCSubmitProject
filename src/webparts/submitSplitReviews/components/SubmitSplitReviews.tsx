@@ -30,6 +30,7 @@ import { Enums } from "../../../globals/Enums";
 import ListItemService from "../../../services/ListItemService";
 import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
+import { MapDetailsList } from "../../../domain/mappers/MapDetailsList";
 
 export default class SubmitSplitReviews extends React.Component<
   ISubmitSplitReviewsProps,
@@ -37,6 +38,8 @@ export default class SubmitSplitReviews extends React.Component<
 > {
   private listSplitReviewsItemService: ListItemService;
   private hasEditItemPermission: boolean = true;
+  private userService: UserService;
+  userServiceDetails: User;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -78,7 +81,8 @@ export default class SubmitSplitReviews extends React.Component<
           undefined,
           Enums.ItemResultType.PEPI_SplitReviews
         );
-
+      this.userService = new UserService(this.props.AppContext);
+      this.userServiceDetails = await this.userService.GetCurrentUserProfile();
       this.setState({
         IsLoading: false,
         hasEditItemPermission: this.hasEditItemPermission,
@@ -191,134 +195,186 @@ export default class SubmitSplitReviews extends React.Component<
       }
     }
     return (
-      <div className={styles.SubmitSplitReviews}>
-        <div className={styles.container}>
-          <div className={styles.logoImg} title="logo"></div>
+      <>
+        <div className={styles.SubmitSplitReviews}>
+          <div className={styles.container}>
+            <div className={styles.logoImg} title="logo"></div>
 
-          <hr className={styles.hr}></hr>
-          <div className={styles.lblTopText}>
-            <div className={styles.divCompetency}>
-              <Label>
-                <b>Split Review:</b> If you would like to split a long-term
-                project into multiple reviews.
-              </Label>
-            </div>
-            <div className={styles.divCompetency}>
-              <Label>
-                <b>INSTRUCTIONS:</b> Locate the ID number of the review you
-                would like to split and enter it in the box labeled{" "}
-                <b> Source Review ID</b>. Enter the<b> Hours to Review </b> and{" "}
-                <b>Title of new Split Review </b> in the boxes below, then
-                <b> click Create Split Review</b>.
-              </Label>
-            </div>
-          </div>
-          <hr className={styles.hr}></hr>
-
-          <div className={styles.row}>
-            {" "}
-            <div className={styles.lblReviewIDs}>
-              {" "}
-              <Label className={styles.lblText}>
-                <b>Source Review ID (Choose from below): </b>
-                <span style={{ color: "#ff0000" }}>*</span>
-              </Label>
-            </div>
-            <div className={styles.txtReviewIDs}>
-              {" "}
-              <TextField
-                disabled={!this.state.IsCreateMode}
-                onKeyPress={(e) => handleKeyPress(e)}
-                resizable={false}
-                multiline={false}
-                value={this.state.SplitReviews.SourceReviewID}
-                onChange={this.onChangeSourceReviewID}
-                className={styles.Multilinetextarea}
-              ></TextField>{" "}
-            </div>
-          </div>
-          <div className={styles.row}>
-            <div className={styles.lblReviewIDs}>
-              {" "}
-              <Label className={styles.lblText}>
-                <b>Hours to Review </b>
-                <span style={{ color: "#ff0000" }}>*</span>
-              </Label>
-            </div>
-            <div className={styles.txtReviewIDs}>
-              <TextField
-                disabled={!this.state.IsCreateMode}
-                onKeyPress={(e) => handleKeyPress(e)}
-                resizable={false}
-                multiline={false}
-                value={this.state.SplitReviews.HourstoReview}
-                onChange={this.onChangeHourstoReview}
-                className={styles.Multilinetextarea}
-              ></TextField>{" "}
-            </div>
-          </div>
-
-          <div className={styles.row}>
-            <div className={styles.lblReviewIDs}>
-              <Label className={styles.lblText}>
-                <b>Title of new Split Review</b>
-              </Label>
-              <Label className={styles.lblText}>
-                <b>(Example: Acme Software Implementation - Phase 1) </b>
-                <span style={{ color: "#ff0000" }}>*</span>
-              </Label>
-            </div>
-            <div className={styles.txtReviewIDs}>
-              <TextField
-                disabled={!this.state.IsCreateMode}
-                resizable={false}
-                multiline={false}
-                value={this.state.SplitReviews.Title}
-                onChange={this.onChangeTitleofnewSplitReview}
-                className={styles.Multilinetextarea}
-              ></TextField>
-            </div>
-          </div>
-
-          <div className={styles.divFullWidth}>
-            {(this.state.hasEditItemPermission || this.state.IsCreateMode) && (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  alignItems: "center",
-                }}
-              >
-                {this.state.IsCreateMode ? (
-                  <PrimaryButton
-                    className={
-                      this.state.DisableSaveButton
-                        ? styles.btnSave
-                        : styles.btnSaveEnable
-                    }
-                    disabled={this.state.DisableSaveButton}
-                    text="CREATE SPLIT REVIEW"
-                    onClick={this.onSave}
-                  ></PrimaryButton>
-                ) : null}
-                <PrimaryButton
-                  className={styles.btnCancel}
-                  // text="Cancel"
-                  text="Close"
-                  onClick={this.onCancel}
-                ></PrimaryButton>
+            <hr className={styles.hr}></hr>
+            <div className={styles.lblTopText}>
+              <div className={styles.divCompetency}>
+                <Label>
+                  <b>Split Review:</b> If you would like to split a long-term
+                  project into multiple reviews.
+                </Label>
               </div>
-            )}
-            {/* {!this.state.IsCreateMode && (
+              <div className={styles.divCompetency}>
+                <Label>
+                  <b>INSTRUCTIONS:</b> Locate the ID number of the review you
+                  would like to split and enter it in the box labeled{" "}
+                  <b> Source Review ID</b>. Enter the<b> Hours to Review </b>{" "}
+                  and <b>Title of new Split Review </b> in the boxes below, then
+                  <b> click Create Split Review</b>.
+                </Label>
+              </div>
+            </div>
+            <hr className={styles.hr}></hr>
+
+            <div className={styles.row}>
+              {" "}
+              <div className={styles.lblReviewIDs}>
+                {" "}
+                <Label className={styles.lblText}>
+                  <b>Source Review ID (Choose from below): </b>
+                  <span style={{ color: "#ff0000" }}>*</span>
+                </Label>
+              </div>
+              <div className={styles.txtReviewIDs}>
+                {" "}
+                <TextField
+                  disabled={!this.state.IsCreateMode}
+                  onKeyPress={(e) => handleKeyPress(e)}
+                  resizable={false}
+                  multiline={false}
+                  value={this.state.SplitReviews.SourceReviewID}
+                  onChange={this.onChangeSourceReviewID}
+                  className={styles.Multilinetextarea}
+                ></TextField>{" "}
+              </div>
+            </div>
+            <div className={styles.row}>
+              <div className={styles.lblReviewIDs}>
+                {" "}
+                <Label className={styles.lblText}>
+                  <b>Hours to Review </b>
+                  <span style={{ color: "#ff0000" }}>*</span>
+                </Label>
+              </div>
+              <div className={styles.txtReviewIDs}>
+                <TextField
+                  disabled={!this.state.IsCreateMode}
+                  onKeyPress={(e) => handleKeyPress(e)}
+                  resizable={false}
+                  multiline={false}
+                  value={this.state.SplitReviews.HourstoReview}
+                  onChange={this.onChangeHourstoReview}
+                  className={styles.Multilinetextarea}
+                ></TextField>{" "}
+              </div>
+            </div>
+
+            <div className={styles.row}>
+              <div className={styles.lblReviewIDs}>
+                <Label className={styles.lblText}>
+                  <b>Title of new Split Review</b>
+                </Label>
+                <Label className={styles.lblText}>
+                  <b>(Example: Acme Software Implementation - Phase 1) </b>
+                  <span style={{ color: "#ff0000" }}>*</span>
+                </Label>
+              </div>
+              <div className={styles.txtReviewIDs}>
+                <TextField
+                  disabled={!this.state.IsCreateMode}
+                  resizable={false}
+                  multiline={false}
+                  value={this.state.SplitReviews.Title}
+                  onChange={this.onChangeTitleofnewSplitReview}
+                  className={styles.Multilinetextarea}
+                ></TextField>
+              </div>
+            </div>
+
+            <div className={styles.divFullWidth}>
+              {(this.state.hasEditItemPermission ||
+                this.state.IsCreateMode) && (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                  }}
+                >
+                  {this.state.IsCreateMode ? (
+                    <PrimaryButton
+                      className={
+                        this.state.DisableSaveButton
+                          ? styles.btnSave
+                          : styles.btnSaveEnable
+                      }
+                      disabled={this.state.DisableSaveButton}
+                      text="CREATE SPLIT REVIEW"
+                      onClick={this.onSave}
+                    ></PrimaryButton>
+                  ) : null}
+                  <PrimaryButton
+                    className={styles.btnCancel}
+                    // text="Cancel"
+                    text="Close"
+                    onClick={this.onCancel}
+                  ></PrimaryButton>
+                </div>
+              )}
+              {/* {!this.state.IsCreateMode && (
               <PrimaryButton
                 className={styles.btnCancel}
                 text="Close"
                 onClick={this.onCancel}
               ></PrimaryButton>
             )} */}
+            </div>
           </div>
         </div>
-      </div>
+        {this.userServiceDetails && (
+          <>
+            <Label
+              style={{
+                marginTop: 10,
+                fontWeight: "bold",
+                fontSize: 16,
+              }}
+            >
+              Unstarted project reviews not previously split. You may split any
+              of these.
+            </Label>
+            <MapDetailsList
+              ViewId={1}
+              AppContext={this.props.AppContext}
+              ReviewerName={this.userServiceDetails}
+            />
+            <Label
+              style={{
+                marginTop: 25,
+                fontWeight: "bold",
+                fontSize: 16,
+              }}
+            >
+              Unstarted project reviews previously split. You may split these
+              again.
+            </Label>
+            <MapDetailsList
+              ViewId={2}
+              AppContext={this.props.AppContext}
+              ReviewerName={this.userServiceDetails}
+            />
+            <Label
+              style={{
+                marginTop: 25,
+                fontWeight: "bold",
+                fontSize: 16,
+              }}
+            >
+              Individual split reviews - for information only. You may not split
+              these again.
+            </Label>
+            <MapDetailsList
+              ViewId={3}
+              AppContext={this.props.AppContext}
+              ReviewerName={this.userServiceDetails}
+            />
+          </>
+        )}
+      </>
     );
   }
 }
