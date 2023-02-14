@@ -130,6 +130,9 @@ export default class SubmitCombineAdmin extends React.Component<
   }
 
   private async onGETREVIEWS(): Promise<void> {
+    this.setState({
+      IsShowForm: false,
+    });
     const CombineAdmin = this.state.CombineAdmin;
     let data = {};
     const columns = Config.CombineAdminListColumns;
@@ -318,6 +321,7 @@ export default class SubmitCombineAdmin extends React.Component<
                   }
                 >
                   <PeoplePicker
+                    disabled={!this.state.IsCreateMode}
                     context={this.props.AppContext}
                     personSelectionLimit={1}
                     groupName={""} // Leave this blank in case you want to filter from all users
@@ -485,23 +489,28 @@ export default class SubmitCombineAdmin extends React.Component<
             </div>
           </div>
         </div>
-        {/* {this.state.CombineAdmin.ReviewerNameEmail && this.state.IsShowForm && (
+        {this.state.IsShowForm ? (
           <>
-            <Label
-              style={{
-                marginTop: 10,
-                fontWeight: "bold",
-                fontSize: 16,
-              }}
-            >
-              Unstarted, Uncombined reviews.
-            </Label>
-            <MapDetailsList
-              AppContext={this.props.AppContext}
-              ReviewerName={this.state.CombineAdmin.ReviewerName}
-            />
+            {this.state.CombineAdmin.ReviewerNameEmail && (
+              <>
+                <Label
+                  style={{
+                    marginTop: 10,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                  }}
+                >
+                  Unstarted, Uncombined reviews.
+                </Label>
+                <MapDetailsList
+                  ViewId={1}
+                  AppContext={this.props.AppContext}
+                  ReviewerName={this.state.CombineAdmin.ReviewerName}
+                />
+              </>
+            )}
           </>
-        )} */}
+        ) : null}
       </React.Fragment>
     );
   }

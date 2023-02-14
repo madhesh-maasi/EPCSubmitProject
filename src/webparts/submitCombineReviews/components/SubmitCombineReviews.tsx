@@ -37,7 +37,7 @@ import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 
 import { PEPI_CombineReviews } from "../../../domain/models/PEPI_CombineReviews";
-
+import { MapDetailsList } from "../../../domain/mappers/MapDetailsList";
 export default class SubmitCombineReviews extends React.Component<
   ISubmitCombineReviewsProps,
   ISubmitCombineReviewsState
@@ -45,6 +45,8 @@ export default class SubmitCombineReviews extends React.Component<
   private ServiceLineOptions: IDropdownOption[] = [];
   private ListItemService: ListItemService;
   private hasEditItemPermission: boolean = true;
+  private userService: UserService;
+  userServiceDetails: User;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -88,6 +90,8 @@ export default class SubmitCombineReviews extends React.Component<
           undefined,
           Enums.ItemResultType.PEPI_CombineReviews
         );
+      this.userService = new UserService(this.props.AppContext);
+      this.userServiceDetails = await this.userService.GetCurrentUserProfile();
       this.setState({
         IsLoading: false,
         hasEditItemPermission: this.hasEditItemPermission,
@@ -384,6 +388,24 @@ export default class SubmitCombineReviews extends React.Component<
             </div>
           </div>
         </div>
+        {this.userServiceDetails && (
+          <>
+            <Label
+              style={{
+                marginTop: 10,
+                fontWeight: "bold",
+                fontSize: 16,
+              }}
+            >
+              Unstarted, Uncombined reviews.
+            </Label>
+            <MapDetailsList
+              ViewId={1}
+              AppContext={this.props.AppContext}
+              ReviewerName={this.userServiceDetails}
+            />
+          </>
+        )}
       </React.Fragment>
     );
   }

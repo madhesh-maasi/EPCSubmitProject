@@ -36,6 +36,7 @@ import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 
 import { PEPI_SplitAdmin } from "../../../domain/models/PEPI_SplitAdmin";
+import { MapDetailsList } from "../../../domain/mappers/MapDetailsList";
 
 export default class SubmitSplitAdmin extends React.Component<
   ISubmitSplitAdminProps,
@@ -116,6 +117,9 @@ export default class SubmitSplitAdmin extends React.Component<
     }
   }
   private async onGETREVIEWS(): Promise<void> {
+    this.setState({
+      IsShowForm: false,
+    });
     const CombineAdmin = this.state.SplitAdmin;
     let data = {};
     const columns = Config.CombineAdminListColumns;
@@ -281,12 +285,13 @@ export default class SubmitSplitAdmin extends React.Component<
                 </div>
                 <div
                   className={
-                    this.state.SplitAdmin.SplitAdminStatus == "Completed"
+                    !this.state.IsCreateMode
                       ? styles.clsPeoplepicker
                       : styles.clsPeoplepickerEnable
                   }
                 >
                   <PeoplePicker
+                    disabled={!this.state.IsCreateMode}
                     context={this.props.AppContext}
                     personSelectionLimit={1}
                     groupName={""} // Leave this blank in case you want to filter from all users
@@ -429,6 +434,59 @@ export default class SubmitSplitAdmin extends React.Component<
             </div>
           </div>
         </div>
+        {this.state.IsShowForm ? (
+          <>
+            {this.state.SplitAdmin.RevieweeName && (
+              <>
+                <Label
+                  style={{
+                    marginTop: 10,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                  }}
+                >
+                  Unstarted project reviews not previously split. You may split
+                  any of these.
+                </Label>
+                <MapDetailsList
+                  ViewId={1}
+                  AppContext={this.props.AppContext}
+                  ReviewerName={this.state.SplitAdmin.RevieweeName}
+                />
+                <Label
+                  style={{
+                    marginTop: 25,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                  }}
+                >
+                  Unstarted project reviews previously split. You may split
+                  these again.
+                </Label>
+                <MapDetailsList
+                  ViewId={2}
+                  AppContext={this.props.AppContext}
+                  ReviewerName={this.state.SplitAdmin.RevieweeName}
+                />
+                <Label
+                  style={{
+                    marginTop: 25,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                  }}
+                >
+                  Individual split reviews - for information only. You may not
+                  split these again.
+                </Label>
+                <MapDetailsList
+                  ViewId={3}
+                  AppContext={this.props.AppContext}
+                  ReviewerName={this.state.SplitAdmin.RevieweeName}
+                />
+              </>
+            )}
+          </>
+        ) : null}
       </React.Fragment>
     );
   }

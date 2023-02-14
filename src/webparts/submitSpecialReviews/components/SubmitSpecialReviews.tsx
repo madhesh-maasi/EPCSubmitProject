@@ -383,12 +383,13 @@ export default class SubmitSpecialReviews extends React.Component<
                 </div>
                 <div
                   className={
-                    this.state.SpecialReviews.SpecialReviewStatus == "Completed"
+                    !this.state.IsCreateMode
                       ? styles.clsPeoplepicker
                       : styles.clsPeoplepickerEnable
                   }
                 >
                   <PeoplePicker
+                    disabled={!this.state.IsCreateMode}
                     context={this.props.AppContext}
                     personSelectionLimit={1}
                     groupName={""} // Leave this blank in case you want to filter from all users
@@ -411,7 +412,14 @@ export default class SubmitSpecialReviews extends React.Component<
                     <span style={{ color: "#ff0000" }}> * </span>
                   </Label>
                 </div>
-                <div className={styles.clsPeoplepicker}>
+                <div
+                  // className={styles.clsPeoplepicker}
+                  className={
+                    !this.state.IsCreateMode
+                      ? styles.clsPeoplepicker
+                      : styles.clsPeoplepickerEnable
+                  }
+                >
                   <PeoplePicker
                     disabled={!this.state.IsCreateMode}
                     context={this.props.AppContext}
