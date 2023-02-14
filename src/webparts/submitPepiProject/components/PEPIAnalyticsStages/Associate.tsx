@@ -1250,22 +1250,10 @@ export default class Associate extends React.Component<
 
         //Section C2 State
 
-        C21R:
-          this.props.APEPIDetail.C21R == undefined
-            ? 0
-            : this.props.APEPIDetail.C21R,
-        C22R:
-          this.props.APEPIDetail.C22R == undefined
-            ? 0
-            : this.props.APEPIDetail.C22R,
-        C23R:
-          this.props.APEPIDetail.C23R == undefined
-            ? 0
-            : this.props.APEPIDetail.C23R,
-        C24R:
-          this.props.APEPIDetail.C24R == undefined
-            ? 0
-            : this.props.APEPIDetail.C24R,
+        C21R: 0,
+        C22R: 0,
+        C23R: 0,
+        C24R: 0,
         C21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C21E)),
         C22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C22E)),
         C23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C23E)),
@@ -7912,7 +7900,12 @@ export default class Associate extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.E1ER}
+              value={
+                this.state.ApepiDetails.StatusOfReview !=
+                Config.StatusOfReview.AwaitingReviewee
+                  ? this.state.ApepiDetails.E1ER
+                  : ""
+              }
               onChange={this.onChangeE1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -7946,7 +7939,12 @@ export default class Associate extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.F1ER}
+              value={
+                this.state.ApepiDetails.StatusOfReview !=
+                Config.StatusOfReview.AwaitingReviewee
+                  ? this.state.ApepiDetails.F1ER
+                  : ""
+              }
               onChange={this.onChangeF1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -7980,7 +7978,12 @@ export default class Associate extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.G1ER}
+              value={
+                this.state.ApepiDetails.StatusOfReview !=
+                Config.StatusOfReview.AwaitingReviewee
+                  ? this.state.ApepiDetails.G1ER
+                  : ""
+              }
               onChange={this.onChangeG1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -8014,7 +8017,12 @@ export default class Associate extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.H1ER}
+              value={
+                this.state.ApepiDetails.StatusOfReview !=
+                Config.StatusOfReview.AwaitingReviewee
+                  ? this.state.ApepiDetails.H1ER
+                  : ""
+              }
               onChange={this.onChangeH1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -8157,12 +8165,17 @@ export default class Associate extends React.Component<
                     {" "}
                     {Number(
                       parseFloat(
-                        (
-                          (Number(this.state.AAvgEE) +
-                            Number(this.state.BAvgEE) +
-                            Number(this.state.CAvgEE) +
-                            Number(this.state.SctionTotalDE)) /
-                          4
+                        this.getAverageCalculation(
+                          // (Number(this.state.AAvgEE) +
+                          //   Number(this.state.BAvgEE) +
+                          //   Number(this.state.CAvgEE) +
+                          //   Number(this.state.SctionTotalDE)) /
+                          // 4
+                          Number(this.resetNAValue(this.state.AAvgEE)),
+                          Number(this.resetNAValue(this.state.BAvgEE)),
+                          Number(this.resetNAValue(this.state.CAvgEE)),
+                          Number(this.state.SctionTotalDE),
+                          0
                         ).toString()
                       ).toFixed(2)
                     )}
@@ -8224,13 +8237,20 @@ export default class Associate extends React.Component<
                       {" "}
                       {Number(
                         parseFloat(
-                          (
-                            (Number(this.state.AAvgER) +
-                              Number(this.state.BAvgER) +
-                              Number(this.state.CAvgER) +
-                              Number(this.state.SctionTotalDR)) /
-                            4
-                          ).toString()
+                          this.getAverageCalculation(
+                            Number(this.resetNAValue(this.state.AAvgER)),
+                            Number(this.resetNAValue(this.state.BAvgER)),
+                            Number(this.resetNAValue(this.state.CAvgER)),
+                            Number(this.state.SctionTotalDR),
+                            0
+                          )
+                            // (Number(this.state.AAvgER) +
+                            //   Number(this.state.BAvgER) +
+                            //   Number(this.state.CAvgER) +
+                            //   Number(this.state.SctionTotalDR)) /
+                            // 4
+
+                            .toString()
                         ).toFixed(2)
                       )}
                     </label>

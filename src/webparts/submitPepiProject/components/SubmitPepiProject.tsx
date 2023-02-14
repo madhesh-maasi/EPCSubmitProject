@@ -37,7 +37,13 @@ import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 import { PEPI_PEPIQuestionText } from "../../../domain/models/PEPI_PEPIQuestionText";
 import QuestionText from "../components/PEPIAllQuestionText/QuestionText";
-
+import {
+  IPersonaSharedProps,
+  Persona,
+  PersonaSize,
+  PersonaPresence,
+} from "@fluentui/react/lib/Persona";
+import { sp } from "@pnp/sp";
 export default class SubmitPepiProject extends React.Component<
   ISubmitPepiProjectProps,
   ISubmitPEPIprojectState
@@ -77,6 +83,8 @@ export default class SubmitPepiProject extends React.Component<
       IsSelectedEmployeeInvalid: false,
       LeadMDEmail: "",
       ReviewerEmail: "",
+      ReviewerName: "",
+      LeadMDName: "",
       RevieweeName: "",
       ReplaceUsermail: "",
 
@@ -100,6 +108,7 @@ export default class SubmitPepiProject extends React.Component<
     });
   }
   public async componentDidMount() {
+    this.getUserNameByMail();
     //alert("hi 1");
     let DESum = 0;
     let DRSum = 0;
@@ -224,7 +233,8 @@ export default class SubmitPepiProject extends React.Component<
         LeadMDEmail: pepiDetails.LeadMD.Email,
         ReviewerEmail: pepiDetails.Reviewer.Email,
         RevieweeName: pepiDetails.Reviewee.Title,
-
+        ReviewerName: pepiDetails.Reviewer.Title,
+        LeadMDName: pepiDetails.LeadMD.Title,
         ReplaceUsermail: pepiDetails.Replaceme.Email,
         TempPEPIQuestionText: QuestionText,
         SctionTotalDE: AvgDE,
@@ -450,6 +460,16 @@ export default class SubmitPepiProject extends React.Component<
       Config.Links.HomePageLink;
     window.location.href = returnURL;
     return false;
+  }
+  private async getUserNameByMail() {
+    await sp.web.siteUsers
+      .getByEmail("RChilakala@alvarezandmarsal.com")
+      .get()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+    return "";
   }
   public render(): React.ReactElement<ISubmitPepiProjectProps> {
     return (
@@ -787,25 +807,37 @@ export default class SubmitPepiProject extends React.Component<
                           <span style={{ color: "#ff0000" }}>*</span>
                         </Label>
                         <div
-                          className={
-                            this.state.PEPIDetails.StatusOfReview
-                              ? styles.clsPeoplepicker
-                              : styles.clsPeoplepickerEnable
-                          }
+                        // className={
+                        //   this.state.PEPIDetails.StatusOfReview
+                        //     ? styles.clsPeoplepicker
+                        //     : styles.clsPeoplepickerEnable
+                        // }
                         >
-                          <PeoplePicker
-                            context={this.props.AppContext}
-                            personSelectionLimit={1}
-                            groupName={""} // Leave this blank in case you want to filter from all users
-                            showtooltip={true}
-                            ensureUser={true}
-                            showHiddenInUI={false}
-                            principalTypes={[PrincipalType.User]}
-                            selectedItems={this.onChangeReviewerName}
-                            defaultSelectedUsers={[this.state.ReviewerEmail]}
-                            disabled={this.state.DisableNewFormOprtion}
-                            resolveDelay={1000}
-                          />
+                          {this.state.PEPIDetails.StatusOfReview != "" ||
+                          this.state.PEPIDetails.StatusOfReview ? (
+                            <Persona
+                              imageUrl={
+                                "/_layouts/15/userphoto.aspx?size=S&username=" +
+                                this.state.ReviewerEmail
+                              }
+                              text={this.state.RevieweeName}
+                              size={PersonaSize.size32}
+                            />
+                          ) : (
+                            <PeoplePicker
+                              context={this.props.AppContext}
+                              personSelectionLimit={1}
+                              groupName={""} // Leave this blank in case you want to filter from all users
+                              showtooltip={true}
+                              ensureUser={true}
+                              showHiddenInUI={false}
+                              principalTypes={[PrincipalType.User]}
+                              selectedItems={this.onChangeReviewerName}
+                              defaultSelectedUsers={[this.state.ReviewerEmail]}
+                              disabled={this.state.DisableNewFormOprtion}
+                              resolveDelay={1000}
+                            />
+                          )}
                         </div>
                       </div>
                       <div
@@ -821,25 +853,42 @@ export default class SubmitPepiProject extends React.Component<
                           <span style={{ color: "#ff0000" }}>*</span>
                         </Label>
                         <div
-                          className={
-                            this.state.PEPIDetails.StatusOfReview
-                              ? styles.clsPeoplepicker
-                              : styles.clsPeoplepickerEnable
-                          }
+                        // className={
+                        //   this.state.PEPIDetails.StatusOfReview
+                        //     ? styles.clsPeoplepicker
+                        //     : styles.clsPeoplepickerEnable
+                        // }
                         >
-                          <PeoplePicker
-                            context={this.props.AppContext}
-                            personSelectionLimit={1}
-                            groupName={""} // Leave this blank in case you want to filter from all users
-                            showtooltip={true}
-                            ensureUser={true}
-                            showHiddenInUI={false}
-                            principalTypes={[PrincipalType.User]}
-                            resolveDelay={1000}
-                            selectedItems={this.onChangeLeadMDName}
-                            disabled={this.state.DisableNewFormOprtion}
-                            defaultSelectedUsers={[this.state.LeadMDEmail]}
-                          />
+                          {this.state.PEPIDetails.StatusOfReview != "" ||
+                          this.state.PEPIDetails.StatusOfReview ? (
+                            <Persona
+                              imageUrl={
+                                "/_layouts/15/userphoto.aspx?size=S&username=" +
+                                this.state.LeadMDEmail
+                              }
+                              text={this.state.LeadMDName}
+                              size={PersonaSize.size32}
+                            />
+                          ) : (
+                            <PeoplePicker
+                              context={this.props.AppContext}
+                              personSelectionLimit={1}
+                              groupName={""} // Leave this blank in case you want to filter from all users
+                              showtooltip={true}
+                              ensureUser={true}
+                              showHiddenInUI={false}
+                              principalTypes={[PrincipalType.User]}
+                              resolveDelay={1000}
+                              selectedItems={this.onChangeLeadMDName}
+                              disabled={
+                                !this.state.PEPIDetails.StatusOfReview ||
+                                this.state.PEPIDetails.StatusOfReview != ""
+                                  ? true
+                                  : false
+                              }
+                              defaultSelectedUsers={[this.state.LeadMDEmail]}
+                            />
+                          )}
                         </div>
                       </div>
                       {!this.state.IsCreateMode &&

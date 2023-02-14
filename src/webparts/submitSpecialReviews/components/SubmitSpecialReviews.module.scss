@@ -414,9 +414,9 @@
     padding: 3px;
     text-align: left;
     @include ms-Grid-col;
-    button {
-        display: none;
-    }
+    // button {
+    //     display: none;
+    // }
 }
 
 .clsPeoplepickerEnable {
