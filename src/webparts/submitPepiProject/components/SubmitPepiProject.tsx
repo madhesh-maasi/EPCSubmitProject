@@ -651,10 +651,16 @@ export default class SubmitPepiProject extends React.Component<
                     {" "}
                     <Label>{this.state.PEPIDetails.Title}</Label>
                   </div>
-                  <div className={styles.Newcol25Right}>
+                  {/* <div className={styles.Newcol25Right}>
                     {" "}
                     <Label>
                       <b>Fiscal Year: </b>
+                    </Label>
+                  </div> */}
+                   <div className={styles.Newcol25Right}>
+                    {" "}
+                    <Label>
+                      <b>Home Office: </b>
                     </Label>
                   </div>
                   <div className={styles.Newcol25left}>
@@ -674,10 +680,16 @@ export default class SubmitPepiProject extends React.Component<
                     {" "}
                     <Label>{this.state.PEPIDetails.ProjectCode}</Label>
                   </div>
-                  <div className={styles.Newcol25Right}>
+                  {/* <div className={styles.Newcol25Right}>
                     {" "}
                     <Label>
                       <b>Home Office: </b>
+                    </Label>
+                  </div> */}
+                  <div className={styles.col25leftServiceLine}>
+                    <Label>
+                      <b>Service Line: </b>
+                      <span style={{ color: "#ff0000" }}>*</span>
                     </Label>
                   </div>
                   <div className={styles.Newcol25left}>
@@ -702,12 +714,12 @@ export default class SubmitPepiProject extends React.Component<
                     {" "}
                     <Label>{this.state.PEPIDetails.HoursWorked}</Label>
                   </div>
-                  <div className={styles.col25leftServiceLine}>
+                  {/* <div className={styles.col25leftServiceLine}>
                     <Label>
                       <b>Service Line: </b>
                       <span style={{ color: "#ff0000" }}>*</span>
                     </Label>
-                  </div>
+                  </div> */}
                   <div className={styles.Newcol25left}>
                     <Dropdown
                       disabled={
