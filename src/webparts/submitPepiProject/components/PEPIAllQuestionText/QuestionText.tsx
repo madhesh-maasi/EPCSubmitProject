@@ -236,15 +236,15 @@ export default class QuestionText extends React.Component<
             </td>
             <td className={styles.doppadding}>
               {" "}
-              <label>{this.props.SctionTotalDE}</label>
+              <label>{Number(this.props.SctionTotalDE).toFixed(2)}</label>
             </td>
             <td className={styles.doppadding}>
               {" "}
-              <label>{this.props.SctionTotalDR}</label>
+              <label>{Number(this.props.SctionTotalDR).toFixed(2)}</label>
             </td>
             <td className={styles.doppadding}>
               {" "}
-              <label>{this.props.SctionTotalDD}</label>
+              <label>{Number(this.props.SctionTotalDD).toFixed(2)}</label>
             </td>
           </tr>
         </table>

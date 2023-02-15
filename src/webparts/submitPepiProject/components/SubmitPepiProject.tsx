@@ -902,6 +902,14 @@ export default class SubmitPepiProject extends React.Component<
                               </Label>
                               <div>
                                 <Dropdown
+                                  disabled={
+                                    this.state.PEPIDetails.StatusOfReview ==
+                                      Config.StatusOfReview.AwaitingReviewer ||
+                                    this.state.PEPIDetails.StatusOfReview ==
+                                      Config.StatusOfReview.AwaitingReviewee
+                                      ? false
+                                      : true
+                                  }
                                   options={this.ComplexityOptions}
                                   selectedKey={
                                     this.state.PEPIDetails.Complexity

@@ -1736,7 +1736,7 @@ export default class Analytics extends React.Component<
     data[columns.StatusOfReview] =
       Config.StatusOfReview.AwaitingAcknowledgement;
     data[columns.Submitted] = Config.SubmittedNumber[6];
-    data[columns.H1EL] = this.state.ApepiDetails.H1EE;
+    data[columns.H1EL] = this.state.ApepiDetails.H1EL;
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -6513,15 +6513,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label>{this.state.A1EE}</label>
+                <label>{Number(this.state.A1EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label>{this.state.A1RR}</label>
+                <label>{Number(this.state.A1RR).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label>{this.state.A1DD}</label>
+                <label>{Number(this.state.A1DD).toFixed(2)}</label>
               </td>
             </tr>
           </table>
@@ -6679,15 +6679,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.A2EE}</label>
+                <label> {Number(this.state.A2EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.A2RR}</label>
+                <label> {Number(this.state.A2RR).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.A2DD}</label>
+                <label> {Number(this.state.A2DD).toFixed(2)}</label>
               </td>
             </tr>
           </table>
@@ -6809,15 +6809,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.A3EE}</label>
+                <label> {Number(this.state.A3EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.A3RR} </label>
+                <label> {Number(this.state.A3RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.A3DD} </label>
+                <label> {Number(this.state.A3DD).toFixed(2)} </label>
               </td>
             </tr>
             <tr className={styles.divboxWithoutboder}>
@@ -6829,15 +6829,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.AAvgEE}</label>
+                <label> {Number(this.state.AAvgEE).toFixed(2)}</label>
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.AAvgER}</label>
+                <label> {Number(this.state.AAvgER).toFixed(2)}</label>
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.SctionTotalAD}</label>
+                <label> {Number(this.state.SctionTotalAD).toFixed(2)}</label>
               </td>
             </tr>
           </table>
@@ -6935,15 +6935,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B1EE}</label>
+                <label> {Number(this.state.B1EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B1RR} </label>
+                <label> {Number(this.state.B1RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B1DD} </label>
+                <label> {Number(this.state.B1DD).toFixed(2)} </label>
               </td>
             </tr>
           </table>
@@ -7040,15 +7040,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B2EE}</label>
+                <label> {Number(this.state.B2EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B2RR} </label>
+                <label> {Number(this.state.B2RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B2DD} </label>
+                <label> {Number(this.state.B2DD).toFixed(2)} </label>
               </td>
             </tr>
           </table>
@@ -7174,15 +7174,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B3EE}</label>
+                <label> {Number(this.state.B3EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B3RR} </label>
+                <label> {Number(this.state.B3RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B3DD} </label>
+                <label> {Number(this.state.B3DD).toFixed(2)} </label>
               </td>
             </tr>
           </table>
@@ -7311,15 +7311,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B4EE}</label>
+                <label> {Number(this.state.B4EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B4RR} </label>
+                <label> {Number(this.state.B4RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.B4DD} </label>
+                <label> {Number(this.state.B4DD).toFixed(2)} </label>
               </td>
             </tr>
             <tr className={styles.divboxWithoutboder}>
@@ -7331,15 +7331,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.BAvgEE}</label>
+                <label> {Number(this.state.BAvgEE).toFixed(2)}</label>
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.BAvgER}</label>
+                <label> {Number(this.state.BAvgER).toFixed(2)}</label>
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.SctionTotalBD}</label>
+                <label> {Number(this.state.SctionTotalBD).toFixed(2)}</label>
               </td>
             </tr>
           </table>
@@ -7472,15 +7472,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C1EE}</label>
+                <label> {Number(this.state.C1EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C1RR} </label>
+                <label> {Number(this.state.C1RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C1DD} </label>
+                <label> {Number(this.state.C1DD).toFixed(2)} </label>
               </td>
             </tr>
           </table>
@@ -7643,15 +7643,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C2EE}</label>
+                <label> {Number(this.state.C2EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C2RR} </label>
+                <label> {Number(this.state.C2RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C2DD} </label>
+                <label> {Number(this.state.C2DD).toFixed(2)} </label>
               </td>
             </tr>
           </table>
@@ -7777,15 +7777,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C3EE}</label>
+                <label> {Number(this.state.C3EE).toFixed(2)}</label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C3RR} </label>
+                <label> {Number(this.state.C3RR).toFixed(2)} </label>
               </td>
               <td className={styles.doppadding}>
                 {" "}
-                <label> {this.state.C3DD} </label>
+                <label> {Number(this.state.C3DD).toFixed(2)} </label>
               </td>
             </tr>
             <tr className={styles.divboxWithoutboder}>
@@ -7797,15 +7797,15 @@ export default class Analytics extends React.Component<
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.CAvgEE}</label>
+                <label> {Number(this.state.CAvgEE).toFixed(2)}</label>
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.CAvgER}</label>
+                <label> {Number(this.state.CAvgER).toFixed(2)}</label>
               </td>
               <td className={styles.finalsctionTD}>
                 {" "}
-                <label> {this.state.SctionTotalCD}</label>
+                <label> {Number(this.state.SctionTotalCD).toFixed(2)}</label>
               </td>
             </tr>
           </table>
@@ -8055,7 +8055,7 @@ export default class Analytics extends React.Component<
           <div className={styles.sectionContent}>
             <table className={styles.tableWithoutboder}>
               <tr>
-                <td className={styles.tablewidth}></td>{" "}
+                <td></td>{" "}
                 <td className={styles.tablelable}> Delivery Excellence </td>{" "}
                 <td className={styles.tablelable}>Value Creation</td>{" "}
                 <td className={styles.tablelable}> Personal Impact</td>{" "}
@@ -8068,37 +8068,45 @@ export default class Analytics extends React.Component<
                     REVIEWEE AVERAGES{" "}
                   </label>
                 </td>
-                <td>
+                <td
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
                   {" "}
-                  <label className={styles.lablePadding}>
-                    {" "}
-                    {this.state.AAvgEE}
-                  </label>
+                  <label> {Number(this.state.AAvgEE).toFixed(2)}</label>
                 </td>
-                <td>
+                <td
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
                   {" "}
-                  <label className={styles.lablePadding}>
-                    {" "}
-                    {this.state.BAvgEE}
-                  </label>
+                  <label> {Number(this.state.BAvgEE).toFixed(2)}</label>
                 </td>
-                <td>
+                <td
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
                   {" "}
-                  <label className={styles.lablePadding}>
-                    {" "}
-                    {this.state.CAvgEE}
-                  </label>
+                  <label> {Number(this.state.CAvgEE).toFixed(2)}</label>
                 </td>
-                <td>
+                <td
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
                   {" "}
-                  <label className={styles.lablePadding}>
-                    {" "}
-                    {this.state.SctionTotalDE}
-                  </label>
+                  <label> {Number(this.state.SctionTotalDE).toFixed(2)}</label>
                 </td>
-                <td>
+                <td
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
                   {" "}
-                  <label className={styles.lablePadding}>
+                  <label>
                     {" "}
                     {Number(
                       parseFloat(
@@ -8114,8 +8122,8 @@ export default class Analytics extends React.Component<
                           Number(this.state.SctionTotalDE),
                           0
                         ).toString()
-                      ).toFixed(2)
-                    )}
+                      )
+                    ).toFixed(2)}
                   </label>
                 </td>
               </tr>
@@ -8127,37 +8135,48 @@ export default class Analytics extends React.Component<
                       REVIEWER AVERAGES
                     </label>
                   </td>
-                  <td>
+                  <td
+                    style={{
+                      textAlign: "center",
+                    }}
+                  >
                     {" "}
-                    <label className={styles.lablePadding}>
+                    <label> {Number(this.state.AAvgER).toFixed(2)}</label>
+                  </td>
+                  <td
+                    style={{
+                      textAlign: "center",
+                    }}
+                  >
+                    {" "}
+                    <label> {Number(this.state.BAvgER).toFixed(2)}</label>
+                  </td>
+                  <td
+                    style={{
+                      textAlign: "center",
+                    }}
+                  >
+                    {" "}
+                    <label> {Number(this.state.CAvgER).toFixed(2)}</label>
+                  </td>
+                  <td
+                    style={{
+                      textAlign: "center",
+                    }}
+                  >
+                    {" "}
+                    <label>
                       {" "}
-                      {this.state.AAvgER}
+                      {Number(this.state.SctionTotalDR).toFixed(2)}
                     </label>
                   </td>
-                  <td>
+                  <td
+                    style={{
+                      textAlign: "center",
+                    }}
+                  >
                     {" "}
-                    <label className={styles.lablePadding}>
-                      {" "}
-                      {this.state.BAvgER}
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label className={styles.lablePadding}>
-                      {" "}
-                      {this.state.CAvgER}
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label className={styles.lablePadding}>
-                      {" "}
-                      {this.state.SctionTotalDR}
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label className={styles.lablePadding}>
+                    <label>
                       {" "}
                       {Number(
                         parseFloat(
@@ -8175,8 +8194,8 @@ export default class Analytics extends React.Component<
                             // 4
 
                             .toString()
-                        ).toFixed(2)
-                      )}
+                        )
+                      ).toFixed(2)}
                     </label>
                   </td>
                 </tr>
@@ -8202,6 +8221,11 @@ export default class Analytics extends React.Component<
                   onChange={this.onchangedPerformanceDiscussionDate}
                 /> */}
               <DatePicker
+                disabled={
+                  !this.state.IsLeadMD ||
+                  !this.state.IsAcknowledgement ||
+                  !this.state.IsApprovaed
+                }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
                 value={this.state.ApepiDetails.PerformanceDiscussion}
                 formatDate={this._onFormatDate}
@@ -8413,6 +8437,9 @@ export default class Analytics extends React.Component<
                 <div className={styles.col25left}>
                   {" "}
                   <textarea
+                    style={{
+                      width: "100%",
+                    }}
                     value={this.state.ApepiDetails.RevertToReviewee}
                     onChange={this.onChangeRevertToReviewee}
                   ></textarea>{" "}
@@ -8470,7 +8497,16 @@ export default class Analytics extends React.Component<
                   className={styles.divFullWidth}
                 >
                   <PrimaryButton
-                    className={styles.btnApproved}
+                    disabled={!this.state.ApepiDetails.H1EL}
+                    className={
+                      this.state.ApepiDetails.H1EL
+                        ? styles.btnApproved
+                        : styles.btnDisable
+                    }
+                    style={{
+                      justifyContent: "flex-start",
+                    }}
+                    // className={styles.btnApproved}
                     text="SUBMIT TO REVIEWEE FOR ACKNOWLEDGEMENT "
                     onClick={this.onLEADMDApproved}
                   ></PrimaryButton>
@@ -8485,6 +8521,9 @@ export default class Analytics extends React.Component<
                 <div className={styles.col25left}>
                   {" "}
                   <textarea
+                    style={{
+                      width: "100%",
+                    }}
                     value={this.state.ApepiDetails.RevertToReviewer}
                     onChange={this.onChangeRevertToReviewer}
                   ></textarea>{" "}
@@ -8549,19 +8588,19 @@ export default class Analytics extends React.Component<
           </div>
         )}
 
-        {this.state.IsReviewee && (
-          <div className={styles.divFullWidth}>
-            <fieldset className={styles.divFullWidth}>
-              {" "}
-              <legend>Signoff History</legend>{" "}
-              <textarea
-                disabled={true}
-                value={this.state.ApepiDetails.SignoffHistory}
-                className={styles.Multilinetextarea}
-              ></textarea>
-            </fieldset>
-          </div>
-        )}
+        {/* {this.state.IsReviewee && ( */}
+        <div className={styles.divFullWidth}>
+          <fieldset className={styles.divFullWidth}>
+            {" "}
+            <legend>Signoff History</legend>{" "}
+            <textarea
+              disabled={true}
+              value={this.state.ApepiDetails.SignoffHistory}
+              className={styles.Multilinetextarea}
+            ></textarea>
+          </fieldset>
+        </div>
+        {/* )} */}
       </div>
     );
   }
