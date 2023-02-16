@@ -236,8 +236,9 @@ export default class MapCAMLResult extends ContextService {
     //debugger;
     result.PerformanceDiscussion =
       item[Config.PEPIProjectsListColumns.PerformanceDiscussion] == ""
-        ? new Date()
-        : new Date(item[Config.PEPIProjectsListColumns.PerformanceDiscussion]);
+        ? undefined
+        : // ? new Date()
+          new Date(item[Config.PEPIProjectsListColumns.PerformanceDiscussion]);
     //this.props.APEPIDetail.E1EE == undefined ? "":this.props.APEPIDetail.E1EE
 
     result.ModifiedBy = this.mapUser(item[Config.BaseColumns.ModifedBy]);
