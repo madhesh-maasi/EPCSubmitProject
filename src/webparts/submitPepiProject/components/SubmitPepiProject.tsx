@@ -493,7 +493,7 @@ export default class SubmitPepiProject extends React.Component<
                   <div className={styles.row}>
                     <div className={styles.Newcol25Right}>
                       <Label>
-                        <b>Reviewee: </b>
+                        <b>Reviewee : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -501,7 +501,7 @@ export default class SubmitPepiProject extends React.Component<
                     </div>
                     <div className={styles.Newcol25Right}>
                       <Label>
-                        <b>Hours Worked: </b>
+                        <b>Hours Worked : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -512,7 +512,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Engagement: </b>
+                        <b>Engagement : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -522,7 +522,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Job Role:</b>
+                        <b>Job Role :</b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -534,17 +534,17 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Project Code: </b>
+                        <b>Project Code : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
                       {" "}
                       <Label>{this.state.PEPIDetails.ProjectCode}</Label>
                     </div>
-                    <div className={styles.col25leftServiceLine}>
+                    <div className={styles.Newcol25Right}>
                       <Label>
-                        <b>Service Line: </b>
-                        <span style={{ color: "#ff0000" }}>*</span>
+                        <span style={{ color: "#ff0000" }}> * </span>
+                        <b>Service Line : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -570,7 +570,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Home Office: </b>
+                        <b>Home Office : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -602,8 +602,8 @@ export default class SubmitPepiProject extends React.Component<
                       }
                     >
                       <Label>
-                        <b>Reviewer Name:</b>
-                        <span style={{ color: "#ff0000" }}>*</span>
+                        <span style={{ color: "#ff0000" }}> * </span>
+                        <b>Reviewer Name :</b>
                       </Label>
                     </div>
                     <div
@@ -615,8 +615,8 @@ export default class SubmitPepiProject extends React.Component<
                       }
                     >
                       <Label>
+                        <span style={{ color: "#ff0000" }}> * </span>
                         <b>Lead MD:</b>
-                        <span style={{ color: "#ff0000" }}>*</span>
                       </Label>
                     </div>
                   </div>
@@ -629,7 +629,7 @@ export default class SubmitPepiProject extends React.Component<
                   <div className={styles.row}>
                     <div className={styles.Newcol25Right}>
                       <Label>
-                        <b>Reviewee: </b>
+                        <b>Reviewee : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -638,7 +638,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Job Role:</b>
+                        <b>Job Role :</b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -651,7 +651,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Engagement: </b>
+                        <b>Engagement : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -672,7 +672,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Home Office: </b>
+                        <b>Home Office : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -685,7 +685,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Project Code: </b>
+                        <b>Project Code : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -703,10 +703,10 @@ export default class SubmitPepiProject extends React.Component<
                     <Label>{this.state.PEPIDetails.HomeOffice}</Label>
                   </div>
                   */}
-                    <div className={styles.col25leftServiceLine}>
+                    <div className={styles.Newcol25Right}>
                       <Label>
-                        <b>Service Line: </b>
-                        <span style={{ color: "#ff0000" }}>*</span>
+                        <span style={{ color: "#ff0000" }}> * </span>
+                        <b>Service Line : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -736,7 +736,7 @@ export default class SubmitPepiProject extends React.Component<
                     <div className={styles.Newcol25Right}>
                       {" "}
                       <Label>
-                        <b>Hours Worked: </b>
+                        <b>Hours Worked : </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -748,7 +748,7 @@ export default class SubmitPepiProject extends React.Component<
                         <div className={styles.Newcol25Right}>
                           {" "}
                           <Label>
-                            <b>Fiscal Year: </b>
+                            <b>Fiscal Year : </b>
                           </Label>
                         </div>
                         <div className={styles.Newcol25left}>
@@ -859,10 +859,14 @@ export default class SubmitPepiProject extends React.Component<
                           }
                         >
                           <Label>
-                            <b>Reviewer Name:</b>
-                            <span style={{ color: "#ff0000" }}>*</span>
+                            <span style={{ color: "#ff0000" }}> * </span>
+                            <b>Reviewer Name :</b>
                           </Label>
-                          <div>
+                          <div
+                            style={{
+                              marginLeft: 10,
+                            }}
+                          >
                             {this.state.PEPIDetails.StatusOfReview != "" ||
                             this.state.PEPIDetails.StatusOfReview ? (
                               <Persona
@@ -901,10 +905,14 @@ export default class SubmitPepiProject extends React.Component<
                           }
                         >
                           <Label>
-                            <b>Lead MD:</b>
-                            <span style={{ color: "#ff0000" }}>*</span>
+                            <span style={{ color: "#ff0000" }}> * </span>
+                            <b>Lead MD :</b>
                           </Label>
-                          <div>
+                          <div
+                            style={{
+                              marginLeft: 10,
+                            }}
+                          >
                             {this.state.PEPIDetails.StatusOfReview != "" ||
                             this.state.PEPIDetails.StatusOfReview ? (
                               <Persona
@@ -938,7 +946,7 @@ export default class SubmitPepiProject extends React.Component<
                             <>
                               <div className={styles.col25left}>
                                 <Label>
-                                  <b>Complexity:</b>
+                                  <b>Complexity :</b>
                                 </Label>
                                 <div>
                                   <Dropdown
@@ -965,7 +973,7 @@ export default class SubmitPepiProject extends React.Component<
                               </div>
                               <div className={styles.col25left}>
                                 <Label>
-                                  <b>Review Status:</b>
+                                  <b>Review Status :</b>
                                 </Label>
                                 <div>
                                   <Label>
@@ -978,15 +986,20 @@ export default class SubmitPepiProject extends React.Component<
                           )}
 
                         {!this.state.PEPIDetails.StatusOfReview &&
-                          Number(this.state.PEPIDetails.HoursWorked) < 80 && (
-                            // this.state.PEPIDetails.StatusOfReview == "" &&
-                            // <div className={styles.col25left}>\
-                            // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
-                            // </div>
-                            <div className={styles.col25left}>
-                              You may choose to Decline the entire review
-                            </div>
-                          )}
+                        Number(this.state.PEPIDetails.HoursWorked) < 80 ? (
+                          // this.state.PEPIDetails.StatusOfReview == "" &&
+                          // <div className={styles.col25left}>\
+                          // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
+                          // </div>
+                          <div className={styles.col25left}>
+                            You may choose to Decline the entire review
+                          </div>
+                        ) : (
+                          this.state.IsCreateMode &&
+                          this.state.PEPIDetails.StatusOfReview == "" && (
+                            <div className={styles.col25left}></div>
+                          )
+                        )}
 
                         {!this.state.PEPIDetails.StatusOfReview && (
                           // this.state.PEPIDetails.StatusOfReview == "" &&

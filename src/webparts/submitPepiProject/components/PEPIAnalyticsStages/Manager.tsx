@@ -8017,6 +8017,10 @@ export default class Manager extends React.Component<
             SctionTotalDD={this.state.SctionTotalDD}
             IsReviewee={this.state.IsReviewee}
             IsReviewer={this.state.IsReviewer}
+            IsAwaitingReviewee={
+              this.props.APEPIDetail.StatusOfReview ==
+              Config.StatusOfReview.AwaitingReviewee
+            }
             //  SERVICELINEReviewee = {0}
             //  SERVICELINEReviewer = {0}
             //  SERVICELINEDifference = {0}
@@ -8469,14 +8473,18 @@ export default class Manager extends React.Component<
 
             {this.props.hasEditItemPermission && (
               <div className={styles.btncol25leftForReviewer}>
-                <div className={styles.divFullWidth}>
+                <div className={styles.divFullWidth} style={{
+                    justifyContent: "flex-start",
+                  }}>
                   <PrimaryButton
                     className={styles.btnSAVEDRAFTForReviewer}
                     text="SAVE DRAFT"
                     onClick={this.onREVIEWEESaveDRAFT}
                   ></PrimaryButton>
                 </div>
-                <div className={styles.divFullWidth}>
+                <div className={styles.divFullWidth} style={{
+                    justifyContent: "flex-start",
+                  }}>
                   <PrimaryButton
                     disabled={!this.isValidREVIEWEEApproved()}
                     className={
@@ -8711,7 +8719,12 @@ export default class Manager extends React.Component<
               </fieldset>
             </div>
             {this.props.hasEditItemPermission && (
-              <div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <div className={styles.col25left}>
                   <PrimaryButton
                     className={styles.btnSAVEDRAFT}
