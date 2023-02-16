@@ -12,6 +12,10 @@ import {
   MessageBarType,
   Spinner,
   SpinnerSize,
+  IPersonaSharedProps,
+  Persona,
+  PersonaSize,
+  PersonaPresence,
 } from "@fluentui/react";
 import {
   PeoplePicker,
@@ -37,12 +41,12 @@ import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 import { PEPI_PEPIQuestionText } from "../../../domain/models/PEPI_PEPIQuestionText";
 import QuestionText from "../components/PEPIAllQuestionText/QuestionText";
-import {
-  IPersonaSharedProps,
-  Persona,
-  PersonaSize,
-  PersonaPresence,
-} from "@fluentui/react/lib/Persona";
+// import {
+//   IPersonaSharedProps,
+//   Persona,
+//   PersonaSize,
+//   PersonaPresence,
+// } from "@fluentui/react/lib/Persona";
 import { sp } from "@pnp/sp";
 export default class SubmitPepiProject extends React.Component<
   ISubmitPepiProjectProps,
@@ -474,252 +478,292 @@ export default class SubmitPepiProject extends React.Component<
   public render(): React.ReactElement<ISubmitPepiProjectProps> {
     return (
       <React.Fragment>
-        <div className={styles.SubmitPepiProject}>
-          <div className={styles.container}>
-            <div className={styles.logoImg} title="logo"></div>
+        {this.state.IsLoading ? (
+          <Spinner size={SpinnerSize.large} />
+        ) : (
+          <div className={styles.SubmitPepiProject}>
+            <div className={styles.container}>
+              <div className={styles.logoImg} title="logo"></div>
 
-            {/* Basic Project/Staff Info */}
+              {/* Basic Project/Staff Info */}
 
-            {/* New From */}
-            {this.state.IsCreateMode && (
-              <div>
-                <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
-                    <Label>
-                      <b>Reviewee: </b>
-                    </Label>
+              {/* New From */}
+              {this.state.IsCreateMode && (
+                <div>
+                  <div className={styles.row}>
+                    <div className={styles.Newcol25Right}>
+                      <Label>
+                        <b>Reviewee: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      <Label> {this.state.RevieweeName}</Label>
+                    </div>
+                    <div className={styles.Newcol25Right}>
+                      <Label>
+                        <b>Hours Worked: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      <Label></Label>
+                    </div>
                   </div>
-                  <div className={styles.Newcol25left}>
-                    <Label> {this.state.RevieweeName}</Label>
+                  <div className={styles.row}>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Engagement: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.Title}</Label>
+                    </div>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Job Role:</b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.JobTitle}</Label>
+                    </div>
                   </div>
-                  <div className={styles.Newcol25Right}>
-                    <Label>
-                      <b>Hours Worked: </b>
-                    </Label>
+                  <div className={styles.row}>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Project Code: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.ProjectCode}</Label>
+                    </div>
+                    <div className={styles.col25leftServiceLine}>
+                      <Label>
+                        <b>Service Line: </b>
+                        <span style={{ color: "#ff0000" }}>*</span>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      <Dropdown
+                        placeholder="Please select a value"
+                        className={styles.dropServiceLine}
+                        options={this.ServiceLineOptions}
+                        selectedKey={this.state.PEPIDetails.ServiceLine}
+                        onChange={(e, selectedOption) => {
+                          this.onChangeServiceLineValue(selectedOption.text);
+                        }}
+                        disabled={
+                          this.state.PEPIDetails.StatusOfReview != ""
+                            ? true
+                            : false
+                        }
+                        // disabled={this.state.DisableNewFormOprtion}
+                      />
+                    </div>
                   </div>
-                  <div className={styles.Newcol25left}>
-                    <Label></Label>
+
+                  <div className={styles.row}>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Home Office: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.HomeOffice}</Label>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Engagement: </b>
-                    </Label>
+
+                  <div className={styles.container}>
+                    <div className={styles.divCompetency}>
+                      <Label>
+                        <b>INSTRUCTIONS:</b> To start a review, Select the
+                        Service Line you are assigned to, enter the Reviewer’s
+                        name (starting with the last name, first name) in the
+                        Reviewer box below. The Lead MD has been pre-populated
+                        from the project data imported from Agresso, but you
+                        have the option to change the Lead MD if needed. Once
+                        completed, click Start Review.
+                      </Label>
+                    </div>
                   </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.Title}</Label>
-                  </div>
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Job Role:</b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.JobTitle}</Label>
-                  </div>
-                </div>
-                <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Project Code: </b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.ProjectCode}</Label>
-                  </div>
-                  <div className={styles.col25leftServiceLine}>
-                    <Label>
-                      <b>Service Line: </b>
-                      <span style={{ color: "#ff0000" }}>*</span>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    <Dropdown
-                      placeholder="Please select a value"
-                      className={styles.dropServiceLine}
-                      options={this.ServiceLineOptions}
-                      selectedKey={this.state.PEPIDetails.ServiceLine}
-                      onChange={(e, selectedOption) => {
-                        this.onChangeServiceLineValue(selectedOption.text);
-                      }}
-                      disabled={
-                        this.state.PEPIDetails.StatusOfReview != ""
-                          ? true
-                          : false
+                  <div className={styles.row}>
+                    <div
+                      className={
+                        this.state.PEPIDetails.StatusOfReview ==
+                        Config.StatusOfReview.AwaitingReviewer
+                          ? styles.col25leftReplaseMe
+                          : styles.col25left
                       }
-                      // disabled={this.state.DisableNewFormOprtion}
-                    />
+                    >
+                      <Label>
+                        <b>Reviewer Name:</b>
+                        <span style={{ color: "#ff0000" }}>*</span>
+                      </Label>
+                    </div>
+                    <div
+                      className={
+                        this.state.PEPIDetails.StatusOfReview ==
+                        Config.StatusOfReview.AwaitingLeadMD
+                          ? styles.col25leftReplaseMe
+                          : styles.col25left
+                      }
+                    >
+                      <Label>
+                        <b>Lead MD:</b>
+                        <span style={{ color: "#ff0000" }}>*</span>
+                      </Label>
+                    </div>
                   </div>
                 </div>
+              )}
 
-                <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Home Office: </b>
-                    </Label>
+              {/* Edit From */}
+              {!this.state.IsCreateMode && (
+                <div>
+                  <div className={styles.row}>
+                    <div className={styles.Newcol25Right}>
+                      <Label>
+                        <b>Reviewee: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      <Label> {this.state.RevieweeName}</Label>
+                    </div>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Job Role:</b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.JobTitle}</Label>
+                    </div>
                   </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.HomeOffice}</Label>
-                  </div>
-                </div>
 
-                <div className={styles.container}>
-                  <div className={styles.divCompetency}>
-                    <Label>
-                      <b>INSTRUCTIONS:</b> To start a review, Select the Service
-                      Line you are assigned to, enter the Reviewer’s name
-                      (starting with the last name, first name) in the Reviewer
-                      box below. The Lead MD has been pre-populated from the
-                      project data imported from Agresso, but you have the
-                      option to change the Lead MD if needed. Once completed,
-                      click Start Review.
-                    </Label>
-                  </div>
-                </div>
-                <div className={styles.row}>
-                  <div
-                    className={
-                      this.state.PEPIDetails.StatusOfReview ==
-                      Config.StatusOfReview.AwaitingReviewer
-                        ? styles.col25leftReplaseMe
-                        : styles.col25left
-                    }
-                  >
-                    <Label>
-                      <b>Reviewer Name:</b>
-                      <span style={{ color: "#ff0000" }}>*</span>
-                    </Label>
-                  </div>
-                  <div
-                    className={
-                      this.state.PEPIDetails.StatusOfReview ==
-                      Config.StatusOfReview.AwaitingLeadMD
-                        ? styles.col25leftReplaseMe
-                        : styles.col25left
-                    }
-                  >
-                    <Label>
-                      <b>Lead MD:</b>
-                      <span style={{ color: "#ff0000" }}>*</span>
-                    </Label>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Edit From */}
-            {!this.state.IsCreateMode && (
-              <div>
-                <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
-                    <Label>
-                      <b>Reviewee: </b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    <Label> {this.state.RevieweeName}</Label>
-                  </div>
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Job Role:</b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.JobTitle}</Label>
-                  </div>
-                </div>
-
-                <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Engagement: </b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.Title}</Label>
-                  </div>
-                  {/* <div className={styles.Newcol25Right}>
+                  <div className={styles.row}>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Engagement: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.Title}</Label>
+                    </div>
+                    {/* <div className={styles.Newcol25Right}>
                     {" "}
                     <Label>
                       <b>Fiscal Year: </b>
                     </Label>
-                  </div> */}
-                   <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Home Office: </b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
+                  </div> 
+                   <div className={styles.Newcol25left}>
                     {" "}
                     <Label>{this.state.PEPIDetails.FiscalYear}</Label>
                   </div>
-                </div>
+                  */}
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Home Office: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.HomeOffice}</Label>
+                    </div>
+                  </div>
 
-                <div className={styles.row}>
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Project Code: </b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.ProjectCode}</Label>
-                  </div>
-                  {/* <div className={styles.Newcol25Right}>
+                  <div className={styles.row}>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Project Code: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.ProjectCode}</Label>
+                    </div>
+                    {/* <div className={styles.Newcol25Right}>
                     {" "}
                     <Label>
                       <b>Home Office: </b>
                     </Label>
-                  </div> */}
-                  <div className={styles.col25leftServiceLine}>
-                    <Label>
-                      <b>Service Line: </b>
-                      <span style={{ color: "#ff0000" }}>*</span>
-                    </Label>
-                  </div>
+                  </div> 
                   <div className={styles.Newcol25left}>
                     {" "}
                     <Label>{this.state.PEPIDetails.HomeOffice}</Label>
                   </div>
-                </div>
-                <div className={styles.row}>
-                  {/* <div className={styles.Newcol25Right}>
+                  */}
+                    <div className={styles.col25leftServiceLine}>
+                      <Label>
+                        <b>Service Line: </b>
+                        <span style={{ color: "#ff0000" }}>*</span>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      <Dropdown
+                        disabled={
+                          this.state.PEPIDetails.StatusOfReview != ""
+                            ? true
+                            : false
+                        }
+                        className={styles.dropServiceLine}
+                        options={this.ServiceLineOptions}
+                        selectedKey={this.state.PEPIDetails.ServiceLine}
+                        onChange={(e, selectedOption) => {
+                          this.onChangeServiceLineValue(selectedOption.text);
+                        }}
+                        // disabled={this.state.DisableNewFormOprtion}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.row}>
+                    {/* <div className={styles.Newcol25Right}>
                     <Label></Label>
                   </div>
                   <div className={styles.Newcol25left}>
                     <Label></Label>
                   </div> */}
-                  <div className={styles.Newcol25Right}>
-                    {" "}
-                    <Label>
-                      <b>Hours Worked: </b>
-                    </Label>
-                  </div>
-                  <div className={styles.Newcol25left}>
-                    {" "}
-                    <Label>{this.state.PEPIDetails.HoursWorked}</Label>
-                  </div>
-                  {/* <div className={styles.col25leftServiceLine}>
+                    <div className={styles.Newcol25Right}>
+                      {" "}
+                      <Label>
+                        <b>Hours Worked: </b>
+                      </Label>
+                    </div>
+                    <div className={styles.Newcol25left}>
+                      {" "}
+                      <Label>{this.state.PEPIDetails.HoursWorked}</Label>
+                    </div>
+                    {this.state.PEPIDetails.StatusOfReview ? (
+                      <>
+                        <div className={styles.Newcol25Right}>
+                          {" "}
+                          <Label>
+                            <b>Fiscal Year: </b>
+                          </Label>
+                        </div>
+                        <div className={styles.Newcol25left}>
+                          {" "}
+                          <Label>{this.state.PEPIDetails.FiscalYear}</Label>
+                        </div>
+                      </>
+                    ) : null}
+
+                    {/* <div className={styles.col25leftServiceLine}>
                     <Label>
                       <b>Service Line: </b>
                       <span style={{ color: "#ff0000" }}>*</span>
                     </Label>
-                  </div> */}
+                  </div>
                   <div className={styles.Newcol25left}>
                     <Dropdown
                       disabled={
@@ -735,274 +779,260 @@ export default class SubmitPepiProject extends React.Component<
                       }}
                       // disabled={this.state.DisableNewFormOprtion}
                     />
+                  </div> */}
                   </div>
-                </div>
-                {!this.state.IsCreateMode &&
-                  // <div className={styles.row}>
-                  //   <div className={styles.Newcol25Right}>
-                  //     <Label>
-                  //       <b>Hours Worked: </b>
-                  //     </Label>
-                  //   </div>
-                  //   <div className={styles.Newcol25left}>
-                  //     <Label>{this.state.PEPIDetails.HoursWorked}</Label>
-                  //     {/* <input
-                  //       type="Number"
-                  //       value={this.state.PEPIDetails.HoursWorked}
-                  //       onChange={this.onChangeHoursWorked}
-                  //     /> */}
-                  //   </div>
-                  //   <div className={styles.Newcol25Right}>
-                  //     <Label></Label>
-                  //   </div>
-                  //   <div className={styles.Newcol25Right}>
-                  //     <Label></Label>
-                  //   </div>
-                  // </div>
-                  null}
-                <div className={styles.container}>
-                  <div className={styles.divCompetency}>
-                    <Label>
-                      <b>INSTRUCTIONS:</b> To start a review, Select the Service
-                      Line you are assigned to, enter the Reviewer’s name
-                      (starting with the last name, first name) in the Reviewer
-                      box below. The Lead MD has been pre-populated from the
-                      project data imported from Agresso, but you have the
-                      option to change the Lead MD if needed. Once completed,
-                      click Start Review.
-                    </Label>
-                  </div>
-                </div>
-                <div className={styles.row}>
-                  <div className={styles.divCompetency}>
-                    <div className={styles.highlightedInstruction}>
-                      {this.state.PEPIDetails.StatusOfReview ==
-                        Config.StatusOfReview.Split && (
-                        <b>
-                          This review was split into at least one additional
-                          review.
-                        </b>
-                      )}
-                      {this.state.PEPIDetails.StatusOfReview ==
-                        Config.StatusOfReview.Combined && (
-                        <b>This review is now a part of a Combined Review.</b>
-                      )}
-                      {this.state.PEPIDetails.StatusOfReview ==
-                        Config.StatusOfReview.Declined && (
-                        <b>
-                          This review was declined by{" "}
-                          {this.state.PEPIDetails.ModifiedBy.Title} on{" "}
-                          {this.state.PEPIDetails.ModifiedOnFormatted}
-                        </b>
-                      )}
+                  {!this.state.IsCreateMode &&
+                    // <div className={styles.row}>
+                    //   <div className={styles.Newcol25Right}>
+                    //     <Label>
+                    //       <b>Hours Worked: </b>
+                    //     </Label>
+                    //   </div>
+                    //   <div className={styles.Newcol25left}>
+                    //     <Label>{this.state.PEPIDetails.HoursWorked}</Label>
+                    //     {/* <input
+                    //       type="Number"
+                    //       value={this.state.PEPIDetails.HoursWorked}
+                    //       onChange={this.onChangeHoursWorked}
+                    //     /> */}
+                    //   </div>
+                    //   <div className={styles.Newcol25Right}>
+                    //     <Label></Label>
+                    //   </div>
+                    //   <div className={styles.Newcol25Right}>
+                    //     <Label></Label>
+                    //   </div>
+                    // </div>
+                    null}
+                  <div className={styles.container}>
+                    <div className={styles.divCompetency}>
+                      <Label>
+                        <b>INSTRUCTIONS:</b> To start a review, Select the
+                        Service Line you are assigned to, enter the Reviewer’s
+                        name (starting with the last name, first name) in the
+                        Reviewer box below. The Lead MD has been pre-populated
+                        from the project data imported from Agresso, but you
+                        have the option to change the Lead MD if needed. Once
+                        completed, click Start Review.
+                      </Label>
                     </div>
                   </div>
-                </div>
-
-                {this.state.PEPIDetails.StatusOfReview !=
-                  Config.StatusOfReview.Split &&
-                  this.state.PEPIDetails.StatusOfReview !=
-                    Config.StatusOfReview.Combined &&
-                  this.state.PEPIDetails.StatusOfReview !=
-                    Config.StatusOfReview.Declined && (
-                    <div className={`${styles.row} ${styles.dFlex}`}>
-                      <div
-                        className={
-                          this.state.PEPIDetails.StatusOfReview ==
-                          Config.StatusOfReview.AwaitingReviewer
-                            ? styles.col25leftReplaseMe
-                            : styles.col25left
-                        }
-                      >
-                        <Label>
-                          <b>Reviewer Name:</b>
-                          <span style={{ color: "#ff0000" }}>*</span>
-                        </Label>
-                        <div
-                        // className={
-                        //   this.state.PEPIDetails.StatusOfReview
-                        //     ? styles.clsPeoplepicker
-                        //     : styles.clsPeoplepickerEnable
-                        // }
-                        >
-                          {this.state.PEPIDetails.StatusOfReview != "" ||
-                          this.state.PEPIDetails.StatusOfReview ? (
-                            <Persona
-                              imageUrl={
-                                "/_layouts/15/userphoto.aspx?size=S&username=" +
-                                this.state.ReviewerEmail
-                              }
-                              text={this.state.RevieweeName}
-                              size={PersonaSize.size32}
-                            />
-                          ) : (
-                            <PeoplePicker
-                              context={this.props.AppContext}
-                              personSelectionLimit={1}
-                              groupName={""} // Leave this blank in case you want to filter from all users
-                              showtooltip={true}
-                              ensureUser={true}
-                              showHiddenInUI={false}
-                              principalTypes={[PrincipalType.User]}
-                              selectedItems={this.onChangeReviewerName}
-                              defaultSelectedUsers={[this.state.ReviewerEmail]}
-                              disabled={this.state.DisableNewFormOprtion}
-                              resolveDelay={1000}
-                            />
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        className={
-                          this.state.PEPIDetails.StatusOfReview ==
-                          Config.StatusOfReview.AwaitingLeadMD
-                            ? styles.col25leftReplaseMe
-                            : styles.col25left
-                        }
-                      >
-                        <Label>
-                          <b>Lead MD:</b>
-                          <span style={{ color: "#ff0000" }}>*</span>
-                        </Label>
-                        <div
-                        // className={
-                        //   this.state.PEPIDetails.StatusOfReview
-                        //     ? styles.clsPeoplepicker
-                        //     : styles.clsPeoplepickerEnable
-                        // }
-                        >
-                          {this.state.PEPIDetails.StatusOfReview != "" ||
-                          this.state.PEPIDetails.StatusOfReview ? (
-                            <Persona
-                              imageUrl={
-                                "/_layouts/15/userphoto.aspx?size=S&username=" +
-                                this.state.LeadMDEmail
-                              }
-                              text={this.state.LeadMDName}
-                              size={PersonaSize.size32}
-                            />
-                          ) : (
-                            <PeoplePicker
-                              context={this.props.AppContext}
-                              personSelectionLimit={1}
-                              groupName={""} // Leave this blank in case you want to filter from all users
-                              showtooltip={true}
-                              ensureUser={true}
-                              showHiddenInUI={false}
-                              principalTypes={[PrincipalType.User]}
-                              resolveDelay={1000}
-                              selectedItems={this.onChangeLeadMDName}
-                              disabled={
-                                !this.state.PEPIDetails.StatusOfReview ||
-                                this.state.PEPIDetails.StatusOfReview != ""
-                                  ? true
-                                  : false
-                              }
-                              defaultSelectedUsers={[this.state.LeadMDEmail]}
-                            />
-                          )}
-                        </div>
-                      </div>
-                      {!this.state.IsCreateMode &&
-                        this.state.PEPIDetails.StatusOfReview != "" &&
-                        this.state.PEPIDetails.StatusOfReview && (
-                          // <div>
-                          <>
-                            <div className={styles.col25left}>
-                              <Label>
-                                <b>Complexity:</b>
-                              </Label>
-                              <div>
-                                <Dropdown
-                                  disabled={
-                                    this.state.PEPIDetails.StatusOfReview ==
-                                      Config.StatusOfReview.AwaitingReviewer ||
-                                    this.state.PEPIDetails.StatusOfReview ==
-                                      Config.StatusOfReview.AwaitingReviewee
-                                      ? false
-                                      : true
-                                  }
-                                  options={this.ComplexityOptions}
-                                  selectedKey={
-                                    this.state.PEPIDetails.Complexity
-                                  }
-                                  onChange={(e, selectedOption) => {
-                                    this.onChangeComplexity(
-                                      selectedOption.text
-                                    );
-                                  }}
-                                />{" "}
-                              </div>
-                            </div>
-                            <div className={styles.col25left}>
-                              <Label>
-                                <b>Review Status:</b>
-                              </Label>
-                              <div>
-                                <Label>
-                                  {this.state.PEPIDetails.StatusOfReview}
-                                </Label>
-                              </div>
-                            </div>
-                          </>
-                          // </div>
+                  <div className={styles.row}>
+                    <div className={styles.divCompetency}>
+                      <div className={styles.highlightedInstruction}>
+                        {this.state.PEPIDetails.StatusOfReview ==
+                          Config.StatusOfReview.Split && (
+                          <b>
+                            This review was split into at least one additional
+                            review.
+                          </b>
                         )}
+                        {this.state.PEPIDetails.StatusOfReview ==
+                          Config.StatusOfReview.Combined && (
+                          <b>This review is now a part of a Combined Review.</b>
+                        )}
+                        {this.state.PEPIDetails.StatusOfReview ==
+                          Config.StatusOfReview.Declined && (
+                          <b>
+                            This review was declined by{" "}
+                            {this.state.PEPIDetails.ModifiedBy.Title} on{" "}
+                            {this.state.PEPIDetails.ModifiedOnFormatted}
+                          </b>
+                        )}
+                      </div>
+                    </div>
+                  </div>
 
-                      {!this.state.PEPIDetails.StatusOfReview &&
-                        Number(this.state.PEPIDetails.HoursWorked) < 80 && (
+                  {this.state.PEPIDetails.StatusOfReview !=
+                    Config.StatusOfReview.Split &&
+                    this.state.PEPIDetails.StatusOfReview !=
+                      Config.StatusOfReview.Combined &&
+                    this.state.PEPIDetails.StatusOfReview !=
+                      Config.StatusOfReview.Declined && (
+                      <div className={`${styles.row} ${styles.dFlex}`}>
+                        <div
+                          className={
+                            this.state.PEPIDetails.StatusOfReview ==
+                            Config.StatusOfReview.AwaitingReviewer
+                              ? styles.col25leftReplaseMe
+                              : styles.col25left
+                          }
+                        >
+                          <Label>
+                            <b>Reviewer Name:</b>
+                            <span style={{ color: "#ff0000" }}>*</span>
+                          </Label>
+                          <div>
+                            {this.state.PEPIDetails.StatusOfReview != "" ||
+                            this.state.PEPIDetails.StatusOfReview ? (
+                              <Persona
+                                imageUrl={
+                                  "/_layouts/15/userphoto.aspx?size=S&username=" +
+                                  this.state.ReviewerEmail
+                                }
+                                text={this.state.RevieweeName}
+                                size={PersonaSize.size32}
+                              />
+                            ) : (
+                              <PeoplePicker
+                                context={this.props.AppContext}
+                                personSelectionLimit={1}
+                                groupName={""} // Leave this blank in case you want to filter from all users
+                                showtooltip={true}
+                                ensureUser={true}
+                                showHiddenInUI={false}
+                                principalTypes={[PrincipalType.User]}
+                                selectedItems={this.onChangeReviewerName}
+                                defaultSelectedUsers={[
+                                  this.state.ReviewerEmail,
+                                ]}
+                                disabled={this.state.DisableNewFormOprtion}
+                                resolveDelay={1000}
+                              />
+                            )}
+                          </div>
+                        </div>
+                        <div
+                          className={
+                            this.state.PEPIDetails.StatusOfReview ==
+                            Config.StatusOfReview.AwaitingLeadMD
+                              ? styles.col25leftReplaseMe
+                              : styles.col25left
+                          }
+                        >
+                          <Label>
+                            <b>Lead MD:</b>
+                            <span style={{ color: "#ff0000" }}>*</span>
+                          </Label>
+                          <div>
+                            {this.state.PEPIDetails.StatusOfReview != "" ||
+                            this.state.PEPIDetails.StatusOfReview ? (
+                              <Persona
+                                imageUrl={
+                                  "/_layouts/15/userphoto.aspx?size=S&username=" +
+                                  this.state.LeadMDEmail
+                                }
+                                text={this.state.LeadMDName}
+                                size={PersonaSize.size32}
+                              />
+                            ) : (
+                              <PeoplePicker
+                                context={this.props.AppContext}
+                                personSelectionLimit={1}
+                                groupName={""} // Leave this blank in case you want to filter from all users
+                                showtooltip={true}
+                                ensureUser={true}
+                                showHiddenInUI={false}
+                                principalTypes={[PrincipalType.User]}
+                                resolveDelay={1000}
+                                selectedItems={this.onChangeLeadMDName}
+                                defaultSelectedUsers={[this.state.LeadMDEmail]}
+                              />
+                            )}
+                          </div>
+                        </div>
+                        {!this.state.IsCreateMode &&
+                          this.state.PEPIDetails.StatusOfReview != "" &&
+                          this.state.PEPIDetails.StatusOfReview && (
+                            // <div>
+                            <>
+                              <div className={styles.col25left}>
+                                <Label>
+                                  <b>Complexity:</b>
+                                </Label>
+                                <div>
+                                  <Dropdown
+                                    disabled={
+                                      this.state.PEPIDetails.StatusOfReview ==
+                                        Config.StatusOfReview
+                                          .AwaitingReviewer ||
+                                      this.state.PEPIDetails.StatusOfReview ==
+                                        Config.StatusOfReview.AwaitingReviewee
+                                        ? false
+                                        : true
+                                    }
+                                    options={this.ComplexityOptions}
+                                    selectedKey={
+                                      this.state.PEPIDetails.Complexity
+                                    }
+                                    onChange={(e, selectedOption) => {
+                                      this.onChangeComplexity(
+                                        selectedOption.text
+                                      );
+                                    }}
+                                  />{" "}
+                                </div>
+                              </div>
+                              <div className={styles.col25left}>
+                                <Label>
+                                  <b>Review Status:</b>
+                                </Label>
+                                <div>
+                                  <Label>
+                                    {this.state.PEPIDetails.StatusOfReview}
+                                  </Label>
+                                </div>
+                              </div>
+                            </>
+                            // </div>
+                          )}
+
+                        {!this.state.PEPIDetails.StatusOfReview &&
+                          Number(this.state.PEPIDetails.HoursWorked) < 80 && (
+                            // this.state.PEPIDetails.StatusOfReview == "" &&
+                            // <div className={styles.col25left}>\
+                            // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
+                            // </div>
+                            <div className={styles.col25left}>
+                              You may choose to Decline the entire review
+                            </div>
+                          )}
+
+                        {!this.state.PEPIDetails.StatusOfReview && (
                           // this.state.PEPIDetails.StatusOfReview == "" &&
                           // <div className={styles.col25left}>\
                           // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
                           // </div>
-                          <div className={styles.col25left}>
-                            You may choose to Decline the entire review
+                          <div
+                            className={`${styles.col25left} ${styles.SubmitDeclineBtnSection}`}
+                          >
+                            {!this.state.PEPIDetails.StatusOfReview &&
+                              Number(this.state.PEPIDetails.HoursWorked) <
+                                80 && (
+                                // this.state.PEPIDetails.StatusOfReview == "" &&
+                                // <div className={styles.col25left}>\
+                                // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
+                                // </div>
+                                <div>
+                                  <PrimaryButton
+                                    className={styles.btnSTARTREVIEW}
+                                    // disabled={this.state.DisableSubmitButton}
+                                    text="DECLINE"
+                                    onClick={this.onDecline}
+                                  />
+                                </div>
+                              )}
+                            <div>
+                              <PrimaryButton
+                                style={{
+                                  background: this.state.DisableSubmitButton
+                                    ? "#ff9"
+                                    : "rgba(73,233,10,.8156862745098039)",
+                                }}
+                                className={styles.btnSTARTREVIEW}
+                                disabled={this.state.DisableSubmitButton}
+                                text="START REVIEW"
+                                onClick={this.onSTARTREVIEWSave}
+                              />
+                            </div>
                           </div>
                         )}
+                      </div>
+                    )}
+                </div>
+              )}
 
-                      {!this.state.PEPIDetails.StatusOfReview && (
-                        // this.state.PEPIDetails.StatusOfReview == "" &&
-                        // <div className={styles.col25left}>\
-                        // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
-                        // </div>
-                        <div
-                          className={`${styles.col25left} ${styles.SubmitDeclineBtnSection}`}
-                        >
-                          {!this.state.PEPIDetails.StatusOfReview &&
-                            Number(this.state.PEPIDetails.HoursWorked) < 80 && (
-                              // this.state.PEPIDetails.StatusOfReview == "" &&
-                              // <div className={styles.col25left}>\
-                              // <PrimaryButton text="START REVIEW" aria-disabled={this.state.DisableSaveButton} disabled={this.state.DisableSaveButton} hidden={this.state.DisableSaveButton} onClick={this.onSTARTREVIEWSave} ></PrimaryButton>
-                              // </div>
-                              <div>
-                                <PrimaryButton
-                                  className={styles.btnSTARTREVIEW}
-                                  // disabled={this.state.DisableSubmitButton}
-                                  text="DECLINE"
-                                  onClick={this.onDecline}
-                                />
-                              </div>
-                            )}
-                          <div>
-                            <PrimaryButton
-                              style={{
-                                background: this.state.DisableSubmitButton
-                                  ? "#ff9"
-                                  : "rgba(73,233,10,.8156862745098039)",
-                              }}
-                              className={styles.btnSTARTREVIEW}
-                              disabled={this.state.DisableSubmitButton}
-                              text="START REVIEW"
-                              onClick={this.onSTARTREVIEWSave}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-              </div>
-            )}
-
-            {/* {this.state.PEPIDetails.StatusOfReview !=
+              {/* {this.state.PEPIDetails.StatusOfReview !=
               Config.StatusOfReview.Split &&
               this.state.PEPIDetails.StatusOfReview !=
                 Config.StatusOfReview.Combined &&
@@ -1095,122 +1125,126 @@ export default class SubmitPepiProject extends React.Component<
                   )}
                 </div>
               )} */}
-          </div>
-          <div className={styles.row}></div>
+            </div>
+            <div className={styles.row}></div>
 
-          {this.state.PEPIDetails.JobTitle != null &&
-            this.state.PEPIDetails.StatusOfReview !=
-              Config.StatusOfReview.Split &&
-            this.state.PEPIDetails.StatusOfReview !=
-              Config.StatusOfReview.Combined &&
-            this.state.PEPIDetails.StatusOfReview !=
-              Config.StatusOfReview.Declined &&
-            this.state.PEPIDetails.StatusOfReview && (
-              <div>
-                {this.state.PEPIDetails.JobTitle == Config.JobRole.Analyst && (
-                  <Analytics
-                    AppContext={this.props.AppContext}
-                    hasEditItemPermission={this.state.hasEditItemPermission}
-                    IsLoading={this.state.IsLoading}
-                    APEPIDetail={this.state.PEPIDetails}
-                    APEPIQuestionText={this.state.TempPEPIQuestionText}
-                    DisableSection={this.state.IsAnalyticsDisable}
-                    Options={this.Options}
-                    SctionTotalDE={this.state.SctionTotalDE}
-                    SctionTotalDR={this.state.SctionTotalDR}
-                    ReplaceUsermail={this.state.ReplaceUsermail}
-                    onFormFieldValueChange={this.onFormFieldValueChange}
-                  ></Analytics>
-                )}
-                {this.state.PEPIDetails.JobTitle == Config.JobRole.Manager && (
-                  <Manager
-                    AppContext={this.props.AppContext}
-                    hasEditItemPermission={this.state.hasEditItemPermission}
-                    IsLoading={this.state.IsLoading}
-                    APEPIDetail={this.state.PEPIDetails}
-                    APEPIQuestionText={this.state.TempPEPIQuestionText}
-                    DisableSection={this.state.IsAnalyticsDisable}
-                    Options={this.Options}
-                    SctionTotalDE={this.state.SctionTotalDE}
-                    SctionTotalDR={this.state.SctionTotalDR}
-                    ReplaceUsermail={this.state.ReplaceUsermail}
-                    onFormFieldValueChange={this.onFormFieldValueChange}
-                  ></Manager>
-                )}
-                {this.state.PEPIDetails.JobTitle ==
-                  Config.JobRole.Associate && (
-                  <Associate
-                    AppContext={this.props.AppContext}
-                    hasEditItemPermission={this.state.hasEditItemPermission}
-                    IsLoading={this.state.IsLoading}
-                    APEPIDetail={this.state.PEPIDetails}
-                    APEPIQuestionText={this.state.TempPEPIQuestionText}
-                    DisableSection={this.state.IsAnalyticsDisable}
-                    Options={this.Options}
-                    SctionTotalDE={this.state.SctionTotalDE}
-                    SctionTotalDR={this.state.SctionTotalDR}
-                    ReplaceUsermail={this.state.ReplaceUsermail}
-                    onFormFieldValueChange={this.onFormFieldValueChange}
-                  ></Associate>
-                )}
-                {this.state.PEPIDetails.JobTitle ==
-                  Config.JobRole.SeniorAssociate && (
-                  <SeniorAssociate
-                    AppContext={this.props.AppContext}
-                    hasEditItemPermission={this.state.hasEditItemPermission}
-                    IsLoading={this.state.IsLoading}
-                    APEPIDetail={this.state.PEPIDetails}
-                    APEPIQuestionText={this.state.TempPEPIQuestionText}
-                    DisableSection={this.state.IsAnalyticsDisable}
-                    Options={this.Options}
-                    SctionTotalDE={this.state.SctionTotalDE}
-                    SctionTotalDR={this.state.SctionTotalDR}
-                    ReplaceUsermail={this.state.ReplaceUsermail}
-                    onFormFieldValueChange={this.onFormFieldValueChange}
-                  ></SeniorAssociate>
-                )}
-                {this.state.PEPIDetails.JobTitle == Config.JobRole.Director && (
-                  <Director
-                    AppContext={this.props.AppContext}
-                    hasEditItemPermission={this.state.hasEditItemPermission}
-                    IsLoading={this.state.IsLoading}
-                    APEPIDetail={this.state.PEPIDetails}
-                    APEPIQuestionText={this.state.TempPEPIQuestionText}
-                    DisableSection={this.state.IsAnalyticsDisable}
-                    Options={this.Options}
-                    SctionTotalDE={this.state.SctionTotalDE}
-                    SctionTotalDR={this.state.SctionTotalDR}
-                    ReplaceUsermail={this.state.ReplaceUsermail}
-                    onFormFieldValueChange={this.onFormFieldValueChange}
-                  ></Director>
-                )}
-                {this.state.PEPIDetails.JobTitle ==
-                  Config.JobRole.SeniorDirector && (
-                  <SeniorDirector
-                    AppContext={this.props.AppContext}
-                    hasEditItemPermission={this.state.hasEditItemPermission}
-                    IsLoading={this.state.IsLoading}
-                    APEPIDetail={this.state.PEPIDetails}
-                    APEPIQuestionText={this.state.TempPEPIQuestionText}
-                    DisableSection={this.state.IsAnalyticsDisable}
-                    Options={this.Options}
-                    SctionTotalDE={this.state.SctionTotalDE}
-                    SctionTotalDR={this.state.SctionTotalDR}
-                    ReplaceUsermail={this.state.ReplaceUsermail}
-                    onFormFieldValueChange={this.onFormFieldValueChange}
-                  ></SeniorDirector>
-                )}
-              </div>
-            )}
+            {this.state.PEPIDetails.JobTitle != null &&
+              this.state.PEPIDetails.StatusOfReview !=
+                Config.StatusOfReview.Split &&
+              this.state.PEPIDetails.StatusOfReview !=
+                Config.StatusOfReview.Combined &&
+              this.state.PEPIDetails.StatusOfReview !=
+                Config.StatusOfReview.Declined &&
+              this.state.PEPIDetails.StatusOfReview && (
+                <div>
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.Analyst && (
+                    <Analytics
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></Analytics>
+                  )}
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.Manager && (
+                    <Manager
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></Manager>
+                  )}
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.Associate && (
+                    <Associate
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></Associate>
+                  )}
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.SeniorAssociate && (
+                    <SeniorAssociate
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></SeniorAssociate>
+                  )}
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.Director && (
+                    <Director
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></Director>
+                  )}
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.SeniorDirector && (
+                    <SeniorDirector
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></SeniorDirector>
+                  )}
+                </div>
+              )}
 
-          <div className={styles.divFullWidth}>
-            <PrimaryButton
-              className={styles.btnCancel}
-              text="Close"
-              onClick={this.onCancel}
-            ></PrimaryButton>
+            <div className={styles.divFullWidth}>
+              <PrimaryButton
+                className={styles.btnCancel}
+                text="Close"
+                onClick={this.onCancel}
+              ></PrimaryButton>
+            </div>
           </div>
-        </div>
+        )}
       </React.Fragment>
     );
   }

@@ -251,11 +251,21 @@ export default class SubmitSpecialReviews extends React.Component<
 
     data[columns.ProjectCode] = SpecialReviews.ProjectCode;
     data[columns.HoursWorked] = SpecialReviews.HoursWorked;
-    data[columns.JobTitle] = SpecialReviews.JobTitle;
-    data[columns.ProjectStatus] = SpecialReviews.ProjectStatus;
-    data[columns.LastHoursBilled] = SpecialReviews.LastHoursBilled;
-    data[columns.ReviewerNameId] = SpecialReviews.ReviewerName.Id;
-    data[columns.EmployeeNumber] = SpecialReviews.EmployeeNumber;
+    data[columns.JobTitle] = SpecialReviews.JobTitle
+      ? SpecialReviews.JobTitle
+      : null;
+    data[columns.ProjectStatus] = SpecialReviews.ProjectStatus
+      ? SpecialReviews.ProjectStatus
+      : null;
+    data[columns.LastHoursBilled] = SpecialReviews.LastHoursBilled
+      ? SpecialReviews.LastHoursBilled
+      : null;
+    // data[columns.ReviewerNameId] = SpecialReviews.ReviewerName
+    //   ? SpecialReviews.ReviewerName.Id
+    //   : null;
+    data[columns.EmployeeNumber] = SpecialReviews.EmployeeNumber
+      ? SpecialReviews.EmployeeNumber
+      : null;
 
     this.ListItemService = new ListItemService(
       this.props.AppContext,

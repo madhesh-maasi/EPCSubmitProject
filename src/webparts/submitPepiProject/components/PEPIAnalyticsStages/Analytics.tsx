@@ -1113,10 +1113,7 @@ export default class Analytics extends React.Component<
           ).toFixed(2)
         ),
 
-        B3RR:
-          this.props.APEPIDetail.B3RR == undefined
-            ? 0
-            : this.props.APEPIDetail.B3RR,
+        B3RR: 0,
         B3DD: Number(
           parseFloat(
             (
@@ -1289,6 +1286,14 @@ export default class Analytics extends React.Component<
         G1ER: "",
 
         H1ER: "",
+      });
+      let curretState = this.state.ApepiDetails;
+      curretState.E1ER = "";
+      curretState.F1ER = "";
+      curretState.G1ER = "";
+      curretState.H1ER = "";
+      this.setState({
+        ApepiDetails: curretState,
       });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
@@ -1753,6 +1758,7 @@ export default class Analytics extends React.Component<
     const columns = Config.PEPIProjectsListColumns;
     data[columns.Submitted] = Config.SubmittedNumber[5];
     data[columns.StatusOfReview] = Config.StatusOfReview.AwaitingReviewer;
+    data[columns.RevertToReviewer] = this.state.ApepiDetails.RevertToReviewer;
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
