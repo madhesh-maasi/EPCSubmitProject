@@ -4643,7 +4643,7 @@ export default class Director extends React.Component<
                     <Label>
                       <b>Should you be reviewing this person?</b> If not, enter
                       your replacement in the box at left and click{" "}
-                      <b> Replace Me</b>
+                      <b> Replace Me.</b>
                     </Label>
                   </div>
                 </div>

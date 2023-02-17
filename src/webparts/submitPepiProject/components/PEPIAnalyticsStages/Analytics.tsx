@@ -6256,7 +6256,7 @@ export default class Analytics extends React.Component<
               <div className={styles.col25left}>
                 <Label>
                   <b>Should you be reviewing this person?</b> If not, enter your
-                  replacement in the box at left and click <b> Replace Me</b>
+                  replacement in the box at left and click <b> Replace Me.</b>
                 </Label>
               </div>
             </div>
