@@ -6373,7 +6373,7 @@ export default class Manager extends React.Component<
                     <Label>
                       <b>Should you be reviewing this person?</b> If not, enter
                       your replacement in the box at left and click{" "}
-                      <b> Replace Me</b>
+                      <b> Replace Me.</b>
                     </Label>
                   </div>
                 </div>
@@ -8473,18 +8473,24 @@ export default class Manager extends React.Component<
 
             {this.props.hasEditItemPermission && (
               <div className={styles.btncol25leftForReviewer}>
-                <div className={styles.divFullWidth} style={{
+                <div
+                  className={styles.divFullWidth}
+                  style={{
                     justifyContent: "flex-start",
-                  }}>
+                  }}
+                >
                   <PrimaryButton
                     className={styles.btnSAVEDRAFTForReviewer}
                     text="SAVE DRAFT"
                     onClick={this.onREVIEWEESaveDRAFT}
                   ></PrimaryButton>
                 </div>
-                <div className={styles.divFullWidth} style={{
+                <div
+                  className={styles.divFullWidth}
+                  style={{
                     justifyContent: "flex-start",
-                  }}>
+                  }}
+                >
                   <PrimaryButton
                     disabled={!this.isValidREVIEWEEApproved()}
                     className={
