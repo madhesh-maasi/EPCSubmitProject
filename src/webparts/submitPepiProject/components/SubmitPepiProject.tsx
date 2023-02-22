@@ -111,6 +111,9 @@ export default class SubmitPepiProject extends React.Component<
       DisableNewFormOprtion: !allowSave,
     });
   }
+  private resetNAValue(val) {
+    return val == 0.5 || val == undefined ? 0 : val;
+  }
   public async componentDidMount() {
     this.getUserNameByMail();
     //alert("hi 1");
@@ -206,7 +209,8 @@ export default class SubmitPepiProject extends React.Component<
             let DR = commaD11R[j] == undefined ? 0 : commaD11R[j];
             qData["Reviewee"] = DE;
             qData["Reviewer"] = DR;
-            qData["Difference"] = Number(DR) - Number(DE);
+            qData["Difference"] =
+              Number(this.resetNAValue(DR)) - Number(this.resetNAValue(DE));
             j++;
             QuestionText.push(qData);
           }
@@ -543,8 +547,10 @@ export default class SubmitPepiProject extends React.Component<
                     </div>
                     <div className={styles.Newcol25Right}>
                       <Label>
-                        <span style={{ color: "#ff0000" }}> * </span>
-                        <b>Service Line : </b>
+                        <b>
+                          Service Line
+                          <span style={{ color: "#ff0000" }}> * </span>:{" "}
+                        </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -602,8 +608,8 @@ export default class SubmitPepiProject extends React.Component<
                       }
                     >
                       <Label>
-                        <span style={{ color: "#ff0000" }}> * </span>
                         <b>Reviewer Name :</b>
+                        <span style={{ color: "#ff0000" }}> * </span>
                       </Label>
                     </div>
                     <div
@@ -615,8 +621,8 @@ export default class SubmitPepiProject extends React.Component<
                       }
                     >
                       <Label>
-                        <span style={{ color: "#ff0000" }}> * </span>
                         <b>Lead MD:</b>
+                        <span style={{ color: "#ff0000" }}> * </span>
                       </Label>
                     </div>
                   </div>
@@ -705,8 +711,10 @@ export default class SubmitPepiProject extends React.Component<
                   */}
                     <div className={styles.Newcol25Right}>
                       <Label>
-                        <span style={{ color: "#ff0000" }}> * </span>
-                        <b>Service Line : </b>
+                        <b>
+                          Service Line
+                          <span style={{ color: "#ff0000" }}> * </span> :{" "}
+                        </b>
                       </Label>
                     </div>
                     <div className={styles.Newcol25left}>
@@ -859,14 +867,10 @@ export default class SubmitPepiProject extends React.Component<
                           }
                         >
                           <Label>
-                            <span style={{ color: "#ff0000" }}> * </span>
                             <b>Reviewer Name :</b>
+                            <span style={{ color: "#ff0000" }}> * </span>
                           </Label>
-                          <div
-                            style={{
-                              marginLeft: 10,
-                            }}
-                          >
+                          <div>
                             {this.state.PEPIDetails.StatusOfReview != "" ||
                             this.state.PEPIDetails.StatusOfReview ? (
                               <Persona
@@ -905,14 +909,10 @@ export default class SubmitPepiProject extends React.Component<
                           }
                         >
                           <Label>
-                            <span style={{ color: "#ff0000" }}> * </span>
                             <b>Lead MD :</b>
+                            <span style={{ color: "#ff0000" }}> * </span>
                           </Label>
-                          <div
-                            style={{
-                              marginLeft: 10,
-                            }}
-                          >
+                          <div>
                             {this.state.PEPIDetails.StatusOfReview != "" ||
                             this.state.PEPIDetails.StatusOfReview ? (
                               <Persona

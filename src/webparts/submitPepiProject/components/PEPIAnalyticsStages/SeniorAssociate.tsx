@@ -922,6 +922,7 @@ export default class SeniorAssociate extends React.Component<
   }
   public async componentDidMount() {
     this.FillOptions();
+    this.onFormFieldValueChange(this.props.APEPIQuestionText);
     if (
       this.props.APEPIDetail.StatusOfReview ==
       Config.StatusOfReview.AwaitingReviewee
