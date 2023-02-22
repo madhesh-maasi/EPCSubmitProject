@@ -998,6 +998,7 @@ export default class Analytics extends React.Component<
   public async componentDidMount() {
     debugger;
     this.FillOptions();
+    this.onFormFieldValueChange(this.props.APEPIQuestionText);
     if (
       this.props.APEPIDetail.StatusOfReview ==
       Config.StatusOfReview.AwaitingReviewee
@@ -6042,7 +6043,7 @@ export default class Analytics extends React.Component<
 
     let valid: boolean = false;
     if (
-      // sectionD.length == 0 &&
+      sectionD.length == 0 &&
       this.props.APEPIDetail.Complexity &&
       // this.state.A1EE != 0 &&
       // this.state.A2EE != 0 &&
@@ -6108,7 +6109,7 @@ export default class Analytics extends React.Component<
 
     let valid: boolean = false;
     if (
-      // sectionD.length == 0 &&
+      sectionD.length == 0 &&
       this.props.APEPIDetail.Complexity &&
       // this.state.A1RR != 0 &&
       // this.state.A2RR != 0 &&
