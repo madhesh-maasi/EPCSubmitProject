@@ -995,7 +995,8 @@ export default class SubmitPepiProject extends React.Component<
                             You may choose to Decline the entire review
                           </div>
                         ) : (
-                          this.state.IsCreateMode &&
+                          (this.state.IsCreateMode ||
+                            Number(this.state.PEPIDetails.HoursWorked) > 80) &&
                           this.state.PEPIDetails.StatusOfReview == "" && (
                             <div className={styles.col25left}></div>
                           )
