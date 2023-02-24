@@ -5736,9 +5736,8 @@ export default class SeniorAssociate extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}> Risk Management - </label>{" "}
-                Executes operational tasks independently, identifying when
-                additional resources are needed and considering time and talent
-                constraints; proactively identifies operational risks and
+                Identifies issues, articulating level of risk and potential
+                solutions in order to mitigate team / client concern and resolve
                 issues.
               </td>
               <td className={styles.doppadding}>
@@ -6270,7 +6269,7 @@ export default class SeniorAssociate extends React.Component<
                 <label className={styles.tablelable}>
                   Performance Feedback -
                 </label>
-                Provides constructive peer and upwards feedback on-the-job.
+                Provides constructive peer and upwards feedback on-the-job;
                 Participates in PEPI's performance management process in a
                 timely manner.
               </td>
@@ -6304,9 +6303,8 @@ export default class SeniorAssociate extends React.Component<
                 <label className={styles.tablelable}>
                   Effective Delegation -{" "}
                 </label>
-                Delegates tasks according to team members' abilities and
-                motivation, provides guidance as needed, and maintains
-                accountability for end-result of work completed by others.
+                Delegates project responsibilities in consideration of bandwidth
+                and availability.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6876,7 +6874,7 @@ export default class SeniorAssociate extends React.Component<
                 <label className={styles.tablelable}>
                   Meeting Management -{" "}
                 </label>
-                Facilitates small meetings to drive to intended outcomes,
+                Facilitates <u>small</u> meetings to drive to intended outcomes,
                 applying effective time management and standard meeting
                 facilitation skills.
               </td>

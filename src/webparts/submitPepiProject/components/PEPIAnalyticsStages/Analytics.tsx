@@ -6585,7 +6585,7 @@ export default class Analytics extends React.Component<
               <td>
                 <label className={styles.tablelable}> Analyzing - </label>Thinks
                 critically about data and produces accurate and reliable
-                analyses (under direction) to inform conclusions.
+                analyses (<u>under direction</u>) to inform conclusions.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6619,7 +6619,7 @@ export default class Analytics extends React.Component<
                   Pattern Recognition -
                 </label>
                 Explains trends, patterns and other findings in support of
-                conclusions and recommendations with direction.
+                conclusions and recommendations <u>with direction.</u>
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7143,9 +7143,8 @@ export default class Analytics extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>Client Handling - </label>
-                Engenders trust and builds followership by demonstrating respect
-                of others and others’ points-of-view, as well as using facts and
-                influential communication.
+                Integrates oneself into the client team and is viewed as an
+                extension of the client team.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7547,7 +7546,7 @@ export default class Analytics extends React.Component<
                   Meeting Management -{" "}
                 </label>
                 Prepares to participate in meetings and effectively executes
-                portions of meetings under direction.
+                portions of meetings <u>under direction.</u>
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
