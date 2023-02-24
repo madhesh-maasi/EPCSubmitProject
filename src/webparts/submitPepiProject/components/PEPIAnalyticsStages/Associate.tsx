@@ -6513,8 +6513,8 @@ export default class Associate extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}> Storyboarding - </label>
-                Creates storyboard templates, and reviews and proofreads client
-                presentations to align with standards.
+                Creates storyboard templates, and reviews and proofs reads
+                client presentation to align with standards.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6615,7 +6615,7 @@ export default class Associate extends React.Component<
               <td>
                 <label className={styles.tablelable}> Analyzing - </label>{" "}
                 Creates templates for analyses, and applies logic, experience
-                and rules to independently produce accurate and reliable
+                and rules to <u>independently</u> produce accurate and reliable
                 analyses that inform conclusions.
               </td>
               <td className={styles.doppadding}>
@@ -6650,7 +6650,7 @@ export default class Associate extends React.Component<
                   Pattern Recognition -
                 </label>
                 Explains trends, patterns and other findings in support of
-                conclusions and recommendations independently.
+                conclusions and recommendations <u>independently.</u>
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7407,10 +7407,10 @@ export default class Associate extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>
-                  Engaging and Adapting -{" "}
+                  Engaging & Adapting -{" "}
                 </label>
                 Demonstrates awareness of one's own and others' communication
-                and learning styles, as well as one's own and others' emotional
+                and learning styles, as well as own and others' emotional
                 states, and recognizing how these impact interactions with
                 others.
               </td>
@@ -7580,8 +7580,8 @@ export default class Associate extends React.Component<
                   Meeting Management -{" "}
                 </label>
                 Prepares meeting agendas and associated materials and
-                effectively plans and executes portions of meetings under
-                direction.
+                effectively plans and executes portions of meetings{" "}
+                <u>under direction.</u>
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7613,9 +7613,8 @@ export default class Associate extends React.Component<
                 <label className={styles.tablelable}>
                   Oral Communication -{" "}
                 </label>
-                Prepares meeting agendas and associated materials and
-                effectively plans and executes portions of meetings under
-                direction.
+                Articulates thoughts and ideas, using appropriate tone and level
+                of detail while in alignment with audience needs.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown

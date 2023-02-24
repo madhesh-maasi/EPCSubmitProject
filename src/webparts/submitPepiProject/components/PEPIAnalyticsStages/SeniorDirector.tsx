@@ -5744,10 +5744,9 @@ export default class SeniorDirector extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}> Risk Management - </label>{" "}
-                Develops and implements complex operational plans; prioritizing,
-                sequencing and estimating solution costs while considering
-                interdependencies, risks and client situation and limitations;
-                evaluates solution impact and value.
+                Anticipates, assesses, and identifies areas of complex risk;
+                Vigilant and diligent about reassessing issues and risk as plans
+                and approaches change managing team to course correct quickly.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -5919,8 +5918,8 @@ export default class SeniorDirector extends React.Component<
                   Pattern Recognition -
                 </label>{" "}
                 Applies industry and functional knowledge, as well as previous
-                project experience to identify drivers and issues, and draw
-                connections to develop client relevant hypotheses.
+                project experience, to identify drivers and issues, and draw
+                connections to <u>develop</u> client relevant hypotheses.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -5950,7 +5949,7 @@ export default class SeniorDirector extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}> Problem Solving - </label>
-                Decomposes complex problems into multiple issues to be
+                Decomposes <u>complex</u> problems into multiple issues to be
                 addressed; develops fact-based conclusions to address issues,
                 assimilating information from an array of relevant sources, and
                 leveraging previous experience.
@@ -6053,10 +6052,11 @@ export default class SeniorDirector extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>Work Management - </label>{" "}
-                Prioritizes and scopes work and develops effective workplans for
-                complex projects, flexing plans to accommodate project ambiguity
-                and fluidity; Assigns appropriate resources in alignment with
-                plans, removing barriers and monitoring project outcomes.
+                Priorities and scopes work and develops effective workplans for{" "}
+                <u>complex</u> projects, flexing plans to accommodate project
+                ambiguity and fluidity; Assigns appropriate resources in
+                alignment with plans, removing barriers, and monitoring project
+                outcomes.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6086,11 +6086,12 @@ export default class SeniorDirector extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>Issue Ownership - </label>{" "}
-                Takes accountability for both complex client and team identified
-                issues, as well as the discovery of complex latent issues;
-                Drives client and team to a sense of urgency, escalating and
-                engaging management team as necessary; Supports client and team
-                in persevering on issue resolution, despite obstacles.
+                Takes accountability for both <u>complex</u> client and team
+                identified issues, as well as the discovery of <u>complex</u>{" "}
+                latent issues; Drives client and team to a sense of urgency,
+                escalating and engaging management team as necessary; Supports
+                client and team in persevering on issue resolution, despite
+                obstacles.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6214,8 +6215,8 @@ export default class SeniorDirector extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>PEPI Way - </label> Adopts
-                A&M values as guiding principles that direct behavior,
-                decision-making and interactions.
+                Initiates activities and manages ongoing activities that build
+                the business and PEPI team; Builds and models best practices.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6321,9 +6322,11 @@ export default class SeniorDirector extends React.Component<
                 <label className={styles.tablelable}>
                   Effective Delegation -{" "}
                 </label>
-                Delegates tasks according to team members' abilities and
-                motivation, provides guidance as needed, and maintains
-                accountability for end-result of work completed by others.
+                Delegates tasks according to team member's bandwidth, abilities,
+                motivations, and{" "}
+                <u>development goals, provides guidance as needed,</u> and
+                maintains accountability for end-result of work completed by
+                others.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6794,9 +6797,10 @@ export default class SeniorDirector extends React.Component<
                 <label className={styles.tablelable}>
                   Conflict Resolution -{" "}
                 </label>{" "}
-                Thoughtfully intervenes and resolves complex conflicts with the
-                goal of improving communication, preserving relationships,
-                diffusing tension, and driving to value-add outcomes.
+                - Thoughtfully intervenes and resolves <u>complex</u> conflicts
+                with the goal of improving communication, preserving
+                relationships, diffusing tension, and driving to value-add
+                outcomes.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -6866,10 +6870,10 @@ export default class SeniorDirector extends React.Component<
                 <label className={styles.tablelable}>
                   Active Dialoguing -{" "}
                 </label>
-                Listens and processes complex input and ideas from multiple
-                stakeholder groups and facilitates dialogue that enables
-                stakeholders to hear, assess and integrate input to create
-                co-authored solutions.
+                Listens and processes <u>complex</u> input and ideas from
+                multiple stakeholders groups and facilitates dialogue that
+                enables stakeholders to hear, assess and integrate input to
+                create co-authored solutions.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown

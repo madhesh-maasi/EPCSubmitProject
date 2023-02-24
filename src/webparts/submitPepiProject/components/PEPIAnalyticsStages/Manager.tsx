@@ -6746,7 +6746,7 @@ export default class Manager extends React.Component<
                   Pattern Recognition -
                 </label>
                 Guides team in finding trends and relationships in emerging fact
-                pattern and identifying and integrating new or related lines of
+                pattern, and identifying and integrating new or related lines of
                 research to lead to complete conclusions.
               </td>
               <td className={styles.doppadding}>
@@ -7686,9 +7686,10 @@ export default class Manager extends React.Component<
                 <label className={styles.tablelable}>
                   Active Dialoguing -{" "}
                 </label>
-                Takes the lead in finding common ground and achieving positive
-                outcomes in conflict situations, only engaging leadership if
-                appropriate.
+                Listens without bias to understand the essence of other's ideas,
+                engaging in two-way dialogue to surface misunderstanding,
+                assumptions and sources of resistance to enable effective
+                processing of ideas.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7720,10 +7721,10 @@ export default class Manager extends React.Component<
                 <label className={styles.tablelable}>
                   Meeting Management -{" "}
                 </label>
-                Facilitates project meetings to drive to intended outcomes,
-                anticipating and answering unscripted questions, applying
-                effective time management and standard meeting facilitation
-                skills.
+                Facilitates <u>project</u> meetings to drive to intended
+                outcomes, anticipating and answering unscripted questions,
+                applying effective time management and standard meeting
+                facilitation skills.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7789,9 +7790,10 @@ export default class Manager extends React.Component<
                 <label className={styles.tablelable}>
                   Written Communication -{" "}
                 </label>
-                Reads audience and adjusts messaging, tone, focus, non-verbals,
-                and discussion duration as audience responds and/or situation
-                evolves.
+                Converts ideas into well-written, client-ready communications
+                (e.g., readout) in alignment with audience needs; accurately
+                summarizing information, considering the right style and level
+                of detail for intended audience.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7893,8 +7895,8 @@ export default class Manager extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>Knowledge Growth - </label>
-                Seeks the challenge of unfamiliar tasks and responsibilities.
-                Seeks counsel and is willing to experiment to improve and/or
+                Seeks the challenge of unfamiliar tasks and responsibilities;
+                Seeks counsel and is willing to experiment to improve and / or
                 find solutions.
               </td>
               <td className={styles.doppadding}>

@@ -4848,8 +4848,8 @@ export default class Director extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}> Risk Management - </label>
-                nticipates, assesses and identifies areas of potential risk;
-                Acts proactively to manage and/or resolve risks and issues to
+                Anticipates, assesses and identifies areas of potential risk;
+                Acts proactively to manage and / or resolve risks and issues to
                 minimize negative impacts on project or client relationship.
               </td>
               <td className={styles.doppadding}>
@@ -5022,7 +5022,7 @@ export default class Director extends React.Component<
                 </label>{" "}
                 Applies industry and functional knowledge, as well as previous
                 project experience, to identify drivers and issues and draw
-                connections to frame client relevant hypotheses.
+                connections to <u>frame</u> client relevant hypotheses.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -5825,8 +5825,8 @@ export default class Director extends React.Component<
                   Engaging and Adapting -{" "}
                 </label>
                 Engages and adapts in complex interactions with multiple
-                stakeholders in the same room or in parallel interactions, in
-                alignment with what the situation demands by considering
+                stakeholders, in the same room or in parallel interactions, in
+                alignment with what the situation demands, by considering
                 preferred communication and learning styles, emotional states,
                 and the unique environmental circumstances.
               </td>
@@ -5892,9 +5892,10 @@ export default class Director extends React.Component<
                 <label className={styles.tablelable}>
                   Conflict Resolution -{" "}
                 </label>
-                Thoughtfully intervenes and resolves general conflicts with the
-                goal of improving communication, preserving relationships,
-                diffusing tension and driving to value-add outcomes.
+                Thoughtfully intervenes and resolves <u>general</u> conflicts
+                with the goal of improving communication, preserving
+                relationships, diffusing tension, and driving to value-add
+                outcomes.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -5998,10 +5999,10 @@ export default class Director extends React.Component<
                 <label className={styles.tablelable}>
                   Meeting Management -{" "}
                 </label>
-                Facilitates larger-scale meetings to drive to intended outcomes,
-                preparing & leveraging others appropriately; Recognizes role as
-                a facilitator, knowing when & how to engage or cede the floor to
-                drive outcomes within time constraints.
+                Facilitates <u>larger-scale</u> meetings to drive to intended
+                outcomes, preparing and leveraging others appropriately;
+                Recognizes role as a facilitator, knowing when and how to engage
+                or cede the floor to drive to outcomes within time constrains.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
