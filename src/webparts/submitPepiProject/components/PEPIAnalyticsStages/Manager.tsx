@@ -6051,7 +6051,7 @@ export default class Manager extends React.Component<
   }
 
   private OnchangeOverallPerformance(newValue: string): void {
-    this.setState({ OverallPerformance: Number(newValue) });
+    this.setState({ OverallPerformance: Number(newValue === "NA" ? "0.5" : newValue) });
   }
 
   private onChangeE1EE(event): void {
@@ -6269,7 +6269,9 @@ export default class Manager extends React.Component<
       this.state.ApepiDetails.E1ER &&
       this.state.ApepiDetails.F1ER &&
       this.state.ApepiDetails.G1ER &&
-      this.state.ApepiDetails.H1ER
+      this.state.ApepiDetails.H1ER &&
+      this.state.OverallPerformance != 0 &&
+      this.state.ApepiDetails.PerformanceDiscussion
     ) {
       valid = true;
     }
