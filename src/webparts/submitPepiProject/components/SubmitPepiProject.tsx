@@ -225,10 +225,10 @@ export default class SubmitPepiProject extends React.Component<
       let AvgDE = 0;
       let AvgDR = 0;
       if (commaD11E.length > 0) {
-        AvgDE = DESum / commaD11E.length;
+        AvgDE = DESum / commaD11E.filter((val) => parseInt(val) != 0).length;
       }
       if (commaD11R.length > 0) {
-        AvgDR = DRSum / commaD11R.length;
+        AvgDR = DRSum / commaD11R.filter((val) => parseInt(val) != 0).length;
       }
       pepiDetails.ServiceLine =
         pepiDetails.ServiceLine == "" || !pepiDetails.ServiceLine

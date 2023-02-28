@@ -4718,7 +4718,7 @@ export default class Manager extends React.Component<
         this.getAverageCalculation(
           Number(this.resetNAValue(this.state.B21R)),
           Number(newValue === "NA" ? "0.5" : newValue),
-          Number(this.resetNAValue(this.state.B23R)),
+          Number(this.resetNAValue(this.state.B22R)),
           0,
           0
         )
@@ -6032,10 +6032,10 @@ export default class Manager extends React.Component<
         (
           (Number(AverageC3R) +
             Number(this.state.C2RR) +
-            Number(this.state.C2RR)) /
+            Number(this.state.C1RR)) /
           ((AverageC3R != 0 ? 1 : 0) +
             (this.state.C2RR != 0 ? 1 : 0) +
-            (this.state.C2RR != 0 ? 1 : 0))
+            (this.state.C1RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -6051,7 +6051,9 @@ export default class Manager extends React.Component<
   }
 
   private OnchangeOverallPerformance(newValue: string): void {
-    this.setState({ OverallPerformance: Number(newValue === "NA" ? "0.5" : newValue) });
+    this.setState({
+      OverallPerformance: Number(newValue === "NA" ? "0.5" : newValue),
+    });
   }
 
   private onChangeE1EE(event): void {
@@ -6478,7 +6480,7 @@ export default class Manager extends React.Component<
                   Develop Own Point of View (POV) -{" "}
                 </label>{" "}
                 Asks questions to gather all relevant information, surfaces all
-                assumptions and perspectives; seeks others' opinions and
+                assumptions and perspectives; seeks other's opinions and
                 perspectives to build a team POV.
               </td>
               <td className={styles.doppadding}>
@@ -6745,7 +6747,7 @@ export default class Manager extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>
-                  Pattern Recognition -
+                  {"Pattern Recognition - "}
                 </label>
                 Guides team in finding trends and relationships in emerging fact
                 pattern, and identifying and integrating new or related lines of
@@ -7111,7 +7113,7 @@ export default class Manager extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>
-                  Performance Feedback -
+                  {"Performance Feedback - "}
                 </label>
                 Provides timely, objective, direct, constructive and actionable
                 feedback on-the-job and within context of the PEPI performance
@@ -7248,7 +7250,7 @@ export default class Manager extends React.Component<
             </tr>
             <tr>
               <td>
-                <label className={styles.tablelable}>Team work - </label>{" "}
+                <label className={styles.tablelable}>Team Work - </label>{" "}
                 Promotes a team environment where diverse ideas and opinions are
                 encouraged within and across boundaries (e.g., business units,
                 client and internal, industry, boards, etc.).
@@ -8312,19 +8314,17 @@ export default class Manager extends React.Component<
                     {Number(
                       parseFloat(
                         this.getAverageCalculation(
-                          Number(this.resetNAValue(this.state.AAvgER)),
-                          Number(this.resetNAValue(this.state.BAvgER)),
-                          Number(this.resetNAValue(this.state.CAvgER)),
-                          Number(this.state.SctionTotalDR),
-                          0
-                        )
-                          // (Number(this.state.AAvgER) +
-                          //   Number(this.state.BAvgER) +
-                          //   Number(this.state.CAvgER) +
-                          //   Number(this.state.SctionTotalDR)) /
+                          // (Number(this.state.AAvgEE) +
+                          //   Number(this.state.BAvgEE) +
+                          //   Number(this.state.CAvgEE) +
+                          //   Number(this.state.SctionTotalDE)) /
                           // 4
-
-                          .toString()
+                          Number(this.resetNAValue(this.state.AAvgEE)),
+                          Number(this.resetNAValue(this.state.BAvgEE)),
+                          Number(this.resetNAValue(this.state.CAvgEE)),
+                          Number(this.state.SctionTotalDE),
+                          0
+                        ).toString()
                       )
                     ).toFixed(2)}
                   </label>
@@ -8396,16 +8396,13 @@ export default class Manager extends React.Component<
                       {" "}
                       {Number(
                         parseFloat(
-                          // (Number(this.state.AAvgER) +
-                          //   Number(this.state.BAvgER) +
-                          //   Number(this.state.CAvgER) +
-                          //   Number(this.state.SctionTotalDR)) /
-                          // 4
-                          (Number(this.resetNAValue(this.state.AAvgER)),
-                          Number(this.resetNAValue(this.state.BAvgER)),
-                          Number(this.resetNAValue(this.state.CAvgER)),
-                          Number(this.state.SctionTotalDR),
-                          0).toString()
+                          this.getAverageCalculation(
+                            Number(this.resetNAValue(this.state.AAvgER)),
+                            Number(this.resetNAValue(this.state.BAvgER)),
+                            Number(this.resetNAValue(this.state.CAvgER)),
+                            Number(this.state.SctionTotalDR),
+                            0
+                          ).toString()
                         )
                       ).toFixed(2)}
                     </label>

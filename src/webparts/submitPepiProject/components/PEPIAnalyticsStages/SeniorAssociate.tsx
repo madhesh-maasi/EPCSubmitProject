@@ -3892,7 +3892,7 @@ export default class SeniorAssociate extends React.Component<
         this.getAverageCalculation(
           Number(this.resetNAValue(this.state.B21R)),
           Number(newValue === "NA" ? "0.5" : newValue),
-          Number(this.resetNAValue(this.state.B23R)),
+          Number(this.resetNAValue(this.state.B22R)),
           0,
           0
         )
@@ -5206,10 +5206,10 @@ export default class SeniorAssociate extends React.Component<
         (
           (Number(AverageC3R) +
             Number(this.state.C2RR) +
-            Number(this.state.C2RR)) /
+            Number(this.state.C1RR)) /
           ((AverageC3R != 0 ? 1 : 0) +
             (this.state.C2RR != 0 ? 1 : 0) +
-            (this.state.C2RR != 0 ? 1 : 0))
+            (this.state.C1RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -5907,7 +5907,7 @@ export default class SeniorAssociate extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>
-                  Pattern Recognition -
+                  {"Pattern Recognition - "}
                 </label>
                 Finds trends and relationships in emerging fact pattern, and
                 identifies new or related lines of research to lead to complete
@@ -6271,7 +6271,7 @@ export default class SeniorAssociate extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>
-                  Performance Feedback -
+                  {"Performance Feedback - "}
                 </label>
                 Provides constructive peer and upwards feedback on-the-job;
                 Participates in PEPI's performance management process in a
@@ -6406,7 +6406,7 @@ export default class SeniorAssociate extends React.Component<
             </tr>
             <tr>
               <td>
-                <label className={styles.tablelable}>Team work - </label>{" "}
+                <label className={styles.tablelable}>Team Work - </label>{" "}
                 Promotes a team environment where diverse ideas and opinions are
                 encouraged within and across boundaries (e.g., business units,
                 client and internal, industry, boards, etc.).

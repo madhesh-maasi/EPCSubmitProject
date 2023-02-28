@@ -5945,10 +5945,10 @@ export default class Associate extends React.Component<
         (
           (Number(AverageC3R) +
             Number(this.state.C2RR) +
-            Number(this.state.C2RR)) /
+            Number(this.state.C1RR)) /
           ((AverageC3R != 0 ? 1 : 0) +
             (this.state.C2RR != 0 ? 1 : 0) +
-            (this.state.C2RR != 0 ? 1 : 0))
+            (this.state.C1RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -7114,7 +7114,7 @@ export default class Associate extends React.Component<
             </tr>
             <tr>
               <td>
-                <label className={styles.tablelable}>Team work - </label>
+                <label className={styles.tablelable}>Team Work - </label>
                 Promotes a team environment where diverse ideas and opinions are
                 encouraged within and across boundaries (e.g., business units,
                 client and internal, industry, boards, etc.).

@@ -3899,7 +3899,7 @@ export default class SeniorDirector extends React.Component<
         this.getAverageCalculation(
           Number(this.resetNAValue(this.state.B21R)),
           Number(newValue === "NA" ? "0.5" : newValue),
-          Number(this.resetNAValue(this.state.B23R)),
+          Number(this.resetNAValue(this.state.B22R)),
           0,
           0
         )
@@ -5213,10 +5213,10 @@ export default class SeniorDirector extends React.Component<
         (
           (Number(AverageC3R) +
             Number(this.state.C2RR) +
-            Number(this.state.C2RR)) /
+            Number(this.state.C1RR)) /
           ((AverageC3R != 0 ? 1 : 0) +
             (this.state.C2RR != 0 ? 1 : 0) +
-            (this.state.C2RR != 0 ? 1 : 0))
+            (this.state.C1RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -6218,7 +6218,7 @@ export default class SeniorDirector extends React.Component<
             </tr>
             <tr>
               <td>
-                <label className={styles.tablelable}>PEPI Way - </label> Adopts
+                <label className={styles.tablelable}>PEPI Way - </label>{" "}
                 Initiates activities and manages ongoing activities that build
                 the business and PEPI team; Builds and models best practices.
               </td>
@@ -6430,7 +6430,7 @@ export default class SeniorDirector extends React.Component<
             </tr>
             <tr>
               <td>
-                <label className={styles.tablelable}>Team work - </label>
+                <label className={styles.tablelable}>Team Work - </label>
                 Promotes a team environment where diverse ideas and opinions are
                 encouraged within and across boundaries (e.g., business units,
                 client and internal, industry, boards, etc.).
@@ -6801,10 +6801,9 @@ export default class SeniorDirector extends React.Component<
                 <label className={styles.tablelable}>
                   Conflict Resolution -{" "}
                 </label>{" "}
-                - Thoughtfully intervenes and resolves <u>complex</u> conflicts
-                with the goal of improving communication, preserving
-                relationships, diffusing tension, and driving to value-add
-                outcomes.
+                Thoughtfully intervenes and resolves complex conflicts with the
+                goal of improving communication, preserving relationships,
+                diffusing tension, and driving to value-add outcomes. outcomes.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -7501,16 +7500,18 @@ export default class SeniorDirector extends React.Component<
                     {" "}
                     {Number(
                       parseFloat(
-                        // (Number(this.state.AAvgEE) +
-                        //   Number(this.state.BAvgEE) +
-                        //   Number(this.state.CAvgEE) +
-                        //   Number(this.state.SctionTotalDE)) /
-                        // 4
-                        (Number(this.resetNAValue(this.state.AAvgEE)),
-                        Number(this.resetNAValue(this.state.BAvgEE)),
-                        Number(this.resetNAValue(this.state.CAvgEE)),
-                        Number(this.state.SctionTotalDE),
-                        0).toString()
+                        this.getAverageCalculation(
+                          // (Number(this.state.AAvgEE) +
+                          //   Number(this.state.BAvgEE) +
+                          //   Number(this.state.CAvgEE) +
+                          //   Number(this.state.SctionTotalDE)) /
+                          // 4
+                          Number(this.resetNAValue(this.state.AAvgEE)),
+                          Number(this.resetNAValue(this.state.BAvgEE)),
+                          Number(this.resetNAValue(this.state.CAvgEE)),
+                          Number(this.state.SctionTotalDE),
+                          0
+                        ).toString()
                       )
                     ).toFixed(2)}
                   </label>

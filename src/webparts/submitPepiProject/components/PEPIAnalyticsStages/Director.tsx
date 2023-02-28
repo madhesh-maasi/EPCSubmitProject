@@ -3002,7 +3002,7 @@ export default class Director extends React.Component<
         this.getAverageCalculation(
           Number(this.resetNAValue(this.state.B21R)),
           Number(newValue === "NA" ? "0.5" : newValue),
-          Number(this.resetNAValue(this.state.B23R)),
+          Number(this.resetNAValue(this.state.B22R)),
           0,
           0
         )
@@ -4316,10 +4316,10 @@ export default class Director extends React.Component<
         (
           (Number(AverageC3R) +
             Number(this.state.C2RR) +
-            Number(this.state.C2RR)) /
+            Number(this.state.C1RR)) /
           ((AverageC3R != 0 ? 1 : 0) +
             (this.state.C2RR != 0 ? 1 : 0) +
-            (this.state.C2RR != 0 ? 1 : 0))
+            (this.state.C1RR != 0 ? 1 : 0))
         ).toString()
       ).toFixed(2)
     );
@@ -5162,7 +5162,7 @@ export default class Director extends React.Component<
                 Prioritizes and scopes work and develops effective project
                 workplans, flexing plans to accommodate project ambiguity and
                 fluidity; Assigns appropriate resources in alignment with plans,
-                removing barriers & monitoring project outcomes.
+                removing barriers, and monitoring project outcomes.
               </td>
               <td className={styles.doppadding}>
                 <Dropdown
@@ -5390,9 +5390,9 @@ export default class Director extends React.Component<
             <tr>
               <td>
                 <label className={styles.tablelable}>
-                  Performance Feedback -
+                  {"Performance Feedback - "}
                 </label>{" "}
-                Provides timely, objective, direct, constructive & actionable
+                Provides timely, objective, direct, constructive and actionable
                 feedback on-the-job and within context of the PEPI performance
                 process for staff.
               </td>
@@ -5527,7 +5527,7 @@ export default class Director extends React.Component<
             </tr>
             <tr>
               <td>
-                <label className={styles.tablelable}>Team work - </label>{" "}
+                <label className={styles.tablelable}>Team Work - </label>{" "}
                 Promotes a team environment where diverse ideas and opinions are
                 encouraged within and across boundaries (e.g., business units,
                 client and internal, industry, boards, etc.).
@@ -6149,7 +6149,7 @@ export default class Director extends React.Component<
                 </label>
                 Seeks roles and opportunities that stretch beyond current
                 capabilities and skill sets; Solicits feedback from
-                subordinates, peers & leadership regularly; Participates in
+                subordinates, peers, and leadership regularly; Participates in
                 formal training and mentoring to develop capabilities and skill
                 set.
               </td>

@@ -506,7 +506,7 @@ export default class SubmitSpecialReviews extends React.Component<
                   />
                 </div>
               </div>
-              <div className={styles.SRrow}>
+              {/* <div className={styles.SRrow}>
                 <div className={styles.lblReviewIDs}>
                   <Label>
                     <b>Project Status</b>
@@ -523,7 +523,7 @@ export default class SubmitSpecialReviews extends React.Component<
                     }}
                   />
                 </div>
-              </div>
+              </div> */}
               <div className={styles.SRrow}>
                 <div className={styles.lblReviewIDs}>
                   <Label>
