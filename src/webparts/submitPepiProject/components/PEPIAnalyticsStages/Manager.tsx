@@ -911,7 +911,10 @@ export default class Manager extends React.Component<
     });
     let avgDDifference =
       Number(DSectionDifference) /
-      updateDetails.filter((e) => e.Difference != 0).length;
+      updateDetails.filter((e) => e.QuestionText != "N/A").length;
+    // let avgDDifference =
+    //   Number(DSectionDifference) /
+    //   updateDetails.filter((e) => e.Difference != 0).length;
     this.setState({
       SctionTotalDD: Number(
         parseFloat(
