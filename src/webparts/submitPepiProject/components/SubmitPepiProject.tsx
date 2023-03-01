@@ -438,7 +438,7 @@ export default class SubmitPepiProject extends React.Component<
     let data = {};
     const columns = Config.PEPIProjectsListColumns;
     // data[Config.BaseColumns.Title] = ".";
-    data[columns.RevieweeNameId] = pepiDetails.Reviewer.Id;
+    data[columns.RevieweeNameId] = pepiDetails.Reviewee.Id;
     data[columns.LeadMDNameId] = pepiDetails.LeadMD.Id;
     data[columns.ReviewerNameId] = pepiDetails.Reviewer.Id;
     data[columns.ServiceLines] = pepiDetails.ServiceLine;
@@ -878,7 +878,7 @@ export default class SubmitPepiProject extends React.Component<
                                   "/_layouts/15/userphoto.aspx?size=S&username=" +
                                   this.state.ReviewerEmail
                                 }
-                                text={this.state.RevieweeName}
+                                text={this.state.ReviewerName}
                                 size={PersonaSize.size32}
                               />
                             ) : (
@@ -1019,6 +1019,12 @@ export default class SubmitPepiProject extends React.Component<
                                 // </div>
                                 <div>
                                   <PrimaryButton
+                                    disabled={this.state.DisableSubmitButton}
+                                    style={{
+                                      background: this.state.DisableSubmitButton
+                                        ? "#ff9"
+                                        : "rgba(73,233,10,.8156862745098039)",
+                                    }}
                                     className={styles.btnSTARTREVIEW}
                                     // disabled={this.state.DisableSubmitButton}
                                     text="DECLINE"
