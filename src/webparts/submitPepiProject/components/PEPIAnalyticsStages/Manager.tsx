@@ -3916,7 +3916,12 @@ export default class Manager extends React.Component<
       this.setState({ A2EE: AverageA2E });
       // let valA21ED = (Number(vallblA21D) + Number(this.state.A22D) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA21ED });
-      this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      // this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(this.state.A2RR - AverageA2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "A22E") {
       this.setState({ A22E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA22D =
@@ -3940,7 +3945,12 @@ export default class Manager extends React.Component<
       this.setState({ A2EE: AverageA2E });
       // let valA22ED = (Number(this.state.A22D) + Number(vallblA22D) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA22ED });
-      this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      // this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(this.state.A2RR - AverageA2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "A23E") {
       this.setState({ A23E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA23D =
@@ -3964,7 +3974,12 @@ export default class Manager extends React.Component<
       this.setState({ A2EE: AverageA2E });
       // let valA23ED = (Number(this.state.A21D) + Number(this.state.A22D) + Number(vallblA23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA23ED });
-      this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      // this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(this.state.A2RR - AverageA2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "A24E") {
       this.setState({ A24E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA24D =
@@ -3988,7 +4003,12 @@ export default class Manager extends React.Component<
       this.setState({ A2EE: AverageA2E });
       // let valA24ED = (Number(this.state.A21D) + Number(this.state.A22D) + Number(this.state.A23D) + Number(vallblA24D)) / 4;
       // this.setState({ A2DD: valA24ED });
-      this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      // this.setState({ A2DD: this.state.A2RR - AverageA2E });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(this.state.A2RR - AverageA2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "A21R") {
       this.setState({ A21R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA21ED =
@@ -4012,7 +4032,12 @@ export default class Manager extends React.Component<
       this.setState({ A2RR: AverageA2R });
       // let valA21RD = (Number(vallblA21ED) + Number(this.state.A22D) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA21RD });
-      this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      // this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(AverageA2R - this.state.A2EE).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "A22R") {
       this.setState({ A22R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA22ED =
@@ -4038,7 +4063,12 @@ export default class Manager extends React.Component<
 
       // let valA22RD = (Number(this.state.A21D) + Number(vallblA22ED) + Number(this.state.A23D) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA22RD });
-      this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      // this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(AverageA2R - this.state.A2EE).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "A23R") {
       this.setState({ A23R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA23ED =
@@ -4062,7 +4092,12 @@ export default class Manager extends React.Component<
       this.setState({ A2RR: AverageA2R });
       // let valA21RD = (Number(this.state.A21D) + Number(this.state.A22D) + Number(vallblA23ED) + Number(this.state.A24D)) / 4;
       // this.setState({ A2DD: valA21RD });
-      this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      // this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(AverageA2R - this.state.A2EE).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "A24R") {
       this.setState({ A24R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblA24ED =
@@ -4086,7 +4121,12 @@ export default class Manager extends React.Component<
       this.setState({ A2RR: AverageA2R });
       // let valA21RD = (Number(this.state.A21D) + Number(this.state.A22D) + Number(this.state.A23D) + Number(vallblA24ED)) / 4;
       // this.setState({ A2DD: valA21RD });
-      this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      // this.setState({ A2DD: AverageA2R - this.state.A2EE });
+      this.setState({
+        A2DD: Number(
+          parseFloat(Number(AverageA2R - this.state.A2EE).toString()).toFixed(2)
+        ),
+      });
     } else {
     }
     //let SctionTotalAE = Number(parseFloat(((Number(AverageA3E) + Number(this.state.dropAverageA11E) + Number(this.state.dropAverageA2E)  )/3).toString()).toFixed(2));
@@ -8607,7 +8647,7 @@ export default class Manager extends React.Component<
                     style={{
                       width: "100%",
                     }}
-                    value={this.state.ApepiDetails.RevertToReviewee}
+                    // value={this.state.ApepiDetails.RevertToReviewee}
                     onChange={this.onChangeRevertToReviewee}
                   ></textarea>{" "}
                 </div>
@@ -8686,7 +8726,7 @@ export default class Manager extends React.Component<
                     style={{
                       width: "100%",
                     }}
-                    value={this.state.ApepiDetails.RevertToReviewer}
+                    // value={this.state.ApepiDetails.RevertToReviewer}
                     onChange={this.onChangeRevertToReviewer}
                   ></textarea>{" "}
                 </div>
