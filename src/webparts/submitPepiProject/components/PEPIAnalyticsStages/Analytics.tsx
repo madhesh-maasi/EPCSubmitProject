@@ -8033,71 +8033,80 @@ export default class Analytics extends React.Component<
           </fieldset>
         </div>
 
-        <div className={styles.row}>
-          <Label>
-            <b>Overall Performance Rating Instructions:</b> To assign the
-            Overall Performance Rating, you will need to consider the calculated
-            Overall Core Competency Rating as well as identified strengths and
-            areas for improvement. After consideration of these inputs, you will
-            need to manually assign the Overall Performance Rating from the
-            drop-down scale (scale definitions provided below).
-          </Label>
-        </div>
-        <div className={styles.sectionContent}>
-          <table className={styles.tablewraper}>
-            <tr>
-              <td className={styles.boldlabelSrNewHeader} colSpan={2}>
-                Overall Performance Rating Scale
-              </td>
-              <td className={styles.boldlabelTxtNew}></td>
-            </tr>
-            <tr>
-              <td className={styles.boldlabelSrNew}>5</td>
-              <td className={styles.boldlabelTxtNew}>Exceptional</td>
-              <td className={styles.boldlabelTxttd}>
-                Consistently exceeds expectations; sought out by clients and/or
-                colleagues for counsel and assistance; widely recognized as a
-                role model and teaches others. Reserved for truly outstanding
-                performers.
-              </td>
-            </tr>
-            <tr>
-              <td className={styles.boldlabelSrNew}>4</td>
-              <td className={styles.boldlabelTxtNew}>Exceeds Expectation</td>
-              <td className={styles.boldlabelTxttd}>
-                Consistently meets and frequently exceeds expectations;
-                demonstrates strong performance that adds value beyond the scope
-                of the current role.
-              </td>
-            </tr>
-            <tr>
-              <td className={styles.boldlabelSrNew}>3</td>
-              <td className={styles.boldlabelTxtNew}>Performs Well</td>
-              <td className={styles.boldlabelTxttd}>
-                Consistently meets expectations; demonstrates capable
-                performance and is dependable, competent, and knowledgeable;
-                requires only modest performance adjustment to enhance
-                contribution
-              </td>
-            </tr>
-            <tr>
-              <td className={styles.boldlabelSrNew}>2</td>
-              <td className={styles.boldlabelTxtNew}>Needs Improvement</td>
-              <td className={styles.boldlabelTxttd}>
-                Inconsistently meets expectations; improvement is needed in one
-                or more significant aspects that are critical to the position.
-              </td>
-            </tr>
-            <tr>
-              <td className={styles.boldlabelSrNew}>1</td>
-              <td className={styles.boldlabelTxtNew}>Unsatisfactory</td>
-              <td className={styles.boldlabelTxttd}>
-                Seldomly meets expectations; significant improvement is needed
-                in multiple job expectations.
-              </td>
-            </tr>
-          </table>
-        </div>
+        {this.props.APEPIDetail.StatusOfReview !=
+          Config.StatusOfReview.AwaitingReviewee && (
+          <>
+            <div className={styles.row}>
+              <Label>
+                <b>Overall Performance Rating Instructions:</b> To assign the
+                Overall Performance Rating, you will need to consider the
+                calculated Overall Core Competency Rating as well as identified
+                strengths and areas for improvement. After consideration of
+                these inputs, you will need to manually assign the Overall
+                Performance Rating from the drop-down scale (scale definitions
+                provided below).
+              </Label>
+            </div>
+            <div className={styles.sectionContent}>
+              <table className={styles.tablewraper}>
+                <tr>
+                  <td className={styles.boldlabelSrNewHeader} colSpan={2}>
+                    Overall Performance Rating Scale
+                  </td>
+                  <td className={styles.boldlabelTxtNew}></td>
+                </tr>
+                <tr>
+                  <td className={styles.boldlabelSrNew}>5</td>
+                  <td className={styles.boldlabelTxtNew}>Exceptional</td>
+                  <td className={styles.boldlabelTxttd}>
+                    Consistently exceeds expectations; sought out by clients
+                    and/or colleagues for counsel and assistance; widely
+                    recognized as a role model and teaches others. Reserved for
+                    truly outstanding performers.
+                  </td>
+                </tr>
+                <tr>
+                  <td className={styles.boldlabelSrNew}>4</td>
+                  <td className={styles.boldlabelTxtNew}>
+                    Exceeds Expectation
+                  </td>
+                  <td className={styles.boldlabelTxttd}>
+                    Consistently meets and frequently exceeds expectations;
+                    demonstrates strong performance that adds value beyond the
+                    scope of the current role.
+                  </td>
+                </tr>
+                <tr>
+                  <td className={styles.boldlabelSrNew}>3</td>
+                  <td className={styles.boldlabelTxtNew}>Performs Well</td>
+                  <td className={styles.boldlabelTxttd}>
+                    Consistently meets expectations; demonstrates capable
+                    performance and is dependable, competent, and knowledgeable;
+                    requires only modest performance adjustment to enhance
+                    contribution
+                  </td>
+                </tr>
+                <tr>
+                  <td className={styles.boldlabelSrNew}>2</td>
+                  <td className={styles.boldlabelTxtNew}>Needs Improvement</td>
+                  <td className={styles.boldlabelTxttd}>
+                    Inconsistently meets expectations; improvement is needed in
+                    one or more significant aspects that are critical to the
+                    position.
+                  </td>
+                </tr>
+                <tr>
+                  <td className={styles.boldlabelSrNew}>1</td>
+                  <td className={styles.boldlabelTxtNew}>Unsatisfactory</td>
+                  <td className={styles.boldlabelTxttd}>
+                    Seldomly meets expectations; significant improvement is
+                    needed in multiple job expectations.
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </>
+        )}
 
         <div className={styles.sectionContent}>
           <div className={styles.sectionContent}>
@@ -8620,17 +8629,17 @@ export default class Analytics extends React.Component<
         {/* {(this.props.APEPIDetail.StatusOfReview ==
           Config.StatusOfReview.AwaitingReviewee ||
           this.state.IsReviewee) && ( */}
-          <div className={styles.divFullWidth}>
-            <fieldset className={styles.divFullWidth}>
-              {" "}
-              <legend>Signoff History</legend>{" "}
-              <textarea
-                disabled={true}
-                value={this.state.ApepiDetails.SignoffHistory}
-                className={styles.Multilinetextarea}
-              ></textarea>
-            </fieldset>
-          </div>
+        <div className={styles.divFullWidth}>
+          <fieldset className={styles.divFullWidth}>
+            {" "}
+            <legend>Signoff History</legend>{" "}
+            <textarea
+              disabled={true}
+              value={this.state.ApepiDetails.SignoffHistory}
+              className={styles.Multilinetextarea}
+            ></textarea>
+          </fieldset>
+        </div>
         {/* )} */}
       </div>
     );
