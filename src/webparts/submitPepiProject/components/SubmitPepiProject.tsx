@@ -402,7 +402,16 @@ export default class SubmitPepiProject extends React.Component<
   }
   private async onDecline(): Promise<void> {
     let data = {};
+    const pepiDetails = this.state.PEPIDetails;
     const columns = Config.PEPIProjectsListColumns;
+
+    data[columns.RevieweeNameId] = pepiDetails.Reviewee.Id;
+    data[columns.LeadMDNameId] = pepiDetails.LeadMD.Id;
+    data[columns.ReviewerNameId] = pepiDetails.Reviewer.Id;
+    data[columns.ServiceLines] = pepiDetails.ServiceLine;
+
+    data[columns.Submitted] = Config.SubmittedNumber[100];
+
     data[columns.StatusOfReview] = Config.StatusOfReview.Declined;
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
