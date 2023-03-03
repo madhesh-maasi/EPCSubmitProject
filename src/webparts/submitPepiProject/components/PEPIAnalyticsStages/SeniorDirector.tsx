@@ -7411,6 +7411,9 @@ export default class SeniorDirector extends React.Component<
           </fieldset>
         </div>
 
+        {this.props.APEPIDetail.StatusOfReview !=
+          Config.StatusOfReview.AwaitingReviewee && (
+          <>
         <div className={styles.row}>
           <Label>
             <b>Overall Performance Rating Instructions:</b> To assign the
@@ -7476,6 +7479,8 @@ export default class SeniorDirector extends React.Component<
             </tr>
           </table>
         </div>
+        </>
+        )}
 
         <div className={styles.sectionContent}>
           <div className={styles.sectionContent}>

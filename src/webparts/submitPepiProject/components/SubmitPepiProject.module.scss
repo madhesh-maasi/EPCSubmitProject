@@ -197,14 +197,14 @@
     .Newcol25Right {
         padding: 3px;
         text-align: right;
-        width: 10%;
+        width: 20%;
         @include ms-Grid-col;
     }
     .Newcol25left {
         width: 25%;
         padding: 3px;
         text-align: left;
-        width: 40%;
+        width: 30%;
         @include ms-Grid-col;
     }
     .col25leftServiceLine {
