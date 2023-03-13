@@ -313,7 +313,13 @@ export default class SubmitSpecialReviews extends React.Component<
       updateDetails.RevieweeNameEmail != undefined &&
       updateDetails.LeadMDNameEmail != undefined &&
       updateDetails.ProjectCode != undefined &&
-      updateDetails.HoursWorked != undefined
+      updateDetails.HoursWorked != undefined &&
+      updateDetails.JobTitle != "" &&
+      updateDetails.JobTitle != undefined &&
+      updateDetails.LastHoursBilled &&
+      updateDetails.LastHoursBilled != undefined &&
+      updateDetails.EmployeeNumber != "" &&
+      updateDetails.EmployeeNumber != undefined
     ) {
       valid = true;
     }
@@ -489,6 +495,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 <div className={styles.lblReviewIDs}>
                   <Label>
                     <b>Job Title</b>
+                    <span style={{ color: "#ff0000" }}> * </span>
                   </Label>
                   <Label>
                     <b>(Determines review template)</b>
@@ -528,6 +535,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 <div className={styles.lblReviewIDs}>
                   <Label>
                     <b>Last Hours Billed</b>
+                    <span style={{ color: "#ff0000" }}> * </span>
                   </Label>
                   <Label>
                     <b>(if known)</b>
@@ -573,6 +581,7 @@ export default class SubmitSpecialReviews extends React.Component<
                 <div className={styles.lblReviewIDs}>
                   <Label>
                     <b>Employee Number</b>
+                    <span style={{ color: "#ff0000" }}> * </span>
                   </Label>
                   <Label>
                     <b>(if known)</b>
