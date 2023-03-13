@@ -91,12 +91,15 @@ export default class MapCAMLResult extends ContextService {
 
     //let SignoffHistory = item[Config.PEPIProjectsListColumns.SignoffHistory].split(";");
     let SignoffHistory = item[Config.PEPIProjectsListColumns.SignoffHistory]
-      ? item[Config.PEPIProjectsListColumns.SignoffHistory].split(";")
+      ? item[Config.PEPIProjectsListColumns.SignoffHistory]
+          .replace(/<[^>]*>/g, "")
+          .replaceAll("&#58;", ":")
+          .split(")")
       : "";
     let html = "";
     for (var i = 0; i < Object.keys(SignoffHistory).length; i++) {
-      if (SignoffHistory[Object.keys(SignoffHistory)[i]] != " ") {
-        html += SignoffHistory[Object.keys(SignoffHistory)[i]].trim() + "\n";
+      if (SignoffHistory[Object.keys(SignoffHistory)[i]].trim() != "") {
+        html += SignoffHistory[Object.keys(SignoffHistory)[i]].trim() + ")\n";
       }
     }
     // html += "</table>";
