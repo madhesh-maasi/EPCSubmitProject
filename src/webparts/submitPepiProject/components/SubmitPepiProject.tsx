@@ -216,10 +216,20 @@ export default class SubmitPepiProject extends React.Component<
           }
         }
         for (let index = 0; index < commaD11E.length; index++) {
-          DESum = DESum + Number(commaD11E[index]);
+          if (
+            Number(commaD11E[index]) != 0 &&
+            Number(commaD11E[index]) != 0.5
+          ) {
+            DESum = DESum + Number(commaD11E[index]);
+          }
         }
         for (let index = 0; index < commaD11R.length; index++) {
-          DRSum = DRSum + Number(commaD11R[index]);
+          if (
+            Number(commaD11R[index]) != 0 &&
+            Number(commaD11R[index]) != 0.5
+          ) {
+            DRSum = DRSum + Number(commaD11R[index]);
+          }
         }
       }
       let AvgDE = 0;
@@ -245,8 +255,8 @@ export default class SubmitPepiProject extends React.Component<
         LeadMDName: pepiDetails.LeadMD.Title,
         ReplaceUsermail: pepiDetails.Replaceme.Email,
         TempPEPIQuestionText: QuestionText,
-        SctionTotalDE: AvgDE,
-        SctionTotalDR: AvgDR,
+        SctionTotalDE: Number(isNaN(AvgDE) ? 0 : AvgDE),
+        SctionTotalDR: Number(isNaN(AvgDR) ? 0 : AvgDR),
         hasEditItemPermission: this.hasEditItemPermission,
       });
       console.log(QuestionText);
@@ -1182,22 +1192,23 @@ export default class SubmitPepiProject extends React.Component<
                       onFormFieldValueChange={this.onFormFieldValueChange}
                     ></Analytics>
                   )}
-                  {this.state.PEPIDetails.JobTitle ==
-                    Config.JobRole.Manager && (
-                    <Manager
-                      AppContext={this.props.AppContext}
-                      hasEditItemPermission={this.state.hasEditItemPermission}
-                      IsLoading={this.state.IsLoading}
-                      APEPIDetail={this.state.PEPIDetails}
-                      APEPIQuestionText={this.state.TempPEPIQuestionText}
-                      DisableSection={this.state.IsAnalyticsDisable}
-                      Options={this.Options}
-                      SctionTotalDE={this.state.SctionTotalDE}
-                      SctionTotalDR={this.state.SctionTotalDR}
-                      ReplaceUsermail={this.state.ReplaceUsermail}
-                      onFormFieldValueChange={this.onFormFieldValueChange}
-                    ></Manager>
-                  )}
+                  {this.state.PEPIDetails.JobTitle == Config.JobRole.Manager ||
+                    (this.state.PEPIDetails.JobTitle ==
+                      Config.JobRole.Manager1 && (
+                      <Manager
+                        AppContext={this.props.AppContext}
+                        hasEditItemPermission={this.state.hasEditItemPermission}
+                        IsLoading={this.state.IsLoading}
+                        APEPIDetail={this.state.PEPIDetails}
+                        APEPIQuestionText={this.state.TempPEPIQuestionText}
+                        DisableSection={this.state.IsAnalyticsDisable}
+                        Options={this.Options}
+                        SctionTotalDE={this.state.SctionTotalDE}
+                        SctionTotalDR={this.state.SctionTotalDR}
+                        ReplaceUsermail={this.state.ReplaceUsermail}
+                        onFormFieldValueChange={this.onFormFieldValueChange}
+                      ></Manager>
+                    ))}
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Associate && (
                     <Associate
