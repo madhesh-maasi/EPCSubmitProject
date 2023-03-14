@@ -956,14 +956,28 @@ export default class Associate extends React.Component<
     });
     let avgDDifference =
       Number(DSectionDifference) /
-      updateDetails.filter((e) => e.QuestionText != "N/A").length;
+      updateDetails.filter(
+        (e) =>
+          e.QuestionText != "N/A" &&
+          (e.Reviewee != "0.5" || e.Reviewer != "0.5")
+      ).length;
     // let avgDDifference =
     //   Number(DSectionDifference) /
     //   updateDetails.filter((e) => e.Difference != 0).length;
+    // this.setState({
+    //   SctionTotalDD: Number(
+    //     parseFloat(
+    //       (isNaN(avgDDifference) ? 0 : avgDDifference).toString()
+    //     ).toFixed(2)
+    //   ),
+    // });
     this.setState({
       SctionTotalDD: Number(
         parseFloat(
-          (isNaN(avgDDifference) ? 0 : avgDDifference).toString()
+          Number(
+            (isNaN(avgDSectionReviewer) ? 0 : avgDSectionReviewer) -
+              (isNaN(avgDSectionReviewee) ? 0 : avgDSectionReviewee)
+          ).toString()
         ).toFixed(2)
       ),
     });

@@ -308,6 +308,7 @@ export namespace Config {
     SeniorAssociate: "Senior Associate",
     Associate: "Associate",
     Manager: "Manager",
+    Manager1: "Manager I",
     Analyst: "Analyst",
   };
 
