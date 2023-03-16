@@ -464,6 +464,34 @@ export default class SubmitPepiProject extends React.Component<
     data[columns.StatusOfReview] = Config.StatusOfReview.AwaitingReviewee;
     data[columns.Submitted] = Config.SubmittedNumber[99];
 
+    // ContentType - TAG Employee
+    switch (pepiDetails.JobTitle) {
+      case "Analyst":
+        data["ContentTypeId"] =
+          "0x0100EB87F38ECF46E548BFD114A7FCA2622C00CCF730799B3906469BE7FE546D34FE0F";
+        break;
+      case "Associate":
+        data["ContentTypeId"] =
+          "0x01007CC447090B2729488C00023E9CB18DEA0047355591FC254243A6EF4A7804F44F6C";
+        break;
+      case "Director":
+        data["ContentTypeId"] =
+          "0x01000E91B8722EE3844190CAD13A8B67414B008F7B6F8DBCF895488F0C70BEFEB84569";
+        break;
+      case "Manager":
+        data["ContentTypeId"] =
+          "0x0100E5D0448E8479E74B9092150C2D23C3300030350B2CE9B1BD46B6F8695DF964DC27";
+        break;
+      case "Senior Associate":
+        data["ContentTypeId"] =
+          "0x010013D64FC3DDD41A4591D6CDC152637A6800BE84AC25FB88044BA047F382848EC39A";
+        break;
+      case "Senior Director":
+        data["ContentTypeId"] =
+          "0x0100E9CC05C6FA99294499F92CCF941A731F000FB0DAA960C3BF4D879097BC6DD7A3EA";
+        break;
+    }
+
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
