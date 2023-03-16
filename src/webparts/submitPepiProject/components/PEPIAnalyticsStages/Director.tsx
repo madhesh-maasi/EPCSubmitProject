@@ -935,7 +935,8 @@ export default class Director extends React.Component<
     this.onFormFieldValueChange(this.props.APEPIQuestionText);
     if (
       this.props.APEPIDetail.StatusOfReview ==
-      Config.StatusOfReview.AwaitingReviewee
+        Config.StatusOfReview.AwaitingReviewee &&
+      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail
     ) {
       this.setState({ IsReviewee: false });
       //! Technorucs
@@ -1232,17 +1233,20 @@ export default class Director extends React.Component<
       });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
-      Config.StatusOfReview.AwaitingReviewer
+        Config.StatusOfReview.AwaitingReviewer &&
+      this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail
     ) {
       this.setState({ IsReviewer: false });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
-      Config.StatusOfReview.AwaitingLeadMD
+        Config.StatusOfReview.AwaitingLeadMD &&
+      this.props.APEPIDetail.LeadMD.Email == this.props.loggeduseremail
     ) {
       this.setState({ IsLeadMD: false });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
-      Config.StatusOfReview.AwaitingAcknowledgement
+        Config.StatusOfReview.AwaitingAcknowledgement &&
+      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail
     ) {
       this.setState({ IsAcknowledgement: false });
     } else if (

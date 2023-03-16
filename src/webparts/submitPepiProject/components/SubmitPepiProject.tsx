@@ -95,6 +95,7 @@ export default class SubmitPepiProject extends React.Component<
       SctionTotalDE: 0,
       SctionTotalDR: 0,
       ComplexityOptions: "",
+      loggeduseremail: this.props.AppContext.pageContext.user.email,
     };
     this.onSTARTREVIEWSave = this.onSTARTREVIEWSave.bind(this);
     this.onDecline = this.onDecline.bind(this);
@@ -1207,6 +1208,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Analyst && (
                     <Analytics
+                      loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
                       IsLoading={this.state.IsLoading}
@@ -1224,6 +1226,7 @@ export default class SubmitPepiProject extends React.Component<
                     (this.state.PEPIDetails.JobTitle ==
                       Config.JobRole.Manager1 && (
                       <Manager
+                        loggeduseremail={this.state.loggeduseremail}
                         AppContext={this.props.AppContext}
                         hasEditItemPermission={this.state.hasEditItemPermission}
                         IsLoading={this.state.IsLoading}
@@ -1240,6 +1243,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Associate && (
                     <Associate
+                      loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
                       IsLoading={this.state.IsLoading}
@@ -1256,6 +1260,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.SeniorAssociate && (
                     <SeniorAssociate
+                      loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
                       IsLoading={this.state.IsLoading}
@@ -1272,6 +1277,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Director && (
                     <Director
+                      loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
                       IsLoading={this.state.IsLoading}
@@ -1288,6 +1294,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.SeniorDirector && (
                     <SeniorDirector
+                      loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
                       IsLoading={this.state.IsLoading}
