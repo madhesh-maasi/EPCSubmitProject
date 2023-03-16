@@ -6,27 +6,28 @@ import { PEPI_PEPIQuestionText } from "../../../domain/models/PEPI_PEPIQuestionT
 import { Enums } from "../../../globals/Enums";
 
 export interface ISubmitPEPIprojectState extends IBaseInterface {
- //LableText:String,
- ReviewerName:string;
- LeadMDName:string;
- DisableSubmitButton : boolean;
- IsCreateMode: boolean;
- PEPIDetails: PEPI_PEPIDetails;
- PEPIQuestionText: PEPI_QuestionText;
- hasEditItemPermission : boolean;
- //TempPEPIQuestionText: PEPI_QuestionText[];
- TempPEPIQuestionText: PEPI_PEPIQuestionText[];
- SubmitCompleted: false;
- SubmitStarted: false;
- IsAnalyticsDisable : boolean;
- DisableNewFormOprtion : boolean;
- CurrentUserRoles: Enums.UserRoles[];
- IsSelectedEmployeeInvalid: boolean;
- LeadMDEmail : string;
- ReviewerEmail : string;
- RevieweeName : string;
- ReplaceUsermail : string;
- SctionTotalDE : number;
- SctionTotalDR : number;
- ComplexityOptions : string;
+  //LableText:String,
+  ReviewerName: string;
+  LeadMDName: string;
+  DisableSubmitButton: boolean;
+  IsCreateMode: boolean;
+  PEPIDetails: PEPI_PEPIDetails;
+  PEPIQuestionText: PEPI_QuestionText;
+  hasEditItemPermission: boolean;
+  //TempPEPIQuestionText: PEPI_QuestionText[];
+  TempPEPIQuestionText: PEPI_PEPIQuestionText[];
+  SubmitCompleted: false;
+  SubmitStarted: false;
+  IsAnalyticsDisable: boolean;
+  DisableNewFormOprtion: boolean;
+  CurrentUserRoles: Enums.UserRoles[];
+  IsSelectedEmployeeInvalid: boolean;
+  LeadMDEmail: string;
+  ReviewerEmail: string;
+  RevieweeName: string;
+  ReplaceUsermail: string;
+  SctionTotalDE: number;
+  SctionTotalDR: number;
+  ComplexityOptions: string;
+  loggeduseremail?: string;
 }
