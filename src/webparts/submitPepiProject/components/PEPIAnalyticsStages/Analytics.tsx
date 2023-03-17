@@ -8301,6 +8301,15 @@ export default class Analytics extends React.Component<
                   onChange={this.onchangedPerformanceDiscussionDate}
                 /> */}
               <DatePicker
+               disabled={
+                !this.state.IsLeadMD ||
+                !this.state.IsAcknowledgement ||
+                !this.state.IsApprovaed ||
+                this.props.APEPIDetail.Reviewee.Email !=
+                  this.props.loggeduseremail ||
+                this.props.APEPIDetail.Reviewer.Email !=
+                  this.props.loggeduseremail
+              }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
                 value={this.state.ApepiDetails.PerformanceDiscussion}
                 formatDate={this._onFormatDate}

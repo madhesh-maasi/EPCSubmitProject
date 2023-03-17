@@ -1264,6 +1264,7 @@ export default class SeniorDirector extends React.Component<
     ) {
       this.setState({ IsApprovaed: false });
     }
+
     // // // //this.state.ApepiDetails.PerformanceDiscussion
     // // let curretState = this.state.ApepiDetails;
     // // curretState.PerformanceDiscussion = new Date();
@@ -7697,7 +7698,11 @@ export default class SeniorDirector extends React.Component<
                 disabled={
                   !this.state.IsLeadMD ||
                   !this.state.IsAcknowledgement ||
-                  !this.state.IsApprovaed
+                  !this.state.IsApprovaed ||
+                  this.props.APEPIDetail.Reviewee.Email !=
+                    this.props.loggeduseremail ||
+                  this.props.APEPIDetail.Reviewer.Email !=
+                    this.props.loggeduseremail
                 }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
                 value={this.state.ApepiDetails.PerformanceDiscussion}
