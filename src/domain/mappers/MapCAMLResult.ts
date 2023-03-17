@@ -94,7 +94,7 @@ export default class MapCAMLResult extends ContextService {
       ? item[Config.PEPIProjectsListColumns.SignoffHistory]
           .replace(/<[^>]*>/g, "")
           .replaceAll(";", "")
-          .replaceAll("&#58;", ":")
+          .replaceAll("&#58", ":")
           .split(")")
       : "";
     let html = "";

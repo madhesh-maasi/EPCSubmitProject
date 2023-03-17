@@ -1222,24 +1222,40 @@ export default class SubmitPepiProject extends React.Component<
                       onFormFieldValueChange={this.onFormFieldValueChange}
                     ></Analytics>
                   )}
-                  {this.state.PEPIDetails.JobTitle == Config.JobRole.Manager ||
-                    (this.state.PEPIDetails.JobTitle ==
-                      Config.JobRole.Manager1 && (
-                      <Manager
-                        loggeduseremail={this.state.loggeduseremail}
-                        AppContext={this.props.AppContext}
-                        hasEditItemPermission={this.state.hasEditItemPermission}
-                        IsLoading={this.state.IsLoading}
-                        APEPIDetail={this.state.PEPIDetails}
-                        APEPIQuestionText={this.state.TempPEPIQuestionText}
-                        DisableSection={this.state.IsAnalyticsDisable}
-                        Options={this.Options}
-                        SctionTotalDE={this.state.SctionTotalDE}
-                        SctionTotalDR={this.state.SctionTotalDR}
-                        ReplaceUsermail={this.state.ReplaceUsermail}
-                        onFormFieldValueChange={this.onFormFieldValueChange}
-                      ></Manager>
-                    ))}
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.Manager && (
+                    <Manager
+                      loggeduseremail={this.state.loggeduseremail}
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></Manager>
+                  )}
+                  {this.state.PEPIDetails.JobTitle ==
+                    Config.JobRole.Manager1 && (
+                    <Manager
+                      loggeduseremail={this.state.loggeduseremail}
+                      AppContext={this.props.AppContext}
+                      hasEditItemPermission={this.state.hasEditItemPermission}
+                      IsLoading={this.state.IsLoading}
+                      APEPIDetail={this.state.PEPIDetails}
+                      APEPIQuestionText={this.state.TempPEPIQuestionText}
+                      DisableSection={this.state.IsAnalyticsDisable}
+                      Options={this.Options}
+                      SctionTotalDE={this.state.SctionTotalDE}
+                      SctionTotalDR={this.state.SctionTotalDR}
+                      ReplaceUsermail={this.state.ReplaceUsermail}
+                      onFormFieldValueChange={this.onFormFieldValueChange}
+                    ></Manager>
+                  )}
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Associate && (
                     <Associate
