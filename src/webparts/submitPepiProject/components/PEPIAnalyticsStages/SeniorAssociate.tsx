@@ -7661,7 +7661,11 @@ export default class SeniorAssociate extends React.Component<
                 disabled={
                   !this.state.IsLeadMD ||
                   !this.state.IsAcknowledgement ||
-                  !this.state.IsApprovaed
+                  !this.state.IsApprovaed ||
+                  this.props.APEPIDetail.Reviewee.Email !=
+                    this.props.loggeduseremail ||
+                  this.props.APEPIDetail.Reviewer.Email !=
+                    this.props.loggeduseremail
                 }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
                 value={this.state.ApepiDetails.PerformanceDiscussion}

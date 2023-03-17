@@ -999,11 +999,16 @@ export default class SubmitPepiProject extends React.Component<
                                 <div>
                                   <Dropdown
                                     disabled={
-                                      this.state.PEPIDetails.StatusOfReview ==
+                                      (this.state.PEPIDetails.StatusOfReview ==
                                         Config.StatusOfReview
-                                          .AwaitingReviewer ||
-                                      this.state.PEPIDetails.StatusOfReview ==
-                                        Config.StatusOfReview.AwaitingReviewee
+                                          .AwaitingReviewer &&
+                                        this.state.PEPIDetails.Reviewer.Email ==
+                                          this.state.loggeduseremail) ||
+                                      (this.state.PEPIDetails.StatusOfReview ==
+                                        Config.StatusOfReview
+                                          .AwaitingReviewee &&
+                                        this.state.PEPIDetails.Reviewee.Email ==
+                                          this.state.loggeduseremail)
                                         ? false
                                         : true
                                     }
