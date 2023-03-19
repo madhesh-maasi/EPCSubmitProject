@@ -6335,7 +6335,22 @@ export default class Analytics extends React.Component<
           </Label>
         </div>
 
-        <div className={styles.divTablesectionContent}>
+        {/* Deva Changes start */}
+        <div style={{ position: "relative", zIndex: "1000" }}>
+          <Label>
+            To view the Competency Attributes Rating Scale{" "}
+            <a
+              href="https://itinfoalvarezandmarsal.sharepoint.com/:p:/r/sites/pepiperfmgt/_layouts/15/Doc.aspx?sourcedoc=%7BD69BE130-FB74-4BEE-B8FF-57961954A48A%7D&file=Competency%20Attribute%20Rating%20Scale.pptx&action=edit&mobileredirect=true"
+              target="_blank"
+              data-interception="off"
+            >
+              click here.
+            </a>
+          </Label>
+        </div>
+        {/* Deva Changes end */}
+
+        {/* <div className={styles.divTablesectionContent}>
           <table className={styles.tablewraper}>
             <tr>
               <td className={styles.boldlabelSr} colSpan={2}>
@@ -6390,7 +6405,7 @@ export default class Analytics extends React.Component<
               </td>
             </tr>
           </table>
-        </div>
+        </div> */}
         {/* SECTION A1: DELIVERY EXCELLENCE */}
         <div className={styles.divbox}>
           {" "}
@@ -8069,7 +8084,23 @@ export default class Analytics extends React.Component<
                 provided below).
               </Label>
             </div>
-            <div className={styles.sectionContent}>
+
+            {/* Deva changes start */}
+            <div>
+              <Label>
+                To view the Overall Performance Rating Scale{" "}
+                <a
+                  href="https://itinfoalvarezandmarsal.sharepoint.com/:p:/r/sites/pepiperfmgt/_layouts/15/Doc.aspx?sourcedoc=%7B47314452-203C-4C97-BE9F-ED52EDEB8DDC%7D&file=Overall%20Performance%20Rating%20Scale.pptx&action=edit&mobileredirect=true"
+                  target="_blank"
+                  data-interception="off"
+                >
+                  click here.
+                </a>
+              </Label>
+            </div>
+            {/* Deva changes end */}
+
+            {/* <div className={styles.sectionContent}>
               <table className={styles.tablewraper}>
                 <tr>
                   <td className={styles.boldlabelSrNewHeader} colSpan={2}>
@@ -8126,7 +8157,7 @@ export default class Analytics extends React.Component<
                   </td>
                 </tr>
               </table>
-            </div>
+            </div> */}
           </>
         )}
 
@@ -8301,15 +8332,15 @@ export default class Analytics extends React.Component<
                   onChange={this.onchangedPerformanceDiscussionDate}
                 /> */}
               <DatePicker
-               disabled={
-                !this.state.IsLeadMD ||
-                !this.state.IsAcknowledgement ||
-                !this.state.IsApprovaed ||
-                this.props.APEPIDetail.Reviewee.Email !=
-                  this.props.loggeduseremail ||
-                this.props.APEPIDetail.Reviewer.Email !=
-                  this.props.loggeduseremail
-              }
+                disabled={
+                  !this.state.IsLeadMD ||
+                  !this.state.IsAcknowledgement ||
+                  !this.state.IsApprovaed ||
+                  this.props.APEPIDetail.Reviewee.Email !=
+                    this.props.loggeduseremail ||
+                  this.props.APEPIDetail.Reviewer.Email !=
+                    this.props.loggeduseremail
+                }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
                 value={this.state.ApepiDetails.PerformanceDiscussion}
                 formatDate={this._onFormatDate}
