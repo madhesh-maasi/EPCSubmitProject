@@ -250,7 +250,8 @@ export default class SubmitCombineAdmin extends React.Component<
       updateDetails.ReviewIDs != "" &&
       updateDetails.ReviewIDs != undefined &&
       updateDetails.JobTitle != "" &&
-      updateDetails.JobTitle != undefined
+      updateDetails.JobTitle != undefined &&
+      updateDetails.LastHoursBilled != null
     ) {
       valid = true;
     }
@@ -404,6 +405,7 @@ export default class SubmitCombineAdmin extends React.Component<
                       {/* <hr></hr> */}
                       <Label className={styles.lblText}>
                         <b>Last Date Hours Billed</b>
+                        <span style={{ color: "#ff0000" }}> * </span>
                       </Label>
                     </div>
                     <div className={styles.txtReviewIDs}>

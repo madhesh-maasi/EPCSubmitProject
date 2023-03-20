@@ -17,4 +17,8 @@ export class PEPI_SpecialReviews {
   public ProjectCode: string;
   public ProjectStatus: string;
   public SpecialReviewStatus?: string;
+
+  /* Deva changes start */
+  public SBU: string;
+  /* Deva changes end */
 }

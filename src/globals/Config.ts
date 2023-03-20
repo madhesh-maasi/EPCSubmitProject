@@ -216,6 +216,10 @@ export namespace Config {
     RevertToReviewee: "RevertToReviewee",
     RevertToReviewer: "RevertToReviewer",
     OverallPerformance: "OverallPerformance",
+
+    /* Deva changes start */
+    SBU: "SBU",
+    /* Deva changes end */
   };
   export const PEPIQuestionTextListColumns = {
     Q1: "_x0051_1",
@@ -250,6 +254,10 @@ export namespace Config {
     RevieweeName: "Reviewee_x0020_Name",
     RevieweeNameId: "Reviewee_x0020_NameId",
     CombinedAdminStatus: "Create_x0020_Combined_x0020_Revi",
+
+    /* Deva changes start */
+    SBU: "SBU",
+    /* Deva changes end */
   };
   export const SpecialReviewsListColumns = {
     EmployeeNumber: "Employee_x0020_Number",
@@ -266,6 +274,10 @@ export namespace Config {
     ReviewerName: "Reviewer_x0020_Name",
     ReviewerNameId: "Reviewer_x0020_NameId",
     SpecialReviewStatus: "SpecialReviewPermissionsAdmin",
+
+    /* Deva changes start */
+    SBU: "SBU",
+    /* Deva changes end */
   };
   export const SplitReviewsListColumns = {
     SourceReviewID: "Source_x0020_Review_x0020_ID",
