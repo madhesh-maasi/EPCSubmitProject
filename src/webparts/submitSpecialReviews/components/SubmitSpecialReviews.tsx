@@ -75,6 +75,7 @@ export default class SubmitSpecialReviews extends React.Component<
     this.onChangeJobTitle = this.onChangeJobTitle.bind(this);
     this.onChangeProjectStatus = this.onChangeProjectStatus.bind(this);
     this.onChangeEmployeeNumber = this.onChangeEmployeeNumber.bind(this);
+    this.onChangeSBU = this.onChangeSBU.bind(this);
   }
   public async componentDidMount() {
     this.FillProjectStatusOptions();
@@ -224,6 +225,17 @@ export default class SubmitSpecialReviews extends React.Component<
     }
   }
 
+  /* Deva changes start */
+  private async onChangeSBU(
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue: string
+  ) {
+    let curretState = this.state.SpecialReviews;
+    curretState.SBU = newValue;
+    this.onFormTextFieldValueChange(curretState);
+  }
+  /* Deva changes end */
+
   private onChangeJobTitle(newValue: string): void {
     let curretState = this.state.SpecialReviews;
     curretState.JobTitle = newValue;
@@ -266,6 +278,10 @@ export default class SubmitSpecialReviews extends React.Component<
     data[columns.EmployeeNumber] = SpecialReviews.EmployeeNumber
       ? SpecialReviews.EmployeeNumber
       : null;
+
+    /* Deva changes start */
+    data[columns.SBU] = SpecialReviews.SBU ? SpecialReviews.SBU : "";
+    /* Deva changes end */
 
     this.ListItemService = new ListItemService(
       this.props.AppContext,
@@ -319,7 +335,9 @@ export default class SubmitSpecialReviews extends React.Component<
       updateDetails.LastHoursBilled &&
       updateDetails.LastHoursBilled != undefined &&
       updateDetails.EmployeeNumber != "" &&
-      updateDetails.EmployeeNumber != undefined
+      updateDetails.EmployeeNumber != undefined &&
+      updateDetails.SBU != "" &&
+      updateDetails.SBU != undefined
     ) {
       valid = true;
     }
@@ -537,9 +555,9 @@ export default class SubmitSpecialReviews extends React.Component<
                     <b>Last Hours Billed</b>
                     <span style={{ color: "#ff0000" }}> * </span>
                   </Label>
-                  <Label>
+                  {/* <Label>
                     <b>(if known)</b>
-                  </Label>
+                  </Label> */}
                 </div>
                 <div className={styles.txtReviewIDs}>
                   {/* <DateTimePicker
@@ -583,9 +601,9 @@ export default class SubmitSpecialReviews extends React.Component<
                     <b>Employee Number</b>
                     <span style={{ color: "#ff0000" }}> * </span>
                   </Label>
-                  <Label>
+                  {/* <Label>
                     <b>(if known)</b>
-                  </Label>
+                  </Label> */}
                 </div>
                 <div className={styles.txtReviewIDs}>
                   <TextField
@@ -599,6 +617,32 @@ export default class SubmitSpecialReviews extends React.Component<
                   ></TextField>{" "}
                 </div>
               </div>
+
+              {/* Deva changes start */}
+              <div className={styles.SRrow}>
+                <div className={styles.lblReviewIDs}>
+                  <Label>
+                    <b>SBU Code</b>
+                    <span style={{ color: "#ff0000" }}> * </span>
+                  </Label>
+                  {/* <Label>
+                    <b>(if known)</b>
+                  </Label> */}
+                </div>
+                <div className={styles.txtReviewIDs}>
+                  <TextField
+                    disabled={!this.state.IsCreateMode}
+                    resizable={false}
+                    multiline={false}
+                    value={this.state.SpecialReviews.SBU}
+                    onKeyPress={this.isNumber}
+                    onChange={this.onChangeSBU}
+                    className={styles.Multilinetextarea}
+                  ></TextField>{" "}
+                </div>
+              </div>
+              {/* Deva changes end */}
+
               {/* <div className={styles.divFullWidth}> */}
               <div
                 style={{

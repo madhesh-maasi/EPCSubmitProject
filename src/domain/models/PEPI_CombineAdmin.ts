@@ -13,4 +13,8 @@ export class PEPI_CombineAdmin {
   public ReviewerNameEmail: string;
   public ReviewerName: User;
   public CombinedAdminStatus?: string;
+
+  /* Deva changes start */
+  public SBU: string;
+  /* Deva changes end */
 }

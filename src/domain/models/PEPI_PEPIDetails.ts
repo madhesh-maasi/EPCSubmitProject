@@ -179,4 +179,8 @@ export class PEPI_PEPIDetails {
   public ModifiedBy: User;
   public ModifiedOn: Date;
   public ModifiedOnFormatted: string;
+
+  /* Deva changes start */
+  public SBU: string;
+  /* Deva changes end */
 }

@@ -236,6 +236,10 @@ export default class MapCAMLResult extends ContextService {
     result.RevertToReviewer =
       item[Config.PEPIProjectsListColumns.RevertToReviewer];
     result.JobTitle = item[Config.PEPIProjectsListColumns.JobTitle];
+
+    /* Deva changes start */
+    result.SBU = item[Config.PEPIProjectsListColumns.SBU];
+    /* Deva changes end */
     // JobTitle
     //debugger;
     result.PerformanceDiscussion =
@@ -320,6 +324,10 @@ export default class MapCAMLResult extends ContextService {
     // result.LastHoursBilled = item[Config.CombineReviewsListColumns.LastHoursBilled];
     result.NewReviewID = item[Config.CombineAdminListColumns.NewReviewID];
 
+    /* Deva changes start */
+    result.SBU = item[Config.PEPIProjectsListColumns.SBU];
+    /* Deva changes end */
+
     return result;
   }
   private static mapSpecialReviews(item: any) {
@@ -363,6 +371,10 @@ export default class MapCAMLResult extends ContextService {
     result.NewReviewID = item[Config.SpecialReviewsListColumns.NewReviewID];
     result.ProjectCode = item[Config.SpecialReviewsListColumns.ProjectCode];
     result.ProjectStatus = item[Config.SpecialReviewsListColumns.ProjectStatus];
+
+    /* Deva changes start */
+    result.SBU = item[Config.PEPIProjectsListColumns.SBU];
+    /* Deva changes end */
 
     return result;
   }

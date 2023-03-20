@@ -6336,16 +6336,20 @@ export default class Analytics extends React.Component<
         </div>
 
         {/* Deva Changes start */}
-        <div style={{ position: "relative", zIndex: "1000" }}>
+        <div
+          style={{ position: "relative", zIndex: "1000", margin: "16px -8px" }}
+        >
           <Label>
-            To view the Competency Attributes Rating Scale{" "}
-            <a
-              href="https://itinfoalvarezandmarsal.sharepoint.com/:p:/r/sites/pepiperfmgt/_layouts/15/Doc.aspx?sourcedoc=%7BD69BE130-FB74-4BEE-B8FF-57961954A48A%7D&file=Competency%20Attribute%20Rating%20Scale.pptx&action=edit&mobileredirect=true"
-              target="_blank"
-              data-interception="off"
-            >
-              click here.
-            </a>
+            <b>
+              To view the Competency Attributes Rating Scale{" "}
+              <a
+                href="https://itinfoalvarezandmarsal.sharepoint.com/:p:/r/sites/pepiperfmgt/_layouts/15/Doc.aspx?sourcedoc=%7BD69BE130-FB74-4BEE-B8FF-57961954A48A%7D&file=Competency%20Attribute%20Rating%20Scale.pptx&action=edit&mobileredirect=true"
+                target="_blank"
+                data-interception="off"
+              >
+                click here.
+              </a>
+            </b>
           </Label>
         </div>
         {/* Deva Changes end */}
@@ -8086,16 +8090,24 @@ export default class Analytics extends React.Component<
             </div>
 
             {/* Deva changes start */}
-            <div>
+            <div
+              style={{
+                position: "relative",
+                zIndex: "1000",
+                margin: "16px -8px",
+              }}
+            >
               <Label>
-                To view the Overall Performance Rating Scale{" "}
-                <a
-                  href="https://itinfoalvarezandmarsal.sharepoint.com/:p:/r/sites/pepiperfmgt/_layouts/15/Doc.aspx?sourcedoc=%7B47314452-203C-4C97-BE9F-ED52EDEB8DDC%7D&file=Overall%20Performance%20Rating%20Scale.pptx&action=edit&mobileredirect=true"
-                  target="_blank"
-                  data-interception="off"
-                >
-                  click here.
-                </a>
+                <b>
+                  To view the Overall Performance Rating Scale{" "}
+                  <a
+                    href="https://itinfoalvarezandmarsal.sharepoint.com/:p:/r/sites/pepiperfmgt/_layouts/15/Doc.aspx?sourcedoc=%7B47314452-203C-4C97-BE9F-ED52EDEB8DDC%7D&file=Overall%20Performance%20Rating%20Scale.pptx&action=edit&mobileredirect=true"
+                    target="_blank"
+                    data-interception="off"
+                  >
+                    click here.
+                  </a>
+                </b>
               </Label>
             </div>
             {/* Deva changes end */}
