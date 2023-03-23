@@ -39,6 +39,7 @@ import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 
 import { PEPI_CombineAdmin } from "../../../domain/models/PEPI_CombineAdmin";
+// import '../../../style/styles.css';
 
 export default class SubmitCombineAdmin extends React.Component<
   ISubmitCombineAdminProps,
