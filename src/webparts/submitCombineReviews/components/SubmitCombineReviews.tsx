@@ -38,6 +38,8 @@ import WebService from "../../../services/WebService";
 
 import { PEPI_CombineReviews } from "../../../domain/models/PEPI_CombineReviews";
 import { MapDetailsList } from "../../../domain/mappers/MapDetailsList";
+import '../../../style/styles.css';
+
 export default class SubmitCombineReviews extends React.Component<
   ISubmitCombineReviewsProps,
   ISubmitCombineReviewsState

@@ -37,6 +37,7 @@ import WebService from "../../../services/WebService";
 
 import { PEPI_SplitAdmin } from "../../../domain/models/PEPI_SplitAdmin";
 import { MapDetailsList } from "../../../domain/mappers/MapDetailsList";
+// import '../../../style/styles.css';
 
 export default class SubmitSplitAdmin extends React.Component<
   ISubmitSplitAdminProps,

@@ -41,6 +41,8 @@ import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 import { PEPI_PEPIQuestionText } from "../../../domain/models/PEPI_PEPIQuestionText";
 import QuestionText from "../components/PEPIAllQuestionText/QuestionText";
+import '../../../style/styles.css';
+
 // import {
 //   IPersonaSharedProps,
 //   Persona,

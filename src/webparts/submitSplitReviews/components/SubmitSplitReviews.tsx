@@ -31,6 +31,7 @@ import ListItemService from "../../../services/ListItemService";
 import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 import { MapDetailsList } from "../../../domain/mappers/MapDetailsList";
+// import '../../../style/styles.css';
 
 export default class SubmitSplitReviews extends React.Component<
   ISubmitSplitReviewsProps,
