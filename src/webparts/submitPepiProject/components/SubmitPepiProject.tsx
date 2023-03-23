@@ -96,6 +96,7 @@ export default class SubmitPepiProject extends React.Component<
       SctionTotalDR: 0,
       ComplexityOptions: "",
       loggeduseremail: this.props.AppContext.pageContext.user.email,
+      isAdmin: false,
     };
     this.onSTARTREVIEWSave = this.onSTARTREVIEWSave.bind(this);
     this.onDecline = this.onDecline.bind(this);
@@ -136,6 +137,7 @@ export default class SubmitPepiProject extends React.Component<
     ];
     ////debugger;
     this.FillServiceLineOptions();
+    this.checkAdministation();
     this.userService = new UserService(this.props.AppContext);
     this.webService = new WebService(this.props.AppContext);
     const userRoles: Enums.UserRoles[] = await this.GetCurrentUserRoles();
@@ -274,6 +276,33 @@ export default class SubmitPepiProject extends React.Component<
       this.setState({ DisableSubmitButton: true });
     }
   }
+
+  private async checkAdministation() {
+    sp.web.siteGroups
+      .getByName("PEPI Performance Management Owners")
+      .users.get()
+      .then((users) => {
+        let tempUser = users.filter((_user) => {
+          return (
+            _user.Email == this.props.AppContext.pageContext.user.email ||
+            _user.Title == "Everyone except external users"
+          );
+        });
+        if (tempUser.length > 0) {
+          this.setState({
+            isAdmin: true,
+          });
+        } else {
+          this.setState({
+            isAdmin: false,
+          });
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+
   private async FillServiceLineOptions() {
     //debugger;
     this.listGetServiceLine = new ListItemService(
@@ -1002,13 +1031,17 @@ export default class SubmitPepiProject extends React.Component<
                                       (this.state.PEPIDetails.StatusOfReview ==
                                         Config.StatusOfReview
                                           .AwaitingReviewer &&
-                                        this.state.PEPIDetails.Reviewer.Email ==
-                                          this.state.loggeduseremail) ||
+                                        (this.state.PEPIDetails.Reviewer
+                                          .Email ==
+                                          this.state.loggeduseremail ||
+                                          this.state.isAdmin)) ||
                                       (this.state.PEPIDetails.StatusOfReview ==
                                         Config.StatusOfReview
                                           .AwaitingReviewee &&
-                                        this.state.PEPIDetails.Reviewee.Email ==
-                                          this.state.loggeduseremail)
+                                        (this.state.PEPIDetails.Reviewee
+                                          .Email ==
+                                          this.state.loggeduseremail ||
+                                          this.state.isAdmin))
                                         ? false
                                         : true
                                     }
@@ -1213,6 +1246,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Analyst && (
                     <Analytics
+                      isAdmin={this.state.isAdmin}
                       loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
@@ -1230,6 +1264,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Manager && (
                     <Manager
+                      isAdmin={this.state.isAdmin}
                       loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
@@ -1247,6 +1282,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Manager1 && (
                     <Manager
+                      isAdmin={this.state.isAdmin}
                       loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
@@ -1264,6 +1300,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Associate && (
                     <Associate
+                      isAdmin={this.state.isAdmin}
                       loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
@@ -1281,6 +1318,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.SeniorAssociate && (
                     <SeniorAssociate
+                      isAdmin={this.state.isAdmin}
                       loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
@@ -1298,6 +1336,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.Director && (
                     <Director
+                      isAdmin={this.state.isAdmin}
                       loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
@@ -1315,6 +1354,7 @@ export default class SubmitPepiProject extends React.Component<
                   {this.state.PEPIDetails.JobTitle ==
                     Config.JobRole.SeniorDirector && (
                     <SeniorDirector
+                      isAdmin={this.state.isAdmin}
                       loggeduseremail={this.state.loggeduseremail}
                       AppContext={this.props.AppContext}
                       hasEditItemPermission={this.state.hasEditItemPermission}
