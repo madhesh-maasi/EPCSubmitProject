@@ -1022,7 +1022,8 @@ export default class Analytics extends React.Component<
     if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingReviewee &&
-      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsReviewee: false });
       //! Technorucs
@@ -1315,19 +1316,22 @@ export default class Analytics extends React.Component<
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingReviewer &&
-      this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsReviewer: false });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingLeadMD &&
-      this.props.APEPIDetail.LeadMD.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.LeadMD.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsLeadMD: false });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingAcknowledgement &&
-      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsAcknowledgement: false });
     } else if (
@@ -8199,35 +8203,35 @@ export default class Analytics extends React.Component<
                 </td>
                 <td>
                   {" "}
-                  <label className={styles.lablePadding}>
+                  <label >
                     {" "}
                     {this.state.AAvgEE}
                   </label>
                 </td>
                 <td>
                   {" "}
-                  <label className={styles.lablePadding}>
+                  <label >
                     {" "}
                     {this.state.BAvgEE}
                   </label>
                 </td>
                 <td>
                   {" "}
-                  <label className={styles.lablePadding}>
+                  <label >
                     {" "}
                     {this.state.CAvgEE}
                   </label>
                 </td>
                 <td>
                   {" "}
-                  <label className={styles.lablePadding}>
+                  <label >
                     {" "}
                     {this.state.SctionTotalDE}
                   </label>
                 </td>
                 <td>
                   {" "}
-                  <label className={styles.lablePadding}>
+                  <label >
                     {" "}
                     {Number(
                       parseFloat(
@@ -8271,35 +8275,35 @@ export default class Analytics extends React.Component<
                   </td>
                   <td>
                     {" "}
-                    <label className={styles.lablePadding}>
+                    <label >
                       {" "}
                       {this.state.AAvgER}
                     </label>
                   </td>
                   <td>
                     {" "}
-                    <label className={styles.lablePadding}>
+                    <label >
                       {" "}
                       {this.state.BAvgER}
                     </label>
                   </td>
                   <td>
                     {" "}
-                    <label className={styles.lablePadding}>
+                    <label >
                       {" "}
                       {this.state.CAvgER}
                     </label>
                   </td>
                   <td>
                     {" "}
-                    <label className={styles.lablePadding}>
+                    <label >
                       {" "}
                       {this.state.SctionTotalDR}
                     </label>
                   </td>
                   <td>
                     {" "}
-                    <label className={styles.lablePadding}>
+                    <label >
                       {" "}
                       {Number(
                         parseFloat(
@@ -8345,13 +8349,11 @@ export default class Analytics extends React.Component<
                 /> */}
               <DatePicker
                 disabled={
-                  !this.state.IsLeadMD ||
-                  !this.state.IsAcknowledgement ||
-                  !this.state.IsApprovaed ||
-                  this.props.APEPIDetail.Reviewee.Email !=
-                    this.props.loggeduseremail ||
-                  this.props.APEPIDetail.Reviewer.Email !=
-                    this.props.loggeduseremail
+                   // !this.state.IsLeadMD ||
+                  // !this.state.IsAcknowledgement ||
+                  // !this.state.IsApprovaed ||
+
+                  this.state.IsReviewer
                 }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
                 value={this.state.ApepiDetails.PerformanceDiscussion}

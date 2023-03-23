@@ -30,4 +30,5 @@ export interface ISubmitPEPIprojectState extends IBaseInterface {
   SctionTotalDR: number;
   ComplexityOptions: string;
   loggeduseremail?: string;
+  isAdmin?: boolean;
 }

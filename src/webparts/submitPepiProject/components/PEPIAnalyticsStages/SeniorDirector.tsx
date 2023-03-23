@@ -944,7 +944,8 @@ export default class SeniorDirector extends React.Component<
     if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingReviewee &&
-      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsReviewee: false });
 
@@ -1243,19 +1244,22 @@ export default class SeniorDirector extends React.Component<
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingReviewer &&
-      this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsReviewer: false });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingLeadMD &&
-      this.props.APEPIDetail.LeadMD.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.LeadMD.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsLeadMD: false });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingAcknowledgement &&
-      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail
+      (this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
     ) {
       this.setState({ IsAcknowledgement: false });
     } else if (
@@ -7740,13 +7744,11 @@ export default class SeniorDirector extends React.Component<
                 /> */}
               <DatePicker
                 disabled={
-                  !this.state.IsLeadMD ||
-                  !this.state.IsAcknowledgement ||
-                  !this.state.IsApprovaed ||
-                  this.props.APEPIDetail.Reviewee.Email !=
-                    this.props.loggeduseremail ||
-                  this.props.APEPIDetail.Reviewer.Email !=
-                    this.props.loggeduseremail
+                  // !this.state.IsLeadMD ||
+                  // !this.state.IsAcknowledgement ||
+                  // !this.state.IsApprovaed ||
+
+                  this.state.IsReviewer
                 }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
                 value={this.state.ApepiDetails.PerformanceDiscussion}

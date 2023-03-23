@@ -16,6 +16,7 @@ import { PEPI_PEPIDetails } from "../../../../domain/models/PEPI_PEPIDetails";
 import { PEPI_QuestionText } from "../../../../domain/models/PEPI_QuestionText";
 import { PEPI_PEPIQuestionText } from "../../../../domain/models/PEPI_PEPIQuestionText";
 export interface IAnalyticsProps extends IBaseInterface {
+  isAdmin?: boolean;
   loggeduseremail?: string;
   AppContext: WebPartContext;
   DisableSection: boolean;
