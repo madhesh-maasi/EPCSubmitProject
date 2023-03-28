@@ -47,6 +47,7 @@ export default class Director extends React.Component<
   constructor(props: any) {
     super(props);
     this.state = {
+      revieweePermission: false,
       AppContext: props.AppContext,
       IsLoading: false,
       IsSelectedEmployeeInvalid: false,
@@ -943,7 +944,7 @@ export default class Director extends React.Component<
       //! Technorucs
       this.setState({
         // Section A1 State
-
+        revieweePermission: true,
         A11R: 0,
         A12R: 0,
         A13R: 0,
@@ -1262,7 +1263,7 @@ export default class Director extends React.Component<
       //! Technorucs
       this.setState({
         // Section A1 State
-
+        revieweePermission: true,
         A11R: 0,
         A12R: 0,
         A13R: 0,
@@ -6675,10 +6676,7 @@ export default class Director extends React.Component<
             SctionTotalDD={this.state.SctionTotalDD}
             IsReviewee={this.state.IsReviewee}
             IsReviewer={this.state.IsReviewer}
-            IsAwaitingReviewee={
-              this.props.APEPIDetail.StatusOfReview ==
-              Config.StatusOfReview.AwaitingReviewee
-            }
+            IsAwaitingReviewee={this.state.revieweePermission}
             //  SERVICELINEReviewee = {0}
             //  SERVICELINEReviewer = {0}
             //  SERVICELINEDifference = {0}
@@ -6713,7 +6711,11 @@ export default class Director extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.E1ER}
+              value={
+                this.state.revieweePermission
+                  ? ""
+                  : this.state.ApepiDetails.E1ER
+              }
               onChange={this.onChangeE1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -6747,7 +6749,11 @@ export default class Director extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.F1ER}
+              value={
+                this.state.revieweePermission
+                  ? ""
+                  : this.state.ApepiDetails.F1ER
+              }
               onChange={this.onChangeF1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -6781,7 +6787,11 @@ export default class Director extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.G1ER}
+              value={
+                this.state.revieweePermission
+                  ? ""
+                  : this.state.ApepiDetails.G1ER
+              }
               onChange={this.onChangeG1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -6815,7 +6825,11 @@ export default class Director extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsReviewer}
-              value={this.state.ApepiDetails.H1ER}
+              value={
+                this.state.revieweePermission
+                  ? ""
+                  : this.state.ApepiDetails.H1ER
+              }
               onChange={this.onChangeH1ER}
               className={styles.Multilinetextarea}
             ></TextField>
@@ -6827,7 +6841,11 @@ export default class Director extends React.Component<
               multiline={true}
               rows={4}
               disabled={this.state.IsLeadMD}
-              value={this.state.ApepiDetails.H1EL}
+              value={
+                this.state.revieweePermission
+                  ? ""
+                  : this.state.ApepiDetails.H1EL
+              }
               onChange={this.onChangeH1EL}
               className={styles.Multilinetextarea}
             ></TextField>
