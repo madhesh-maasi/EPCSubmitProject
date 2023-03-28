@@ -1136,10 +1136,7 @@ export default class Analytics extends React.Component<
           ).toFixed(2)
         ),
 
-        B3RR:
-          this.props.APEPIDetail.B3RR == undefined
-            ? 0
-            : this.props.APEPIDetail.B3RR,
+        B3RR: 0,
         B3DD: Number(
           parseFloat(
             (
@@ -1450,10 +1447,7 @@ export default class Analytics extends React.Component<
           ).toFixed(2)
         ),
 
-        B3RR:
-          this.props.APEPIDetail.B3RR == undefined
-            ? 0
-            : this.props.APEPIDetail.B3RR,
+        B3RR: 0,
         B3DD: Number(
           parseFloat(
             (

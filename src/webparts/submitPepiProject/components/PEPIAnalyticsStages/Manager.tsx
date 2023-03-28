@@ -1404,9 +1404,7 @@ export default class Manager extends React.Component<
         ),
 
         B3RR:
-          this.props.APEPIDetail.B3RR == undefined
-            ? 0
-            : this.props.APEPIDetail.B3RR,
+          0,
         B3DD: Number(
           parseFloat(
             (

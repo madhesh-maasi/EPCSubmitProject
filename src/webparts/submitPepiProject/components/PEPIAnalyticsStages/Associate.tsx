@@ -1336,8 +1336,7 @@ export default class Associate extends React.Component<
       Config.StatusOfReview.Acknowledged
     ) {
       this.setState({ IsApprovaed: false });
-    }
-    else {
+    } else {
       //! Technorucs
       this.setState({
         // Section A1 State
@@ -1448,10 +1447,7 @@ export default class Associate extends React.Component<
           ).toFixed(2)
         ),
 
-        B3RR:
-          this.props.APEPIDetail.B3RR == undefined
-            ? 0
-            : this.props.APEPIDetail.B3RR,
+        B3RR: 0,
         B3DD: Number(
           parseFloat(
             (
@@ -8637,10 +8633,7 @@ export default class Associate extends React.Component<
                     }}
                   >
                     {" "}
-                    <label>
-                      {" "}
-                      {Number(this.state.AAvgER).toFixed(2)}
-                    </label>
+                    <label> {Number(this.state.AAvgER).toFixed(2)}</label>
                   </td>
                   <td
                     style={{
@@ -8648,10 +8641,7 @@ export default class Associate extends React.Component<
                     }}
                   >
                     {" "}
-                    <label>
-                      {" "}
-                      {Number(this.state.BAvgER).toFixed(2)}
-                    </label>
+                    <label> {Number(this.state.BAvgER).toFixed(2)}</label>
                   </td>
                   <td
                     style={{
@@ -8659,10 +8649,7 @@ export default class Associate extends React.Component<
                     }}
                   >
                     {" "}
-                    <label>
-                      {" "}
-                      {Number(this.state.CAvgER).toFixed(2)}
-                    </label>
+                    <label> {Number(this.state.CAvgER).toFixed(2)}</label>
                   </td>
                   <td
                     style={{
