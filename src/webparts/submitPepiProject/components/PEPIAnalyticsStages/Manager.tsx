@@ -8756,7 +8756,11 @@ export default class Manager extends React.Component<
                     <Dropdown
                       disabled={this.state.IsReviewer}
                       options={this.props.Options}
-                      selectedKey={Number(this.state.OverallPerformance)}
+                      selectedKey={
+                        this.state.revieweePermission
+                          ? 0
+                          : Number(this.state.OverallPerformance)
+                      }
                       onChange={(e, selectedOption) => {
                         this.OnchangeOverallPerformance(selectedOption.text);
                       }}
@@ -8859,7 +8863,11 @@ export default class Manager extends React.Component<
                   this.state.IsReviewer
                 }
                 onSelectDate={this.onchangedPerformanceDiscussionDate}
-                value={this.state.ApepiDetails.PerformanceDiscussion}
+                value={
+                  this.state.revieweePermission
+                    ? null
+                    : this.state.ApepiDetails.PerformanceDiscussion
+                }
                 formatDate={this._onFormatDate}
               />
             </div>
