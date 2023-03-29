@@ -41,7 +41,7 @@ import UserService from "../../../services/UserService";
 import WebService from "../../../services/WebService";
 import { PEPI_PEPIQuestionText } from "../../../domain/models/PEPI_PEPIQuestionText";
 import QuestionText from "../components/PEPIAllQuestionText/QuestionText";
-import '../../../style/styles.css';
+import "../../../style/styles.css";
 
 // import {
 //   IPersonaSharedProps,
@@ -50,6 +50,15 @@ import '../../../style/styles.css';
 //   PersonaPresence,
 // } from "@fluentui/react/lib/Persona";
 import { sp } from "@pnp/sp";
+
+/* Groups Name Pepi and Dev-Pepi start */
+// pepiperfmgt Site Group
+// let PEPIOwners: string = "PEPI Performance Management Owners";
+
+// DEV-PEPIPerfMgt Site Group
+let PEPIOwners: string = "DEV-PEPI Performance Management Owners";
+/* Groups Name Pepi and Dev-Pepi end */
+
 export default class SubmitPepiProject extends React.Component<
   ISubmitPepiProjectProps,
   ISubmitPEPIprojectState
@@ -63,6 +72,7 @@ export default class SubmitPepiProject extends React.Component<
   private userService: UserService;
   private webService: WebService;
   private hasEditItemPermission: boolean = true;
+  
   constructor(props: any) {
     super(props);
     // this._childSelect = this._childSelect.bind(this);
@@ -115,9 +125,11 @@ export default class SubmitPepiProject extends React.Component<
       DisableNewFormOprtion: !allowSave,
     });
   }
+
   private resetNAValue(val) {
     return val == 0.5 || val == undefined ? 0 : val;
   }
+
   public async componentDidMount() {
     this.getUserNameByMail();
     //alert("hi 1");
@@ -145,7 +157,6 @@ export default class SubmitPepiProject extends React.Component<
     const userRoles: Enums.UserRoles[] = await this.GetCurrentUserRoles();
 
     /// debugger;
-
     if (this.state.IsCreateMode) {
       this.setState({ IsAnalyticsDisable: true });
       let curretState = this.state.PEPIDetails;
@@ -266,6 +277,7 @@ export default class SubmitPepiProject extends React.Component<
       });
       console.log(QuestionText);
     }
+
     if (
       this.state.PEPIDetails.ServiceLine != "Please select a value" &&
       this.state.PEPIDetails.ServiceLine != "" &&
@@ -281,7 +293,7 @@ export default class SubmitPepiProject extends React.Component<
 
   private async checkAdministation() {
     sp.web.siteGroups
-      .getByName("PEPI Performance Management Owners")
+      .getByName(PEPIOwners)
       .users.get()
       .then((users) => {
         let tempUser = users.filter((_user) => {
@@ -339,6 +351,7 @@ export default class SubmitPepiProject extends React.Component<
       { text: "High", key: "High" },
     ];
   }
+
   // Deciding the roles associated with current user
   private async GetCurrentUserRoles(): Promise<Enums.UserRoles[]> {
     let result: Enums.UserRoles[] = [];
@@ -354,6 +367,7 @@ export default class SubmitPepiProject extends React.Component<
     }
     return result;
   }
+
   private async onChangeReviewerName(items: any[]) {
     // debugger;
     let PEPIDetails = this.state.PEPIDetails;
@@ -381,6 +395,7 @@ export default class SubmitPepiProject extends React.Component<
       this.setState({ DisableSubmitButton: true });
     }
   }
+
   private async onChangeLeadMDName(items: any[]) {
     // debugger;
     let PEPIDetails = this.state.PEPIDetails;
@@ -434,6 +449,7 @@ export default class SubmitPepiProject extends React.Component<
       PEPIDetails: curretState,
     });
   }
+
   private onChangeHoursWorked(event) {
     // debugger;
     let curretState = this.state.PEPIDetails;
@@ -442,6 +458,7 @@ export default class SubmitPepiProject extends React.Component<
       PEPIDetails: curretState,
     });
   }
+
   private async onDecline(): Promise<void> {
     let data = {};
     const pepiDetails = this.state.PEPIDetails;
@@ -462,6 +479,7 @@ export default class SubmitPepiProject extends React.Component<
     await this.listPEPIProjectsItemService.updateItem(this.props.ItemID, data);
     this.gotoListPage();
   }
+
   // private async onSTARTREVIEWSave(): Promise<void> {
   //   const pepiDetails = this.state.PEPIDetails;
   //   let data = {};
@@ -484,6 +502,7 @@ export default class SubmitPepiProject extends React.Component<
   //     this.gotoListPage();
   //   }
   // }
+
   private async onSTARTREVIEWSave(): Promise<void> {
     const pepiDetails = this.state.PEPIDetails;
     let data = {};
@@ -537,9 +556,11 @@ export default class SubmitPepiProject extends React.Component<
       this.gotoListPage();
     }
   }
+
   private async onCancel(): Promise<void> {
     this.gotoListPage();
   }
+
   // Redirect user to 'Employee Summary' Listing page
   private gotoListPage() {
     let returnURL =
@@ -548,6 +569,7 @@ export default class SubmitPepiProject extends React.Component<
     window.location.href = returnURL;
     return false;
   }
+
   private async getUserNameByMail() {
     await sp.web.siteUsers
       .getByEmail("RChilakala@alvarezandmarsal.com")
@@ -558,6 +580,7 @@ export default class SubmitPepiProject extends React.Component<
       .catch((err) => console.log(err));
     return "";
   }
+
   public render(): React.ReactElement<ISubmitPepiProjectProps> {
     return (
       <React.Fragment>
