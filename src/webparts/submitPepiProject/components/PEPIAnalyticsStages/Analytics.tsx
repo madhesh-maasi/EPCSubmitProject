@@ -1701,7 +1701,7 @@ export default class Analytics extends React.Component<
     data[columns.H1EE] = this.state.ApepiDetails.H1EE;
 
     data[columns.Complexity] = this.props.APEPIDetail.Complexity;
-    data[columns.OverallPerformance] = this.state.OverallPerformance;
+    data[columns.OverallPerformance] = String(this.state.OverallPerformance);
     //Section D
     //  if(ApepiQuestionText[0] != ""){
 
@@ -1720,6 +1720,7 @@ export default class Analytics extends React.Component<
     );
     this.gotoListPage();
   }
+
   private async onREVIEWEEApproved(): Promise<void> {
     debugger;
     let ApepiQuestionText = this.state.ApepiQuestionText;
@@ -1866,6 +1867,10 @@ export default class Analytics extends React.Component<
     const D11R = ApepiQuestionText.map((item) => item.Reviewer).join(";");
     data[columns.D11R] = D11R;
 
+    /* Deva changes start */
+    data[columns.OverallPerformance] = String(this.state.OverallPerformance);
+    /* Deva changes end */
+
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -1876,6 +1881,7 @@ export default class Analytics extends React.Component<
     );
     this.gotoListPage();
   }
+
   private async onREVIEWERApproved(): Promise<void> {
     debugger;
     let ApepiQuestionText = this.state.ApepiQuestionText;
@@ -1959,6 +1965,7 @@ export default class Analytics extends React.Component<
 
     this.gotoListPage();
   }
+
   private async onREVERTTOREVIEEE(): Promise<void> {
     const pepiDetails = this.state.ApepiDetails;
     let data = {};
@@ -2062,6 +2069,7 @@ export default class Analytics extends React.Component<
     );
     this.gotoListPage();
   }
+
   private async onREVERTTOREVIEER(): Promise<void> {
     const pepiDetails = this.state.ApepiDetails;
     let data = {};
@@ -2079,12 +2087,14 @@ export default class Analytics extends React.Component<
     );
     this.gotoListPage();
   }
+
   private onchangedPerformanceDiscussionDate(date: any): void {
     // this.setState({ endDate: date });
     let curretState = this.state.ApepiDetails;
     curretState.PerformanceDiscussion = date;
     this.onFormTextFieldValueChange(curretState);
   }
+
   private async onFinalSAVEDRAFT(): Promise<void> {
     const pepiDetails = this.state.ApepiDetails;
     let data = {};
