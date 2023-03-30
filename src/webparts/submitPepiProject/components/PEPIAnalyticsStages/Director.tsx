@@ -1628,6 +1628,11 @@ export default class Director extends React.Component<
     data[columns.H1EE] = this.state.ApepiDetails.H1EE;
 
     data[columns.Complexity] = this.props.APEPIDetail.Complexity;
+
+    /* Deva changes start */
+    data[columns.OverallPerformance] = String(this.state.OverallPerformance);
+    /* Deva changes end */
+    
     //Section D
     //  if(ApepiQuestionText[0] != ""){
 
@@ -1646,6 +1651,7 @@ export default class Director extends React.Component<
     );
     this.gotoListPage();
   }
+
   private async onREVIEWEEApproved(): Promise<void> {
     let ApepiQuestionText = this.state.ApepiQuestionText;
     const pepiDetails = this.state.ApepiDetails;
@@ -1804,6 +1810,7 @@ export default class Director extends React.Component<
     );
     this.gotoListPage();
   }
+
   private async onREVIEWERApproved(): Promise<void> {
     let ApepiQuestionText = this.state.ApepiQuestionText;
     const pepiDetails = this.state.ApepiDetails;
@@ -1888,6 +1895,7 @@ export default class Director extends React.Component<
 
     this.gotoListPage();
   }
+
   private async onREVERTTOREVIEEE(): Promise<void> {
     const pepiDetails = this.state.ApepiDetails;
     let data = {};
@@ -1994,6 +2002,7 @@ export default class Director extends React.Component<
     );
     this.gotoListPage();
   }
+
   private async onREVERTTOREVIEER(): Promise<void> {
     const pepiDetails = this.state.ApepiDetails;
     let data = {};
@@ -2051,6 +2060,7 @@ export default class Director extends React.Component<
     );
     this.gotoListPage();
   }
+
   private getAverageCalculation(a, b, c, d, e) {
     a = a == 0.5 ? 0 : a;
     b = b == 0.5 ? 0 : b;
