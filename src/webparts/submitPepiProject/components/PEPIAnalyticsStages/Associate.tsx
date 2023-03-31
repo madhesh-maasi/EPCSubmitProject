@@ -1337,6 +1337,16 @@ export default class Associate extends React.Component<
       Config.StatusOfReview.Acknowledged
     ) {
       this.setState({ IsApprovaed: false });
+    } else if (
+      this.props.APEPIDetail.StatusOfReview ==
+        Config.StatusOfReview.AwaitingLeadMD &&
+      (this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
+        this.props.isAdmin)
+    ) {
+      /* Deva change */
+      this.setState({
+        revieweePermission: false,
+      })
     } else {
       //! Technorucs
       this.setState({
