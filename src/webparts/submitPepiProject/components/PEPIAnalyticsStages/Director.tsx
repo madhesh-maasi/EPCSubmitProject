@@ -3010,7 +3010,12 @@ export default class Director extends React.Component<
       // valB11ED = Number(parseFloat(valB11ED.toString()).toFixed(2));
       // this.setState({ B1DD: valB11ED });
 
-      this.setState({ B1DD: this.state.B1RR - AverageB1E });
+      // this.setState({ B1DD: this.state.B1RR - AverageB1E });
+      this.setState({
+        B1DD: Number(
+          parseFloat(Number(this.state.B1RR - AverageB1E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "B12E") {
       this.setState({ B12E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblB12D =
@@ -3039,7 +3044,12 @@ export default class Director extends React.Component<
       // valB12ED = Number(parseFloat(valB12ED.toString()).toFixed(2));
       // this.setState({ B1DD: valB12ED });
 
-      this.setState({ B1DD: this.state.B1RR - AverageB1E });
+      // this.setState({ B1DD: this.state.B1RR - AverageB1E });
+      this.setState({
+        B1DD: Number(
+          parseFloat(Number(this.state.B1RR - AverageB1E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "B11R") {
       this.setState({ B11R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblB11ED =
@@ -3064,7 +3074,12 @@ export default class Director extends React.Component<
       // let valB11RD = (Number(vallblB11ED) + Number(this.state.B12D)) / 2;
       // valB11RD = Number(parseFloat(valB11RD.toString()).toFixed(2));
       // this.setState({ B1DD: valB11RD });
-      this.setState({ B1DD: AverageB1R - this.state.B1EE });
+      // this.setState({ B1DD: AverageB1R - this.state.B1EE });
+      this.setState({
+        B1DD: Number(
+          parseFloat(Number(AverageB1R - this.state.B1EE).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "B12R") {
       this.setState({ B12R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblB12ED =
@@ -3090,7 +3105,12 @@ export default class Director extends React.Component<
       // valB12RD = Number(parseFloat(valB12RD.toString()).toFixed(2));
       // this.setState({ B1DD: valB12RD });
 
-      this.setState({ B1DD: AverageB1R - this.state.B1EE });
+      // this.setState({ B1DD: AverageB1R - this.state.B1EE });
+      this.setState({
+        B1DD: Number(
+          parseFloat(Number(AverageB1R - this.state.B1EE).toString()).toFixed(2)
+        ),
+      });
     }
     let B1E = Number(
       parseFloat(
@@ -4237,7 +4257,12 @@ export default class Director extends React.Component<
       this.setState({ C2EE: AverageC2E });
       // let valC21ED = (Number(vallblC21D) + Number(this.state.C22D) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC21ED });
-      this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      // this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(this.state.C2RR - AverageC2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "C22E") {
       this.setState({ C22E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblC22D =
@@ -4262,7 +4287,12 @@ export default class Director extends React.Component<
       this.setState({ C2EE: AverageC2E });
       // let valC22ED = (Number(this.state.C22D) + Number(vallblC22D) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC22ED });
-      this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      // this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(this.state.C2RR - AverageC2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "C23E") {
       this.setState({ C23E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblC23D =
@@ -4287,7 +4317,12 @@ export default class Director extends React.Component<
       this.setState({ C2EE: AverageC2E });
       // let valC23ED = (Number(this.state.C21D) + Number(this.state.C22D) + Number(vallblC23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC23ED });
-      this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      // this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(this.state.C2RR - AverageC2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "C24E") {
       this.setState({ C24E: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblC24D =
@@ -4312,7 +4347,12 @@ export default class Director extends React.Component<
       this.setState({ C2EE: AverageC2E });
       // let valC24ED = (Number(this.state.C21D) + Number(this.state.C22D) + Number(this.state.C23D) + Number(vallblC24D)) / 4;
       // this.setState({ C2DD: valC24ED });
-      this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      // this.setState({ C2DD: this.state.C2RR - AverageC2E });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(this.state.C2RR - AverageC2E).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "C21R") {
       this.setState({ C21R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblC21ED =
@@ -4338,7 +4378,12 @@ export default class Director extends React.Component<
       // let valC21RD = (Number(vallblC21ED) + Number(this.state.C22D) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC21RD });
 
-      this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      // this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(AverageC2R - this.state.C2EE).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "C22R") {
       this.setState({ C22R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblC22ED =
@@ -4365,7 +4410,12 @@ export default class Director extends React.Component<
 
       // let valC22RD = (Number(this.state.C21D) + Number(vallblC22ED) + Number(this.state.C23D) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC22RD });
-      this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      // this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(AverageC2R - this.state.C2EE).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "C23R") {
       this.setState({ C23R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblC23ED =
@@ -4390,7 +4440,12 @@ export default class Director extends React.Component<
       this.setState({ C2RR: AverageC2R });
       // let valC21RD = (Number(this.state.C21D) + Number(this.state.C22D) + Number(vallblC23ED) + Number(this.state.C24D)) / 4;
       // this.setState({ C2DD: valC21RD });
-      this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      // this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(AverageC2R - this.state.C2EE).toString()).toFixed(2)
+        ),
+      });
     } else if (TRValue == "C24R") {
       this.setState({ C24R: Number(newValue === "NA" ? "0.5" : newValue) });
       let vallblC24ED =
@@ -4415,7 +4470,12 @@ export default class Director extends React.Component<
       this.setState({ C2RR: AverageC2R });
       // let valC21RD = (Number(this.state.C21D) + Number(this.state.C22D) + Number(this.state.C23D) + Number(vallblC24ED)) / 4;
       // this.setState({ C2DD: valC21RD });
-      this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      // this.setState({ C2DD: AverageC2R - this.state.C2EE });
+      this.setState({
+        C2DD: Number(
+          parseFloat(Number(AverageC2R - this.state.C2EE).toString()).toFixed(2)
+        ),
+      });
     } else {
     }
     //let SctionTotalAE = Number(parseFloat(((Number(AverageA3E) + Number(this.state.dropAverageA11E) + Number(this.state.dropAverageC2E)  )/3).toString()).toFixed(2));
