@@ -1,40 +1,48 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
-  "solution": {
-    "name": "submit-pepi-project-client-side-solution",
-    "id": "cf340a73-b05d-4c4d-b741-7e05e8483eb1",
-    "version": "1.0.0.1",
-    "includeClientSideAssets": true,
-    "skipFeatureDeployment": true,
-    "isDomainIsolated": false,
-    "developer": {
-      "name": "",
-      "websiteUrl": "",
-      "privacyUrl": "",
-      "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.14.0"
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "dev-submit-pepi-project-client-side-solution",
+        "id": "cf340a73-b05d-4c4d-b741-7e05e8483eb1",
+        "version": "1.0.0.1",
+        "includeClientSideAssets": true,
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": "Undefined-1.14.0"
+        },
+        "metadata": {
+            "shortDescription": {
+                "default": "SubmitPEPIProject description"
+            },
+            "longDescription": {
+                "default": "SubmitPEPIProject description"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+        },
+        "features": [{
+            "title": "submit-pepi-project Feature",
+            "description": "The feature that activates elements of the submit-pepi-project solution.",
+            "id": "bdba71e8-2f2b-4a3f-b7e6-a2b4e69b3ffc",
+            "version": "1.0.0.0"
+        }]
     },
-    "metadata": {
-      "shortDescription": {
-        "default": "SubmitPEPIProject description"
-      },
-      "longDescription": {
-        "default": "SubmitPEPIProject description"
-      },
-      "screenshotPaths": [],
-      "videoUrl": "",
-      "categories": []
-    },
-    "features": [
-      {
-        "title": "submit-pepi-project Feature",
-        "description": "The feature that activates elements of the submit-pepi-project solution.",
-        "id": "bdba71e8-2f2b-4a3f-b7e6-a2b4e69b3ffc",
-        "version": "1.0.0.0"
-      }
-    ]
-  },
-  "paths": {
-    "zippedPackage": "solution/submit-pepi-project.sppkg"
-  }
+    "paths": {
+        "zippedPackage": "solution/dev-submit-pepi-project.sppkg"
+    }
 }
+
+/*
+solution:-
+  PEPI-Projects => submit-pepi-project-client-side-solution
+  DEV-PEPI-Projects => dev-submit-pepi-project-client-side-solution
+
+zippedPackage:-
+  PEPI-Projects => solution/submit-pepi-project.sppkg
+  DEV-PEPI-Projects => solution/dev-submit-pepi-project.sppkg
+*/
