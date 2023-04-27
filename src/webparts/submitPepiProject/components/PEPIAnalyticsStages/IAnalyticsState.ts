@@ -25,6 +25,7 @@ export interface IAnalyticsState extends IBaseInterface {
   IsReviewee: boolean;
   IsReviewer: boolean;
   IsLeadMD: boolean;
+  // IsPerformanceDiscussion?: boolean;
   IsApprovaed: boolean;
   IsAcknowledgement: boolean;
   IsSelectedEmployeeInvalid: boolean;

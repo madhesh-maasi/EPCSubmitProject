@@ -117,26 +117,16 @@ export default class SeniorAssociate extends React.Component<
       A15D:
         Number(this.resetNAValue(this.props.APEPIDetail.A15R)) -
         Number(this.resetNAValue(this.props.APEPIDetail.A15E)),
-      A1EE:
-        this.props.APEPIDetail.A1EE == undefined
-          ? 0
-          : this.props.APEPIDetail.A1EE,
-      A1RR:
-        this.props.APEPIDetail.A1RR == undefined
-          ? 0
-          : this.props.APEPIDetail.A1RR,
+      A1EE: !this.props.APEPIDetail.A1EE ? 0 : this.props.APEPIDetail.A1EE,
+      A1RR: !this.props.APEPIDetail.A1RR ? 0 : this.props.APEPIDetail.A1RR,
       A1DD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.A1RR == undefined
-                ? 0
-                : this.props.APEPIDetail.A1RR
+              !this.props.APEPIDetail.A1RR ? 0 : this.props.APEPIDetail.A1RR
             ) -
             Number(
-              this.props.APEPIDetail.A1EE == undefined
-                ? 0
-                : this.props.APEPIDetail.A1EE
+              !this.props.APEPIDetail.A1EE ? 0 : this.props.APEPIDetail.A1EE
             )
           ).toString()
         ).toFixed(2)
@@ -188,26 +178,16 @@ export default class SeniorAssociate extends React.Component<
         Number(this.resetNAValue(this.props.APEPIDetail.A24R)) -
         Number(this.resetNAValue(this.props.APEPIDetail.A24E)),
 
-      A2EE:
-        this.props.APEPIDetail.A2EE == undefined
-          ? 0
-          : this.props.APEPIDetail.A2EE,
-      A2RR:
-        this.props.APEPIDetail.A2RR == undefined
-          ? 0
-          : this.props.APEPIDetail.A2RR,
+      A2EE: !this.props.APEPIDetail.A2EE ? 0 : this.props.APEPIDetail.A2EE,
+      A2RR: !this.props.APEPIDetail.A2RR ? 0 : this.props.APEPIDetail.A2RR,
       A2DD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.A2RR == undefined
-                ? 0
-                : this.props.APEPIDetail.A2RR
+              !this.props.APEPIDetail.A2RR ? 0 : this.props.APEPIDetail.A2RR
             ) -
             Number(
-              this.props.APEPIDetail.A2EE == undefined
-                ? 0
-                : this.props.APEPIDetail.A2EE
+              !this.props.APEPIDetail.A2EE ? 0 : this.props.APEPIDetail.A2EE
             )
           ).toString()
         ).toFixed(2)
@@ -248,52 +228,36 @@ export default class SeniorAssociate extends React.Component<
         Number(this.resetNAValue(this.props.APEPIDetail.A33R)) -
         Number(this.resetNAValue(this.props.APEPIDetail.A33E)),
 
-      A3EE:
-        this.props.APEPIDetail.A3EE == undefined
-          ? 0
-          : this.props.APEPIDetail.A3EE,
-      A3RR:
-        this.props.APEPIDetail.A3RR == undefined
-          ? 0
-          : this.props.APEPIDetail.A3RR,
+      A3EE: !this.props.APEPIDetail.A3EE ? 0 : this.props.APEPIDetail.A3EE,
+      A3RR: !this.props.APEPIDetail.A3RR ? 0 : this.props.APEPIDetail.A3RR,
       //A3DD : Number(this.props.APEPIDetail.A3RR == undefined ? 0:this.props.APEPIDetail.A3RR) - Number(this.props.APEPIDetail.A3EE == undefined ? 0:this.props.APEPIDetail.A3EE),
       A3DD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.A3RR == undefined
-                ? 0
-                : this.props.APEPIDetail.A3RR
+              !this.props.APEPIDetail.A3RR ? 0 : this.props.APEPIDetail.A3RR
             ) -
             Number(
-              this.props.APEPIDetail.A3EE == undefined
-                ? 0
-                : this.props.APEPIDetail.A3EE
+              !this.props.APEPIDetail.A3EE ? 0 : this.props.APEPIDetail.A3EE
             )
           ).toString()
         ).toFixed(2)
       ),
 
-      AAvgEE:
-        this.props.APEPIDetail.AAvgEE == undefined
-          ? 0
-          : this.props.APEPIDetail.AAvgEE,
-      AAvgER:
-        this.props.APEPIDetail.AAvgER == undefined
-          ? 0
-          : this.props.APEPIDetail.AAvgER,
+      AAvgEE: !this.props.APEPIDetail.AAvgEE
+        ? 0
+        : this.props.APEPIDetail.AAvgEE,
+      AAvgER: !this.props.APEPIDetail.AAvgER
+        ? 0
+        : this.props.APEPIDetail.AAvgER,
       SctionTotalAD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.AAvgER == undefined
-                ? 0
-                : this.props.APEPIDetail.AAvgER
+              !this.props.APEPIDetail.AAvgER ? 0 : this.props.APEPIDetail.AAvgER
             ) -
             Number(
-              this.props.APEPIDetail.AAvgEE == undefined
-                ? 0
-                : this.props.APEPIDetail.AAvgEE
+              !this.props.APEPIDetail.AAvgEE ? 0 : this.props.APEPIDetail.AAvgEE
             )
           ).toString()
         ).toFixed(2)
@@ -301,98 +265,63 @@ export default class SeniorAssociate extends React.Component<
 
       //  // Section B1 State
 
-      B1EE:
-        this.props.APEPIDetail.B1EE == undefined
-          ? 0
-          : this.props.APEPIDetail.B1EE,
-      B1RR:
-        this.props.APEPIDetail.B1RR == undefined
-          ? 0
-          : this.props.APEPIDetail.B1RR,
+      B1EE: !this.props.APEPIDetail.B1EE ? 0 : this.props.APEPIDetail.B1EE,
+      B1RR: !this.props.APEPIDetail.B1RR ? 0 : this.props.APEPIDetail.B1RR,
 
-      B1DD:
-        Number(
-          this.props.APEPIDetail.B1RR == undefined
-            ? 0
-            : this.props.APEPIDetail.B1RR
-        ) -
-        Number(
-          this.props.APEPIDetail.B1EE == undefined
-            ? 0
-            : this.props.APEPIDetail.B1EE
-        ),
-      B2EE:
-        this.props.APEPIDetail.B2EE == undefined
-          ? 0
-          : this.props.APEPIDetail.B2EE,
-      B2RR:
-        this.props.APEPIDetail.B2RR == undefined
-          ? 0
-          : this.props.APEPIDetail.B2RR,
+      B1DD: Number(
+        parseFloat(
+          (
+            Number(
+              !this.props.APEPIDetail.B1RR ? 0 : this.props.APEPIDetail.B1RR
+            ) -
+            Number(
+              !this.props.APEPIDetail.B1EE ? 0 : this.props.APEPIDetail.B1EE
+            )
+          ).toString()
+        ).toFixed(2)
+      ),
+      B2EE: !this.props.APEPIDetail.B2EE ? 0 : this.props.APEPIDetail.B2EE,
+      B2RR: !this.props.APEPIDetail.B2RR ? 0 : this.props.APEPIDetail.B2RR,
       //B2DD: Number(this.props.APEPIDetail.B2RR == undefined ? 0 : this.props.APEPIDetail.B2RR) - Number(this.props.APEPIDetail.B2EE == undefined ? 0 : this.props.APEPIDetail.B2EE),
       B2DD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.B2RR == undefined
-                ? 0
-                : this.props.APEPIDetail.B2RR
+              !this.props.APEPIDetail.B2RR ? 0 : this.props.APEPIDetail.B2RR
             ) -
             Number(
-              this.props.APEPIDetail.B2EE == undefined
-                ? 0
-                : this.props.APEPIDetail.B2EE
+              !this.props.APEPIDetail.B2EE ? 0 : this.props.APEPIDetail.B2EE
             )
           ).toString()
         ).toFixed(2)
       ),
-      B3EE:
-        this.props.APEPIDetail.B3EE == undefined
-          ? 0
-          : this.props.APEPIDetail.B3EE,
-      B3RR:
-        this.props.APEPIDetail.B3RR == undefined
-          ? 0
-          : this.props.APEPIDetail.B3RR,
+      B3EE: !this.props.APEPIDetail.B3EE ? 0 : this.props.APEPIDetail.B3EE,
+      B3RR: !this.props.APEPIDetail.B3RR ? 0 : this.props.APEPIDetail.B3RR,
       //B3DD : Number(this.props.APEPIDetail.B3RR == undefined ? 0:this.props.APEPIDetail.B3RR) - Number(this.props.APEPIDetail.B3EE == undefined ? 0:this.props.APEPIDetail.B3EE),
       B3DD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.B3RR == undefined
-                ? 0
-                : this.props.APEPIDetail.B3RR
+              !this.props.APEPIDetail.B3RR ? 0 : this.props.APEPIDetail.B3RR
             ) -
             Number(
-              this.props.APEPIDetail.B3EE == undefined
-                ? 0
-                : this.props.APEPIDetail.B3EE
+              !this.props.APEPIDetail.B3EE ? 0 : this.props.APEPIDetail.B3EE
             )
           ).toString()
         ).toFixed(2)
       ),
 
-      B4EE:
-        this.props.APEPIDetail.B4EE == undefined
-          ? 0
-          : this.props.APEPIDetail.B4EE,
-      B4RR:
-        this.props.APEPIDetail.B4RR == undefined
-          ? 0
-          : this.props.APEPIDetail.B4RR,
+      B4EE: !this.props.APEPIDetail.B4EE ? 0 : this.props.APEPIDetail.B4EE,
+      B4RR: !this.props.APEPIDetail.B4RR ? 0 : this.props.APEPIDetail.B4RR,
       //B4DD : Number(this.props.APEPIDetail.B4RR == undefined ? 0:this.props.APEPIDetail.B4RR) - Number(this.props.APEPIDetail.B4EE == undefined ? 0:this.props.APEPIDetail.B4EE),
       B4DD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.B4RR == undefined
-                ? 0
-                : this.props.APEPIDetail.B4RR
+              !this.props.APEPIDetail.B4RR ? 0 : this.props.APEPIDetail.B4RR
             ) -
             Number(
-              this.props.APEPIDetail.B4EE == undefined
-                ? 0
-                : this.props.APEPIDetail.B4EE
+              !this.props.APEPIDetail.B4EE ? 0 : this.props.APEPIDetail.B4EE
             )
           ).toString()
         ).toFixed(2)
@@ -530,26 +459,20 @@ export default class SeniorAssociate extends React.Component<
 
       //B43D : Number(parseFloat((Number(this.props.APEPIDetail.B43R == undefined ? 0:this.props.APEPIDetail.B43R) - Number(this.props.APEPIDetail.B43E == undefined ? 0:this.props.APEPIDetail.B43E))).toString()).toFixed(2))
 
-      BAvgEE:
-        this.props.APEPIDetail.BAvgEE == undefined
-          ? 0
-          : this.props.APEPIDetail.BAvgEE,
-      BAvgER:
-        this.props.APEPIDetail.BAvgER == undefined
-          ? 0
-          : this.props.APEPIDetail.BAvgER,
+      BAvgEE: !this.props.APEPIDetail.BAvgEE
+        ? 0
+        : this.props.APEPIDetail.BAvgEE,
+      BAvgER: !this.props.APEPIDetail.BAvgER
+        ? 0
+        : this.props.APEPIDetail.BAvgER,
       SctionTotalBD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.BAvgER == undefined
-                ? 0
-                : this.props.APEPIDetail.BAvgER
+              !this.props.APEPIDetail.BAvgER ? 0 : this.props.APEPIDetail.BAvgER
             ) -
             Number(
-              this.props.APEPIDetail.BAvgEE == undefined
-                ? 0
-                : this.props.APEPIDetail.BAvgEE
+              !this.props.APEPIDetail.BAvgEE ? 0 : this.props.APEPIDetail.BAvgEE
             )
           ).toString()
         ).toFixed(2)
@@ -558,68 +481,40 @@ export default class SeniorAssociate extends React.Component<
 
       //  // Section C1 State
 
-      CAvgEE:
-        this.props.APEPIDetail.CAvgEE == undefined
-          ? 0
-          : this.props.APEPIDetail.CAvgEE,
-      CAvgER:
-        this.props.APEPIDetail.CAvgER == undefined
-          ? 0
-          : this.props.APEPIDetail.CAvgER,
+      CAvgEE: !this.props.APEPIDetail.CAvgEE
+        ? 0
+        : this.props.APEPIDetail.CAvgEE,
+      CAvgER: !this.props.APEPIDetail.CAvgER
+        ? 0
+        : this.props.APEPIDetail.CAvgER,
       //SctionTotalCD: 0,
       SctionTotalCD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.CAvgER == undefined
-                ? 0
-                : this.props.APEPIDetail.CAvgER
+              !this.props.APEPIDetail.CAvgER ? 0 : this.props.APEPIDetail.CAvgER
             ) -
             Number(
-              this.props.APEPIDetail.CAvgEE == undefined
-                ? 0
-                : this.props.APEPIDetail.CAvgEE
+              !this.props.APEPIDetail.CAvgEE ? 0 : this.props.APEPIDetail.CAvgEE
             )
           ).toString()
         ).toFixed(2)
       ),
 
-      C1EE:
-        this.props.APEPIDetail.C1EE == undefined
-          ? 0
-          : this.props.APEPIDetail.C1EE,
-      C1RR:
-        this.props.APEPIDetail.C1RR == undefined
-          ? 0
-          : this.props.APEPIDetail.C1RR,
-      C2EE:
-        this.props.APEPIDetail.C1EE == undefined
-          ? 0
-          : this.props.APEPIDetail.C2EE,
-      C2RR:
-        this.props.APEPIDetail.C1RR == undefined
-          ? 0
-          : this.props.APEPIDetail.C2RR,
-      C3EE:
-        this.props.APEPIDetail.C1EE == undefined
-          ? 0
-          : this.props.APEPIDetail.C3EE,
-      C3RR:
-        this.props.APEPIDetail.C1RR == undefined
-          ? 0
-          : this.props.APEPIDetail.C3RR,
+      C1EE: !this.props.APEPIDetail.C1EE ? 0 : this.props.APEPIDetail.C1EE,
+      C1RR: !this.props.APEPIDetail.C1RR ? 0 : this.props.APEPIDetail.C1RR,
+      C2EE: !this.props.APEPIDetail.C2EE ? 0 : this.props.APEPIDetail.C2EE,
+      C2RR: !this.props.APEPIDetail.C2RR ? 0 : this.props.APEPIDetail.C2RR,
+      C3EE: !this.props.APEPIDetail.C3EE ? 0 : this.props.APEPIDetail.C3EE,
+      C3RR: !this.props.APEPIDetail.C3RR ? 0 : this.props.APEPIDetail.C3RR,
       C1DD: Number(
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.C1RR == undefined
-                ? 0
-                : this.props.APEPIDetail.C1RR
+              !this.props.APEPIDetail.C1RR ? 0 : this.props.APEPIDetail.C1RR
             ) -
             Number(
-              this.props.APEPIDetail.C1EE == undefined
-                ? 0
-                : this.props.APEPIDetail.C1EE
+              !this.props.APEPIDetail.C1EE ? 0 : this.props.APEPIDetail.C1EE
             )
           ).toString()
         ).toFixed(2)
@@ -628,14 +523,10 @@ export default class SeniorAssociate extends React.Component<
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.C2RR == undefined
-                ? 0
-                : this.props.APEPIDetail.C2RR
+              !this.props.APEPIDetail.C2RR ? 0 : this.props.APEPIDetail.C2RR
             ) -
             Number(
-              this.props.APEPIDetail.C2EE == undefined
-                ? 0
-                : this.props.APEPIDetail.C2EE
+              !this.props.APEPIDetail.C2EE ? 0 : this.props.APEPIDetail.C2EE
             )
           ).toString()
         ).toFixed(2)
@@ -644,14 +535,10 @@ export default class SeniorAssociate extends React.Component<
         parseFloat(
           (
             Number(
-              this.props.APEPIDetail.C3RR == undefined
-                ? 0
-                : this.props.APEPIDetail.C3RR
+              !this.props.APEPIDetail.C3RR ? 0 : this.props.APEPIDetail.C3RR
             ) -
             Number(
-              this.props.APEPIDetail.C3EE == undefined
-                ? 0
-                : this.props.APEPIDetail.C3EE
+              !this.props.APEPIDetail.C3EE ? 0 : this.props.APEPIDetail.C3EE
             )
           ).toString()
         ).toFixed(2)
@@ -1037,13 +924,18 @@ export default class SeniorAssociate extends React.Component<
         ),
 
         B1RR: 0,
-        B1DD:
-          0 -
-          Number(
-            this.props.APEPIDetail.B1EE == undefined
-              ? 0
-              : this.props.APEPIDetail.B1EE
-          ),
+        B1DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.B1EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.B1EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
 
         B2RR: 0,
         B2DD: Number(
@@ -1245,20 +1137,618 @@ export default class SeniorAssociate extends React.Component<
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingReviewer &&
       (this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
+        this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
         this.props.isAdmin)
     ) {
       this.setState({ IsReviewer: false });
+      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail &&
+        !this.props.isAdmin &&
+        this.setState({
+          IsReviewer: true,
+          // Section A1 State
+          revieweePermission: true,
+          A11R: 0,
+          A12R: 0,
+          A13R: 0,
+          A14R: 0,
+          A15R: 0,
+          A11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A11E)),
+          A12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A12E)),
+          A13D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A13E)),
+          A14D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A14E)),
+          A15D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A15E)),
+
+          A1RR: 0,
+          A1DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.A1EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.A1EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          // Section A2 State
+          A21R: 0,
+          A22R: 0,
+          A23R: 0,
+          A24R: 0,
+          A21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A21E)),
+          A22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A22E)),
+          A23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A23E)),
+          A24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A24E)),
+          A2RR: 0,
+          A2DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.A2EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.A2EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          // Section A3 State
+          A31R: 0,
+          A32R: 0,
+          A33R: 0,
+          A31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A31E)),
+          A32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A32E)),
+          A33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A33E)),
+          A3RR: 0,
+
+          A3DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.A3EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.A3EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          AAvgER: 0,
+          SctionTotalAD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.AAvgEE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.AAvgEE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B1RR: 0,
+          B1DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B1EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B1EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B2RR: 0,
+          B2DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B2EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B2EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B3RR: 0,
+          B3DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B3EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B3EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B4RR: 0,
+
+          B4DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B4EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B4EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          // Section B1 State
+          B11R: 0,
+          B12R: 0,
+          B11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B11E)),
+          B12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B12E)),
+
+          // Section B2 State
+          B21R: 0,
+          B22R: 0,
+          B23R: 0,
+          B21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B21E)),
+          B22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B22E)),
+          B23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B23E)),
+
+          // Section B3 State
+
+          B31R: 0,
+          B32R: 0,
+          B33R: 0,
+          B31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B31E)),
+          B32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B32E)),
+          B33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B33E)),
+
+          //Section B4 State
+
+          B41R: 0,
+          B42R: 0,
+          B43R: 0,
+          B41D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B41E)),
+          B42D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B42E)),
+          B43D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B43E)),
+          BAvgER: 0,
+          SctionTotalBD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.BAvgEE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.BAvgEE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          // Section C1 State
+
+          CAvgER: 0,
+
+          SctionTotalCD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.CAvgEE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.CAvgEE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          C1RR: 0,
+
+          C2RR: 0,
+
+          C3RR: 0,
+          C1DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.C1EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.C1EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          C2DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.C2EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.C2EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          C3DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.C3EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.C3EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          C11R: 0,
+          C12R: 0,
+          C13R: 0,
+          C11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C11E)),
+          C12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C12E)),
+          C13D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C13E)),
+
+          //Section C2 State
+
+          C21R: 0,
+          C22R: 0,
+          C23R: 0,
+          C24R: 0,
+          C21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C21E)),
+          C22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C22E)),
+          C23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C23E)),
+          C24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C24E)),
+
+          // Section C3 State
+
+          C31R: 0,
+          C32R: 0,
+          C33R: 0,
+          C31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C31E)),
+          C32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C32E)),
+          C33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C33E)),
+
+          SctionTotalDR: 0,
+          SctionTotalDD: Number(
+            parseFloat(Number(0 - this.props.SctionTotalDE).toString()).toFixed(
+              2
+            )
+          ),
+          OverallCoreR: 0,
+          OverallPerformance:
+            this.props.APEPIDetail.OverallPerformance == undefined
+              ? 0
+              : this.props.APEPIDetail.OverallPerformance,
+          E1ER: "",
+
+          F1ER: "",
+
+          G1ER: "",
+
+          H1ER: "",
+        });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingLeadMD &&
       (this.props.APEPIDetail.LeadMD.Email == this.props.loggeduseremail ||
+        this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
+        this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
         this.props.isAdmin)
     ) {
-      this.setState({ IsLeadMD: false });
+      this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail &&
+      !this.props.isAdmin
+        ? this.setState({ IsLeadMD: true })
+        : this.setState({ IsLeadMD: false });
+      /* Deva change */
+      this.setState({
+        revieweePermission: false,
+      });
+      this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail &&
+        !this.props.isAdmin &&
+        this.setState({
+          IsLeadMD: true,
+          // Section A1 State
+          revieweePermission: true,
+          A11R: 0,
+          A12R: 0,
+          A13R: 0,
+          A14R: 0,
+          A15R: 0,
+          A11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A11E)),
+          A12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A12E)),
+          A13D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A13E)),
+          A14D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A14E)),
+          A15D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A15E)),
+
+          A1RR: 0,
+          A1DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.A1EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.A1EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          // Section A2 State
+          A21R: 0,
+          A22R: 0,
+          A23R: 0,
+          A24R: 0,
+          A21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A21E)),
+          A22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A22E)),
+          A23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A23E)),
+          A24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A24E)),
+          A2RR: 0,
+          A2DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.A2EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.A2EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          // Section A3 State
+          A31R: 0,
+          A32R: 0,
+          A33R: 0,
+          A31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A31E)),
+          A32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A32E)),
+          A33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.A33E)),
+          A3RR: 0,
+
+          A3DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.A3EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.A3EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          AAvgER: 0,
+          SctionTotalAD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.AAvgEE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.AAvgEE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B1RR: 0,
+          B1DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B1EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B1EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B2RR: 0,
+          B2DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B2EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B2EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B3RR: 0,
+          B3DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B3EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B3EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          B4RR: 0,
+
+          B4DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.B4EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.B4EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          // Section B1 State
+          B11R: 0,
+          B12R: 0,
+          B11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B11E)),
+          B12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B12E)),
+
+          // Section B2 State
+          B21R: 0,
+          B22R: 0,
+          B23R: 0,
+          B21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B21E)),
+          B22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B22E)),
+          B23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B23E)),
+
+          // Section B3 State
+
+          B31R: 0,
+          B32R: 0,
+          B33R: 0,
+          B31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B31E)),
+          B32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B32E)),
+          B33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B33E)),
+
+          //Section B4 State
+
+          B41R: 0,
+          B42R: 0,
+          B43R: 0,
+          B41D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B41E)),
+          B42D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B42E)),
+          B43D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.B43E)),
+          BAvgER: 0,
+          SctionTotalBD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.BAvgEE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.BAvgEE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          // Section C1 State
+
+          CAvgER: 0,
+
+          SctionTotalCD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.CAvgEE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.CAvgEE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+
+          C1RR: 0,
+
+          C2RR: 0,
+
+          C3RR: 0,
+          C1DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.C1EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.C1EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          C2DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.C2EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.C2EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          C3DD: Number(
+            parseFloat(
+              (
+                0 -
+                Number(
+                  this.props.APEPIDetail.C3EE == undefined
+                    ? 0
+                    : this.props.APEPIDetail.C3EE
+                )
+              ).toString()
+            ).toFixed(2)
+          ),
+          C11R: 0,
+          C12R: 0,
+          C13R: 0,
+          C11D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C11E)),
+          C12D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C12E)),
+          C13D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C13E)),
+
+          //Section C2 State
+
+          C21R: 0,
+          C22R: 0,
+          C23R: 0,
+          C24R: 0,
+          C21D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C21E)),
+          C22D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C22E)),
+          C23D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C23E)),
+          C24D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C24E)),
+
+          // Section C3 State
+
+          C31R: 0,
+          C32R: 0,
+          C33R: 0,
+          C31D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C31E)),
+          C32D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C32E)),
+          C33D: 0 - Number(this.resetNAValue(this.props.APEPIDetail.C33E)),
+
+          SctionTotalDR: 0,
+          SctionTotalDD: Number(
+            parseFloat(Number(0 - this.props.SctionTotalDE).toString()).toFixed(
+              2
+            )
+          ),
+          OverallCoreR: 0,
+          OverallPerformance:
+            this.props.APEPIDetail.OverallPerformance == undefined
+              ? 0
+              : this.props.APEPIDetail.OverallPerformance,
+          E1ER: "",
+
+          F1ER: "",
+
+          G1ER: "",
+
+          H1ER: "",
+        });
     } else if (
       this.props.APEPIDetail.StatusOfReview ==
         Config.StatusOfReview.AwaitingAcknowledgement &&
       (this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
+        this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
+        this.props.APEPIDetail.LeadMD.Email == this.props.loggeduseremail ||
         this.props.isAdmin)
     ) {
       this.setState({ IsAcknowledgement: false });
@@ -1267,17 +1757,20 @@ export default class SeniorAssociate extends React.Component<
       Config.StatusOfReview.Acknowledged
     ) {
       this.setState({ IsApprovaed: false });
-    } else if (
-      this.props.APEPIDetail.StatusOfReview ==
-        Config.StatusOfReview.AwaitingLeadMD &&
-      (this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
-        this.props.isAdmin)
-    ) {
-      /* Deva change */
-      this.setState({
-        revieweePermission: false,
-      })
-    } else {
+    }
+    // else if (
+    //   this.props.APEPIDetail.StatusOfReview ==
+    //     Config.StatusOfReview.AwaitingLeadMD &&
+    //   (this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail ||
+    //     this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
+    //     this.props.isAdmin)
+    // ) {
+    //   /* Deva change */
+    //   this.setState({
+    //     revieweePermission: false,
+    //   });
+    // }
+    else {
       //! Technorucs
       this.setState({
         // Section A1 State
@@ -1366,13 +1859,18 @@ export default class SeniorAssociate extends React.Component<
         ),
 
         B1RR: 0,
-        B1DD:
-          0 -
-          Number(
-            this.props.APEPIDetail.B1EE == undefined
-              ? 0
-              : this.props.APEPIDetail.B1EE
-          ),
+        B1DD: Number(
+          parseFloat(
+            (
+              0 -
+              Number(
+                this.props.APEPIDetail.B1EE == undefined
+                  ? 0
+                  : this.props.APEPIDetail.B1EE
+              )
+            ).toString()
+          ).toFixed(2)
+        ),
 
         B2RR: 0,
         B2DD: Number(
@@ -1650,7 +2148,7 @@ export default class SeniorAssociate extends React.Component<
     /* Deva changes start */
     data[columns.OverallPerformance] = String(this.state.OverallPerformance);
     /* Deva changes end */
-    
+
     //Section D
     //  if(ApepiQuestionText[0] != ""){
 
@@ -1754,7 +2252,7 @@ export default class SeniorAssociate extends React.Component<
     let data = {};
     const columns = Config.PEPIProjectsListColumns;
 
-    data[columns.Complexity] = this.props.APEPIDetail.Complexity;
+    // data[columns.Complexity] = this.props.APEPIDetail.Complexity;
     // section A
     data[columns.A1RR] = Number(this.state.A1RR);
     data[columns.A2RR] = Number(this.state.A2RR);
@@ -1837,7 +2335,7 @@ export default class SeniorAssociate extends React.Component<
 
     data[columns.StatusOfReview] = Config.StatusOfReview.AwaitingLeadMD;
     data[columns.Submitted] = Config.SubmittedNumber[4];
-    data[columns.Complexity] = this.props.APEPIDetail.Complexity;
+    // data[columns.Complexity] = this.props.APEPIDetail.Complexity;
     // data[columns.Submitted] = Config.SubmittedNumber[4];
     // section A
     // section A
@@ -2010,6 +2508,7 @@ export default class SeniorAssociate extends React.Component<
       Config.StatusOfReview.AwaitingAcknowledgement;
     data[columns.Submitted] = Config.SubmittedNumber[6];
     data[columns.H1EL] = this.state.ApepiDetails.H1EL;
+    // data[columns.Complexity] = this.props.APEPIDetail.Complexity;
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -2031,6 +2530,8 @@ export default class SeniorAssociate extends React.Component<
     //   this.state.ApepiDetails.RevertToReviewer
     // );
     data[columns.RevertToReviewer] = this.state.ApepiDetails.RevertToReviewer;
+    data[columns.H1EL] = this.state.ApepiDetails.H1EE;
+    // data[columns.Complexity] = this.props.APEPIDetail.Complexity;
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -5817,6 +6318,21 @@ export default class SeniorAssociate extends React.Component<
   }
 
   //! Technorucs
+  private isValidLeadMD(): boolean {
+    let ApepiQuestionText = this.state.ApepiQuestionText;
+    let sectionD = ApepiQuestionText.filter(
+      (item) =>
+        (item.Reviewee == "" || Number(item.Reviewee) == 0) &&
+        item.QuestionText != "N/A"
+    );
+    let valid: boolean = false;
+    if (this.props.APEPIDetail.H1EL) {
+      valid = true;
+    }
+    return valid;
+  }
+
+  //! Technorucs
   private isValidREVIEWERApproved(): boolean {
     let ApepiQuestionText = this.state.ApepiQuestionText;
     let sectionD = ApepiQuestionText.filter(
@@ -5828,7 +6344,7 @@ export default class SeniorAssociate extends React.Component<
     let valid: boolean = false;
     if (
       sectionD.length == 0 &&
-      this.props.APEPIDetail.Complexity &&
+      // this.props.APEPIDetail.Complexity &&
       // this.state.A1RR != 0 &&
       // this.state.A2RR != 0 &&
       // this.state.A3RR != 0 &&
@@ -8075,7 +8591,12 @@ export default class SeniorAssociate extends React.Component<
           </div>
         </div>
 
-        {this.state.IsReviewee && (
+        {this.state.ApepiDetails.StatusOfReview !=
+          Config.StatusOfReview.AwaitingReviewee && (
+          // this.state.ApepiDetails.StatusOfReview !=
+          //   Config.StatusOfReview.AwaitingReviewer &&
+          // this.state.ApepiDetails.StatusOfReview !=
+          //   Config.StatusOfReview.AwaitingLeadMD &&
           <div className={styles.row}>
             <div className={styles.col25left}>
               <Label>
@@ -8329,16 +8850,21 @@ export default class SeniorAssociate extends React.Component<
                   className={styles.divFullWidth}
                 >
                   <PrimaryButton
-                    disabled={!this.state.ApepiDetails.H1EL}
+                    // disabled={!this.state.ApepiDetails.H1EL}
+                    // className={
+                    //   this.state.ApepiDetails.H1EL
+                    //     ? styles.btnApproved
+                    //     : styles.btnDisable
+                    // }
+                    // style={{
+                    //   justifyContent: "flex-start",
+                    // }}
+                    disabled={!this.isValidLeadMD()}
                     className={
-                      this.state.ApepiDetails.H1EL
+                      this.isValidLeadMD()
                         ? styles.btnApproved
                         : styles.btnDisable
                     }
-                    style={{
-                      justifyContent: "flex-start",
-                    }}
-                    // className={styles.btnApproved}
                     text="SUBMIT TO REVIEWEE FOR ACKNOWLEDGEMENT "
                     onClick={this.onLEADMDApproved}
                   ></PrimaryButton>

@@ -28,7 +28,6 @@ export namespace Config {
   };
 
   // Key Value pair of PEPI Projects list column title and internal names
-
   export const PEPIProjectsListColumns = {
     ProjectStartDate: "Project_x0020_Start_x0020_Date",
     ProjectEndDate: "Project_x0020_End_x0020_Date",
@@ -221,6 +220,7 @@ export namespace Config {
     SBU: "SBU",
     /* Deva changes end */
   };
+
   export const PEPIQuestionTextListColumns = {
     Q1: "_x0051_1",
     Q2: "_x0051_2",
@@ -233,6 +233,7 @@ export namespace Config {
     Q9: "_x0051_9",
     Q10: "_x0051_10",
   };
+
   export const CombineReviewsListColumns = {
     ReviewIDs: "Review_x0020_IDs",
     ProjectManager: "Project_x0020_Manager",
@@ -243,6 +244,7 @@ export namespace Config {
     NewReviewID: "New_x0020_Review_x0020_ID",
     CombinedReviewStatus: "CreateCombinedReview",
   };
+
   export const CombineAdminListColumns = {
     ReviewIDs: "Review_x0020_IDs",
     ProjectManager: "Project_x0020_Manager",
@@ -259,6 +261,7 @@ export namespace Config {
     SBU: "SBU",
     /* Deva changes end */
   };
+
   export const SpecialReviewsListColumns = {
     EmployeeNumber: "Employee_x0020_Number",
     HoursWorked: "Hours_x0020_Worked",
@@ -279,12 +282,14 @@ export namespace Config {
     SBU: "SBU",
     /* Deva changes end */
   };
+
   export const SplitReviewsListColumns = {
     SourceReviewID: "Source_x0020_Review_x0020_ID",
     HourstoReview: "Hours_x0020_to_x0020_Review",
     SplitReviewID: "Split_x0020_Review_x0020_ID",
     SplitReviewStatus: "CreateSplitReview",
   };
+
   export const SplitAdminListColumns = {
     SourceReviewID: "Source_x0020_Review_x0020_ID",
     HourstoReview: "Hours_x0020_to_x0020_Review",
@@ -304,6 +309,7 @@ export namespace Config {
     EmployeeAlreadyAdded:
       "Employee Details are already present for the current employee. Please select another employee name.",
   };
+
   export const StatusOfReview = {
     AwaitingReviewee: "Awaiting Reviewee",
     AwaitingReviewer: "Awaiting Reviewer",
@@ -313,7 +319,12 @@ export namespace Config {
     Split: "Split",
     Combined: "Combined",
     Declined: "Declined",
+
+    /* Deva changes start */
+    // AwaitingPerformanceDiscussion: "Awaiting Performance Discussion"
+    /* Deva changes end */
   };
+  
   export const JobRole = {
     SeniorDirector: "Senior Director",
     Director: "Director",
