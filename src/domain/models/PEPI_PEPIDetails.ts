@@ -31,6 +31,7 @@ export class PEPI_PEPIDetails {
   public IsReviewee: boolean;
   public IsReviewer: boolean;
   public IsLeadMD: boolean;
+  // public IsPerformanceDiscussion: boolean;
   public IsApprovaed: boolean;
   public IsAcknowledgement: boolean;
 

@@ -72,7 +72,7 @@ export default class SubmitPepiProject extends React.Component<
   private userService: UserService;
   private webService: WebService;
   private hasEditItemPermission: boolean = true;
-  
+
   constructor(props: any) {
     super(props);
     // this._childSelect = this._childSelect.bind(this);
@@ -1052,21 +1052,33 @@ export default class SubmitPepiProject extends React.Component<
                                 </Label>
                                 <div>
                                   <Dropdown
+                                    // disabled={
+                                    //   (this.state.PEPIDetails
+                                    //     .StatusOfReview ==
+                                    //     Config.StatusOfReview
+                                    //       .AwaitingReviewer &&
+                                    //     (this.state.PEPIDetails.Reviewer
+                                    //       .Email ==
+                                    //       this.state.loggeduseremail ||
+                                    //       this.state.isAdmin)) ||
+                                    //   (this.state.PEPIDetails
+                                    //     .StatusOfReview ==
+                                    //     Config.StatusOfReview
+                                    //       .AwaitingReviewee &&
+                                    //     (this.state.PEPIDetails.Reviewee
+                                    //       .Email ==
+                                    //       this.state.loggeduseremail ||
+                                    //       this.state.isAdmin))
+                                    //     ? false
+                                    //     : true
+                                    // }
                                     disabled={
-                                      (this.state.PEPIDetails.StatusOfReview ==
-                                        Config.StatusOfReview
-                                          .AwaitingReviewer &&
-                                        (this.state.PEPIDetails.Reviewer
-                                          .Email ==
-                                          this.state.loggeduseremail ||
-                                          this.state.isAdmin)) ||
-                                      (this.state.PEPIDetails.StatusOfReview ==
+                                      this.state.PEPIDetails.StatusOfReview ==
                                         Config.StatusOfReview
                                           .AwaitingReviewee &&
-                                        (this.state.PEPIDetails.Reviewee
-                                          .Email ==
-                                          this.state.loggeduseremail ||
-                                          this.state.isAdmin))
+                                      (this.state.PEPIDetails.Reviewee.Email ==
+                                        this.state.loggeduseremail ||
+                                        this.state.isAdmin)
                                         ? false
                                         : true
                                     }
