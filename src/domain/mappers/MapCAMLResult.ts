@@ -239,6 +239,8 @@ export default class MapCAMLResult extends ContextService {
 
     /* Deva changes start */
     result.SBU = item[Config.PEPIProjectsListColumns.SBU];
+    result.DAvgEE = item[Config.PEPIProjectsListColumns.DAvgEE];
+    result.DAvgER = item[Config.PEPIProjectsListColumns.DAvgER];
     /* Deva changes end */
     // JobTitle
     //debugger;

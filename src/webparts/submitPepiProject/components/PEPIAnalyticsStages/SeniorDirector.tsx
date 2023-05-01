@@ -2138,6 +2138,7 @@ export default class SeniorDirector extends React.Component<
     data[columns.AAvgEE] = Number(this.state.AAvgEE);
     data[columns.BAvgEE] = Number(this.state.BAvgEE);
     data[columns.CAvgEE] = Number(this.state.CAvgEE);
+    data[columns.DAvgEE] = Number(this.state.SctionTotalDE);
 
     data[columns.E1EE] = this.state.ApepiDetails.E1EE;
     data[columns.F1EE] = this.state.ApepiDetails.F1EE;
@@ -2228,6 +2229,7 @@ export default class SeniorDirector extends React.Component<
     data[columns.AAvgEE] = Number(this.state.AAvgEE);
     data[columns.BAvgEE] = Number(this.state.BAvgEE);
     data[columns.CAvgEE] = Number(this.state.CAvgEE);
+    data[columns.DAvgEE] = Number(this.state.SctionTotalDE);
     data[columns.E1EE] = this.state.ApepiDetails.E1EE;
     data[columns.F1EE] = this.state.ApepiDetails.F1EE;
     data[columns.G1EE] = this.state.ApepiDetails.G1EE;
@@ -2304,6 +2306,7 @@ export default class SeniorDirector extends React.Component<
     data[columns.AAvgER] = Number(this.state.AAvgER);
     data[columns.BAvgER] = Number(this.state.BAvgER);
     data[columns.CAvgER] = Number(this.state.CAvgER);
+    data[columns.DAvgER] = Number(this.state.SctionTotalDR);
 
     data[columns.OverallPerformance] = String(this.state.OverallPerformance);
 
@@ -2389,6 +2392,7 @@ export default class SeniorDirector extends React.Component<
     data[columns.AAvgER] = Number(this.state.AAvgER);
     data[columns.BAvgER] = Number(this.state.BAvgER);
     data[columns.CAvgER] = Number(this.state.CAvgER);
+    data[columns.DAvgER] = Number(this.state.SctionTotalDR);
 
     data[columns.OverallPerformance] = String(this.state.OverallPerformance);
 
@@ -2478,6 +2482,7 @@ export default class SeniorDirector extends React.Component<
     data[columns.AAvgER] = Number(this.state.AAvgER);
     data[columns.BAvgER] = Number(this.state.BAvgER);
     data[columns.CAvgER] = Number(this.state.CAvgER);
+    data[columns.DAvgER] = Number(this.state.SctionTotalDR);
 
     data[columns.OverallPerformance] = String(this.state.OverallPerformance);
 

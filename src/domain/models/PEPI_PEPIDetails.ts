@@ -183,5 +183,7 @@ export class PEPI_PEPIDetails {
 
   /* Deva changes start */
   public SBU: string;
+  public DAvgEE: number;
+  public DAvgER: number;
   /* Deva changes end */
 }
