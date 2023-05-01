@@ -218,6 +218,8 @@ export namespace Config {
 
     /* Deva changes start */
     SBU: "SBU",
+    DAvgEE: "DAvgEE",
+    DAvgER: "DAvgER",
     /* Deva changes end */
   };
 
