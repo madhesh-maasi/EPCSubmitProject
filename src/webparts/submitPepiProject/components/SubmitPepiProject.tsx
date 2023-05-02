@@ -116,6 +116,8 @@ export default class SubmitPepiProject extends React.Component<
     this.onChangeLeadMDName = this.onChangeLeadMDName.bind(this);
     this.onChangeServiceLineValue = this.onChangeServiceLineValue.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
+    this.getAverageCalculation = this.getAverageCalculation.bind(this);
   }
 
   private onFormFieldValueChange(updateDetails: PEPI_PEPIDetails) {
@@ -556,6 +558,70 @@ export default class SubmitPepiProject extends React.Component<
       this.gotoListPage();
     }
   }
+
+  /* Deva changes start */
+  private getAverageCalculation(a, b, c, d, e) {
+    a = a == 0.5 ? 0 : a;
+    b = b == 0.5 ? 0 : b;
+    c = c == 0.5 ? 0 : c;
+    d = d == 0.5 ? 0 : d;
+    e = e == 0.5 ? 0 : e;
+    let aCount = a > 0 ? 1 : 0;
+    let bCount = b > 0 ? 1 : 0;
+    let cCount = c > 0 ? 1 : 0;
+    let dCount = d > 0 ? 1 : 0;
+    let eCount = e > 0 ? 1 : 0;
+    let AverageOutput =
+      (a + b + c + d + e) / (aCount + bCount + cCount + dCount + eCount);
+    AverageOutput = isNaN(AverageOutput) ? 0 : AverageOutput;
+    // return AverageOutput;
+    return AverageOutput % 1 == 0 ? AverageOutput : AverageOutput.toFixed(2);
+  }
+
+  private async onUpdate(): Promise<void> {
+    let data = {};
+    const columns = Config.PEPIProjectsListColumns;
+    data[columns.SLAvgEE] = Number(
+      parseFloat(Number(this.state.SctionTotalDE).toString()).toFixed(2)
+    );
+    data[columns.SLAvgER] = Number(
+      parseFloat(Number(this.state.SctionTotalDR).toString()).toFixed(2)
+    );
+    data[columns.OverallRevieweeAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.PEPIDetails.AAvgEE)),
+          Number(this.resetNAValue(this.state.PEPIDetails.BAvgEE)),
+          Number(this.resetNAValue(this.state.PEPIDetails.CAvgEE)),
+          Number(this.state.SctionTotalDE),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.PEPIDetails.AAvgER)),
+          Number(this.resetNAValue(this.state.PEPIDetails.BAvgER)),
+          Number(this.resetNAValue(this.state.PEPIDetails.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+
+    this.listPEPIProjectsItemService = new ListItemService(
+      this.props.AppContext,
+      Config.ListNames.PEPIProjects
+    );
+    await this.listPEPIProjectsItemService.updateItem(
+      this.state.PEPIDetails.ID,
+      data
+    );
+    alert("Updated successfully");
+    this.gotoListPage();
+  }
+  /* Deva changes end */
 
   private async onCancel(): Promise<void> {
     this.gotoListPage();
@@ -1409,13 +1475,50 @@ export default class SubmitPepiProject extends React.Component<
                 </div>
               )}
 
-            <div className={styles.divFullWidth}>
+            {/* Deva changes start */}
+            {this.state.PEPIDetails.StatusOfReview ==
+              Config.StatusOfReview.AwaitingLeadMD ||
+            this.state.PEPIDetails.StatusOfReview ==
+              Config.StatusOfReview.AwaitingAcknowledgement ||
+            this.state.PEPIDetails.StatusOfReview ==
+              Config.StatusOfReview.Acknowledged ? (
+              <div
+                className={styles.divFullWidth}
+                style={{
+                  display: "flex",
+                }}
+              >
+                <PrimaryButton
+                  style={{
+                    width: "200px",
+                  }}
+                  text="Update"
+                  onClick={this.onUpdate}
+                />
+                <PrimaryButton
+                  className={styles.btnCancel}
+                  text="Close"
+                  onClick={this.onCancel}
+                />
+              </div>
+            ) : (
+              <div className={styles.divFullWidth}>
+                <PrimaryButton
+                  className={styles.btnCancel}
+                  text="Close"
+                  onClick={this.onCancel}
+                />
+              </div>
+            )}
+            {/* Deva changes end */}
+
+            {/* <div className={styles.divFullWidth}>
               <PrimaryButton
                 className={styles.btnCancel}
                 text="Close"
                 onClick={this.onCancel}
-              ></PrimaryButton>
-            </div>
+              />
+            </div> */}
           </div>
         )}
       </React.Fragment>

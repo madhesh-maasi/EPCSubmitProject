@@ -2207,6 +2207,18 @@ export default class Associate extends React.Component<
     data[columns.BAvgEE] = Number(this.state.BAvgEE);
     data[columns.CAvgEE] = Number(this.state.CAvgEE);
     data[columns.DAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.SLAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.OverallRevieweeAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgEE)),
+          Number(this.resetNAValue(this.state.BAvgEE)),
+          Number(this.resetNAValue(this.state.CAvgEE)),
+          Number(this.state.SctionTotalDE),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
 
     data[columns.E1EE] = this.state.ApepiDetails.E1EE;
     data[columns.F1EE] = this.state.ApepiDetails.F1EE;
@@ -2297,6 +2309,19 @@ export default class Associate extends React.Component<
     data[columns.BAvgEE] = Number(this.state.BAvgEE);
     data[columns.CAvgEE] = Number(this.state.CAvgEE);
     data[columns.DAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.SLAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.OverallRevieweeAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgEE)),
+          Number(this.resetNAValue(this.state.BAvgEE)),
+          Number(this.resetNAValue(this.state.CAvgEE)),
+          Number(this.state.SctionTotalDE),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+
     data[columns.E1EE] = this.state.ApepiDetails.E1EE;
     data[columns.F1EE] = this.state.ApepiDetails.F1EE;
     data[columns.G1EE] = this.state.ApepiDetails.G1EE;
@@ -2373,6 +2398,18 @@ export default class Associate extends React.Component<
     data[columns.BAvgER] = Number(this.state.BAvgER);
     data[columns.CAvgER] = Number(this.state.CAvgER);
     data[columns.DAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.SLAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgER)),
+          Number(this.resetNAValue(this.state.BAvgER)),
+          Number(this.resetNAValue(this.state.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
 
     data[columns.OverallPerformance] = String(this.state.OverallPerformance);
 
@@ -2458,6 +2495,18 @@ export default class Associate extends React.Component<
     data[columns.BAvgER] = Number(this.state.BAvgER);
     data[columns.CAvgER] = Number(this.state.CAvgER);
     data[columns.DAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.SLAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgER)),
+          Number(this.resetNAValue(this.state.BAvgER)),
+          Number(this.resetNAValue(this.state.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
 
     data[columns.OverallPerformance] = String(this.state.OverallPerformance);
 
@@ -2548,6 +2597,18 @@ export default class Associate extends React.Component<
     data[columns.BAvgER] = Number(this.state.BAvgER);
     data[columns.CAvgER] = Number(this.state.CAvgER);
     data[columns.DAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.SLAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgER)),
+          Number(this.resetNAValue(this.state.BAvgER)),
+          Number(this.resetNAValue(this.state.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
 
     data[columns.OverallPerformance] = String(this.state.OverallPerformance);
 
@@ -2580,6 +2641,34 @@ export default class Associate extends React.Component<
     data[columns.Submitted] = Config.SubmittedNumber[6];
     data[columns.H1EL] = this.state.ApepiDetails.H1EL;
     // data[columns.Complexity] = this.props.APEPIDetail.Complexity;
+
+    /* Deva changes. Only averages update purpose start */
+    data[columns.SLAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.SLAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.OverallRevieweeAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgEE)),
+          Number(this.resetNAValue(this.state.BAvgEE)),
+          Number(this.resetNAValue(this.state.CAvgEE)),
+          Number(this.state.SctionTotalDE),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgER)),
+          Number(this.resetNAValue(this.state.BAvgER)),
+          Number(this.resetNAValue(this.state.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    /* Deva changes. Only averages update purpose end */
+
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -2603,6 +2692,34 @@ export default class Associate extends React.Component<
     data[columns.RevertToReviewer] = this.state.ApepiDetails.RevertToReviewer;
     data[columns.H1EL] = this.state.ApepiDetails.H1EE;
     // data[columns.Complexity] = this.props.APEPIDetail.Complexity;
+
+    /* Deva changes. Only averages update purpose start */
+    data[columns.SLAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.SLAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.OverallRevieweeAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgEE)),
+          Number(this.resetNAValue(this.state.BAvgEE)),
+          Number(this.resetNAValue(this.state.CAvgEE)),
+          Number(this.state.SctionTotalDE),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgER)),
+          Number(this.resetNAValue(this.state.BAvgER)),
+          Number(this.resetNAValue(this.state.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    /* Deva changes. Only averages update purpose end */
+
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -2620,6 +2737,34 @@ export default class Associate extends React.Component<
     const columns = Config.PEPIProjectsListColumns;
     data[columns.AcknowledgementComments] =
       this.state.ApepiDetails.AcknowledgementComments;
+
+    /* Deva changes. Only averages update purpose start */
+    data[columns.SLAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.SLAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.OverallRevieweeAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgEE)),
+          Number(this.resetNAValue(this.state.BAvgEE)),
+          Number(this.resetNAValue(this.state.CAvgEE)),
+          Number(this.state.SctionTotalDE),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgER)),
+          Number(this.resetNAValue(this.state.BAvgER)),
+          Number(this.resetNAValue(this.state.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    /* Deva changes. Only averages update purpose end */
+
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
@@ -2639,6 +2784,34 @@ export default class Associate extends React.Component<
     data[columns.Submitted] = Config.SubmittedNumber[7];
     data[columns.AcknowledgementComments] =
       this.state.ApepiDetails.AcknowledgementComments;
+
+    /* Deva changes. Only averages update purpose start */
+    data[columns.SLAvgEE] = Number(this.state.SctionTotalDE);
+    data[columns.SLAvgER] = Number(this.state.SctionTotalDR);
+    data[columns.OverallRevieweeAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgEE)),
+          Number(this.resetNAValue(this.state.BAvgEE)),
+          Number(this.resetNAValue(this.state.CAvgEE)),
+          Number(this.state.SctionTotalDE),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    data[columns.OverallReviewerAvg] = Number(
+      parseFloat(
+        this.getAverageCalculation(
+          Number(this.resetNAValue(this.state.AAvgER)),
+          Number(this.resetNAValue(this.state.BAvgER)),
+          Number(this.resetNAValue(this.state.CAvgER)),
+          Number(this.state.SctionTotalDR),
+          0
+        ).toString()
+      )
+    ).toFixed(2);
+    /* Deva changes. Only averages update purpose end */
+
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
       Config.ListNames.PEPIProjects
