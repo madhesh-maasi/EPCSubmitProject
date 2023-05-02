@@ -185,5 +185,9 @@ export class PEPI_PEPIDetails {
   public SBU: string;
   public DAvgEE: number;
   public DAvgER: number;
+  public SLAvgEE: number;
+  public SLAvgER: number;
+  public OverallRevieweeAvg: number;
+  public OverallReviewerAvg: number;
   /* Deva changes end */
 }

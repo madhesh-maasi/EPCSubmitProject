@@ -220,6 +220,10 @@ export namespace Config {
     SBU: "SBU",
     DAvgEE: "DAvgEE",
     DAvgER: "DAvgER",
+    SLAvgEE: "SLAvgEE",
+    SLAvgER: "SLAvgER",
+    OverallRevieweeAvg: "OverallRevieweeAvg",
+    OverallReviewerAvg: "OverallReviewerAvg",
     /* Deva changes end */
   };
 
