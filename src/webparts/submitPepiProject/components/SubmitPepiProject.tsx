@@ -53,10 +53,10 @@ import { sp } from "@pnp/sp";
 
 /* Groups Name Pepi and Dev-Pepi start */
 // pepiperfmgt Site Group
-// let PEPIOwners: string = "PEPI Performance Management Owners";
+let PEPIOwners: string = "PEPI Performance Management Owners";
 
 // DEV-PEPIPerfMgt Site Group
-let PEPIOwners: string = "DEV-PEPI Performance Management Owners";
+// let PEPIOwners: string = "DEV-PEPI Performance Management Owners";
 /* Groups Name Pepi and Dev-Pepi end */
 
 export default class SubmitPepiProject extends React.Component<
@@ -518,6 +518,7 @@ export default class SubmitPepiProject extends React.Component<
     data[columns.Submitted] = Config.SubmittedNumber[99];
 
     // ContentType - TAG Employee
+    /* Production content type Id's section start */
     switch (pepiDetails.JobTitle) {
       case "Analyst":
         data["ContentTypeId"] =
@@ -543,7 +544,45 @@ export default class SubmitPepiProject extends React.Component<
         data["ContentTypeId"] =
           "0x0100E9CC05C6FA99294499F92CCF941A731F000FB0DAA960C3BF4D879097BC6DD7A3EA";
         break;
+      case "Manager I":
+        data["ContentTypeId"] =
+          "0x0100E5D0448E8479E74B9092150C2D23C3300030350B2CE9B1BD46B6F8695DF964DC27";
+        break;
     }
+    /* Production content type Id's section end */
+
+    /* Development content type Id's section start */
+    // switch (pepiDetails.JobTitle) {
+    //   case "Analyst":
+    //     data["ContentTypeId"] =
+    //       "0x0100CCA5944F20D0C5489575D19A033AE18000C28493EAFDF12848B60B4BD0DB3AC015";
+    //     break;
+    //   case "Associate":
+    //     data["ContentTypeId"] =
+    //       "0x0100A8E1BF4ECB8B1246A5788C468E03276200D9D3F4D14A28B547A9E6BA2DA8409D40";
+    //     break;
+    //   case "Director":
+    //     data["ContentTypeId"] =
+    //       "0x01008BFBDF2F9140324F81D5D54F5BDF2ACD002C6A02E883F85549895747F8EB50A875";
+    //     break;
+    //   case "Manager":
+    //     data["ContentTypeId"] =
+    //       "0x0100DBB4C178329BCE4F9B179932568984F000B317220DFCCB1F4E84FDA17E9EB30B9F";
+    //     break;
+    //   case "Senior Associate":
+    //     data["ContentTypeId"] =
+    //       "0x0100B182C6832540854894EE03F5686653F800EE552B677D876141950DC8D119EB6DE0";
+    //     break;
+    //   case "Senior Director":
+    //     data["ContentTypeId"] =
+    //       "0x0100692F3A84FC3E974382D9EBA460647187006138E3D2301E0445BE37EF8D4C92D0EB";
+    //     break;
+    //   case "Manager I":
+    //     data["ContentTypeId"] =
+    //       "0x0100DBB4C178329BCE4F9B179932568984F000B317220DFCCB1F4E84FDA17E9EB30B9F";
+    //     break;
+    // }
+    /* Development content type Id's section end */
 
     this.listPEPIProjectsItemService = new ListItemService(
       this.props.AppContext,
@@ -1115,6 +1154,7 @@ export default class SubmitPepiProject extends React.Component<
                               <div className={styles.col25left}>
                                 <Label>
                                   <b>Complexity :</b>
+                                  <span style={{ color: "#ff0000" }}> * </span>
                                 </Label>
                                 <div>
                                   <Dropdown
@@ -1476,8 +1516,12 @@ export default class SubmitPepiProject extends React.Component<
               )}
 
             {/* Deva changes start */}
-            {this.state.PEPIDetails.StatusOfReview ==
+            {/* {this.state.PEPIDetails.StatusOfReview ==
               Config.StatusOfReview.AwaitingLeadMD ||
+            this.state.PEPIDetails.StatusOfReview ==
+              Config.StatusOfReview.AwaitingReviewee ||
+            this.state.PEPIDetails.StatusOfReview ==
+              Config.StatusOfReview.AwaitingReviewer ||
             this.state.PEPIDetails.StatusOfReview ==
               Config.StatusOfReview.AwaitingAcknowledgement ||
             this.state.PEPIDetails.StatusOfReview ==
@@ -1509,16 +1553,16 @@ export default class SubmitPepiProject extends React.Component<
                   onClick={this.onCancel}
                 />
               </div>
-            )}
+            )} */}
             {/* Deva changes end */}
 
-            {/* <div className={styles.divFullWidth}>
+            <div className={styles.divFullWidth}>
               <PrimaryButton
                 className={styles.btnCancel}
                 text="Close"
                 onClick={this.onCancel}
               />
-            </div> */}
+            </div>
           </div>
         )}
       </React.Fragment>
