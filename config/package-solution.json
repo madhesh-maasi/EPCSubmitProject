@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
     "solution": {
-        "name": "dev-submit-pepi-project-client-side-solution",
+        "name": "submit-pepi-project-client-side-solution",
         "id": "cf340a73-b05d-4c4d-b741-7e05e8483eb1",
         "version": "1.0.0.1",
         "includeClientSideAssets": true,
@@ -33,7 +33,7 @@
         }]
     },
     "paths": {
-        "zippedPackage": "solution/dev-submit-pepi-project.sppkg"
+        "zippedPackage": "solution/submit-pepi-project.sppkg"
     }
 }
 
