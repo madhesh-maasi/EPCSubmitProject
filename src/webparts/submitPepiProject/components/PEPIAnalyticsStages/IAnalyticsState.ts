@@ -18,6 +18,7 @@ import { PEPI_PEPIQuestionText } from "../../../../domain/models/PEPI_PEPIQuesti
 
 export interface IAnalyticsState extends IBaseInterface {
   revieweePermission?: boolean;
+  leadMDPermission?: boolean;
   EditMode: boolean;
   Options: IDropdownOption[];
   ApepiDetails: PEPI_PEPIDetails;
