@@ -48,6 +48,7 @@ export default class Director extends React.Component<
     super(props);
     this.state = {
       revieweePermission: false,
+      leadMDPermission: false,
       AppContext: props.AppContext,
       IsLoading: false,
       IsSelectedEmployeeInvalid: false,
@@ -832,6 +833,7 @@ export default class Director extends React.Component<
       this.setState({
         // Section A1 State
         revieweePermission: true,
+        leadMDPermission: true,
         A11R: 0,
         A12R: 0,
         A13R: 0,
@@ -1132,13 +1134,14 @@ export default class Director extends React.Component<
         this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
         this.props.isAdmin)
     ) {
-      this.setState({ IsReviewer: false });
+      this.setState({ IsReviewer: false, leadMDPermission: true });
       this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail &&
         !this.props.isAdmin &&
         this.setState({
           IsReviewer: true,
           // Section A1 State
           revieweePermission: true,
+          leadMDPermission: true,
           A11R: 0,
           A12R: 0,
           A13R: 0,
@@ -1434,13 +1437,20 @@ export default class Director extends React.Component<
         this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail ||
         this.props.isAdmin)
     ) {
+      let _isPeopleBoolean: boolean =
+        this.props.APEPIDetail.Reviewer.Email ==
+        this.props.APEPIDetail.LeadMD.Email
+          ? true
+          : false;
       this.props.APEPIDetail.Reviewer.Email == this.props.loggeduseremail &&
-      !this.props.isAdmin
+      !this.props.isAdmin &&
+      !_isPeopleBoolean
         ? this.setState({ IsLeadMD: true })
         : this.setState({ IsLeadMD: false });
       /* Deva change */
       this.setState({
         revieweePermission: false,
+        leadMDPermission: false,
       });
       this.props.APEPIDetail.Reviewee.Email == this.props.loggeduseremail &&
         !this.props.isAdmin &&
@@ -1448,6 +1458,7 @@ export default class Director extends React.Component<
           IsLeadMD: true,
           // Section A1 State
           revieweePermission: true,
+          leadMDPermission: true,
           A11R: 0,
           A12R: 0,
           A13R: 0,
@@ -1767,6 +1778,7 @@ export default class Director extends React.Component<
       this.setState({
         // Section A1 State
         revieweePermission: true,
+        leadMDPermission: true,
         A11R: 0,
         A12R: 0,
         A13R: 0,
@@ -7615,9 +7627,7 @@ export default class Director extends React.Component<
               rows={4}
               disabled={this.state.IsLeadMD}
               value={
-                this.state.revieweePermission
-                  ? ""
-                  : this.state.ApepiDetails.H1EL
+                this.state.leadMDPermission ? "" : this.state.ApepiDetails.H1EL
               }
               onChange={this.onChangeH1EL}
               className={styles.Multilinetextarea}
